@@ -3,54 +3,75 @@
         <title>Tags - 标签 - 梧桐漓染的博客</title>
         <link>/tags/</link>
         <description>Tags - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 09 Oct 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>NISP</title>
+    <link>/tags/nisp/</link>
+    <pubDate>Mon, 09 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/tags/nisp/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>XSS漏洞</title>
     <link>/tags/xss%E6%BC%8F%E6%B4%9E/</link>
-    <pubDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+    <pubDate>Fri, 18 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
     </author><guid>/tags/xss%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[]]></description>
 </item><item>
+    <title>信息收集</title>
+    <link>/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</link>
+    <pubDate>Thu, 10 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>SQL注入漏洞</title>
     <link>/tags/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</link>
-    <pubDate>Sun, 30 Jul 2023 00:00:00 &#43;0000</pubDate><author>
+    <pubDate>Wed, 09 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
     </author><guid>/tags/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>BurpSuite</title>
-    <link>/tags/burpsuite/</link>
-    <pubDate>Thu, 27 Jul 2023 12:00:00 &#43;0800</pubDate><author>
+    <title>SSRF漏洞</title>
+    <link>/tags/ssrf%E6%BC%8F%E6%B4%9E/</link>
+    <pubDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/tags/burpsuite/</guid>
+    </author><guid>/tags/ssrf%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>ASP漏洞</title>
-    <link>/tags/asp%E6%BC%8F%E6%B4%9E/</link>
-    <pubDate>Sun, 02 Jul 2023 17:46:17 &#43;0800</pubDate><author>
+    <title>文件包含漏洞</title>
+    <link>/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</link>
+    <pubDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/tags/asp%E6%BC%8F%E6%B4%9E/</guid>
+    </author><guid>/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>Cookie</title>
-    <link>/tags/cookie/</link>
-    <pubDate>Thu, 29 Jun 2023 21:00:00 &#43;0800</pubDate><author>
+    <title>文件上传漏洞</title>
+    <link>/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/</link>
+    <pubDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/tags/cookie/</guid>
+    </author><guid>/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>Session</title>
-    <link>/tags/session/</link>
-    <pubDate>Thu, 29 Jun 2023 21:00:00 &#43;0800</pubDate><author>
+    <title>Kali</title>
+    <link>/tags/kali/</link>
+    <pubDate>Sat, 05 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/tags/session/</guid>
+    </author><guid>/tags/kali/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>Token</title>
-    <link>/tags/token/</link>
-    <pubDate>Thu, 29 Jun 2023 21:00:00 &#43;0800</pubDate><author>
+    <title>RCE漏洞</title>
+    <link>/tags/rce%E6%BC%8F%E6%B4%9E/</link>
+    <pubDate>Sat, 05 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/tags/token/</guid>
+    </author><guid>/tags/rce%E6%BC%8F%E6%B4%9E/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Xshell</title>
+    <link>/tags/xshell/</link>
+    <pubDate>Sat, 05 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/tags/xshell/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

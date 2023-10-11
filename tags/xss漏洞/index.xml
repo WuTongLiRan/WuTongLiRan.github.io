@@ -3,7 +3,14 @@
         <title>XSS漏洞 - 标签 - 梧桐漓染的博客</title>
         <link>/tags/xss%E6%BC%8F%E6%B4%9E/</link>
         <description>XSS漏洞 - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/xss%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 18 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/xss%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+    <title>BeEF-XSS渗透框架的使用</title>
+    <link>/beef-xss%E6%B8%97%E9%80%8F%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Fri, 18 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/beef-xss%E6%B8%97%E9%80%8F%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[BeEF-XSS渗透框架的使用 搭建靶场 将DVWA靶场安装包解压到根目录 修改配置文件 ​ ​ BeEF-XSS渗透框架的使用【KALI】安装BeEF]]></description>
+</item><item>
     <title>XSS-labs靶场实战</title>
     <link>/xss-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/</link>
     <pubDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</pubDate><author>

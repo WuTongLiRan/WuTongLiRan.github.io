@@ -3,7 +3,35 @@
         <title>SQL注入漏洞 - 标签 - 梧桐漓染的博客</title>
         <link>/tags/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</link>
         <description>SQL注入漏洞 - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 30 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 09 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+    <title>SQL注入—WAF绕过</title>
+    <link>/sql%E6%B3%A8%E5%85%A5waf%E7%BB%95%E8%BF%87/</link>
+    <pubDate>Wed, 09 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/sql%E6%B3%A8%E5%85%A5waf%E7%BB%95%E8%BF%87/</guid>
+    <description><![CDATA[SQL注入—WAF绕过 WAF拦截原理：WAF从规则库中匹配敏感字符进行拦截。 关键词大小写绕过有的WAF因为规则设计的问题，只匹配纯大写或纯小]]></description>
+</item><item>
+    <title>Sqli-labs靶场实战</title>
+    <link>/sqli-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/</link>
+    <pubDate>Sun, 06 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/sqli-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/</guid>
+    <description><![CDATA[Sqli-labs靶场实战 源码做了修改，把每关的sql语句打印出来方便学习： echo $sql.&quot;&lt;/br&gt;&quot;;，做]]></description>
+</item><item>
+    <title>SQL注入快速入门—联合注入</title>
+    <link>/sql%E6%B3%A8%E5%85%A5%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5/</link>
+    <pubDate>Sun, 06 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/sql%E6%B3%A8%E5%85%A5%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5/</guid>
+    <description><![CDATA[SQL注入快速入门—联合注入 概述：所谓的SQL注入就是通过某种方式将恶意的SQL代码添加到输入参数中，然后传递到SQL服务器使其解析并执行的]]></description>
+</item><item>
+    <title>SQLMap 使用</title>
+    <link>/sqlmap-%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Sat, 05 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/sqlmap-%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[SQLMap 使用 GET型注入 1、判断是否存在注入假设目标注入点是 http://xxxxxxx?id=1，判断其是否存在注入的命令如下： 1 sqlmap.py -u http://xxxxxxx?id=1 当注入点]]></description>
+</item><item>
     <title>SQLMap getshell</title>
     <link>/sqlmap-getshell/</link>
     <pubDate>Sun, 30 Jul 2023 00:00:00 &#43;0000</pubDate><author>
@@ -45,12 +73,5 @@
         <name>Lyrio</name>
     </author><guid>/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E9%98%B2%E5%BE%A1/</guid>
     <description><![CDATA[2.6 SQL注入之基础防御 魔术引号魔术引号（Magic Quote）是一个自动将进入 PHP 脚本的数据进行转义的过程。 当打开时，所有的 &lsquo;（单]]></description>
-</item><item>
-    <title>SQL注入之数据类型</title>
-    <link>/sql%E6%B3%A8%E5%85%A5%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link>
-    <pubDate>Thu, 27 Jul 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/sql%E6%B3%A8%E5%85%A5%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid>
-    <description><![CDATA[SQL注入之数据类型 1、数字型注入点 结构 ：http://xxx.com/users.php?id=1 SQL 语句原型： select * from 表名 where id=1 爆破：id=1]]></description>
 </item></channel>
 </rss>

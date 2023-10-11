@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Xshell - 标签 - 梧桐漓染的博客</title>
+        <link>/tags/xshell/</link>
+        <description>Xshell - 标签 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 05 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/xshell/" rel="self" type="application/rss+xml" /><item>
+    <title>Xshell远程连接Kali</title>
+    <link>/xshell%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5kali/</link>
+    <pubDate>Sat, 05 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/xshell%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5kali/</guid>
+    <description><![CDATA[Xshell远程连接Kali 虚拟机的复制/粘贴的快捷键是：Ctrl+shift+C / Ctrl+shift+V ​ 设置root用户密码没设置过root用户密码的先设置]]></description>
+</item></channel>
+</rss>
