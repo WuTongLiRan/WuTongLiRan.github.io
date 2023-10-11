@@ -1,0 +1,391 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="VMware三种网络模式 基础知识 虚拟交换机**虚拟机交换机的作用：让相同模式的虚拟机相互连接 ** 虚拟交换机 用途 VMnet0 桥接模式 VMnet1 仅主机模式 VMnet8 NAT模" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/vmware%E4%B8%89%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="VMware三种网络模式 基础知识 虚拟交换机**虚拟机交换机的作用：让相同模式的虚拟机相互连接 ** 虚拟交换机 用途 VMnet0 桥接模式 VMnet1 仅主机模式 VMnet8 NAT模"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/vmware%E4%B8%89%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F/" /><link rel="prev" href="/windows%E5%85%8B%E9%9A%86%E7%94%A8%E6%88%B7/" /><link rel="next" href="/linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/vmware%E4%B8%89%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F\/"
+        },"genre": "posts","wordcount":  771 ,
+        "url": "\/vmware%E4%B8%89%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 771 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#基础知识">基础知识</a>
+      <ul>
+        <li><a href="#虚拟交换机">虚拟交换机</a></li>
+        <li><a href="#虚拟网卡">虚拟网卡</a></li>
+      </ul>
+    </li>
+    <li><a href="#vmware三种网络模式-1">VMware三种网络模式</a>
+      <ul>
+        <li><a href="#桥接模式">桥接模式</a>
+          <ul>
+            <li><a href="#通信方式">通信方式</a></li>
+            <li><a href="#特点">特点</a></li>
+            <li><a href="#配置">配置</a></li>
+            <li><a href="#连通情况">连通情况</a></li>
+            <li><a href="#使用场景">使用场景</a></li>
+          </ul>
+        </li>
+        <li><a href="#nat模式">NAT模式</a>
+          <ul>
+            <li><a href="#通信方式-1">通信方式</a></li>
+            <li><a href="#特点-1">特点</a></li>
+            <li><a href="#连通情况-1">连通情况</a></li>
+            <li><a href="#使用场景-1">使用场景</a></li>
+          </ul>
+        </li>
+        <li><a href="#仅主机模式">仅主机模式</a>
+          <ul>
+            <li><a href="#通信方式-2">通信方式</a></li>
+            <li><a href="#特点-2">特点</a></li>
+            <li><a href="#连通情况-2">连通情况</a></li>
+            <li><a href="#使用场景-2">使用场景</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="vmware三种网络模式" class="headerLink">
+    <a href="#vmware%e4%b8%89%e7%a7%8d%e7%bd%91%e7%bb%9c%e6%a8%a1%e5%bc%8f" class="header-mark"></a>VMware三种网络模式</h1><h2 id="基础知识" class="headerLink">
+    <a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86" class="header-mark"></a>基础知识</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a383731ddac507cc508fd1.jpg" title="https://pic.imgdb.cn/item/64a383731ddac507cc508fd1.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a383731ddac507cc508fd1.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a383731ddac507cc508fd1.jpg"
+            srcset="https://pic.imgdb.cn/item/64a383731ddac507cc508fd1.jpg, https://pic.imgdb.cn/item/64a383731ddac507cc508fd1.jpg 1.5x, https://pic.imgdb.cn/item/64a383731ddac507cc508fd1.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a383731ddac507cc508fd1.jpg">
+    </a></figure></p>
+<h3 id="虚拟交换机" class="headerLink">
+    <a href="#%e8%99%9a%e6%8b%9f%e4%ba%a4%e6%8d%a2%e6%9c%ba" class="header-mark"></a>虚拟交换机</h3><p>**虚拟机交换机的作用：让相同模式的虚拟机相互连接  **</p>
+<table>
+<thead>
+<tr>
+<th>虚拟交换机</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VMnet0</td>
+<td>桥接模式</td>
+</tr>
+<tr>
+<td>VMnet1</td>
+<td>仅主机模式</td>
+</tr>
+<tr>
+<td>VMnet8</td>
+<td>NAT模式</td>
+</tr>
+</tbody>
+</table>
+<h3 id="虚拟网卡" class="headerLink">
+    <a href="#%e8%99%9a%e6%8b%9f%e7%bd%91%e5%8d%a1" class="header-mark"></a>虚拟网卡</h3><p>**虚拟机网卡的作用：让主机和虚拟机相互连接  **</p>
+<table>
+<thead>
+<tr>
+<th>虚拟网卡</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VMware Network Adapter VMnet1</td>
+<td>仅主机模式</td>
+</tr>
+<tr>
+<td>VMware Network Adapter VMnet8</td>
+<td>NAT模式</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vmware三种网络模式-1" class="headerLink">
+    <a href="#vmware%e4%b8%89%e7%a7%8d%e7%bd%91%e7%bb%9c%e6%a8%a1%e5%bc%8f-1" class="header-mark"></a>VMware三种网络模式</h2><ol>
+<li><strong>桥接模式</strong>（Bridge）</li>
+<li><strong>NAT模式</strong>（NAT：Network Address Translation）</li>
+<li><strong>仅主机模式</strong>（Host-Only）</li>
+</ol>
+<h3 id="桥接模式" class="headerLink">
+    <a href="#%e6%a1%a5%e6%8e%a5%e6%a8%a1%e5%bc%8f" class="header-mark"></a>桥接模式</h3><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a385851ddac507cc54ec65.jpg" title="https://pic.imgdb.cn/item/64a385851ddac507cc54ec65.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a385851ddac507cc54ec65.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a385851ddac507cc54ec65.jpg"
+            srcset="https://pic.imgdb.cn/item/64a385851ddac507cc54ec65.jpg, https://pic.imgdb.cn/item/64a385851ddac507cc54ec65.jpg 1.5x, https://pic.imgdb.cn/item/64a385851ddac507cc54ec65.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a385851ddac507cc54ec65.jpg">
+    </a></figure></p>
+<h4 id="通信方式" class="headerLink">
+    <a href="#%e9%80%9a%e4%bf%a1%e6%96%b9%e5%bc%8f" class="header-mark"></a>通信方式</h4><ol>
+<li>虚拟机通过连接到虚拟机交换机，利用虚拟网桥连接到主机的网卡(与主机共用网卡)</li>
+<li>它不需要用到虚拟网卡，所以没有VMware Network Adapter VMnet0</li>
+</ol>
+<h4 id="特点" class="headerLink">
+    <a href="#%e7%89%b9%e7%82%b9" class="header-mark"></a>特点</h4><ol>
+<li>物理机和虚拟机地位平等</li>
+<li>虚拟机占用一个独立IP</li>
+<li>使用物理机的网卡访问互联网</li>
+</ol>
+<h4 id="配置" class="headerLink">
+    <a href="#%e9%85%8d%e7%bd%ae" class="header-mark"></a>配置</h4><p>虚拟机IP网段和主机一致</p>
+<h4 id="连通情况" class="headerLink">
+    <a href="#%e8%bf%9e%e9%80%9a%e6%83%85%e5%86%b5" class="header-mark"></a>连通情况</h4><ol>
+<li>主机和虚拟机可以访问</li>
+<li>虚拟机之间可以相互访问</li>
+<li>可以访问互联网</li>
+<li>可以访问其他主机</li>
+<li>其他主机可以访问本虚拟机</li>
+</ol>
+<h4 id="使用场景" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8%e5%9c%ba%e6%99%af" class="header-mark"></a>使用场景</h4><p>创建一个虚拟服务器在内网提供网络服务</p>
+<h3 id="nat模式" class="headerLink">
+    <a href="#nat%e6%a8%a1%e5%bc%8f" class="header-mark"></a>NAT模式</h3><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a386b31ddac507cc577ef3.jpg" title="https://pic.imgdb.cn/item/64a386b31ddac507cc577ef3.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a386b31ddac507cc577ef3.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a386b31ddac507cc577ef3.jpg"
+            srcset="https://pic.imgdb.cn/item/64a386b31ddac507cc577ef3.jpg, https://pic.imgdb.cn/item/64a386b31ddac507cc577ef3.jpg 1.5x, https://pic.imgdb.cn/item/64a386b31ddac507cc577ef3.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a386b31ddac507cc577ef3.jpg">
+    </a></figure></p>
+<h4 id="通信方式-1" class="headerLink">
+    <a href="#%e9%80%9a%e4%bf%a1%e6%96%b9%e5%bc%8f-1" class="header-mark"></a>通信方式</h4><ol>
+<li>虚拟NAT设备（虚拟路由）连接到VMnet8虚拟交换机——虚拟机联网用</li>
+<li>主机通过VMware Network Adapter VMnet8虚拟网卡连接到VMnet8虚拟交换机——主机和虚拟机连接用</li>
+</ol>
+<h4 id="特点-1" class="headerLink">
+    <a href="#%e7%89%b9%e7%82%b9-1" class="header-mark"></a>特点</h4><ol>
+<li>虚拟机在外部网络中没有自己的IP地址</li>
+<li>虚拟NAT设备会把专用网络中的 IP 地址转换为主机系统的 IP 地址——网络地址转换</li>
+<li>主机可以联网，虚拟机就可以联网</li>
+</ol>
+<h4 id="连通情况-1" class="headerLink">
+    <a href="#%e8%bf%9e%e9%80%9a%e6%83%85%e5%86%b5-1" class="header-mark"></a>连通情况</h4><ol>
+<li>主机和虚拟机可以访问</li>
+<li>虚拟机之间可以相互访问</li>
+<li>可以访问互联网</li>
+<li>本机虚拟机可以访问其他主机</li>
+<li>其他主机<strong>不能</strong>访问本机虚拟机。解决办法：共享网络、端口映射</li>
+</ol>
+<h4 id="使用场景-1" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8%e5%9c%ba%e6%99%af-1" class="header-mark"></a>使用场景</h4><p>大部分情况</p>
+<h3 id="仅主机模式" class="headerLink">
+    <a href="#%e4%bb%85%e4%b8%bb%e6%9c%ba%e6%a8%a1%e5%bc%8f" class="header-mark"></a>仅主机模式</h3><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a38b9d1ddac507cc61be01.jpg" title="https://pic.imgdb.cn/item/64a38b9d1ddac507cc61be01.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a38b9d1ddac507cc61be01.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a38b9d1ddac507cc61be01.jpg"
+            srcset="https://pic.imgdb.cn/item/64a38b9d1ddac507cc61be01.jpg, https://pic.imgdb.cn/item/64a38b9d1ddac507cc61be01.jpg 1.5x, https://pic.imgdb.cn/item/64a38b9d1ddac507cc61be01.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a38b9d1ddac507cc61be01.jpg">
+    </a></figure></p>
+<h4 id="通信方式-2" class="headerLink">
+    <a href="#%e9%80%9a%e4%bf%a1%e6%96%b9%e5%bc%8f-2" class="header-mark"></a>通信方式</h4><p>主机使用VMware Network Adapter VMnet1虚拟网卡连接到VMnet1虚拟交换机</p>
+<h4 id="特点-2" class="headerLink">
+    <a href="#%e7%89%b9%e7%82%b9-2" class="header-mark"></a>特点</h4><p>没有了NAT设备（虚拟路由），所以<strong>不能上网</strong></p>
+<h4 id="连通情况-2" class="headerLink">
+    <a href="#%e8%bf%9e%e9%80%9a%e6%83%85%e5%86%b5-2" class="header-mark"></a>连通情况</h4><ol>
+<li>主机和虚拟机可以访问</li>
+<li>虚拟机之间可以相互访问</li>
+<li><strong>不能</strong>访问互联网</li>
+<li><strong>不能</strong>访问其他主机</li>
+<li>其他主机<strong>不能</strong>访问本机虚拟机</li>
+</ol>
+<h4 id="使用场景-2" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8%e5%9c%ba%e6%99%af-2" class="header-mark"></a>使用场景</h4><p>创建一个与其他机器隔离的网络</p>
+</div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/vmware%E4%B8%89%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/windows%E5%85%8B%E9%9A%86%E7%94%A8%E6%88%B7/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

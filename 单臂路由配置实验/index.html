@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="单臂路由配置实验 1. 单臂路由概述单臂路由是指在路由器的一个接口上通过配置子接口（或“逻辑接口”，并不存在真正物理接口）的方式，实现原来相互隔离" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="单臂路由配置实验 1. 单臂路由概述单臂路由是指在路由器的一个接口上通过配置子接口（或“逻辑接口”，并不存在真正物理接口）的方式，实现原来相互隔离"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C/" /><link rel="prev" href="/%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E4%B8%8E%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/" /><link rel="next" href="/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8Crip%E5%8D%8F%E8%AE%AE-ospf%E5%8D%8F%E8%AE%AE/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C\/"
+        },"genre": "posts","wordcount":  621 ,
+        "url": "\/%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 621 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-单臂路由概述">1. 单臂路由概述</a>
+      <ul>
+        <li><a href="#11-链路状态">1.1 链路状态</a></li>
+        <li><a href="#12-子接口">1.2 子接口</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-单臂路由实验">2. 单臂路由实验</a>
+      <ul>
+        <li><a href="#21-pc配置">2.1 PC配置</a></li>
+        <li><a href="#22-交换机配置">2.2 交换机配置</a></li>
+        <li><a href="#23-路由器配置">2.3 路由器配置</a></li>
+        <li><a href="#24-测试连通性">2.4 测试连通性</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="单臂路由配置实验" class="headerLink">
+    <a href="#%e5%8d%95%e8%87%82%e8%b7%af%e7%94%b1%e9%85%8d%e7%bd%ae%e5%ae%9e%e9%aa%8c" class="header-mark"></a>单臂路由配置实验</h1><h2 id="1-单臂路由概述" class="headerLink">
+    <a href="#1-%e5%8d%95%e8%87%82%e8%b7%af%e7%94%b1%e6%a6%82%e8%bf%b0" class="header-mark"></a>1. 单臂路由概述</h2><p>单臂路由是指在路由器的<strong>一个接口</strong>上通过<strong>配置子接口</strong>（或“逻辑接口”，并不存在真正物理接口）的方式，<strong>实现原来相互隔离的不同 VLAN 之间的互联互通。</strong></p>
+<p>​</p>
+<h3 id="11-链路状态" class="headerLink">
+    <a href="#11-%e9%93%be%e8%b7%af%e7%8a%b6%e6%80%81" class="header-mark"></a>1.1 链路状态</h3><ul>
+<li>交换机<strong>连接主机的端口为 Access 链路。</strong></li>
+<li>交换机<strong>连接路由器的端口为 Trunk 链路。</strong></li>
+</ul>
+<p>​</p>
+<h3 id="12-子接口" class="headerLink">
+    <a href="#12-%e5%ad%90%e6%8e%a5%e5%8f%a3" class="header-mark"></a>1.2 子接口</h3><ul>
+<li>路由器的物理接口可以被划分成为多个逻辑接口</li>
+<li>每个子接口对应一个 VLAN 网段网关</li>
+</ul>
+<p>​</p>
+<p>​</p>
+<h2 id="2-单臂路由实验" class="headerLink">
+    <a href="#2-%e5%8d%95%e8%87%82%e8%b7%af%e7%94%b1%e5%ae%9e%e9%aa%8c" class="header-mark"></a>2. 单臂路由实验</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64b60ffe1ddac507cc9ca06f.jpg" title="https://pic.imgdb.cn/item/64b60ffe1ddac507cc9ca06f.jpg" data-thumbnail="https://pic.imgdb.cn/item/64b60ffe1ddac507cc9ca06f.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64b60ffe1ddac507cc9ca06f.jpg"
+            srcset="https://pic.imgdb.cn/item/64b60ffe1ddac507cc9ca06f.jpg, https://pic.imgdb.cn/item/64b60ffe1ddac507cc9ca06f.jpg 1.5x, https://pic.imgdb.cn/item/64b60ffe1ddac507cc9ca06f.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64b60ffe1ddac507cc9ca06f.jpg">
+    </a></figure></p>
+<h3 id="21-pc配置" class="headerLink">
+    <a href="#21-pc%e9%85%8d%e7%bd%ae" class="header-mark"></a>2.1 PC配置</h3><ul>
+<li>PC 0
+<img src="https://pic.imgdb.cn/item/64b6025f1ddac507cc6ca0d1.jpg" style="zoom:80%;" /></li>
+<li>PC 1
+<img src="https://pic.imgdb.cn/item/64b602d71ddac507cc6e47a3.jpg" style="zoom:80%;" /></li>
+</ul>
+<p>​</p>
+<h3 id="22-交换机配置" class="headerLink">
+    <a href="#22-%e4%ba%a4%e6%8d%a2%e6%9c%ba%e9%85%8d%e7%bd%ae" class="header-mark"></a>2.2 交换机配置</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">Switch</span><span class="o">&gt;</span> <span class="nt">enable</span>                     <span class="o">//</span> <span class="nt">进入特权模式</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Switch</span><span class="err">#</span> <span class="nt">configure</span> <span class="nt">terminal</span>         <span class="o">//</span> <span class="nt">进入全局配置模式</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Switch</span><span class="o">(</span><span class="nt">config</span><span class="o">)</span><span class="err">#</span> <span class="nt">vlan</span> <span class="nt">10</span>            <span class="o">//</span> <span class="nt">创建</span> <span class="nt">VLAN</span> <span class="nt">10</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Switch</span><span class="o">(</span><span class="nt">config-vlan</span><span class="o">)</span><span class="err">#</span> <span class="nt">vlan</span> <span class="nt">20</span>       <span class="o">//</span> <span class="nt">创建</span> <span class="nt">VLAN</span> <span class="nt">20</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Switch</span><span class="o">(</span><span class="nt">config-vlan</span><span class="o">)</span><span class="err">#</span> <span class="nt">exit</span>          <span class="o">//</span> <span class="nt">退出</span> <span class="nt">VLAN</span> <span class="nt">配置模式</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Switch</span><span class="o">(</span><span class="nt">config</span><span class="o">)</span><span class="err">#</span> <span class="nt">interface</span> <span class="nt">fastEthernet</span> <span class="nt">0</span><span class="o">/</span><span class="nt">1</span>     <span class="o">//</span> <span class="nt">进入</span> <span class="nt">0</span><span class="o">/</span><span class="nt">1</span> <span class="nt">接口</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Switch</span><span class="o">(</span><span class="nt">config-if</span><span class="o">)</span><span class="err">#</span> <span class="nt">switchport</span> <span class="nt">mode</span> <span class="nt">access</span>      <span class="o">//</span> <span class="nt">将接口设置为</span> <span class="nt">Access</span> <span class="nt">模式</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Switch</span><span class="o">(</span><span class="nt">config-if</span><span class="o">)</span><span class="err">#</span> <span class="nt">switchport</span> <span class="nt">access</span> <span class="nt">vlan</span> <span class="nt">10</span>   <span class="o">//</span> <span class="nt">将接口设置为</span> <span class="nt">VLAN</span> <span class="nt">10</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Switch</span><span class="o">(</span><span class="nt">config-if</span><span class="o">)</span><span class="err">#</span> <span class="nt">exit</span>                        <span class="o">//</span> <span class="nt">退出接口配置模式</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Switch</span><span class="o">(</span><span class="nt">config</span><span class="o">)</span><span class="err">#</span> <span class="nt">interface</span> <span class="nt">fastEthernet</span> <span class="nt">0</span><span class="o">/</span><span class="nt">2</span>     <span class="o">//</span> <span class="nt">进入</span> <span class="nt">0</span><span class="o">/</span><span class="nt">2</span> <span class="nt">接口</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Switch</span><span class="o">(</span><span class="nt">config-if</span><span class="o">)</span><span class="err">#</span> <span class="nt">switchport</span> <span class="nt">mode</span> <span class="nt">access</span>      <span class="o">//</span> <span class="nt">将接口设置为</span> <span class="nt">Access</span> <span class="nt">模式</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Switch</span><span class="o">(</span><span class="nt">config-if</span><span class="o">)</span><span class="err">#</span> <span class="nt">switchport</span> <span class="nt">access</span> <span class="nt">vlan</span> <span class="nt">20</span>   <span class="o">//</span> <span class="nt">将接口设置为</span> <span class="nt">VLAN</span> <span class="nt">20</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Switch</span><span class="o">(</span><span class="nt">config-if</span><span class="o">)</span><span class="err">#</span> <span class="nt">exit</span>                        <span class="o">//</span> <span class="nt">退出接口配置模式</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Switch</span><span class="o">(</span><span class="nt">config</span><span class="o">)</span><span class="err">#</span> <span class="nt">interface</span> <span class="nt">fastEthernet</span> <span class="nt">0</span><span class="o">/</span><span class="nt">3</span>     <span class="o">//</span> <span class="nt">进入</span> <span class="nt">0</span><span class="o">/</span><span class="nt">3</span> <span class="nt">接口</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Switch</span><span class="o">(</span><span class="nt">config-if</span><span class="o">)</span><span class="err">#</span> <span class="nt">switchport</span> <span class="nt">mode</span> <span class="nt">trunk</span>       <span class="o">//</span> <span class="nt">将接口设置为</span> <span class="nt">Trunk</span> <span class="nt">模式</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Switch</span><span class="o">(</span><span class="nt">config-if</span><span class="o">)</span><span class="err">#</span> <span class="nt">end</span>                         <span class="o">//</span> <span class="nt">退出配置模式</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Switch</span><span class="err">#</span> <span class="nt">write</span>                                  <span class="o">//</span> <span class="nt">保存配置更改</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h3 id="23-路由器配置" class="headerLink">
+    <a href="#23-%e8%b7%af%e7%94%b1%e5%99%a8%e9%85%8d%e7%bd%ae" class="header-mark"></a>2.3 路由器配置</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">Router</span><span class="err">#</span> <span class="nt">enable</span>                            <span class="o">//</span> <span class="nt">进入特权模式</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Router</span><span class="err">#</span> <span class="nt">configure</span> <span class="nt">terminal</span>                <span class="o">//</span> <span class="nt">进入全局配置模式</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Router</span><span class="o">(</span><span class="nt">config</span><span class="o">)</span><span class="err">#</span> <span class="nt">interface</span> <span class="nt">f0</span><span class="o">/</span><span class="nt">0</span><span class="p">.</span><span class="nc">1</span>          <span class="o">//</span> <span class="nt">进入接口</span> <span class="nt">f0</span><span class="o">/</span><span class="nt">0</span> <span class="nt">的子接口</span> <span class="nt">1</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Router</span><span class="o">(</span><span class="nt">config-subif</span><span class="o">)</span><span class="err">#</span> <span class="nt">encapsulation</span> <span class="nt">dot1q</span> <span class="nt">10</span>     <span class="o">//</span> <span class="nt">配置子接口的</span> <span class="nt">VLAN</span> <span class="nt">标记为</span> <span class="nt">10</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Router</span><span class="o">(</span><span class="nt">config-subif</span><span class="o">)</span><span class="err">#</span> <span class="nt">ip</span> <span class="nt">address</span> <span class="nt">192</span><span class="p">.</span><span class="nc">168</span><span class="p">.</span><span class="nc">10</span><span class="p">.</span><span class="nc">254</span> <span class="nt">255</span><span class="p">.</span><span class="nc">255</span><span class="p">.</span><span class="nc">255</span><span class="p">.</span><span class="nc">0</span>   <span class="o">//</span> <span class="nt">配置子接口的</span> <span class="nt">IP</span> <span class="nt">地址为</span> <span class="nt">192</span><span class="p">.</span><span class="nc">168</span><span class="p">.</span><span class="nc">10</span><span class="p">.</span><span class="nc">254</span><span class="o">/</span><span class="nt">24</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Router</span><span class="o">(</span><span class="nt">config-subif</span><span class="o">)</span><span class="err">#</span> <span class="nt">no</span> <span class="nt">shutdown</span>         <span class="o">//</span> <span class="nt">启用子接口</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Router</span><span class="o">(</span><span class="nt">config-subif</span><span class="o">)</span><span class="err">#</span> <span class="nt">exit</span>                <span class="o">//</span> <span class="nt">退出子接口配置模式</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Router</span><span class="o">(</span><span class="nt">config</span><span class="o">)</span><span class="err">#</span> <span class="nt">interface</span> <span class="nt">f0</span><span class="o">/</span><span class="nt">0</span><span class="p">.</span><span class="nc">2</span>          <span class="o">//</span> <span class="nt">进入接口</span> <span class="nt">f0</span><span class="o">/</span><span class="nt">0</span> <span class="nt">的子接口</span> <span class="nt">2</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Router</span><span class="o">(</span><span class="nt">config-subif</span><span class="o">)</span><span class="err">#</span> <span class="nt">encapsulation</span> <span class="nt">dot1q</span> <span class="nt">20</span>     <span class="o">//</span> <span class="nt">配置子接口的</span> <span class="nt">VLAN</span> <span class="nt">标记为</span> <span class="nt">20</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Router</span><span class="o">(</span><span class="nt">config-subif</span><span class="o">)</span><span class="err">#</span> <span class="nt">ip</span> <span class="nt">address</span> <span class="nt">192</span><span class="p">.</span><span class="nc">168</span><span class="p">.</span><span class="nc">20</span><span class="p">.</span><span class="nc">254</span> <span class="nt">255</span><span class="p">.</span><span class="nc">255</span><span class="p">.</span><span class="nc">255</span><span class="p">.</span><span class="nc">0</span>   <span class="o">//</span> <span class="nt">配置子接口的</span> <span class="nt">IP</span> <span class="nt">地址为</span> <span class="nt">192</span><span class="p">.</span><span class="nc">168</span><span class="p">.</span><span class="nc">20</span><span class="p">.</span><span class="nc">254</span><span class="o">/</span><span class="nt">24</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Router</span><span class="o">(</span><span class="nt">config-subif</span><span class="o">)</span><span class="err">#</span> <span class="nt">no</span> <span class="nt">shutdown</span>         <span class="o">//</span> <span class="nt">启用子接口</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Router</span><span class="o">(</span><span class="nt">config-subif</span><span class="o">)</span><span class="err">#</span> <span class="nt">exit</span>                <span class="o">//</span> <span class="nt">退出子接口配置模式</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Router</span><span class="o">(</span><span class="nt">config</span><span class="o">)</span><span class="err">#</span> <span class="nt">interface</span> <span class="nt">f0</span><span class="o">/</span><span class="nt">0</span>             <span class="o">//</span> <span class="nt">进入接口</span> <span class="nt">f0</span><span class="o">/</span><span class="nt">0</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Router</span><span class="o">(</span><span class="nt">config-if</span><span class="o">)</span><span class="err">#</span> <span class="nt">no</span> <span class="nt">shutdown</span>            <span class="o">//</span> <span class="nt">启用接口</span> <span class="nt">f0</span><span class="o">/</span><span class="nt">0</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Router</span><span class="o">(</span><span class="nt">config-if</span><span class="o">)</span><span class="err">#</span> <span class="nt">end</span>                    <span class="o">//</span> <span class="nt">退出配置模式</span>
+</span></span><span class="line"><span class="cl"><span class="nt">Router</span><span class="err">#</span> <span class="nt">write</span>                             <span class="o">//</span> <span class="nt">保存配置更改</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h3 id="24-测试连通性" class="headerLink">
+    <a href="#24-%e6%b5%8b%e8%af%95%e8%bf%9e%e9%80%9a%e6%80%a7" class="header-mark"></a>2.4 测试连通性</h3><ul>
+<li>PC 0  ping  PC 1
+<img src="https://pic.imgdb.cn/item/64b61c5a1ddac507ccc69f7d.jpg" style="zoom:80%;" /></li>
+<li>PC 1  ping  PC 0
+<img src="https://pic.imgdb.cn/item/64b61cda1ddac507ccc841ce.jpg" style="zoom:80%;" /></li>
+</ul>
+</div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E4%B8%8E%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8Crip%E5%8D%8F%E8%AE%AE-ospf%E5%8D%8F%E8%AE%AE/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

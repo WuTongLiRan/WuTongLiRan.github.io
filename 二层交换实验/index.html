@@ -1,0 +1,403 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="二层交换实验1、 实验目的 通过本实验可以： 理解二层交换的基本原理 掌握交换机的基本配置 掌握交换机VLAN划分 掌握实现不同局域网的通信 理解交换机端" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E5%AE%9E%E9%AA%8C/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="二层交换实验1、 实验目的 通过本实验可以： 理解二层交换的基本原理 掌握交换机的基本配置 掌握交换机VLAN划分 掌握实现不同局域网的通信 理解交换机端"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E5%AE%9E%E9%AA%8C/" /><link rel="prev" href="/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/" /><link rel="next" href="/%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BA%92%E8%81%94%E5%AE%9E%E9%AA%8C/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E5%AE%9E%E9%AA%8C\/"
+        },"genre": "posts","wordcount":  1541 ,
+        "url": "\/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E5%AE%9E%E9%AA%8C\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1541 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-参照逻辑拓扑使用合适的线缆完成物理拓扑的搭建">1. 参照逻辑拓扑，使用合适的线缆完成物理拓扑的搭建</a></li>
+            <li><a href="#2-pc0pc1和pc2属于一个局域网server0和server1分别属于vlan100和vlan200">2. PC0，PC1和PC2属于一个局域网，Server0和Server1分别属于vlan100和vlan200。</a></li>
+            <li><a href="#3-在交换机上创建相应的vlan并且将相应的接口加入到相应的局域网完成基本配置">3. 在交换机上创建相应的VLAN，并且将相应的接口加入到相应的局域网，完成基本配置</a></li>
+            <li><a href="#4-为了安全考虑服务器ip地址均为手动配置公司服务器ip地址为19216810010024网关为192168100254财务服务器ip地址为19216820010024网关为192168200254其余主机ip地址均为动态获取ip地址自己规划">4. 为了安全考虑服务器IP地址均为手动配置，公司服务器IP地址为：192.168.100.100/24，网关为192.168.100.254。财务服务器IP地址为192.168.200.100/24，网关为192.168.200.254。其余主机IP地址均为动态获取，IP地址自己规划</a></li>
+            <li><a href="#5-完成必要配置实现各主机与各服务器可以相互通信">5. 完成必要配置实现各主机与各服务器可以相互通信</a></li>
+            <li><a href="#6-在交换机连接服务器的接口配置端口安全只能允许合法服务器接入非法网络设备接入接口将关闭">6. 在交换机连接服务器的接口配置端口安全，只能允许合法服务器接入，非法网络设备接入接口将关闭</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="二层交换实验" class="headerLink">
+    <a href="#%e4%ba%8c%e5%b1%82%e4%ba%a4%e6%8d%a2%e5%ae%9e%e9%aa%8c" class="header-mark"></a>二层交换实验</h1><p><strong>1、 实验目的</strong></p>
+<p>通过本实验可以：</p>
+<ol>
+<li>理解二层交换的基本原理</li>
+<li>掌握交换机的基本配置</li>
+<li>掌握交换机VLAN划分</li>
+<li>掌握实现不同局域网的通信</li>
+<li>理解交换机端口安全</li>
+<li>掌握DHCP的基本配置</li>
+</ol>
+<p><strong>2、 拓扑结构</strong></p>
+<img src="https://pic.imgdb.cn/item/64e715ba661c6c8e54a9b40f.jpg" style="zoom: 80%;" /> 
+<p><strong>3、 实验需求</strong></p>
+<ol>
+<li>参照逻辑拓扑，使用合适的线缆完成物理拓扑的搭建</li>
+<li>PC0，PC1和PC2属于一个局域网，Server0和Server1分别属于vlan100和vlan200。</li>
+<li>在交换机上创建相应的VLAN，并且将相应的接口加入到相应的局域网，完成基本配置</li>
+<li>为了安全考虑服务器IP地址均为手动配置，公司服务器IP地址为：192.168.100.100/24，网关为192.168.100.254。财务服务器IP地址为192.168.200.100/24，网关为192.168.200.254。其余主机IP地址均为动态获取，IP地址自己规划</li>
+<li>完成必要配置实现各主机与各服务器可以相互通信</li>
+<li>在交换机连接服务器的接口配置端口安全，只能允许合法服务器接入，非法网络设备接入接口将关闭</li>
+</ol>
+<p>​</p>
+<p>​</p>
+<h4 id="1-参照逻辑拓扑使用合适的线缆完成物理拓扑的搭建" class="headerLink">
+    <a href="#1-%e5%8f%82%e7%85%a7%e9%80%bb%e8%be%91%e6%8b%93%e6%89%91%e4%bd%bf%e7%94%a8%e5%90%88%e9%80%82%e7%9a%84%e7%ba%bf%e7%bc%86%e5%ae%8c%e6%88%90%e7%89%a9%e7%90%86%e6%8b%93%e6%89%91%e7%9a%84%e6%90%ad%e5%bb%ba" class="header-mark"></a>1. 参照逻辑拓扑，使用合适的线缆完成物理拓扑的搭建</h4><p>​	<img src="https://pic.imgdb.cn/item/64e72b48661c6c8e54b172bf.jpg" style="zoom:80%;" /></p>
+<h4 id="2-pc0pc1和pc2属于一个局域网server0和server1分别属于vlan100和vlan200" class="headerLink">
+    <a href="#2-pc0pc1%e5%92%8cpc2%e5%b1%9e%e4%ba%8e%e4%b8%80%e4%b8%aa%e5%b1%80%e5%9f%9f%e7%bd%91server0%e5%92%8cserver1%e5%88%86%e5%88%ab%e5%b1%9e%e4%ba%8evlan100%e5%92%8cvlan200" class="header-mark"></a>2. PC0，PC1和PC2属于一个局域网，Server0和Server1分别属于vlan100和vlan200。</h4><p>​</p>
+<h4 id="3-在交换机上创建相应的vlan并且将相应的接口加入到相应的局域网完成基本配置" class="headerLink">
+    <a href="#3-%e5%9c%a8%e4%ba%a4%e6%8d%a2%e6%9c%ba%e4%b8%8a%e5%88%9b%e5%bb%ba%e7%9b%b8%e5%ba%94%e7%9a%84vlan%e5%b9%b6%e4%b8%94%e5%b0%86%e7%9b%b8%e5%ba%94%e7%9a%84%e6%8e%a5%e5%8f%a3%e5%8a%a0%e5%85%a5%e5%88%b0%e7%9b%b8%e5%ba%94%e7%9a%84%e5%b1%80%e5%9f%9f%e7%bd%91%e5%ae%8c%e6%88%90%e5%9f%ba%e6%9c%ac%e9%85%8d%e7%bd%ae" class="header-mark"></a>3. 在交换机上创建相应的VLAN，并且将相应的接口加入到相应的局域网，完成基本配置</h4><p>SW2的配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[SW2]vlan 100                 // 创建 VLAN 100
+</span></span><span class="line"><span class="cl">[SW2]vlan 200                 // 创建 VLAN 200
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[SW2]int e0/0/1               // 进入以太网接口 0/0/1 的配置模式
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/1]port link-type trunk       // 配置接口为 trunk 模式，用于传送多个 VLAN
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/1]port trunk allow-pass vlan 1 100 200  // 允许通过的 VLAN 为 VLAN 1、100 和 200
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/1]quit      // 退出以太网接口配置模式
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[SW2]int e0/0/2               // 进入以太网接口 0/0/2 的配置模式
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/2]port link-type access      // 配置接口为 access 模式，用于连接单个 VLAN 的设备
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/2]port default vlan 100      // 将默认 VLAN 设置为 VLAN 100
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/2]quit      // 退出以太网接口配置模式
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[SW2]int e0/0/6               // 进入以太网接口 0/0/6 的配置模式
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/6]port link-type access     // 配置接口为 access 模式，用于连接单个 VLAN 的设备
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/6]port default vlan 200     // 将默认 VLAN 设置为 VLAN 200
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>SW1的配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[SW1]vlan 100                   // 创建 VLAN 100
+</span></span><span class="line"><span class="cl">[SW1-vlan100]vlan 200            // 进入 VLAN 100 配置视图后创建 VLAN 200
+</span></span><span class="line"><span class="cl">[SW1-vlan200]quit                // 退出 VLAN 200 配置视图
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[SW1]int g0/0/1                  // 进入 GigabitEthernet0/0/1 接口的配置模式
+</span></span><span class="line"><span class="cl">[SW1-GigabitEthernet0/0/1]port link-type trunk    // 配置接口为 trunk 模式，用于传送多个 VLAN
+</span></span><span class="line"><span class="cl">[SW1-GigabitEthernet0/0/1]port trunk allow-pass vlan 1 100 200  // 允许通过的 VLAN 为 VLAN 1、100 和 200
+</span></span><span class="line"><span class="cl">[SW1-GigabitEthernet0/0/1]quit  // 退出接口配置模式
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[SW1]int vlan 1                  // 进入 VLAN 1 接口的配置模式
+</span></span><span class="line"><span class="cl">[SW1-Vlanif1]ip address 192.168.10.254 24  // 配置接口 IP 地址为 192.168.10.254/24
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[SW1-Vlanif1]int vlan 100        // 进入 VLAN 100 接口的配置模式
+</span></span><span class="line"><span class="cl">[SW1-Vlanif100]ip address 192.168.100.254 24  // 配置接口 IP 地址为 192.168.100.254/24
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[SW1-Vlanif100]int vlan 200      // 进入 VLAN 200 接口的配置模式
+</span></span><span class="line"><span class="cl">[SW1-Vlanif200]ip address 192.168.200.254 24  // 配置接口 IP 地址为 192.168.200.254/24
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h4 id="4-为了安全考虑服务器ip地址均为手动配置公司服务器ip地址为19216810010024网关为192168100254财务服务器ip地址为19216820010024网关为192168200254其余主机ip地址均为动态获取ip地址自己规划" class="headerLink">
+    <a href="#4-%e4%b8%ba%e4%ba%86%e5%ae%89%e5%85%a8%e8%80%83%e8%99%91%e6%9c%8d%e5%8a%a1%e5%99%a8ip%e5%9c%b0%e5%9d%80%e5%9d%87%e4%b8%ba%e6%89%8b%e5%8a%a8%e9%85%8d%e7%bd%ae%e5%85%ac%e5%8f%b8%e6%9c%8d%e5%8a%a1%e5%99%a8ip%e5%9c%b0%e5%9d%80%e4%b8%ba19216810010024%e7%bd%91%e5%85%b3%e4%b8%ba192168100254%e8%b4%a2%e5%8a%a1%e6%9c%8d%e5%8a%a1%e5%99%a8ip%e5%9c%b0%e5%9d%80%e4%b8%ba19216820010024%e7%bd%91%e5%85%b3%e4%b8%ba192168200254%e5%85%b6%e4%bd%99%e4%b8%bb%e6%9c%baip%e5%9c%b0%e5%9d%80%e5%9d%87%e4%b8%ba%e5%8a%a8%e6%80%81%e8%8e%b7%e5%8f%96ip%e5%9c%b0%e5%9d%80%e8%87%aa%e5%b7%b1%e8%a7%84%e5%88%92" class="header-mark"></a>4. 为了安全考虑服务器IP地址均为手动配置，公司服务器IP地址为：192.168.100.100/24，网关为192.168.100.254。财务服务器IP地址为192.168.200.100/24，网关为192.168.200.254。其余主机IP地址均为动态获取，IP地址自己规划</h4><img src="https://pic.imgdb.cn/item/64e7247d661c6c8e54af1557.jpg" style="zoom:67%;" />
+<img src="https://pic.imgdb.cn/item/64e724bc661c6c8e54af27c7.jpg" style="zoom:67%;" />
+<p>SW1的配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[SW1]ip pool PC                 // 创建一个名为 PC 的 IP 地址池
+</span></span><span class="line"><span class="cl">[SW1-ip-pool-pc]network 192.168.10.0 mask 24  // 配置 IP 地址池的网络地址和子网掩码
+</span></span><span class="line"><span class="cl">[SW1-ip-pool-pc]gateway-list 192.168.10.254  // 配置默认网关地址
+</span></span><span class="line"><span class="cl">[SW1-ip-pool-pc]dns-list 114.114.114.114     // 配置 DNS 服务器地址
+</span></span><span class="line"><span class="cl">[SW1-ip-pool-pc]quit            // 退出 IP 地址池配置视图
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[SW1]dhcp enable                // 启用全局 DHCP 服务
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[SW1]int vlan1                  // 进入 VLAN 1 接口的配置模式
+</span></span><span class="line"><span class="cl">[SW1-Vlanif1]dhcp select global  // 配置 VLAN 1 接口使用全局的 DHCP 服务
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>PC0：</p>
+<img src="https://pic.imgdb.cn/item/64e72860661c6c8e54b02567.jpg" style="zoom:80%;" />
+<p>PC1：</p>
+<img src="https://pic.imgdb.cn/item/64e72877661c6c8e54b02a63.jpg" style="zoom:80%;" />
+<p>PC2：</p>
+<img src="https://pic.imgdb.cn/item/64e728a8661c6c8e54b0343f.jpg" style="zoom:80%;" />
+<p>​</p>
+<h4 id="5-完成必要配置实现各主机与各服务器可以相互通信" class="headerLink">
+    <a href="#5-%e5%ae%8c%e6%88%90%e5%bf%85%e8%a6%81%e9%85%8d%e7%bd%ae%e5%ae%9e%e7%8e%b0%e5%90%84%e4%b8%bb%e6%9c%ba%e4%b8%8e%e5%90%84%e6%9c%8d%e5%8a%a1%e5%99%a8%e5%8f%af%e4%bb%a5%e7%9b%b8%e4%ba%92%e9%80%9a%e4%bf%a1" class="header-mark"></a>5. 完成必要配置实现各主机与各服务器可以相互通信</h4><p>都可以相互ping通</p>
+<p>​</p>
+<h4 id="6-在交换机连接服务器的接口配置端口安全只能允许合法服务器接入非法网络设备接入接口将关闭" class="headerLink">
+    <a href="#6-%e5%9c%a8%e4%ba%a4%e6%8d%a2%e6%9c%ba%e8%bf%9e%e6%8e%a5%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%9a%84%e6%8e%a5%e5%8f%a3%e9%85%8d%e7%bd%ae%e7%ab%af%e5%8f%a3%e5%ae%89%e5%85%a8%e5%8f%aa%e8%83%bd%e5%85%81%e8%ae%b8%e5%90%88%e6%b3%95%e6%9c%8d%e5%8a%a1%e5%99%a8%e6%8e%a5%e5%85%a5%e9%9d%9e%e6%b3%95%e7%bd%91%e7%bb%9c%e8%ae%be%e5%a4%87%e6%8e%a5%e5%85%a5%e6%8e%a5%e5%8f%a3%e5%b0%86%e5%85%b3%e9%97%ad" class="header-mark"></a>6. 在交换机连接服务器的接口配置端口安全，只能允许合法服务器接入，非法网络设备接入接口将关闭</h4><p>SW2的配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[SW2]int e0/0/2                     // 进入以太网接口 0/0/2 的配置模式
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/2]port-security enable      // 启用端口安全性功能
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/2]port-security mac-address sticky   // 将学习到的 MAC 地址添加到允许列表中
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/2]port-security protect-action shutdown   // 配置触发保护操作为关闭端口
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/2]port-security max-mac-num 1   // 设置最大允许的 MAC 地址数量为 1
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/2]quit           // 退出以太网接口配置模式
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[SW2]int e0/0/6                     // 进入以太网接口 0/0/6 的配置模式
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/6]port-security enable      // 启用端口安全性功能
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/6]port-security mac-address sticky   // 将学习到的 MAC 地址添加到允许列表中
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/6]port-security protect-action shutdown   // 配置触发保护操作为关闭端口
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/6]port-security max-mac-num 1   // 设置最大允许的 MAC 地址数量为 1
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E5%AE%9E%E9%AA%8C/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BA%92%E8%81%94%E5%AE%9E%E9%AA%8C/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

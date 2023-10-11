@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="力扣每日一题之二进 制数转字符串 题目二进制数转字符串。给定一个介于0和1之间的实数（如0.72），类型为double，打印它的二进制表达式。如" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/%E5%8A%9B%E6%89%A3%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E4%B9%8B%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="力扣每日一题之二进 制数转字符串 题目二进制数转字符串。给定一个介于0和1之间的实数（如0.72），类型为double，打印它的二进制表达式。如"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/%E5%8A%9B%E6%89%A3%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E4%B9%8B%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/" /><link rel="prev" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" /><link rel="next" href="/%E9%AB%98%E6%95%B0%E5%A4%A7%E4%B8%80%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/%E5%8A%9B%E6%89%A3%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E4%B9%8B%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2\/"
+        },"genre": "posts","wordcount":  1505 ,
+        "url": "\/%E5%8A%9B%E6%89%A3%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E4%B9%8B%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1505 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#题目">题目</a></li>
+    <li><a href="#分析">分析</a></li>
+    <li><a href="#十进制转二进制的方法">十进制转二进制的方法</a>
+      <ul>
+        <li><a href="#正整数转二进制">正整数转二进制</a></li>
+        <li><a href="#负整数转二进制">负整数转二进制</a></li>
+        <li><a href="#小数转二进制">小数转二进制</a>
+          <ul>
+            <li><a href="#01无法转成二进制原因">0.1无法转成二进制原因</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#思路">思路</a>
+      <ul>
+        <li><a href="#转二进制部分">转二进制部分:</a></li>
+        <li><a href="#保存二进制部分">保存二进制部分:</a></li>
+      </ul>
+    </li>
+    <li><a href="#代码">代码</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="力扣每日一题之二进-制数转字符串" class="headerLink">
+    <a href="#%e5%8a%9b%e6%89%a3%e6%af%8f%e6%97%a5%e4%b8%80%e9%a2%98%e4%b9%8b%e4%ba%8c%e8%bf%9b-%e5%88%b6%e6%95%b0%e8%bd%ac%e5%ad%97%e7%ac%a6%e4%b8%b2" class="header-mark"></a>力扣每日一题之二进 制数转字符串</h1><h2 id="题目" class="headerLink">
+    <a href="#%e9%a2%98%e7%9b%ae" class="header-mark"></a>题目</h2><p>二进制数转字符串。给定一个介于0和1之间的实数（如0.72），类型为<code>double</code>，打印它的二进制表达式。如果该数字无法精确地用32位以内的二进制表示，则打印“<code>ERROR</code>”。</p>
+<p><strong>示例1：</strong></p>
+<blockquote>
+<p><strong>输入</strong>：0.625
+<strong>输出</strong>：&ldquo;0.101&rdquo;</p>
+</blockquote>
+<p><strong>示例2：</strong></p>
+<blockquote>
+<p>输入：0.1
+输出：&quot;<code>ERROR</code>&quot; 提示：0.1无法被二进制准确表示</p>
+</blockquote>
+<p><strong>提示：</strong></p>
+<ul>
+<li>32位包括输出中的 <code>&quot;0.&quot;</code> 这两位。</li>
+<li>题目保证输入用例的小数位数最多只有 <code>6</code> 位</li>
+</ul>
+<h2 id="分析" class="headerLink">
+    <a href="#%e5%88%86%e6%9e%90" class="header-mark"></a>分析</h2><ul>
+<li>题目大致要求是将小数位数≤6的<strong>小数</strong>转成<strong>32位以内的二进制数</strong>输出，如超出范围则输出<code>ERROR</code>。</li>
+<li>注意提示中说到32位<strong>包括输出中的 &ldquo;0.&rdquo; 这两位</strong>，也就是转成的二进制数&quot;0.&ldquo;后面最多只能有32-2=30位。</li>
+<li>题目给出的函数是</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">char* printBin(double num){}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到返回类型是char*字符串数组，所以需要将二进制存放进字符串数组再返回。</p>
+<h2 id="十进制转二进制的方法" class="headerLink">
+    <a href="#%e5%8d%81%e8%bf%9b%e5%88%b6%e8%bd%ac%e4%ba%8c%e8%bf%9b%e5%88%b6%e7%9a%84%e6%96%b9%e6%b3%95" class="header-mark"></a>十进制转二进制的方法</h2><h3 id="正整数转二进制" class="headerLink">
+    <a href="#%e6%ad%a3%e6%95%b4%e6%95%b0%e8%bd%ac%e4%ba%8c%e8%bf%9b%e5%88%b6" class="header-mark"></a>正整数转二进制</h3><p><strong>重复除二取余直到商为0，然后倒序排列，高位补零</strong></p>
+<p>例子:
+正整数<strong>22</strong>转二进制为<strong>00010110</strong></p>
+<ul>
+<li>22/2……商11……余0</li>
+<li>11/2……商5……余1</li>
+<li>5/2……商2……余1</li>
+<li>2/2……商1……余0</li>
+<li>1/2……商0……余1</li>
+</ul>
+<p><strong>0 1 1 0 1</strong>倒过来就是22的二进制:<strong>10110</strong>
+用8位二进制表示为0001 0110
+用16位二进制表示为0000 0000 0001 0110
+以此类推</p>
+<blockquote>
+<p>计算机一般是8 位 16位 32位 64 位</p>
+</blockquote>
+<h3 id="负整数转二进制" class="headerLink">
+    <a href="#%e8%b4%9f%e6%95%b4%e6%95%b0%e8%bd%ac%e4%ba%8c%e8%bf%9b%e5%88%b6" class="header-mark"></a>负整数转二进制</h3><p><strong>先是将对应的正整数转换成二进制后，对二进制取反，然后对结果再加一</strong></p>
+<blockquote>
+<p>就是补码，计算机中的有符号数是以补码来计算的</p>
+</blockquote>
+<p>例子:</p>
+<ul>
+<li>要计算**-22**的二进制数</li>
+<li>首先算出<strong>22</strong>的二进制数:<strong>10110</strong></li>
+<li><strong>取反</strong>为01001</li>
+<li><strong>加一</strong>为01010</li>
+</ul>
+<h3 id="小数转二进制" class="headerLink">
+    <a href="#%e5%b0%8f%e6%95%b0%e8%bd%ac%e4%ba%8c%e8%bf%9b%e5%88%b6" class="header-mark"></a>小数转二进制</h3><p><strong>重复将小数乘2取出整数部分直到0，正序排列</strong>
+例子:
+小数0.625转二进制为<strong>0.101</strong></p>
+<ul>
+<li>0.625*2……整数1……小数0.25</li>
+<li>0.25*2……整数0……小数0.5</li>
+<li>0.5*2……整数1……小数0.0</li>
+</ul>
+<p>1 0 1就是22的二进制:0.101</p>
+<h4 id="01无法转成二进制原因" class="headerLink">
+    <a href="#01%e6%97%a0%e6%b3%95%e8%bd%ac%e6%88%90%e4%ba%8c%e8%bf%9b%e5%88%b6%e5%8e%9f%e5%9b%a0" class="header-mark"></a>0.1无法转成二进制原因</h4><ul>
+<li>0.1*2……整数0……小数0.2</li>
+<li>0.2*2……整数0……小数0.4</li>
+<li>0.4*2……整数0……小数0.8</li>
+<li>0.8*2……整数1……小数0.6</li>
+<li>0.6*2……整数1……小数0.2</li>
+<li>0.2*2……整数0……小数0.4</li>
+<li>……</li>
+</ul>
+<p>永远无法让小数部分为0，所以无法转二进制</p>
+<h2 id="思路" class="headerLink">
+    <a href="#%e6%80%9d%e8%b7%af" class="header-mark"></a>思路</h2><h3 id="转二进制部分" class="headerLink">
+    <a href="#%e8%bd%ac%e4%ba%8c%e8%bf%9b%e5%88%b6%e9%83%a8%e5%88%86" class="header-mark"></a>转二进制部分:</h3><p>让目标数字不断乘2，取走整数部分，直到为0或超过30次(32-2)。</p>
+<h3 id="保存二进制部分" class="headerLink">
+    <a href="#%e4%bf%9d%e5%ad%98%e4%ba%8c%e8%bf%9b%e5%88%b6%e9%83%a8%e5%88%86" class="header-mark"></a>保存二进制部分:</h3><p>创建一个大小为33的字符串数组(用malloc申请33个连续地址)，为什么是33而不是32，因为字符串是以&rsquo;\0&rsquo;结尾的，所以要多出一个位置来存放&rsquo;\0&rsquo;。</p>
+<h2 id="代码" class="headerLink">
+    <a href="#%e4%bb%a3%e7%a0%81" class="header-mark"></a>代码</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="nf">printBin</span><span class="p">(</span><span class="kt">double</span> <span class="n">num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="o">*</span><span class="n">bin</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="nf">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span> <span class="o">*</span> <span class="mi">33</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//创建字符串数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="nf">sprintf</span><span class="p">(</span><span class="n">bin</span><span class="p">,</span> <span class="s">&#34;%s&#34;</span><span class="p">,</span> <span class="s">&#34;0.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//把&#34;0.&#34;输入到字符串里
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">num</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/*i从2开始是为了给字符串存放数据(二进制)的时候从&#34;0.&#34;以后开始
+</span></span></span><span class="line"><span class="cl"><span class="cm">
+</span></span></span><span class="line"><span class="cl"><span class="cm">判断结束的条件是这个数已经为0了或者是次数超过32-2=30次(即超过32位)了
+</span></span></span><span class="line"><span class="cl"><span class="cm">
+</span></span></span><span class="line"><span class="cl"><span class="cm">注意这里为什么不用&lt;=32，因为这里的i代表下标，下标从0开始而不是1开始，所以减1
+</span></span></span><span class="line"><span class="cl"><span class="cm">
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">num</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//记录乘2后的整数值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">t</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//乘2后减去整数值，即保留乘2后的小数部分
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="n">bin</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//将整数部分(0或1)转成字符存进字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//如果次数没超过30次(即可以转成二进制)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bin</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;\0&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//给字符串的末尾存上&#39;\0&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">bin</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//返回字符串首地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;ERROR&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//反之则返回&#34;ERROR&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/%E5%8A%9B%E6%89%A3%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E4%B9%8B%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/%E9%AB%98%E6%95%B0%E5%A4%A7%E4%B8%80%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

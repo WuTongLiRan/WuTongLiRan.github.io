@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="RCE漏洞 概述：由于程序中预留了执行代码或者命令的接口，并 且提供了给用户使用的界面，导致被黑客利用，控制服务器。 ​ RCE漏洞危害1、获取服务" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/rce%E6%BC%8F%E6%B4%9E/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="RCE漏洞 概述：由于程序中预留了执行代码或者命令的接口，并 且提供了给用户使用的界面，导致被黑客利用，控制服务器。 ​ RCE漏洞危害1、获取服务"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/rce%E6%BC%8F%E6%B4%9E/" /><link rel="prev" href="/sqli-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/" /><link rel="next" href="/nisp1%E7%BA%A7%E9%A2%98%E5%BA%93/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/rce%E6%BC%8F%E6%B4%9E\/"
+        },"genre": "posts","wordcount":  1306 ,
+        "url": "\/rce%E6%BC%8F%E6%B4%9E\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1306 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述：</a></li>
+    <li><a href="#rce漏洞危害">RCE漏洞危害</a></li>
+    <li><a href="#rce漏洞相关函数">RCE漏洞相关函数</a>
+      <ul>
+        <li><a href="#代码注入">代码注入</a></li>
+        <li><a href="#命令注入">命令注入</a></li>
+      </ul>
+    </li>
+    <li><a href="#windows常用命令">Windows常用命令：</a>
+      <ul>
+        <li><a href="#windows命令拼接方式">Windows命令拼接方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#linux常用命令">Linux常用命令：</a>
+      <ul>
+        <li><a href="#linux命令拼接方式">Linux命令拼接方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#绕过限制">绕过限制</a>
+      <ul>
+        <li><a href="#windows上查看文件内容的命令">Windows上查看文件内容的命令：</a></li>
+        <li><a href="#linux和类unix系统上查看文件内容的命令">Linux和类Unix系统上查看文件内容的命令：</a></li>
+        <li><a href="#空格的替代方式">空格的替代方式</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="rce漏洞" class="headerLink">
+    <a href="#rce%e6%bc%8f%e6%b4%9e" class="header-mark"></a>RCE漏洞</h1><h2 id="概述" class="headerLink">
+    <a href="#%e6%a6%82%e8%bf%b0" class="header-mark"></a>概述：</h2><p>由于程序中预留了执行代码或者命令的接口，并 且提供了给用户使用的界面，导致被黑客利用，控制服务器。</p>
+<p>​</p>
+<h2 id="rce漏洞危害" class="headerLink">
+    <a href="#rce%e6%bc%8f%e6%b4%9e%e5%8d%b1%e5%ae%b3" class="header-mark"></a>RCE漏洞危害</h2><p>1、获取服务器权限</p>
+<p>2、获取敏感数据文件</p>
+<p>3、写入恶意文件getshell</p>
+<p>4、植入木马病毒勒索软件等</p>
+<p>​</p>
+<h2 id="rce漏洞相关函数" class="headerLink">
+    <a href="#rce%e6%bc%8f%e6%b4%9e%e7%9b%b8%e5%85%b3%e5%87%bd%e6%95%b0" class="header-mark"></a>RCE漏洞相关函数</h2><h3 id="代码注入" class="headerLink">
+    <a href="#%e4%bb%a3%e7%a0%81%e6%b3%a8%e5%85%a5" class="header-mark"></a>代码注入</h3><p><code>eval()</code>——把字符串 code 作为PHP代码执行</p>
+<p><code>assert()</code>——检查一个断言是否为 false</p>
+<p><code>preg_replace()</code>——执行一个正则表达式的搜索和替换</p>
+<p><code>create_function()</code>——创建一个匿名函数并且返回函数名创</p>
+<p><code>call_user_func()</code>/<code>call_user_func_array()</code>——把第一个参数作为回调函数调用</p>
+<p><code>usort()</code>/<code>uasort()</code>——使用用户自定义的比较函数对数组中的值进行排 序并保持索引关联</p>
+<h3 id="命令注入" class="headerLink">
+    <a href="#%e5%91%bd%e4%bb%a4%e6%b3%a8%e5%85%a5" class="header-mark"></a>命令注入</h3><p><code>system()</code>——执行外部程序，并且显示输出</p>
+<p><code>exec()</code>/<code>shell_exec()</code>——通过 shell 环境执行命令，并且将完整的输出以 字符串的方式返回</p>
+<p><code>pcntl_exec()</code>——在当前进程空间执行指定程序</p>
+<p><code>passthru()</code>——执行外部程序并且显示原始输出</p>
+<p><code>popen()</code>——打开进程文件指针</p>
+<p><code>proc_open()</code>——执行一个命令，并且打开用来输入/输出的文件指针</p>
+<p>​</p>
+<h2 id="windows常用命令" class="headerLink">
+    <a href="#windows%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4" class="header-mark"></a>Windows常用命令：</h2><pre><code>ipconfig --- 查看网卡信息
+dir --- 查看当前目录下的所有文件
+cd .. --- 返回上级目录
+cd 路径 --- 前往某个路径
+echo &quot;内容&quot; &gt; 文件名 --- 给某个文件写入内容。如果文件已存在，则该命令将会覆盖文件中的内容；如果文件不存在，则会创建新的文件并写入内容
+</code></pre>
+<h3 id="windows命令拼接方式" class="headerLink">
+    <a href="#windows%e5%91%bd%e4%bb%a4%e6%8b%bc%e6%8e%a5%e6%96%b9%e5%bc%8f" class="header-mark"></a>Windows命令拼接方式</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">command1 | command2 --- 命令1执行的结果作为命令2执行的参数
+</span></span><span class="line"><span class="cl">command1 || command2 ---- 命令1执行成功则命令2不执行(逻辑短路)
+</span></span><span class="line"><span class="cl">command1 &amp; command2 --- 命令1和命令2都执行
+</span></span><span class="line"><span class="cl">command1 &amp;&amp; command2 --- 命令1执行失败则命令2不执行(逻辑短路)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h2 id="linux常用命令" class="headerLink">
+    <a href="#linux%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4" class="header-mark"></a>Linux常用命令：</h2><pre><code>ifconfig --- 查看网卡信息
+ls --- 查看当前目录下的所有文件
+cd.. --- 返回上级目录
+cd 路径 --- 前往某个路径
+touch 文件名 --- 创建某个文件
+echo &quot;内容&quot; &gt; 文件名 --- 给某个文件写入内容。如果文件已存在，则该命令将会覆盖文件中的内容；如果文件不存在，则会创建新的文件并写入内容
+</code></pre>
+<h3 id="linux命令拼接方式" class="headerLink">
+    <a href="#linux%e5%91%bd%e4%bb%a4%e6%8b%bc%e6%8e%a5%e6%96%b9%e5%bc%8f" class="header-mark"></a>Linux命令拼接方式</h3><pre><code>command1 ; command2 --- 命令1和命令2都执行
+command1 | command2 --- 命令1执行的结果作为命令2执行的参数
+command1 || command2 ---- 命令1执行成功则命令2不执行(逻辑短路)
+command&amp;  			--- 任务后台执行，与nohup命令功能差不多
+command1 &amp;&amp; command2 --- 命令1执行失败则命令2不执行(逻辑短路)
+</code></pre>
+<p>​</p>
+<h2 id="绕过限制" class="headerLink">
+    <a href="#%e7%bb%95%e8%bf%87%e9%99%90%e5%88%b6" class="header-mark"></a>绕过限制</h2><h3 id="windows上查看文件内容的命令" class="headerLink">
+    <a href="#windows%e4%b8%8a%e6%9f%a5%e7%9c%8b%e6%96%87%e4%bb%b6%e5%86%85%e5%ae%b9%e7%9a%84%e5%91%bd%e4%bb%a4" class="header-mark"></a>Windows上查看文件内容的命令：</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">type</span> 文件名
+</span></span><span class="line"><span class="cl">more 文件名
+</span></span><span class="line"><span class="cl">find <span class="s2">&#34;搜索词&#34;</span> 文件名 --- 用于查找文件内容
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="linux和类unix系统上查看文件内容的命令" class="headerLink">
+    <a href="#linux%e5%92%8c%e7%b1%bbunix%e7%b3%bb%e7%bb%9f%e4%b8%8a%e6%9f%a5%e7%9c%8b%e6%96%87%e4%bb%b6%e5%86%85%e5%ae%b9%e7%9a%84%e5%91%bd%e4%bb%a4" class="header-mark"></a>Linux和类Unix系统上查看文件内容的命令：</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat 文件名
+</span></span><span class="line"><span class="cl">more 文件名
+</span></span><span class="line"><span class="cl">less 文件名
+</span></span><span class="line"><span class="cl">head 文件名 --- 显示文件开头的几行
+</span></span><span class="line"><span class="cl">tail 文件名 --- 显示文件结尾的几行
+</span></span><span class="line"><span class="cl">grep <span class="s2">&#34;搜索词&#34;</span> 文件名 --- 用于在文件中搜索文本模式
+</span></span><span class="line"><span class="cl">nl 文件名 --- 显示文件内容，并附带行号 类似于cat -n
+</span></span><span class="line"><span class="cl">tailf --- 用于实时监视文件内容变化的命令 类似于tail -f
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="空格的替代方式" class="headerLink">
+    <a href="#%e7%a9%ba%e6%a0%bc%e7%9a%84%e6%9b%bf%e4%bb%a3%e6%96%b9%e5%bc%8f" class="header-mark"></a>空格的替代方式</h3><p>使用<code>IFS$9</code>、<code>%09</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&lt;&gt;</code>、<code>{,}</code>、<strong><code>%20</code>(URL编码)</strong>、<code>${ IFS}</code>、**<code>${IFS}</code>**来代替空格</p>
+</div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/rce%E6%BC%8F%E6%B4%9E/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/sqli-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/nisp1%E7%BA%A7%E9%A2%98%E5%BA%93/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

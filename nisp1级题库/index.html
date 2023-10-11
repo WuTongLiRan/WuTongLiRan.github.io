@@ -1,0 +1,912 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="1.与计算机硬件关系最密切的软件是（ ）。 A、编译程序 B、数据库管理程序 C、游戏程序 D、OS 2.系统的主要功能有（ ）。 A、进程管理、存储器管理" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/nisp1%E7%BA%A7%E9%A2%98%E5%BA%93/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="1.与计算机硬件关系最密切的软件是（ ）。 A、编译程序 B、数据库管理程序 C、游戏程序 D、OS 2.系统的主要功能有（ ）。 A、进程管理、存储器管理"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/nisp1%E7%BA%A7%E9%A2%98%E5%BA%93/" /><link rel="prev" href="/rce%E6%BC%8F%E6%B4%9E/" /><link rel="next" href="/csrf%E6%BC%8F%E6%B4%9E%E9%98%B2%E5%BE%A1/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/nisp1%E7%BA%A7%E9%A2%98%E5%BA%93\/"
+        },"genre": "posts","wordcount":  12672 ,
+        "url": "\/nisp1%E7%BA%A7%E9%A2%98%E5%BA%93\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 12672 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 26 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>1.与计算机硬件关系最密切的软件是（<span title="D">    </span>）。<br>
+A、编译程序
+B、数据库管理程序
+C、游戏程序
+D、OS</p>
+<p>2.系统的主要功能有（<span title="C">    </span>）。
+A、进程管理、存储器管理、设备管理、处理机管理
+B、虚拟存储管理、处理机管理、进程调度、文件系统
+C、处理机管理、存储器管理、设备管理、文件系统
+D、进程管理、中断管理、设备管理、文件系统</p>
+<p>3.按照应用领域对操作系统进行划分，不包含以下哪一种（<span title="B">    </span>）。
+A、桌面操作系统
+B、批处理操作系统
+C、服务器操作系统
+D、嵌入式操作系统</p>
+<p>4.用户在设置口令时，以下原则哪个是错误的（<span title="D">    </span>）。
+A、严禁使用与账号相同或相似的口令
+B、不要使用与个人有关的信息作为口令内容
+C、不要设置短于6个字符或仅包含字母或数字的口令
+D、可以使用空口令</p>
+<p>5.身份鉴别是安全服务中的重要一环，以下关于身份鉴别叙述不正确的是（<span title="B">    </span>）。
+A、身份鉴别是授权控制的基础
+B、身份鉴别一般不提供双向的认证
+C、目前一般采用基于对称秘钥加密或公开密钥加密的方法
+D、数字签名机制是实现身份鉴别的重要机制</p>
+<p>6.下列关于CA的说法错误的是（<span title="D">    </span>）。
+A、CA是负责发布证书的一组机构
+B、CA负责为用户分配公共密钥和私人密钥
+C、CA可分为企业CA和独立CA
+D、根CA可以没有证书</p>
+<p>7.在NTFS文件系统中，如果一个共享文件夹的共享权限和NTFS权限发生了冲突，那么以下说法正确的是：（<span title="B">    </span>）。
+A、共享权限优先NTFS权限
+B、系统会认定最少的权限
+C、系统会认定最多的权限
+D、以上都不是</p>
+<p>8.在NTFS的权限中,修改权限不包括以下下列哪个权限（<span title="C">    </span>）。
+A、读取
+B、列出文件及目录
+C、拒绝访问
+D、写入</p>
+<p>9.（<span title="C">    </span>）是一种架构在公用通信基础设施上的专用数据通信网络，利用IPSec等网络层安全协议和建立在PKI的加密与签名技术来获得私有性。      <br>
+A、SET        <br>
+B、DDN        <br>
+C、VPN        <br>
+D、PKIX</p>
+<p>10.下列关于操作系统的说法，不正确的是：（<span title="C">    </span>）。
+A、操作系统为用户提供两种接口：命令接口和程序接口
+B、常见的个人操作系统有Windows系列和Linux系列
+C、Linux系统是一款闭源操作系统
+D、操作系统在计算机系统中位于硬件和应用软件之间，所以，操作系统既面向系统资源又面向用户</p>
+<p>11.下列关于漏洞的说法，不正确的是（<span title="D">    </span>）。
+A、漏洞是指计算机系统在硬件、软件、协议的设计、具体实现以及系统安全策略上存在的缺陷和不足
+B、安全漏洞是信息安全的核心问题
+C、漏洞狭义的概念是指软件程序漏洞或缺陷
+D、为了防止计算机的漏洞被黑客利用，我们可以关掉计算机的“自动更新”功能</p>
+<p>12.以下哪一项不属于恶意代码（<span title="C">    </span>）
+A、病毒
+B、蠕虫
+C、宏
+D、特洛伊木马</p>
+<p>13.下列关于计算机病毒说法错误的是（<span title="C">    </span>）
+A、有些病毒仅能攻击某一种操作系统，如winD. Ows
+B、病毒一般附着在其他应用程序之后
+C、每种病毒都会给用户造成严重后果
+D、有些病毒能损坏计算机硬件</p>
+<p>14.以下哪一项是伪装成有用程序的恶意软件？（<span title="B">    </span>）
+A、计算机病毒
+B、特洛伊木马
+C、逻辑炸弹
+D、蠕虫程序</p>
+<p>15.我国正式公布了电子签名法，数字签名机制用于实现（<span title="A">    </span>）需求。  <br>
+A、抗否认        <br>
+B、保密性        <br>
+C、完整性        <br>
+D、可用性</p>
+<p>16.在Windows 系统中可以察看开放端口情况的是：（<span title="D">    </span>）
+A、Nbtstat
+B、Net
+C、Net show
+D、Netstat</p>
+<p>17.下列安全防护配置措施不正确的是（<span title="A">    </span>）
+A、关闭系统审核策略
+B、开启操作系统口令策略
+C、关闭系统不必要的端口
+D、开启防火墙和杀毒软件</p>
+<p>18.Windows 系统下的用于存储用户名的文件是(<span title="D">    </span>)
+A、SECRET
+B、PASSWD
+C、USERNAMES
+D、SAM</p>
+<p>19.下列不属于本地安全策略的是（<span title="B">    </span>）
+A、账户策略
+B、组策略
+C、本地策略
+D、高级安全Windows防火墙</p>
+<p>20.打开命令行界面后，查看本机 IP  地址的命令是（<span title="A">    </span>）
+A、ipconfig
+B、netstat
+C、tracert
+D、route</p>
+<p>21.下列关于防火墙的说法正确的是（<span title="C">    </span>）
+A、入栈规则即你的电脑连接其他主机的规则
+B、出站规则即其他主机连入你的电脑的规则
+C、默认情况下防火墙允许所有传出连接
+D、默认情况下防火墙允许所有传入连接</p>
+<p>22.关于强密码的特征，说法错误的是（<span title="A">    </span>）
+A、长度至少要有6个字符
+B、不包含用户的生日、电话、用户名、真实姓名或公司名等
+C、不包含完整的字典词汇
+D、必须包含大写字母、小写字母、数字和非字母字符</p>
+<p>23.下列措施不能防止账户口令暴力破解的是（<span title="D">    </span>）
+A、修改默认的管理员账户名
+B、限制口令输入次数
+C、更换密码时新密码不能与之前密码相同或相似
+D、设置多位由数字和字母组成的超长密码</p>
+<p>24.SMTP连接服务器使用端口（<span title="B">    </span>）
+A、21
+B、25
+C、80
+D、110</p>
+<p>25.下列关于端口说法错误的是（<span title="C">    </span>）
+A、IP地址的端口都是以端口号来标记的，端口号范围是0~65535
+B、端口按协议类型可以分为TCP端口、UDP端口
+C、使用net show命令可以查看那些计算机正在与本机连接
+D、在网络环境中可以使用防火墙或者本地策略的方式关闭一些端口</p>
+<p>26.下列关于用户口令说法错误的是（<span title="C">    </span>）。      <br>
+A、口令不能设置为空        <br>
+B、口令长度越长，安全性越高        <br>
+C、复杂口令安全性足够高，不需要定期修改     <br>
+D、口令认证是最常见的认证机制</p>
+<p>27.下列关于木马病毒的特性，不正确的是（<span title="B">    </span>）
+A、隐蔽性
+B、主动传播性
+C、自动运行性
+D、破坏性</p>
+<p>28.在信息系统中，（<span title="C">    </span>）是在为系统资源提供最大限度共享的基础上对用户的访问权进行管理。
+A、身份认证
+B、安全审计
+C、访问控制
+D、数字证书</p>
+<p>29.关于C/S 、B/S 架构说法错误的是（<span title="C">    </span>）
+A、C/S 架构是指客户端/服务器架构
+B、B/S 架构是指浏览器/服务器架构
+C、C/S架构是建立在广域网之上, 对安全的控制能力相对弱, 面向是不可知的用户群
+D、B/S架构中终端用户不需要安装专门的软件，只需要安装浏览器即可</p>
+<p>30.在计算机系统中，操作系统是（<span title="B">    </span>）
+A、一般应用软件
+B、核心系统软件
+C、用户应用软件
+D、系统支撑软件</p>
+<p>31.入侵者在张某的博客中搜寻到他在某网站的交易信息，利用信息中的内容获取张某的个人信息，并进一步获取了其它额外的信息，这种行为属于（<span title="A">    </span>）
+A、社会工程
+B、非法窃取
+C、电子欺骗
+D、电子窃听</p>
+<p>32.信息安全的发展经过了四个历史发展阶段，从信息安全的发展过程中可以看出，随着信息技术本身的发展和信息技术应用的发展，信息安全的内涵和外延都在不断地加深和扩大，包含的内容已从初期的数据加密演化到后来的数据恢复、信息纵深防御等。历史发展阶段顺序正确的是（<span title="C">    </span>）
+A、通信安全阶段、信息安全阶段、计算机安全阶段、信息安全保障阶段
+B、计算机安全阶段、信息安全阶段、通信安全阶段、信息安全保障阶段
+C、通信安全阶段、计算机安全阶段、信息安全阶段、信息安全保障阶段
+D、计算机安全阶段、通信安全阶段、信息安全阶段、信息安全保障阶段</p>
+<p>33.社会工程学攻击成功的主要原因是人们的信息安全意识淡薄，而产生认知偏差。下列选项都属于社会工程学攻击方式的是（<span title="B">    </span>）
+A、假托、等价交换、敲诈者病毒
+B、信息收集、网络钓鱼攻击、身份盗用
+C、身份盗用威胁、信息收集、AV终结者
+D、信息收集、敲诈者病毒、暴力破解攻击</p>
+<p>34.完整的数字签名过程（包括从发送方发送消息到接收方安全的接收到消息）包括（<span title="C">    </span>）和验证过程。
+A、加密
+B、解密
+C、签名
+D、保密传输</p>
+<p>35.信息安全保障的目的不仅是保护信息和资产的安全，更重要的是通过保障信息系统安全来保障信息系统所支持的业务安全，从而实现业务的可持续性。信息安全保障不包括以下哪个方面（<span title="B">    </span>）
+A、安全特征
+B、安全要素
+C、生命周期
+D、保障要素</p>
+<p>36.下面选项中关于对称密码体制和非对称密码体质描述错误的是（<span title="C">    </span>）
+A、对称密码体制通信双方拥有同样的密钥，使用的密钥相对较短，密文的长度往往与明文长度相同。
+B、非对称密码体制中使用的密钥有两个，一个是对外公开的公钥，可以象电话号码一样进行注册公布；另一个是必须保密的私钥，只有拥有者才知道。
+C、与非对称密码体制相比，对称密码体制加解密速度较慢。同等安全强度下，非对称密码体制要求的密钥位数要多一些。
+D、非对称密码体制主要是为了解决对称密码体制的缺陷而提出的，即为了解决对称密码体制中密钥分发和管理的问题，以及不可否认的问题。</p>
+<p>37.关于访问控制列表，不正确的说法是（<span title="C">    </span>）
+A、是以文件为中心建立访问权限表
+B、查询特定主体访问客体时需要遍历查询所有客体的ACL
+C、耗费资源少，是一种成熟且有效的访问控制方法。
+D、判断对特定客体的授权访问，可访问的主体和访问权限等</p>
+<p>38.数字签名是在签名者和签名接收者之间进行的，这种数字签名方式主要依赖公钥密码体制来实现，以下对数字签名描述正确的是（<span title="C">    </span>）
+A、签名值的长度与被签名消息的长度有关
+B、数字签名是被签名消息的一部分
+C、数字签名算法中，通常对消息的Hash值签名，而不对消息本身签名
+D、同一人利用同一签名算法对同一消息进行多次签名所得的签名值应值相同的</p>
+<p>39.VPN它有两层含义：首先是“虚拟的”，即用户实际上并不存在一个独立专用的网络，既不需要建设或租用专线，也不需要装备专用的设备，而是将其建立在分布广泛的公共网络上，就能组成一个属于自己专用的网络。其次是“专用的”，相对于“公用的”来说，它强调私有性和安全可靠性。不属于VPN的核心技术是（<span title="C">    </span>）
+A、隧道技术
+B、身份认证
+C、日志记录
+D、访问控制</p>
+<p>40.网络地址转换是在IP地址日益缺乏的情况下产生的一种网络技术，主要目的是重用IP地址，以下关于网络地址转换技术的说法，错误的是（<span title="A">    </span>）
+A、只能进行一对一的网络地址翻译
+B、解决IP地址空间不足问题
+C、向外界隐藏内部网结构
+D、有多种地址翻译模式
+答案：A</p>
+<p>41.信息安全的三个基本安全属性不包括（<span title="D">    </span>）
+A、机密性
+B、完整性
+C、可用性
+D、真实性</p>
+<p>42.虚拟专用网络（VPN）通常是指在公共网路中利用隧道技术，建立一个临时的，安全的网络。这里的字母 P 的正确解释是（<span title="C">    </span>）
+A、Special-purpose. 特定、专用用途的
+B、Proprietary 专有的、专卖的
+C、Private 私有的、专有的
+D、Specific 特种的、具体的</p>
+<p>43.与 PDR 模型相比， P2DR 模型多了哪一个环节?(<span title="D">    </span>)
+A．防护
+B．检测
+C．反应
+D．策略</p>
+<p>44.以下关于信息安全威胁描述错误的是（<span title="C">    </span>）
+A、从受威胁对象的角度，可以将我国面临的信息安全威胁分为3类：国家威胁、组织威胁和个人威胁。
+B、信息系统都是在一定的自然环境下运行，自然灾害对信息系统的威胁时多方面的，地震、火灾、水灾等各种自然灾害都可能对信息系统造成灾难性破坏。
+C、信息安全问题的根源主要来源于信息系统自身存在的脆弱性。
+D、信息安全问题的外因主要来源于人为和环境威胁。</p>
+<p>45.Alice 用 Bob 的密钥加密明文，将密文发送给 Bob。 Bob 再用自己的私钥解密，恢复出明文。以下说法正确的是（<span title="D">    </span>）
+A、此密码体制为对称密码体制
+B、此密码体制为私钥密码体制
+C、此密码体制为单钥密码体制
+D、此密码体制为公钥密码体制</p>
+<p>46.密码学是网络安全的基础，但网络安全不能单纯依靠安全的密码算法、密码协议也是网络安全的一个重要组成部分。下面描述中错误的是（<span title="A">    </span>）
+A.在实际应用中，密码协议应按照灵活性好、可扩展性高的方式制定，不要限制和框住的执行步骤，有些复杂的步骤可以不明确处理方式。
+B.密码协议定义了两方或多方之间为完成某项任务而指定的一系列步骤，协议中的每个参与方都必须了解协议，且按步骤执行。
+C.根据密码协议应用目的的不同，参与该协议的双方可能是朋友和完全信息的人，也可能是敌人和互相完全不信任的人。
+D.密码协议(cryptographic protocol) ,有时也称安全协议(security protocol), 是使用密码学完成某项特定的任务并满足安全需求的协议，其末的是提供安全服务。</p>
+<p>47.在混合加密方式下，真正用来加解密通信过程中所传输数据的密钥是（<span title="B">    </span>）
+A、非对称密码算法的公钥
+B、对称密码算法的密钥
+C、非对称密码算法的私钥
+D、CA中心的公钥</p>
+<p>48.若Bob给Alice发送一封邮件，并想让Alice确信邮件是由Bob发出的，则Bob应该选用哪种密钥对邮件加密？（<span title="D">    </span>）
+A、Alice的公钥
+B、Alice的私钥
+C、Bob的公钥
+D、Bob的私钥</p>
+<p>49.公钥密码学的思想最早是谁提出的？ (<span title="B">    </span>)
+A、欧拉（Euler）
+B、迪菲（Diffie）和赫尔曼（Hellman）
+C、费马（Fermat）
+D、Rivest、Shamir、Adleman</p>
+<p>50.PKI的主要理论基础是（<span title="B">    </span>）
+A、对称密码算法
+B、公钥密码算法
+C、量子密码
+D、摘要算法</p>
+<p>51.数字签名为保证其不可更改性，双方约定使用 (<span title="B">    </span>)
+A、 HASH 算法
+B、 RSA 算法
+C、 CAP 算法
+D、 ACR 算法</p>
+<p>52.HASH 函数可应用于(<span title="B">    </span>)
+A、数字签名
+B、生成程序或文档的“数字指纹”
+C、安全存储口令
+D、数据的抗抵赖性</p>
+<p>53.下列哪一种方法属于基于实体“所有” 鉴别方法：(<span title="D">    </span>)
+A．用户通过自己设置的口令登录系统，完成身份鉴别
+B．用户使用个人指纹，通过指纹识别系统的身份鉴别
+C．用户利用和系统协商的秘密函数，对系统发送的挑战进行正确应答，通过身份鉴别
+D.用户使用集成电路卡(如智能卡)完成身份鉴别</p>
+<p>54.为防范网络欺诈确保交易安全，网银系统首先要求用户安全登录，然后使用“智能卡+短信认证”模式进行网上转账等交易，在此场景中用到下列哪些鉴别方法?(<span title="A">    </span>)
+A、实体“所知”以及实体“所有”的鉴别方法
+B、实体“所有”以及实体“特征”的鉴别方法
+C、实体“所知”以及实体“特征”的鉴别方法
+D、实体“所有”以及实体“行为”的鉴别方法</p>
+<p>55.鉴别的基本途径有三种：所知、所有和个人特征，以下哪一项不是基于你所知道的：(<span title="B">    </span>)
+A、口令
+B、令牌
+C、知识
+D、密码</p>
+<p>56.账号锁定策略中对超过一定次数的错误登录账号进行锁定是为了对抗以下哪种攻击?(<span title="C">    </span>)
+A．分布式拒绝服务攻击(DDoS)
+B．病毒传染
+C. 口令暴力破解
+D．缓冲区溢出攻击</p>
+<p>57.下面不属于常用的浏览器的安全措施的是（<span title="B">    </span>）
+A、删除和管理Cookies
+B、不点击网站的广告
+C、禁用ActiveX控件
+D、删除浏览器历史纪录</p>
+<p>58.以下不能设置口令加密的文件是(<span title="D">    </span>)
+A．ZIP
+B．PPT
+C．PDF
+D．TXT</p>
+<p>59.以下对异地备份中心的理解最准确的是：(<span title="D">    </span>)
+A、与生产中心不在同一城市
+B、与生产中心距离 10公里以上
+C、与生产中心距离 100公里以上
+D、与生产中心面临相同区域性风险的机率很小</p>
+<p>60.关于信息安全事件管理和应急响应，以下说法错误的是：(<span title="B">    </span>)
+A． 应急响应是指组织为了应对突发／重大信息安全事件的发生所做的准备，以及在事件发生后所采取的措施
+B. 应急响应方法，将应急响应管理过程分为遏制、根除、处置、恢复、报告和跟踪 6 个阶段
+C．对信息安全事件的分级主要参考信息系统的重要程度、系统损失和社会影响三方面因素
+D．根据信息安全事件的分级参考要素，可将信息安全事件划分为 4 个级别：特别重大事件(Ⅰ级)、重大事件(Ⅱ级)、较大事件(Ⅲ级)和一般事件(Ⅳ级)</p>
+<p>61.以下对于信息安全事件理解错误的是：(<span title="D">    </span>)
+A、信息安全事件，是指由于自然或者人为以及软硬件本身缺陷或故障的原因，对信息系统造成危害，或在信息系统内发生对社会造成负面影响的事件
+B、对信息安全事件进行有效管理和响应，最小化事件所造成的损失和负面影响，是组织信息安全战略的一部分
+C、应急响应是信息安全事件管理的重要内容
+D.、通过部署信息安全策略并配合部署防护措施，能够对信息及信息系统提供保护， 杜绝信息安全事件的发生</p>
+<p>62.有关危害国家秘密安全的行为的法律责任，正确的是：(<span title="A">    </span>)
+A、严重违反保密规定行为只要发生，无论产生泄密实际后果，都要依法追究责任
+B、非法获取国家秘密，不会构成刑事犯罪，不需承担刑事责任
+C．、过失泄露国家秘密，不会构成刑事犯罪，不需承担刑事责任
+D、承担了刑事责任，无需再承担行政责任和／或其他处分</p>
+<p>63.金女士经常通过计算机在互联网上购物，从安全角度看，下面哪项
+是不好的操作习惯（<span title="A">    </span>）
+A、使用专用上网购物用计算机，安装好软件后不要对该计算机上的系统软件，应用软件进行升级
+B、为计算机安装具有良好声誉的安全防护软件，包括病毒查杀，安全检查和安全加固方面的软件
+C、在 IE 的配置中，设置只能下载和安装经过签名的，安全的 ActiveX 控件
+D、在使用网络浏览器时，设置不在计算机中保留网络历史纪录和表单数据</p>
+<p>64.在设计信息系统安全保障方案时，以下哪个做法是错误的：(<span title="C">    </span>)
+A、要充分切合信息安全需求并且实际可行
+B、要充分考虑成本效益，在满足合规性要求和风险处置要求的前提下，尽量控制成本
+C、要充分采取新技术，在使用过程中不断完善成熟，精益求精，实现技术投入保值要求
+D、要充分考虑用户管理和文化的可接受性，减少系统方案障碍</p>
+<p>65.由于发生了一起针对服务器的口令暴力破解攻击，管理员决定对设置帐户锁定策略以对抗口令暴力破解。他设置了以下账户锁定策略如下：
+复位账户锁定计数器 5 分钟
+账户锁定时间 10 分钟
+账户锁定阀值 3 次无效登陆
+以下关于以上策略设置后的说法哪个是正确的(<span title="B">    </span>)
+A、设置账户锁定策略后，攻击者无法再进行口令暴力破解，所有输错的密码的拥护就会被锁住
+B、如果正常用户部小心输错了 3 次密码，那么该账户就会被锁定 10 分钟， 10分钟内即使输入正确的密码，也无法登录系统
+C、如果正常用户不小心连续输入错误密码 3 次，那么该拥护帐号被锁定 5 分钟， 5 分钟内即使交了正确的密码，也无法登录系统
+D、攻击者在进行口令破解时，只要连续输错 3 次密码，该账户就被锁定 10 分钟，而正常拥护登陆不受影响</p>
+<p>66.为了防御网络监听，最常用的方法是(<span title="B">    </span>)
+A、采用物理传输（非网络）
+B、信息加密
+C、无线网
+D、使用专线传输</p>
+<p>67.在网络安全中，在未经许可的情况下，对信息进行删除或修改，这是对（<span title="C">    </span>）的攻击。
+A、可用性
+B、保密性
+C、完整性
+D、真实性</p>
+<p>68.使网络服务器中充斥着大量要求回复的信息，消耗带宽，导致网络或系统停止正常服务，这属于（<span title="A">    </span>）漏洞。
+A、拒绝服务
+B、文件共享
+C、BIND漏洞
+D、远程过程调用</p>
+<p>69.针对窃听攻击采取的安全服务是(<span title="B">    </span>)
+A、鉴别服务
+B、数据机密性服务
+C、数据完整性服务
+D、抗抵赖服务</p>
+<p>70.通过截取以前的合法记录稍后重新加入一个连接，叫做重放攻击，为防止这种情况，可以采用的方法是（<span title="B">    </span>）
+A、加密
+B、加入时间戳
+C、认证
+D、使用密钥</p>
+<p>71.能完成不同的VLAN之间数据传递的设备是（<span title="D">    </span>）
+A.中继器
+B.二层交换器
+C.网桥
+D.路由器</p>
+<p>72.一个VLAN可以看作是一个（<span title="B">    </span>）
+A.冲突域
+B.广播域
+C.管理域
+D.阻塞域</p>
+<p>73.以下网络地址中属于B类的可用IP地址的是（<span title="D">    </span>）
+A. 192.12.31.2
+B.191.12.255.255
+C. 55.32.255.0
+D.128.34.255.9</p>
+<p>74.在运行Windows的计算机中配置网关，类似于在路由器中配置（<span title="C">    </span>）
+A.直接路由
+B.默认路由
+C.静态路由
+D.动态路由</p>
+<p>75.100BASE-T规定，Hub通过RJ45接口与计算机连线距离不超过（<span title="B">    </span>）米
+A.50米
+B.100米
+C.150米
+D.185米</p>
+<p>76.在网络互连中，在网络层实现互连的设备是（<span title="B">    </span>）
+A.中继器
+B.路由器
+C.网桥
+D.网关</p>
+<p>77.如果一个单位的两个部门各有一个局域网，那么将它们互连的最简单的方法是使用（<span title="C">    </span>）
+A.网关
+B.中继器
+C.交换机
+D.路由器</p>
+<p>78.TCP/IP协议是Internet中计算机之间通信所必须共同遵循的一种（<span title="B">    </span>）
+A.信息资源
+B.通信规定
+C.软件
+D.硬件</p>
+<p>79.IP地址能惟一地确定Internet上每台计算机与每个用户的（<span title="C">    </span>）
+A.距离
+B.费用
+C.位置
+D.时间</p>
+<p>80.“www.itsec.gov.cn”是Internet中主机的（<span title="D">    </span>）
+A.硬件编码
+B.密码
+C.软件编码
+D.域名</p>
+<p>81.用IE浏览上网时，要进入某一网页，可在IE的URL栏中输入该网页的（<span title="D">    </span>）
+A．只能是IP地址
+B.只能是域名
+C.实际的文件名称
+D.IP地址或域名</p>
+<p>82.在多媒体计算机系统中，不能存储多媒体信息的是（<span title="B">    </span>）
+A.光盘
+B.光缆
+C.磁带
+D.磁盘</p>
+<p>83.关于虚拟局域网VLAN的论述中，错误的是（<span title="B">    </span>）
+A.每个VLAN组成一个逻辑上的广播域
+B.VLAN不能控制广播风暴
+C.能够提高网络的整体安全性
+D.VLAN是被创建的逻辑网络</p>
+<p>84.下列域名中，表示教育机构的是（<span title="D">    </span>）
+A.ftp.xxxt
+B.ftp.xxx.cn
+C.www.xxx.cn
+D.www.xxx.edu.cn</p>
+<p>85.IP地址是由4段十进制数字组成的，它们代表了（<span title="C">    </span>）位二进制数字。
+A.8
+B.16
+C.32
+D.64</p>
+<p>86.Internet实现了分布在世界各地的各类网络的互联，其中最基础和核心的协议是（<span title="A">    </span>）
+A.TCP/IP
+B. FTP
+C.HTML
+D.HTTP</p>
+<p>87.有关共享式与交换式以太网拓扑结构的论述，正确的是（<span title="D">    </span>）
+A.共享式的逻辑拓扑为星型，物理拓扑为星型。
+B.交换式的逻辑拓扑为总线型，物理拓扑为星型。
+C.共享式的逻辑拓扑为星型，物理拓扑为总线型。
+D.交换式的逻辑拓扑为星型，物理拓扑为星型。</p>
+<p>88.在（<span title="B">    </span>）网络模式中，客户机通过浏览器的HTTP协议提出服务请求，并将返回的信息通过浏览器提供给网络客户。
+A.C/S
+B.B/S
+C.Peer-to-peer
+D.主机-终端机</p>
+<p>89.域名系统DNS的作用是（<span title="B">    </span>）
+A.存放主机域名
+B.将域名转换成IP地址
+C.存放IP地址
+D.存放邮件的地址表</p>
+<p>90.在TCP/IP模型中与OSI模型网络层对应的是（<span title="B">    </span>）
+A.网络接口层
+B.网际层
+C.传输层
+D.应用层</p>
+<p>91.在同一个信道上的同一时刻，能够同时进行双向数据传送的通信方式是（<span title="C">    </span>）
+A.单工
+B.半双工
+C.全双工
+D.广播</p>
+<p>92.IPv4地址共分为(<span title="D">    </span>)个主类
+A.2
+B.3
+C.4
+D.5</p>
+<p>93.192.168.1.0/24 使用掩码255.255.255.240 划分子网，其可用子网数为（），每个子网内可用主机地址数为（<span title="B">    </span>）
+A.14 14
+B.16 14
+C.254 6
+D.14 62</p>
+<p>94.子网掩码为255.255.0.0，下列哪个 IP 地址不在同一网段中（<span title="C">    </span>）
+A.172.25.15.201
+B.172.25.16.15
+C.172.16.25.16
+D.172.25.201.15</p>
+<p>95.B类地址子网掩码为 255.255.255.248 ，则每个子网内可用主机地址数为（<span title="C">    </span>）
+A.10
+B.8
+C.6
+D.4</p>
+<p>96.对于C类IP地址，子网掩码为255.255.255.248，则能提供子网数为（<span title="B">    </span>）
+A.16
+B.32
+C.30
+D.128</p>
+<p>97.三个网段 如下所示：
+192.168.1.0/24，
+192.168.2.0/24，
+192.168.3.0/24
+能够汇聚成下面哪个网段（<span title="D">    </span>）
+A.192.168.1.0/22
+B.192.168.2.0/22
+C. 192.168.3.0/22
+D. 192.168.0.0/22</p>
+<p>98.IP 地址219.25.23.56 的主类子网掩码有几位（<span title="C">    </span>）
+A.8
+B.16
+C.24
+D.32</p>
+<p>99.某公司申请到一个C类IP地址，但要连接6个子公司，最大的一个子公司有26台计算机，每个子公司在一个网段中，则子网掩码应设为（）
+A.255.255.255.0
+B.255.255.255.128
+C.255.255.255.192
+D.255.255.255.224
+答案：D</p>
+<p>100.一台IP地址为10.110.9.113/21主机在启动时发出的广播IP是（）
+A.10.110.9.255
+B.10.110.15.255
+C.10.110.255.255
+D.10.255.255.255
+答案：B</p>
+<p>101、账号锁定策略中对超过一定次数的错误登录账号进行锁定是为了对抗以下哪种攻击?
+A．分布式拒绝服务攻击(DDoS) B．病毒传染
+C. 口令暴力破解 D．缓冲区溢出攻击
+答案：C</p>
+<p>102、有关危害国家秘密安全的行为的法律责任，正确的是：
+A．严重违反保密规定行为只要发生，无论产生泄密实际后果，都要依法追究责任
+B．非法获取国家秘密，不会构成刑事犯罪，不需承担刑事责任
+C．过失泄露国家秘密，不会构成刑事犯罪，不需承担刑事责任
+D．承担了刑事责任，无需再承担行政责任和／或其他处分
+答案：A</p>
+<p>103、以下哪一项不是信息系统集成项目的特点：
+A.信息系统集成项目要以满足客户和用户的需求为根本出发点。
+B.系统集成就是选择最好的产品和技术，开发响应的软件和硬件，将其集成到信息系统 的过程。
+C.信息系统集成项目的指导方法是“总体规划、分步实施”。
+D.信息系统集成包含技术，管理和商务等方面，是一项综合性的系统工程
+答案：B</p>
+<p>104、应用软件的数据存储在数据库中，为了保证数据安全，应设置良好的数据库防护策略，以 下不属于数据库防护策略的是?
+A．安装最新的数据库软件安全补丁
+B．对存储的敏感数据进行安全加密
+C．不使用管理员权限直接连接数据库系统
+D．定期对数据库服务器进行重启以确保数据库运行良好
+答案：D</p>
+<p>105、下列哪项内容描述的是缓冲区溢出漏洞?
+A.通过把 SQL 命令插入到 web 表单递交或输入域名或页面请求的查询字符串，最终达到欺 骗服务器执行恶意的 SQL 命令
+B.攻击者在远程 WEB 页面的 HTML 代码中插入具有恶意目的的数据，用户认为该页面是可 信赖的，但是当浏览器下载该页面，嵌入其中的脚本将被解释执行。
+C.当计算机向缓冲区内填充数据位数时超过了缓冲区本身的容量溢出的数据覆盖在合法数 据上
+D．信息技术、信息产品、信息系统在设计、实现、配置、运行等过程中，有意或无意产生
+的缺陷
+答案：C</p>
+<p>106、近年来利用 DNS 劫持攻击大型网站恶性攻击事件时有发生，防范这种攻击比较有效的方法 是?
+A．加强网站源代码的安全性
+B．对网络客户端进行安全评估
+C．协调运营商对域名解析服务器进行加固
+D．在网站的网络出口部署应用级防火墙
+答案：C</p>
+<p>107、关于源代码审核，下列说法正确的是：
+A．人工审核源代码审校的效率低，但采用多人并行分析可以完全弥补这个缺点
+B．源代码审核通过提供非预期的输入并监视异常结果来发现软件故障，从而定位可能导致 安全弱点的薄弱之处
+C．使用工具进行源代码审核，速度快，准确率高，已经取代了传统的人工审核
+D．源代码审核是对源代码检查分析，检测并报告源代码中可能导致安全弱点的薄弱之处
+答案：D</p>
+<p>108、某单位信息安全岗位员工，利用个人业余时间，在社交网络平台上向业内同不定期发布信 息安全相关知识和前沿动态资讯，这一行为主要符合以下哪一条注册信息安全专业人员 （CISP）职业道德准则：
+A．避免任何损害 CISP 声誉形象的行为
+B．自觉维护公众信息安全，拒绝并抵制通过计算机网络系统泄露个人隐私的行为
+C．帮助和指导信息安全同行提升信息安全保障知识和能力
+D．不在公众网络传播反动、暴力、黄色、低俗信息及非法软件
+答案：C</p>
+<p>109、安全的运行环境是软件安全的基础，操作系统安全配置是确保运行环境安全必不可少
+的工作，某管理员对即将上线的 Windows 操作系统进行了以下四项安全部署工作，其
+中哪项设置不利于提高运行环境安全?
+A．操作系统安装完成后安装最新的安全补丁，确保操作系统不存在可被利用的安全
+漏洞
+B.为了方便进行数据备份，安装 Windows 操作系统时只使用一个分区 C，所有数据和
+操作系统都存放在 C 盘
+C．操作系统上部署防病毒软件，以对抗病毒的威胁
+D．将默认的管理员账号 Administrator 改名，降低口令暴力破解攻击的发生可能
+答案：B</p>
+<p>110、关于 linux 下的用户和组，以下描述不正确的是 。
+A．在 linux 中，每一个文件和程序都归属于一个特定的“用户”
+B．系统中的每一个用户都必须至少属于一个用户组
+C. 用户和组的关系可是多对一，一个组可以有多个用户，一个用户不能属于多个组
+D．root 是系统的超级用户，无论是否文件和程序的所有者都具有访问权限
+答案：C</p>
+<p>111、下列哪一些对信息安全漏洞的描述是错误的?
+A．漏洞是存在于信息系统的某种缺陷。
+B．漏洞存在于一定的环境中，寄生在一定的客体上(如 TOE 中、过程中等)。
+C．具有可利用性和违规性，它本身的存在虽不会造成破坏，但是可以被攻击者利用，
+从而给信息系统安全带来威胁和损失。
+E．漏洞都是人为故意引入的一种信息系统的弱点
+答案：D</p>
+<p>112、以下哪个不是导致地址解析协议(ARP)欺骗的根源之一?
+A．ARP 协议是一个无状态的协议
+B．为提高效率，ARP 信息在系统中会缓存
+C．ARP 缓存是动态的，可被改写
+D．ARP 协议是用于寻址的一个重要协议
+答案：D</p>
+<p>113、张三将微信个人头像换成微信群中某好友头像，并将昵称改为该好友的昵称，然后向
+该好友的其他好友发送一些欺骗消息。该攻击行为属于以下哪类攻击?
+A．口令攻击
+B．暴力破解
+C．拒绝服务攻击
+D. 社会工程学攻击
+答案：D</p>
+<p>114、有关危害国家秘密安全的行为的法律责任，正确的是：
+A．严重违反保密规定行为只要发生，无论产生泄密实际后果，都要依法追究责任
+B．非法获取国家秘密，不会构成刑事犯罪，不需承担刑事责任
+C．过失泄露国家秘密，不会构成刑事犯罪，不需承担刑事责任
+D．承担了刑事责任，无需再承担行政责任和／或其他处分
+答案：A</p>
+<p>115、以下对于信息安全事件理解错误的是：
+A．信息安全事件，是指由于自然或者人为以及软硬件本身缺陷或故障的原因，对信
+息系统造成危害，或在信息系统内发生对社会造成负面影响的事件
+B．对信息安全事件进行有效管理和响应，最小化事件所造成的损失和负面影响，是
+组织信息安全战略的一部分
+C．应急响应是信息安全事件管理的重要内容
+D. 通过部署信息安全策略并配合部署防护措施，能够对信息及信息系统提供保护，
+杜绝信息安全事件的发生
+答案：D</p>
+<p>116、某单位开发一个面向互联网提供服务的应用网站，该单位委托软件测评机构对软件进 行了源代码分析，模糊测试等软件测试，在应用上线前，项目经理提出了还需要对应用网站进行一次渗透性测试，作为安全主管，你需要提出渗透性测试相比源代码测试， 模糊测试的优势给领导做决策，以下哪条是渗透性的优势？
+A.渗透测试使用人工进行测试，不依赖软件，因此测试更准确
+B.渗透测试是用软件代替人工的一种测试方法。因此测试效率更高
+C.渗透测试以攻击者思维模拟真实攻击，能发现如配置错误等运行维护期产生的漏洞
+D.渗透测试中必须要查看软件源代码，因此测试中发现的漏洞更多
+答案：C
+117、金女士经常通过计算机在互联网上购物，从安全角度看，下面哪项是不好的习惯：
+A 使用专用上网购物用计算机，安装好软件后不要对该计算机上的系统软件，应用软 件进行升级
+B 为计算机安装具有良好声誉的安全防护软件，包括病毒查杀，安全检查和安全加固 方面的软件
+C 在 IE 的配置中，设置只能下载和安装经过签名的，安全的 ActiveX 控件
+D 在使用网络浏览器时，设置不在计算机中保留网络历史纪录和表单数据
+答案：A</p>
+<p>118、用户在设置口令时，以下原则哪个是错误的（  ）。
+A、严禁使用与账号相同或相似的口令
+B、不要使用与个人有关的信息作为口令内容
+C、不要设置短于6个字符或仅包含字母或数字的口令
+D、可以使用空口令
+答案：D
+119、下列关于操作系统的说法，不正确的是：（ ）。
+A、常见的操作系统有Windows、Linux和Mac os
+B、Linux操作系统有很多分支：Centos、Ubunto、RedHat、Kali等
+C、Linux一般是用在个人电脑上，Windows一般是用在服务器上
+D、Kali Linux是一款用于从事安全的Linux系统</p>
+<pre><code>  答案：C
+</code></pre>
+<p>120、局域网断网攻击主要跟以下哪个协议有关系（）
+A、DHCP
+B、IP
+C、FTP
+D、ARP</p>
+<pre><code>  答案：D
+</code></pre>
+<p>121、在使用WEB网站上网是当前大多数网民日常的一种行为，以下哪一种协议能够保证网民在使用WEB网站进行上网时个人信息的相对安全性（）
+A、ARP
+B、TFTP
+C、HTTPS
+D、HTTP</p>
+<pre><code>  答案：C
+</code></pre>
+<p>122、以下哪一项不属于恶意代码（ ）
+A、病毒
+B、蠕虫
+C、宏
+D、特洛伊木马</p>
+<p>答案：C</p>
+<p>123、在Windows 系统中可以察看IP地址的命令是
+A、Netstart
+B、Ifconfig
+C、Ipconfig
+D、Ip address</p>
+<pre><code> 答案：C
+</code></pre>
+<p>124、下列关于用户口令说法错误的是（ ）。      <br>
+A、口令不能设置为空        <br>
+B、口令长度越长，安全性越高        <br>
+C、复杂口令安全性足够高，不需要定期修改     <br>
+D、口令认证是最常见的认证机制</p>
+<pre><code>答案：C
+</code></pre>
+<p>125、入侵者在张某的博客中搜寻到他在某网站的交易信息，利用信息中的内容获取张某的个人信息，并进一步获取了其它额外的信息，这种行为属于（）
+A、社会工程
+B、非法窃取
+C、电子欺骗
+D、电子窃听</p>
+<pre><code>答案：A
+</code></pre>
+<p>126、账号锁定策略中对超过一定次数的错误登录账号进行锁定是为了对抗以下哪种攻击?
+A．分布式拒绝服务攻击(DDoS)
+B．病毒传染
+C. 口令暴力破解
+D．缓冲区溢出攻击</p>
+<pre><code>答案：C
+</code></pre>
+<p>127、以下网络地址中属于B类的可用IP地址的是（）
+A. 192.12.31.2
+B.191.12.255.255
+C. 55.32.255.0
+D.128.34.255.9</p>
+<pre><code>答案：D
+</code></pre>
+<p>128、“www.itsec.gov.cn”是Internet中主机的（）
+A.硬件编码
+B.密码
+C.软件编码
+D.域名</p>
+<p>答案：D</p>
+<p>129、用IE浏览上网时，要进入某一网页，可在IE的URL栏中输入该网页的（）
+A．只能是IP地址
+B.只能是域名
+C.实际的文件名称
+D.IP地址或域名</p>
+<p>答案：D</p>
+<p>130、域名系统DNS的作用是（）
+A.存放主机域名
+B.将域名转换成IP地址
+C.存放IP地址
+D.存放邮件的地址表</p>
+<p>答案：B</p>
+</div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/nisp1%E7%BA%A7%E9%A2%98%E5%BA%93/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/rce%E6%BC%8F%E6%B4%9E/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/csrf%E6%BC%8F%E6%B4%9E%E9%98%B2%E5%BE%A1/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

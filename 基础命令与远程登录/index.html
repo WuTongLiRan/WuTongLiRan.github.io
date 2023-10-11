@@ -1,0 +1,586 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="基础命令与远程登录 本地登录&mdash;利用console口 需要一根console线 console线一端连接自己的电脑，另一端连接设备上的c" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E4%B8%8E%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="基础命令与远程登录 本地登录&mdash;利用console口 需要一根console线 console线一端连接自己的电脑，另一端连接设备上的c"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E4%B8%8E%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/" /><link rel="prev" href="/%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86/" /><link rel="next" href="/%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E4%B8%8E%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95\/"
+        },"genre": "posts","wordcount":  1448 ,
+        "url": "\/%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E4%B8%8E%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1448 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#本地登录---利用console口">本地登录&mdash;利用console口</a></li>
+    <li><a href="#cisco模拟器">Cisco模拟器</a>
+      <ul>
+        <li><a href="#交换机的命令配置">交换机的命令配置</a>
+          <ul>
+            <li><a href="#命令模式">命令模式</a></li>
+            <li><a href="#命令模式相互关系">命令模式相互关系</a>
+              <ul>
+                <li><a href="#图片1">图片1</a></li>
+                <li><a href="#图片2">图片2</a></li>
+              </ul>
+            </li>
+            <li><a href="#交换机模式切换">交换机模式切换</a></li>
+          </ul>
+        </li>
+        <li><a href="#将交换机的1口设置成-vlan-10-口子">将交换机的1口设置成 VLAN 10 口子</a>
+          <ul>
+            <li><a href="#1-进入全局配置模式">1. 进入全局配置模式</a></li>
+            <li><a href="#2-创建vlan-10-后退出">2. 创建VLAN 10 后退出</a></li>
+            <li><a href="#3-进入接口模式">3. 进入接口模式</a></li>
+            <li><a href="#4-配置交换机为vlan-10">4. 配置交换机为VLAN 10</a></li>
+            <li><a href="#5-特权模式下查看配置">5. 特权模式下查看配置</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#ensp模拟器">eNSP模拟器</a>
+      <ul>
+        <li><a href="#交换机路由器的命令配置">交换机/路由器的命令配置</a>
+          <ul>
+            <li><a href="#命令模式-1">命令模式</a></li>
+            <li><a href="#常用命令">常用命令</a></li>
+            <li><a href="#设备安全加固">设备安全加固</a>
+              <ul>
+                <li><a href="#password模式">password模式</a></li>
+                <li><a href="#aaa模式">AAA模式</a></li>
+              </ul>
+            </li>
+            <li><a href="#配置telnet">配置Telnet</a>
+              <ul>
+                <li><a href="#password模式-1">password模式</a></li>
+                <li><a href="#aaa方式">AAA方式</a></li>
+              </ul>
+            </li>
+            <li><a href="#配置ssh">配置SSH</a></li>
+            <li><a href="#ssh-客户端登录">SSH 客户端登录</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="基础命令与远程登录" class="headerLink">
+    <a href="#%e5%9f%ba%e7%a1%80%e5%91%bd%e4%bb%a4%e4%b8%8e%e8%bf%9c%e7%a8%8b%e7%99%bb%e5%bd%95" class="header-mark"></a>基础命令与远程登录</h1><h2 id="本地登录---利用console口" class="headerLink">
+    <a href="#%e6%9c%ac%e5%9c%b0%e7%99%bb%e5%bd%95---%e5%88%a9%e7%94%a8console%e5%8f%a3" class="header-mark"></a>本地登录&mdash;利用console口</h2><ol>
+<li>
+<p>需要一根console线</p>
+</li>
+<li>
+<p>console线一端连接自己的电脑，另一端连接设备上的console口</p>
+<blockquote>
+<p>console口：专门用来管理设备的接口，并不传输数据  &mdash;  管理口</p>
+</blockquote>
+</li>
+<li>
+<p>登录软件：SecureCRT、putty、Xshell</p>
+</li>
+<li>
+<p>登录协议：serial协议</p>
+<blockquote>
+<p>serial：串口通讯协议，主从双方必须一致，才可以有效的传输</p>
+</blockquote>
+</li>
+<li>
+<p>com口：去设备管理器上查看</p>
+</li>
+<li>
+<p>波特率：一般选择9600</p>
+</li>
+</ol>
+<p>​</p>
+<h2 id="cisco模拟器" class="headerLink">
+    <a href="#cisco%e6%a8%a1%e6%8b%9f%e5%99%a8" class="header-mark"></a>Cisco模拟器</h2><h3 id="交换机的命令配置" class="headerLink">
+    <a href="#%e4%ba%a4%e6%8d%a2%e6%9c%ba%e7%9a%84%e5%91%bd%e4%bb%a4%e9%85%8d%e7%bd%ae" class="header-mark"></a>交换机的命令配置</h3><h4 id="命令模式" class="headerLink">
+    <a href="#%e5%91%bd%e4%bb%a4%e6%a8%a1%e5%bc%8f" class="header-mark"></a>命令模式</h4><ul>
+<li>
+<p>一般用户配置模式(简称<strong>用户模式</strong>)</p>
+<blockquote>
+<p>什么也干不了</p>
+</blockquote>
+</li>
+<li>
+<p>特权用户配置模式(简称<strong>特权模式</strong>)</p>
+</li>
+<li>
+<p>全局配置模式</p>
+</li>
+<li>
+<p>接口配置模式</p>
+</li>
+<li>
+<p>VLAN配置模式</p>
+</li>
+<li>
+<p>线路配置模式</p>
+</li>
+</ul>
+<h4 id="命令模式相互关系" class="headerLink">
+    <a href="#%e5%91%bd%e4%bb%a4%e6%a8%a1%e5%bc%8f%e7%9b%b8%e4%ba%92%e5%85%b3%e7%b3%bb" class="header-mark"></a>命令模式相互关系</h4><h5 id="图片1" class="headerLink">
+    <a href="#%e5%9b%be%e7%89%871" class="header-mark"></a>图片1</h5><img src="https://pic.imgdb.cn/item/64b207c51ddac507cc26a12d.jpg" style="zoom:80%;" />
+<h5 id="图片2" class="headerLink">
+    <a href="#%e5%9b%be%e7%89%872" class="header-mark"></a>图片2</h5><img src="https://pic.imgdb.cn/item/64b2080e1ddac507cc27c622.jpg" style="zoom:80%;" />
+<h4 id="交换机模式切换" class="headerLink">
+    <a href="#%e4%ba%a4%e6%8d%a2%e6%9c%ba%e6%a8%a1%e5%bc%8f%e5%88%87%e6%8d%a2" class="header-mark"></a>交换机模式切换</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch&gt;enable		//切换到特权模式
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Switch#config terminal		//切换到全局配置模式
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Switch(config)#interface f0/1		//进入接口f0/1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Switch(config-if)#no shutdown		//激活接口f0/1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h3 id="将交换机的1口设置成-vlan-10-口子" class="headerLink">
+    <a href="#%e5%b0%86%e4%ba%a4%e6%8d%a2%e6%9c%ba%e7%9a%841%e5%8f%a3%e8%ae%be%e7%bd%ae%e6%88%90-vlan-10-%e5%8f%a3%e5%ad%90" class="header-mark"></a>将交换机的1口设置成 VLAN 10 口子</h3><h4 id="1-进入全局配置模式" class="headerLink">
+    <a href="#1-%e8%bf%9b%e5%85%a5%e5%85%a8%e5%b1%80%e9%85%8d%e7%bd%ae%e6%a8%a1%e5%bc%8f" class="header-mark"></a>1. 进入全局配置模式</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch&gt;enable	//切换到特权模式
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Switch#config	//切换到全局配置模式
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Switch(config)#
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="2-创建vlan-10-后退出" class="headerLink">
+    <a href="#2-%e5%88%9b%e5%bb%bavlan-10-%e5%90%8e%e9%80%80%e5%87%ba" class="header-mark"></a>2. 创建VLAN 10 后退出</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)#vlan 10	//创建VLAN 10
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Switch(config-vlan)#exit	//退出VLAN模式
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Switch(config)#
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="3-进入接口模式" class="headerLink">
+    <a href="#3-%e8%bf%9b%e5%85%a5%e6%8e%a5%e5%8f%a3%e6%a8%a1%e5%bc%8f" class="header-mark"></a>3. 进入接口模式</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)#interface fastEthernet 0/1	//进入1口
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Switch(config-if)#
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="4-配置交换机为vlan-10" class="headerLink">
+    <a href="#4-%e9%85%8d%e7%bd%ae%e4%ba%a4%e6%8d%a2%e6%9c%ba%e4%b8%bavlan-10" class="header-mark"></a>4. 配置交换机为VLAN 10</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config-if)#switchport access  vlan 10	//将1口划为VLAN 10
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Switch(config-if)#no shutdown	//启用(打开)接口
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="5-特权模式下查看配置" class="headerLink">
+    <a href="#5-%e7%89%b9%e6%9d%83%e6%a8%a1%e5%bc%8f%e4%b8%8b%e6%9f%a5%e7%9c%8b%e9%85%8d%e7%bd%ae" class="header-mark"></a>5. 特权模式下查看配置</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config-if)#exit	//退出1口的配置模式
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Switch(config)#exit	//退出配置模式
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Switch#show run	//显示当前交换机的运行配置
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h2 id="ensp模拟器" class="headerLink">
+    <a href="#ensp%e6%a8%a1%e6%8b%9f%e5%99%a8" class="header-mark"></a>eNSP模拟器</h2><h3 id="交换机路由器的命令配置" class="headerLink">
+    <a href="#%e4%ba%a4%e6%8d%a2%e6%9c%ba%e8%b7%af%e7%94%b1%e5%99%a8%e7%9a%84%e5%91%bd%e4%bb%a4%e9%85%8d%e7%bd%ae" class="header-mark"></a>交换机/路由器的命令配置</h3><h4 id="命令模式-1" class="headerLink">
+    <a href="#%e5%91%bd%e4%bb%a4%e6%a8%a1%e5%bc%8f-1" class="header-mark"></a>命令模式</h4><ul>
+<li>用户模式</li>
+<li>全局模式</li>
+</ul>
+<blockquote>
+<p>比Cisco设备少一种</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;Huawei&gt;	//用户模式
+</span></span><span class="line"><span class="cl">&lt;Huawei&gt;system-view          //进入全局模式
+</span></span><span class="line"><span class="cl">[Huawei]	//全局模式
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="常用命令" class="headerLink">
+    <a href="#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4" class="header-mark"></a>常用命令</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[Huawei]sysname R1       //修改设备名称
+</span></span><span class="line"><span class="cl">[R1]int g0/0/0            //进入g0/0/0接口
+</span></span><span class="line"><span class="cl">[R1]display  current-configuration      //查看设备的所有配置信息
+</span></span><span class="line"><span class="cl">[R1]quit           //退回到上一级
+</span></span><span class="line"><span class="cl">&lt;R1&gt;save              //保存配置  华为一定要在用户模式下才可以保存
+</span></span><span class="line"><span class="cl">[R1]dis ip routing-table           //查看路由表
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0]display this        //查看当前模式下的配置
+</span></span><span class="line"><span class="cl">[R1]dis ip interface brief              //查看接口ip信息
+</span></span><span class="line"><span class="cl">[R1]dis interface brief             //查看接口信息
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h4 id="设备安全加固" class="headerLink">
+    <a href="#%e8%ae%be%e5%a4%87%e5%ae%89%e5%85%a8%e5%8a%a0%e5%9b%ba" class="header-mark"></a>设备安全加固</h4><h5 id="password模式" class="headerLink">
+    <a href="#password%e6%a8%a1%e5%bc%8f" class="header-mark"></a>password模式</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;r2&gt;system-view              // 切换至全局配置模式
+</span></span><span class="line"><span class="cl">[r2]user-interface console 0     // 进入控制台接口 0
+</span></span><span class="line"><span class="cl">[r2-ui-console0]authentication-mode password    // 配置密码认证方式
+</span></span><span class="line"><span class="cl">Please set the login password (maximum length 16): 123    // 设置登录密码
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="aaa模式" class="headerLink">
+    <a href="#aaa%e6%a8%a1%e5%bc%8f" class="header-mark"></a>AAA模式</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;r2&gt;system-view            // 切换至全局配置模式
+</span></span><span class="line"><span class="cl">[r2]user-interface console 0       // 进入控制台接口 0
+</span></span><span class="line"><span class="cl">[r2-ui-console0]authentication-mode aaa    // 设置 AAA 认证方式
+</span></span><span class="line"><span class="cl">[r2]aaa         // 进入 AAA 配置模式
+</span></span><span class="line"><span class="cl">[r2-aaa]local-user qq password cipher 123456    // 创建本地用户 qq，密码为 123456
+</span></span><span class="line"><span class="cl">[r2-aaa]local-user qq service-type terminal     // 配置用户 qq 为终端登录类型
+</span></span><span class="line"><span class="cl">[r2-aaa]local-user qq level 15       // 为用户 qq 设置权限等级，一定要在设备安全加固时使用 AAA 模式时给用户设置适当等级
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h4 id="配置telnet" class="headerLink">
+    <a href="#%e9%85%8d%e7%bd%aetelnet" class="header-mark"></a>配置Telnet</h4><h5 id="password模式-1" class="headerLink">
+    <a href="#password%e6%a8%a1%e5%bc%8f-1" class="header-mark"></a>password模式</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[r2]telnet server enable           // 启用 Telnet 服务
+</span></span><span class="line"><span class="cl">[r2]user-interface vty 0 4           // 进入 vty 虚拟链路
+</span></span><span class="line"><span class="cl">[r2-ui-vty0-4]authentication-mode password           // 配置身份认证模式为 password
+</span></span><span class="line"><span class="cl">Please configure the login password (maximum length 16): 456           // 配置登录密码
+</span></span><span class="line"><span class="cl">[r2-ui-vty0-4]protocol inbound telnet           // 允许使用 Telnet 进行远程登录
+</span></span><span class="line"><span class="cl">[r2-ui-vty0-4]user privilege level 15           // 设置登录后的管理级别为 15
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="aaa方式" class="headerLink">
+    <a href="#aaa%e6%96%b9%e5%bc%8f" class="header-mark"></a>AAA方式</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[r2-ui-vty0-4]authentication-mode aaa           // 配置身份认证模式为 aaa
+</span></span><span class="line"><span class="cl">[r2-ui-vty0-4]protocol inbound telnet           // 允许使用 Telnet 进行远程登录
+</span></span><span class="line"><span class="cl">[r2]aaa           // 进入 aaa 模式，创建本地用户
+</span></span><span class="line"><span class="cl">[r2-aaa]local-user r2 password cipher 123456           // 创建本地用户的用户名和密码
+</span></span><span class="line"><span class="cl">[r2-aaa]local-user r2 service-type telnet           // 选择本地用户所服务的协议类型
+</span></span><span class="line"><span class="cl">[r2-aaa]local-user r2 level 15           // 设备本地用户等级为 15
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h4 id="配置ssh" class="headerLink">
+    <a href="#%e9%85%8d%e7%bd%aessh" class="header-mark"></a>配置SSH</h4><p>通过 SSH 方式（使用 22 号端口）进行远程登录。首先需启用 SSH 服务和创建 RSA 密钥对。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R1]stelnet server enable           // 启用 SSH 服务
+</span></span><span class="line"><span class="cl">[R1]user-interface vty 0 4           // 进入 vty 虚拟接口
+</span></span><span class="line"><span class="cl">[R1-ui-vty0-4]authentication-mode aaa           // 配置身份认证模式为 aaa
+</span></span><span class="line"><span class="cl">[R1-ui-vty0-4]protocol inbound ssh           // 设置该虚拟链路给 SSH 使用
+</span></span><span class="line"><span class="cl">[R1]aaa           // 进入 aaa 创建本地用户
+</span></span><span class="line"><span class="cl">[R1-aaa]local-user r1 password cipher 123456           // 创建本地用户的用户名和密码
+</span></span><span class="line"><span class="cl">[R1-aaa]local-user r1 service-type ssh           // 选择本地用户所服务的协议类型为 SSH
+</span></span><span class="line"><span class="cl">[R1-aaa]local-user r1 level 15           // 设备本地用户等级为 15
+</span></span><span class="line"><span class="cl">[R1]rsa local-key-pair create           // 创建加密算法 RSA，生成公钥和私钥
+</span></span><span class="line"><span class="cl">Confirm to replace them? (y/n)[n]:y
+</span></span><span class="line"><span class="cl">Input the bits in the modulus[default = 512]:1024
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="ssh-客户端登录" class="headerLink">
+    <a href="#ssh-%e5%ae%a2%e6%88%b7%e7%ab%af%e7%99%bb%e5%bd%95" class="header-mark"></a>SSH 客户端登录</h4><p>使用 SSH 客户端可以通过 SSH 协议进行远程登录。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[r2]ssh client first-time enable           // SSH 客户端首次启用
+</span></span><span class="line"><span class="cl">[r2]stelnet IP地址           // 登录该 IP 地址下的设备
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E4%B8%8E%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

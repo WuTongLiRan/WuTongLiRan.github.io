@@ -1,0 +1,709 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="二层冗余综合实验1、 实验目的 通过本实验可以： 理解二层交换的基本原理 掌握交换机的基本配置 掌握交换机VLAN划分 掌握实现不同局域网的通信 掌握VR" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="二层冗余综合实验1、 实验目的 通过本实验可以： 理解二层交换的基本原理 掌握交换机的基本配置 掌握交换机VLAN划分 掌握实现不同局域网的通信 掌握VR"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/" /><link rel="prev" href="/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8Crip%E5%8D%8F%E8%AE%AE-ospf%E5%8D%8F%E8%AE%AE/" /><link rel="next" href="/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E5%AE%9E%E9%AA%8C/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C\/"
+        },"genre": "posts","wordcount":  1156 ,
+        "url": "\/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1156 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#参照逻辑拓扑使用合适的线缆完成物理拓扑的搭建">参照逻辑拓扑，使用合适的线缆完成物理拓扑的搭建</a></li>
+            <li><a href="#完成相应配置pc1与pc3在一个局域网里pc2与pc4在一个局域网里并捆绑三层交换机之间的端口">完成相应配置，PC1与PC3在一个局域网里，PC2与PC4在一个局域网里，并捆绑三层交换机之间的端口</a></li>
+            <li><a href="#在r1r2上完成相应配置并启用动态地址池实现各个主机可以获取到地址并且能够相互通信">在R1、R2上完成相应配置，并启用动态地址池，实现各个主机可以获取到地址并且能够相互通信</a></li>
+            <li><a href="#开启虚拟网关冗余协议r1作为pc1与pc3局域网的主路由器r2作为pc2与pc4局域网的主路由器">开启虚拟网关冗余协议，R1作为PC1与PC3局域网的主路由器，R2作为PC2与PC4局域网的主路由器</a></li>
+            <li><a href="#合理划分r1r2r3之间的地址全网启用路由协议实现主机与r3之间的通信">合理划分R1,R2,R3之间的地址，全网启用路由协议，实现主机与R3之间的通信</a></li>
+            <li><a href="#分析此时pc2能否获取到动态地址并进行检验">分析此时PC2能否获取到动态地址，并进行检验</a></li>
+            <li><a href="#关闭r3的master接口观察日志信息分析此时网络环境是否正常">关闭R3的Master接口，观察日志信息，分析此时网络环境是否正常</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="二层冗余综合实验" class="headerLink">
+    <a href="#%e4%ba%8c%e5%b1%82%e5%86%97%e4%bd%99%e7%bb%bc%e5%90%88%e5%ae%9e%e9%aa%8c" class="header-mark"></a>二层冗余综合实验</h1><p><strong>1、 实验目的</strong></p>
+<p>通过本实验可以：</p>
+<ol>
+<li>理解二层交换的基本原理</li>
+<li>掌握交换机的基本配置</li>
+<li>掌握交换机VLAN划分</li>
+<li>掌握实现不同局域网的通信</li>
+<li>掌握VRRP以及链路捆绑</li>
+<li>掌握DHCP的基本配置</li>
+</ol>
+<p><strong>2、 拓扑结构</strong></p>
+<img src="https://pic.imgdb.cn/item/64f3eb13661c6c8e54f914b3.jpg" style="zoom:67%;" />
+<p><strong>3、 实验需求</strong></p>
+<ol>
+<li>
+<p>参照逻辑拓扑，使用合适的线缆完成物理拓扑的搭建</p>
+</li>
+<li>
+<p>完成相应配置，PC1与PC3在一个局域网里，PC2与PC4在一个局域网里，并捆绑三层交换机之间的端口</p>
+</li>
+<li>
+<p>在R1上完成相应配置，并启用动态地址池，实现各个主机可以获取到地址并且能够相互通信</p>
+</li>
+<li>
+<p>开启虚拟网关冗余协议，R1作为PC1与PC3局域网的主路由器，R2作为PC2与PC4局域网的主路由器</p>
+</li>
+<li>
+<p>合理划分R1,R2,R3之间的地址，全网启用路由协议，实现主机与R3之间的通信</p>
+</li>
+<li>
+<p>分析此时PC2能否获取到动态地址，并进行检验</p>
+</li>
+<li>
+<p>关闭R2的Master接口，观察日志信息，分析此时网络环境是否正常</p>
+</li>
+</ol>
+<h4 id="参照逻辑拓扑使用合适的线缆完成物理拓扑的搭建" class="headerLink">
+    <a href="#%e5%8f%82%e7%85%a7%e9%80%bb%e8%be%91%e6%8b%93%e6%89%91%e4%bd%bf%e7%94%a8%e5%90%88%e9%80%82%e7%9a%84%e7%ba%bf%e7%bc%86%e5%ae%8c%e6%88%90%e7%89%a9%e7%90%86%e6%8b%93%e6%89%91%e7%9a%84%e6%90%ad%e5%bb%ba" class="header-mark"></a>参照逻辑拓扑，使用合适的线缆完成物理拓扑的搭建</h4><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64f3f3f6661c6c8e54fa8cec.jpg" title="https://pic.imgdb.cn/item/64f3f3f6661c6c8e54fa8cec.jpg" data-thumbnail="https://pic.imgdb.cn/item/64f3f3f6661c6c8e54fa8cec.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64f3f3f6661c6c8e54fa8cec.jpg"
+            srcset="https://pic.imgdb.cn/item/64f3f3f6661c6c8e54fa8cec.jpg, https://pic.imgdb.cn/item/64f3f3f6661c6c8e54fa8cec.jpg 1.5x, https://pic.imgdb.cn/item/64f3f3f6661c6c8e54fa8cec.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64f3f3f6661c6c8e54fa8cec.jpg">
+    </a></figure></p>
+<h4 id="完成相应配置pc1与pc3在一个局域网里pc2与pc4在一个局域网里并捆绑三层交换机之间的端口" class="headerLink">
+    <a href="#%e5%ae%8c%e6%88%90%e7%9b%b8%e5%ba%94%e9%85%8d%e7%bd%aepc1%e4%b8%8epc3%e5%9c%a8%e4%b8%80%e4%b8%aa%e5%b1%80%e5%9f%9f%e7%bd%91%e9%87%8cpc2%e4%b8%8epc4%e5%9c%a8%e4%b8%80%e4%b8%aa%e5%b1%80%e5%9f%9f%e7%bd%91%e9%87%8c%e5%b9%b6%e6%8d%86%e7%bb%91%e4%b8%89%e5%b1%82%e4%ba%a4%e6%8d%a2%e6%9c%ba%e4%b9%8b%e9%97%b4%e7%9a%84%e7%ab%af%e5%8f%a3" class="header-mark"></a>完成相应配置，PC1与PC3在一个局域网里，PC2与PC4在一个局域网里，并捆绑三层交换机之间的端口</h4><ul>
+<li>ASW1</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[ASW1]vlan batch 10 20
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[ASW1]int e0/0/1
+</span></span><span class="line"><span class="cl">[ASW1-Ethernet0/0/1]port link-type access 
+</span></span><span class="line"><span class="cl">[ASW1-Ethernet0/0/1]port default vlan 10
+</span></span><span class="line"><span class="cl">[ASW1-Ethernet0/0/1]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[ASW1]int e0/0/2
+</span></span><span class="line"><span class="cl">[ASW1-Ethernet0/0/2]port link-type access 	
+</span></span><span class="line"><span class="cl">[ASW1-Ethernet0/0/2]port default vlan 20
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[ASW1]int e0/0/3
+</span></span><span class="line"><span class="cl">[ASW1-Ethernet0/0/3]port link-type trunk 
+</span></span><span class="line"><span class="cl">[ASW1-Ethernet0/0/3]port trunk allow-pass vlan all 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>ASW2</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[ASW2]vlan batch 10 20
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[ASW2]int e0/0/1	
+</span></span><span class="line"><span class="cl">[ASW2-Ethernet0/0/1]port link-type access 
+</span></span><span class="line"><span class="cl">[ASW2-Ethernet0/0/1]port default vlan 10
+</span></span><span class="line"><span class="cl">[ASW2-Ethernet0/0/1]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[ASW2]int e0/0/2
+</span></span><span class="line"><span class="cl">[ASW2-Ethernet0/0/2]port link-type access 
+</span></span><span class="line"><span class="cl">[ASW2-Ethernet0/0/2]port default vlan 20
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[ASW2]int e0/0/3
+</span></span><span class="line"><span class="cl">[ASW2-Ethernet0/0/3]port link-type trunk 
+</span></span><span class="line"><span class="cl">[ASW2-Ethernet0/0/3]port trunk allow-pass vlan all
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>DSW1</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[DSW1]vlan batch 10 20
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[DSW1]int g0/0/1
+</span></span><span class="line"><span class="cl">[DSW1-GigabitEthernet0/0/1]port link-type trunk 
+</span></span><span class="line"><span class="cl">[DSW1-GigabitEthernet0/0/1]port trunk allow-pass vlan all 
+</span></span><span class="line"><span class="cl">[DSW1-GigabitEthernet0/0/1]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[DSW1]int g0/0/4	
+</span></span><span class="line"><span class="cl">[DSW1-GigabitEthernet0/0/4]port link-type  trunk 
+</span></span><span class="line"><span class="cl">[DSW1-GigabitEthernet0/0/4]port trunk allow-pass vlan all 
+</span></span><span class="line"><span class="cl">[DSW1-GigabitEthernet0/0/4]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[DSW1]int Eth-Trunk 1
+</span></span><span class="line"><span class="cl">[DSW1-Eth-Trunk1]port link-type  trunk 	
+</span></span><span class="line"><span class="cl">[DSW1-Eth-Trunk1]port trunk allow-pass vlan all 
+</span></span><span class="line"><span class="cl">[DSW1-Eth-Trunk1]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[DSW1]int g0/0/2
+</span></span><span class="line"><span class="cl">[DSW1-GigabitEthernet0/0/2]eth-trunk 1
+</span></span><span class="line"><span class="cl">[DSW1-GigabitEthernet0/0/2]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[DSW1]int g0/0/3
+</span></span><span class="line"><span class="cl">[DSW1-GigabitEthernet0/0/3]eth-trunk 1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>DSW2</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[DSW2]vlan batch 10 20
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[DSW2]int g0/0/1
+</span></span><span class="line"><span class="cl">[DSW2-GigabitEthernet0/0/1]port link-type trunk 
+</span></span><span class="line"><span class="cl">[DSW2-GigabitEthernet0/0/1]port trunk allow-pass vlan all 
+</span></span><span class="line"><span class="cl">[DSW2-GigabitEthernet0/0/1]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[DSW2]int g0/0/4	
+</span></span><span class="line"><span class="cl">[DSW2-GigabitEthernet0/0/4]port link-type  trunk 
+</span></span><span class="line"><span class="cl">[DSW2-GigabitEthernet0/0/4]port trunk allow-pass vlan all 
+</span></span><span class="line"><span class="cl">[DSW2-GigabitEthernet0/0/4]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[DSW2]int Eth-Trunk 1
+</span></span><span class="line"><span class="cl">[DSW2-Eth-Trunk1]port link-type  trunk 	
+</span></span><span class="line"><span class="cl">[DSW2-Eth-Trunk1]port trunk allow-pass vlan all 
+</span></span><span class="line"><span class="cl">[DSW2-Eth-Trunk1]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[DSW2]int g0/0/2
+</span></span><span class="line"><span class="cl">[DSW2-GigabitEthernet0/0/2]eth-trunk 1
+</span></span><span class="line"><span class="cl">[DSW2-GigabitEthernet0/0/2]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[DSW2]int g0/0/3
+</span></span><span class="line"><span class="cl">[DSW2-GigabitEthernet0/0/3]eth-trunk 1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="在r1r2上完成相应配置并启用动态地址池实现各个主机可以获取到地址并且能够相互通信" class="headerLink">
+    <a href="#%e5%9c%a8r1r2%e4%b8%8a%e5%ae%8c%e6%88%90%e7%9b%b8%e5%ba%94%e9%85%8d%e7%bd%ae%e5%b9%b6%e5%90%af%e7%94%a8%e5%8a%a8%e6%80%81%e5%9c%b0%e5%9d%80%e6%b1%a0%e5%ae%9e%e7%8e%b0%e5%90%84%e4%b8%aa%e4%b8%bb%e6%9c%ba%e5%8f%af%e4%bb%a5%e8%8e%b7%e5%8f%96%e5%88%b0%e5%9c%b0%e5%9d%80%e5%b9%b6%e4%b8%94%e8%83%bd%e5%a4%9f%e7%9b%b8%e4%ba%92%e9%80%9a%e4%bf%a1" class="header-mark"></a>在R1、R2上完成相应配置，并启用动态地址池，实现各个主机可以获取到地址并且能够相互通信</h4><ul>
+<li>R1</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R1]ip pool vlan10
+</span></span><span class="line"><span class="cl">[R1-ip-pool-vlan10]network 192.168.10.0 mask 24
+</span></span><span class="line"><span class="cl">[R1-ip-pool-vlan10]gateway-list 192.168.10.254
+</span></span><span class="line"><span class="cl">[R1-ip-pool-vlan10]dns-list 8.8.8.8
+</span></span><span class="line"><span class="cl">[R1-ip-pool-vlan10]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[R1]ip pool vlan20
+</span></span><span class="line"><span class="cl">[R1-ip-pool-vlan20]network 192.168.20.0 mask 24
+</span></span><span class="line"><span class="cl">[R1-ip-pool-vlan20]gateway-list 192.168.20.254
+</span></span><span class="line"><span class="cl">[R1-ip-pool-vlan20]dns-list 8.8.8.8
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>R2</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R2]ip pool vlan10
+</span></span><span class="line"><span class="cl">[R2-ip-pool-vlan10]network 192.168.10.0 mask 24
+</span></span><span class="line"><span class="cl">[R2-ip-pool-vlan10]gateway-list 192.168.10.254
+</span></span><span class="line"><span class="cl">[R2-ip-pool-vlan10]dns-list 8.8.8.8
+</span></span><span class="line"><span class="cl">[R2-ip-pool-vlan10]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[R2]ip pool vlan20
+</span></span><span class="line"><span class="cl">[R2-ip-pool-vlan20]network 192.168.20.0 mask 24
+</span></span><span class="line"><span class="cl">[R2-ip-pool-vlan20]gateway-list 192.168.20.254
+</span></span><span class="line"><span class="cl">[R2-ip-pool-vlan20]dns-list 8.8.8.8
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="开启虚拟网关冗余协议r1作为pc1与pc3局域网的主路由器r2作为pc2与pc4局域网的主路由器" class="headerLink">
+    <a href="#%e5%bc%80%e5%90%af%e8%99%9a%e6%8b%9f%e7%bd%91%e5%85%b3%e5%86%97%e4%bd%99%e5%8d%8f%e8%ae%aer1%e4%bd%9c%e4%b8%bapc1%e4%b8%8epc3%e5%b1%80%e5%9f%9f%e7%bd%91%e7%9a%84%e4%b8%bb%e8%b7%af%e7%94%b1%e5%99%a8r2%e4%bd%9c%e4%b8%bapc2%e4%b8%8epc4%e5%b1%80%e5%9f%9f%e7%bd%91%e7%9a%84%e4%b8%bb%e8%b7%af%e7%94%b1%e5%99%a8" class="header-mark"></a>开启虚拟网关冗余协议，R1作为PC1与PC3局域网的主路由器，R2作为PC2与PC4局域网的主路由器</h4><ul>
+<li>R1</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R1]int g0/0/0.10
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.10]dot1q termination vid 10
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.10]ip address 192.168.10.253 24
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.10]arp broadcast enable 
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.10]vrrp vrid 10 virtual-ip 192.168.10.254
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.10]qui
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[R1]int g0/0/0.20
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.20]dot1q termination vid 20
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.20]ip address 192.168.20.252 24
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.20]arp broadcast enable 
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.20]vrrp vrid 20 virtual-ip 192.168.20.254
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.20]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[R1]dhcp enable 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[R1]int g0/0/0.10	
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.10]dhcp select global 
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.10]qui
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[R1]int g0/0/0.20
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.20]dhcp select  global 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>R2</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R2]int g0/0/0.10
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0.10]dot1q termination vid 10
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0.10]ip address 192.168.10.252 24
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0.10]arp broadcast enable 
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0.10]vrrp vrid 10 virtual-ip 192.168.10.254
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0.10]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[R2]int g0/0/0.20
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0.20]dot1q termination vid 20
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0.20]ip address 192.168.20.253 24
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0.20]arp broadcast enable 
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0.20]vrrp vrid 20 virtual-ip 192.168.20.254
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0.20]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[R2]dhcp enable 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[R2]int g0/0/0.10	
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0.10]dhcp select global 
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0.10]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[R2]int g0/0/0.20
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0.20]dhcp select  global 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="合理划分r1r2r3之间的地址全网启用路由协议实现主机与r3之间的通信" class="headerLink">
+    <a href="#%e5%90%88%e7%90%86%e5%88%92%e5%88%86r1r2r3%e4%b9%8b%e9%97%b4%e7%9a%84%e5%9c%b0%e5%9d%80%e5%85%a8%e7%bd%91%e5%90%af%e7%94%a8%e8%b7%af%e7%94%b1%e5%8d%8f%e8%ae%ae%e5%ae%9e%e7%8e%b0%e4%b8%bb%e6%9c%ba%e4%b8%8er3%e4%b9%8b%e9%97%b4%e7%9a%84%e9%80%9a%e4%bf%a1" class="header-mark"></a>合理划分R1,R2,R3之间的地址，全网启用路由协议，实现主机与R3之间的通信</h4><ul>
+<li>R1</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R1]int g0/0/1
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/1]ip address 172.16.13.1 24
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/1]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[R1]ospf 110 router-id 1.1.1.1
+</span></span><span class="line"><span class="cl">[R1-ospf-110]area 0
+</span></span><span class="line"><span class="cl">[R1-ospf-110-area-0.0.0.0]network 172.16.13.0 0.0.0.255
+</span></span><span class="line"><span class="cl">[R1-ospf-110-area-0.0.0.0]network 192.168.10.0 0.0.0.255
+</span></span><span class="line"><span class="cl">[R1-ospf-110-area-0.0.0.0]network 192.168.20.0 0.0.0.255
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>R3</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R3]ospf 110
+</span></span><span class="line"><span class="cl">[R3-ospf-110]area 0
+</span></span><span class="line"><span class="cl">[R3-ospf-110-area-0.0.0.0]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[R3]int g0/0/0
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/0]ip add 172.16.13.2 24
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/0]ospf enable 110 area 0
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/0]quit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[R3]int g0/0/1
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/1]ip add 172.16.23.2 24
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/1]ospf enable 110 area 0
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/1]quit
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="分析此时pc2能否获取到动态地址并进行检验" class="headerLink">
+    <a href="#%e5%88%86%e6%9e%90%e6%ad%a4%e6%97%b6pc2%e8%83%bd%e5%90%a6%e8%8e%b7%e5%8f%96%e5%88%b0%e5%8a%a8%e6%80%81%e5%9c%b0%e5%9d%80%e5%b9%b6%e8%bf%9b%e8%a1%8c%e6%a3%80%e9%aa%8c" class="header-mark"></a>分析此时PC2能否获取到动态地址，并进行检验</h4><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/65178d79c458853aef3694fc.jpg" title="https://pic.imgdb.cn/item/65178d79c458853aef3694fc.jpg" data-thumbnail="https://pic.imgdb.cn/item/65178d79c458853aef3694fc.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/65178d79c458853aef3694fc.jpg"
+            srcset="https://pic.imgdb.cn/item/65178d79c458853aef3694fc.jpg, https://pic.imgdb.cn/item/65178d79c458853aef3694fc.jpg 1.5x, https://pic.imgdb.cn/item/65178d79c458853aef3694fc.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/65178d79c458853aef3694fc.jpg">
+    </a></figure></p>
+<h4 id="关闭r3的master接口观察日志信息分析此时网络环境是否正常" class="headerLink">
+    <a href="#%e5%85%b3%e9%97%adr3%e7%9a%84master%e6%8e%a5%e5%8f%a3%e8%a7%82%e5%af%9f%e6%97%a5%e5%bf%97%e4%bf%a1%e6%81%af%e5%88%86%e6%9e%90%e6%ad%a4%e6%97%b6%e7%bd%91%e7%bb%9c%e7%8e%af%e5%a2%83%e6%98%af%e5%90%a6%e6%ad%a3%e5%b8%b8" class="header-mark"></a>关闭R3的Master接口，观察日志信息，分析此时网络环境是否正常</h4><ul>
+<li>R3</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[AR3]int g0/0/1.20
+</span></span><span class="line"><span class="cl">[AR3-GigabitEthernet0/0/1.20]shutdown
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8Crip%E5%8D%8F%E8%AE%AE-ospf%E5%8D%8F%E8%AE%AE/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E5%AE%9E%E9%AA%8C/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

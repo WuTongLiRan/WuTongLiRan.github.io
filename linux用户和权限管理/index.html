@@ -1,0 +1,734 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="Linux用户和权限管理 用户组Group 组ID→Group ID→GID root用户组：GID=0 伪用户组：GID=1-999（CentOS 7" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/linux%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Linux用户和权限管理 用户组Group 组ID→Group ID→GID root用户组：GID=0 伪用户组：GID=1-999（CentOS 7"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/linux%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" /><link rel="prev" href="/linux%E7%B3%BB%E7%BB%9F%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" /><link rel="next" href="/linux%E6%9F%A5%E7%9C%8B%E5%92%8C%E5%A4%84%E7%90%86%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/linux%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86\/"
+        },"genre": "posts","wordcount":  3844 ,
+        "url": "\/linux%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3844 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#用户组group">用户组Group</a>
+      <ul>
+        <li><a href="#组idgroup-idgid">组ID→Group ID→GID</a></li>
+      </ul>
+    </li>
+    <li><a href="#用户user">用户User</a>
+      <ul>
+        <li><a href="#用户iduser-iduid">用户ID→User ID→UID</a></li>
+      </ul>
+    </li>
+    <li><a href="#用户管理相关文件">用户管理相关文件</a>
+      <ul>
+        <li><a href="#etcgroup">/etc/group</a>
+          <ul>
+            <li><a href="#影子组文件">影子组文件</a></li>
+          </ul>
+        </li>
+        <li><a href="#etcpasswd">/etc/passwd</a>
+          <ul>
+            <li><a href="#影子文件">影子文件</a></li>
+          </ul>
+        </li>
+        <li><a href="#密码格式">密码格式</a></li>
+        <li><a href="#etcsudoers">/etc/sudoers</a></li>
+      </ul>
+    </li>
+    <li><a href="#用户管理基本命令">用户管理基本命令</a></li>
+    <li><a href="#文件和目录归属">文件和目录归属</a></li>
+    <li><a href="#文件和目录权限">文件和目录权限</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="linux用户和权限管理" class="headerLink">
+    <a href="#linux%e7%94%a8%e6%88%b7%e5%92%8c%e6%9d%83%e9%99%90%e7%ae%a1%e7%90%86" class="header-mark"></a>Linux用户和权限管理</h1><h2 id="用户组group" class="headerLink">
+    <a href="#%e7%94%a8%e6%88%b7%e7%bb%84group" class="header-mark"></a>用户组Group</h2><h3 id="组idgroup-idgid" class="headerLink">
+    <a href="#%e7%bb%84idgroup-idgid" class="header-mark"></a>组ID→Group ID→GID</h3><ul>
+<li>root用户组：GID=0</li>
+<li>伪用户组：GID=1-999（CentOS 7）</li>
+<li>普通用户组：GID=1000-65535</li>
+</ul>
+<p>查看全部用户组</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cat /etc/group  
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看用户的所属组</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">groups
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>添加用户组</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">groupadd security
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>删除用户组</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">groupdel security
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="用户user" class="headerLink">
+    <a href="#%e7%94%a8%e6%88%b7user" class="header-mark"></a>用户User</h2><h3 id="用户iduser-iduid" class="headerLink">
+    <a href="#%e7%94%a8%e6%88%b7iduser-iduid" class="header-mark"></a>用户ID→User ID→UID</h3><ul>
+<li>root用户组：UID=0</li>
+<li>程序用户组（系统用户组）：UID=1-999（CentOS 7）</li>
+<li>普通用户组：UID=1000-65535</li>
+</ul>
+<p>查看全部用户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cat /etc/passwd
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>添加用户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">useradd ...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改用户密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">passwd ...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>删除用户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">userdel ...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改用户信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">usermod ...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="用户管理相关文件" class="headerLink">
+    <a href="#%e7%94%a8%e6%88%b7%e7%ae%a1%e7%90%86%e7%9b%b8%e5%85%b3%e6%96%87%e4%bb%b6" class="header-mark"></a>用户管理相关文件</h2><h3 id="etcgroup" class="headerLink">
+    <a href="#etcgroup" class="header-mark"></a>/etc/group</h3><p><strong>用于存储用户组（Group）的信息</strong></p>
+<p><strong>内容格式：组名:组密码:GID:用户列表</strong></p>
+<ol>
+<li>组名（Group Name）：表示组的名称，用于标识组的身份。</li>
+<li>组密码（Group Password）：在早期的UNIX系统中，组密码是以明文形式存储在这个字段中，但在现代的Linux系统中，通常是以占位符或加密的形式表示。实际的组密码信息现在通常存储在<code>/etc/gshadow</code>文件中。</li>
+<li>组ID（Group ID，GID）：是一个唯一的数字标识符，用于识别组。每个组在系统中都有一个独特的GID。</li>
+<li>用户列表（User List）：包含属于该组的用户的用户名列表。这些用户名之间使用逗号（<code>,</code>）进行分隔。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a8aa8c1ddac507ccdb0eb2.jpg" title="https://pic.imgdb.cn/item/64a8aa8c1ddac507ccdb0eb2.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a8aa8c1ddac507ccdb0eb2.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a8aa8c1ddac507ccdb0eb2.jpg"
+            srcset="https://pic.imgdb.cn/item/64a8aa8c1ddac507ccdb0eb2.jpg, https://pic.imgdb.cn/item/64a8aa8c1ddac507ccdb0eb2.jpg 1.5x, https://pic.imgdb.cn/item/64a8aa8c1ddac507ccdb0eb2.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a8aa8c1ddac507ccdb0eb2.jpg">
+    </a></figure></p>
+<h4 id="影子组文件" class="headerLink">
+    <a href="#%e5%bd%b1%e5%ad%90%e7%bb%84%e6%96%87%e4%bb%b6" class="header-mark"></a>影子组文件</h4><p>查看影子组文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cat /etc/gshadow
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>格式：组名：密码：组管理员：组附加用户列表</strong></p>
+<blockquote>
+<p>在Linux系统中，与影子文件类似，还存在一个影子组文件（shadow group file）的概念，它通常是<code>/etc/gshadow</code>文件。影子组文件用于存储组信息的加密版本，提供对组信息的额外安全性。</p>
+<p>与影子文件类似，影子组文件的目的是将敏感的组信息从普通用户可读取的<code>/etc/group</code>文件中分离出来，以增加系统的安全性。</p>
+<p>影子组文件包含了组的加密密码，这些密码通常被用于对特定组执行特殊操作的权限验证。与影子文件一样，影子组文件也只能由系统管理员（root用户）访问，并具有更高的安全级别。普通用户无法直接读取或修改影子组文件。</p>
+<p>通过使用影子组文件，系统管理员可以确保只有经过授权的用户或进程能够对组信息进行更改或访问，从而增加系统的安全性和灵活性。</p>
+</blockquote>
+<h3 id="etcpasswd" class="headerLink">
+    <a href="#etcpasswd" class="header-mark"></a>/etc/passwd</h3><p><strong>用于存储用户账户的基本信息</strong></p>
+<p><strong>内容格式：用户名:密码:UID:GID:全名:home路径:shell工具</strong></p>
+<ol>
+<li>用户名（Username）：表示用户的登录名。</li>
+<li>密码（Password）：在早期的UNIX系统中，密码是以明文形式存储在这个字段中，但在现代的Linux系统中，通常是以占位符或加密的形式表示。实际的密码信息现在通常存储在<code>/etc/shadow</code>文件中。</li>
+<li>用户ID（User ID，UID）：是一个唯一的数字标识符，用于识别用户。每个用户在系统中都有一个独特的UID。</li>
+<li>组ID（Group ID，GID）：表示用户所属的主要组的ID。这个ID对应于<code>/etc/group</code>文件中的一个组。</li>
+<li>全名（Full name）：是用户的真实姓名或描述性的标识，可以包含任意文本信息。</li>
+<li>家目录（Home directory）：表示用户的主目录或工作目录的路径。当用户登录时，会自动切换到这个目录。</li>
+<li>Shell工具（Shell）：指定用户登录后默认使用的命令行解释器或shell。它定义了用户在终端中输入命令时使用的交互式环境。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a8ac6f1ddac507ccdd2cac.jpg" title="https://pic.imgdb.cn/item/64a8ac6f1ddac507ccdd2cac.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a8ac6f1ddac507ccdd2cac.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a8ac6f1ddac507ccdd2cac.jpg"
+            srcset="https://pic.imgdb.cn/item/64a8ac6f1ddac507ccdd2cac.jpg, https://pic.imgdb.cn/item/64a8ac6f1ddac507ccdd2cac.jpg 1.5x, https://pic.imgdb.cn/item/64a8ac6f1ddac507ccdd2cac.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a8ac6f1ddac507ccdd2cac.jpg">
+    </a></figure></p>
+<h4 id="影子文件" class="headerLink">
+    <a href="#%e5%bd%b1%e5%ad%90%e6%96%87%e4%bb%b6" class="header-mark"></a>影子文件</h4><p>查看影子文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cat /etc/shadow
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>格式：用户名:加密密码:上次修改密码的日期:最小修改间隔时间:密密码有效期:密码需要变更前的警告天数:密码过期后的宽限天数:账号失效时间:保留字段</strong></p>
+<ol>
+<li>用户名（Username）：表示用户的登录名。</li>
+<li>加密密码（Password）：存储用户的加密密码，通常以哈希值的形式呈现，而不是明文密码。</li>
+<li>上次修改密码的日期（Last password change）：表示上次用户更改密码的日期，通常以从特定日期（例如1970年1月1日）到更改日期的天数计算。</li>
+<li>最小修改间隔时间（Minimum password change interval）：要求用户在此字段指定的天数之后才能更改密码。</li>
+<li>密码有效期（Password expiration）：表示密码在何时过期，以从特定日期（例如1970年1月1日）到过期日期的天数计算。过期的密码需要用户在下次登录时强制更改。</li>
+<li>密码需要变更前的警告天数（Password expiration warning）：在密码过期之前的天数，系统会向用户发出提醒密码即将过期的警告。</li>
+<li>密码过期后的宽限天数（Password expiration grace period）：密码过期后的宽限期，在此期间内用户仍然可以使用过期的密码登录系统。</li>
+<li>账号失效时间（Account expiration）：表示账户在何时过期，以从特定日期（例如1970年1月1日）到过期日期的天数计算。过期的账户将被禁用。</li>
+<li>保留字段（Reserved field）：该字段目前没有使用，保留供将来使用。</li>
+</ol>
+<blockquote>
+<p>在Linux系统中，影子文件（shadow file）是用于存储用户的加密密码的文件。它通常是<code>/etc/shadow</code>文件。影子文件的目的是提高系统的安全性，通过将密码信息从普通的用户可读取的<code>/etc/passwd</code>文件中分离出来。</p>
+<p>在早期的UNIX系统中，密码是以明文形式存储在<code>/etc/passwd</code>文件中，这使得用户的密码信息容易受到攻击和滥用。为了解决这个安全问题，影子文件的概念被引入。</p>
+<p>影子文件只能由系统管理员（root用户）访问，并且具有更高的安全级别。它包含了加密后的用户密码、密码过期信息、密码策略等。普通用户无法直接读取或修改影子文件。</p>
+<p>当用户尝试登录系统时，系统会将用户提供的密码与影子文件中存储的加密密码进行比较验证。如果密码匹配成功，用户将被授权访问系统。</p>
+<p>通过使用影子文件，系统管理员可以更好地保护用户的密码信息，减少潜在的安全风险。</p>
+</blockquote>
+<h3 id="密码格式" class="headerLink">
+    <a href="#%e5%af%86%e7%a0%81%e6%a0%bc%e5%bc%8f" class="header-mark"></a>密码格式</h3><p>生成使用MD5算法加密的密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">openssl passwd -1 -salt admin 123456
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>openssl passwd</code>是一个命令行工具，用于生成密码哈希值。</li>
+<li><code>-1</code>选项表示使用MD5算法进行哈希。</li>
+<li><code>-salt admin</code>选项指定盐值为admin，盐值是用于增加哈希强度和防止彩虹表攻击的随机字符串。</li>
+<li><code>123456</code>是要进行哈希的原始密码。</li>
+</ul>
+<p>**/etc/shadow里的密码格式：$id$salt$encrypted **</p>
+<p>eg. <code>$1$admin$LClYcRe.ee8dQwgrFc5nz.  </code></p>
+<table>
+<thead>
+<tr>
+<th>数字</th>
+<th>加密方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1</code></td>
+<td>MD5</td>
+</tr>
+<tr>
+<td><code>2a </code></td>
+<td>Blowfish (某些Linux发行版)</td>
+</tr>
+<tr>
+<td><code>5 </code></td>
+<td>SHA-256</td>
+</tr>
+<tr>
+<td><code>6 </code></td>
+<td>SHA-512</td>
+</tr>
+</tbody>
+</table>
+<h3 id="etcsudoers" class="headerLink">
+    <a href="#etcsudoers" class="header-mark"></a>/etc/sudoers</h3><p><strong>用于定义哪些用户和用户组具有使用sudo命令执行特权操作的权限</strong></p>
+<p><strong>内容格式：<code>user/host=(runas) command</code></strong></p>
+<ul>
+<li><code>user</code>：指定允许执行特权操作的用户或用户组。</li>
+<li><code>host</code>：指定允许执行特权操作的主机或主机组。</li>
+<li><code>runas</code>：指定以哪个用户或用户组的身份执行特权操作。</li>
+<li><code>command</code>：指定允许执行的特权命令或命令组。</li>
+</ul>
+<p>eg.<code>kali ALL=(ALL) NOPASSWD: /bin/useradd  </code></p>
+<p>sudo命令允许普通用户以超级用户或其他特权用户的身份执行命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo command（要执行的命令）
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改配置文件命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">visudo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="用户管理基本命令" class="headerLink">
+    <a href="#%e7%94%a8%e6%88%b7%e7%ae%a1%e7%90%86%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4" class="header-mark"></a>用户管理基本命令</h2><p>查询用户账号身份标识</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">id
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查询用户账号的登录属性</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">finger
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查询当前主机的用户登录情况</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">w
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">who
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查询系统当前在线的用户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">users
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看用户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">whoami
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>切换用户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">su
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="文件和目录归属" class="headerLink">
+    <a href="#%e6%96%87%e4%bb%b6%e5%92%8c%e7%9b%ae%e5%bd%95%e5%bd%92%e5%b1%9e" class="header-mark"></a>文件和目录归属</h2><p><code>chown</code>命令用于修改文件或目录的所有者（Owner）和所属组（Group）信息</p>
+<p>chown——change owner</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chown [options] owner[:group] file(s)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>options</code>：表示可选的选项，可以用于更改chown命令的行为。常见选项包括-R（递归修改所有子目录和文件）和-v（显示详细操作信息）等。</li>
+<li><code>owner</code>：表示要设置的新所有者的用户名或用户ID（UID）。</li>
+<li><code>group</code>：表示要设置的新所属组的组名或组ID（GID）。如果省略该部分，将保持当前的所属组不变。</li>
+<li><code>file(s)</code>：表示要修改所有者和所属组的文件或目录列表。</li>
+</ul>
+<p>示例：</p>
+<ol>
+<li>
+<p>修改文件所有者：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chown user1 file.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将文件&quot;file.txt&quot;的所有者修改为&quot;user1&quot;。</p>
+</li>
+<li>
+<p>修改目录所有者和所属组：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chown user2:group2 dir/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将目录&quot;dir/&ldquo;的所有者修改为&quot;user2&rdquo;，所属组修改为&quot;group2&quot;。</p>
+</li>
+<li>
+<p>递归修改目录及其所有子目录和文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chown -R user3:group3 dir/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用&quot;-R&quot;选项，将目录&quot;dir/&ldquo;及其所有子目录和文件的所有者修改为&quot;user3&rdquo;，所属组修改为&quot;group3&quot;。</p>
+</li>
+<li>
+<p>修改多个文件的所有者：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chown user4 file1.txt file2.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将多个文件&quot;file1.txt&quot;和&quot;file2.txt&quot;的所有者修改为&quot;user4&quot;。</p>
+</li>
+</ol>
+<h2 id="文件和目录权限" class="headerLink">
+    <a href="#%e6%96%87%e4%bb%b6%e5%92%8c%e7%9b%ae%e5%bd%95%e6%9d%83%e9%99%90" class="header-mark"></a>文件和目录权限</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a8e5e81ddac507cc4d61a6.jpg" title="https://pic.imgdb.cn/item/64a8e5e81ddac507cc4d61a6.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a8e5e81ddac507cc4d61a6.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a8e5e81ddac507cc4d61a6.jpg"
+            srcset="https://pic.imgdb.cn/item/64a8e5e81ddac507cc4d61a6.jpg, https://pic.imgdb.cn/item/64a8e5e81ddac507cc4d61a6.jpg 1.5x, https://pic.imgdb.cn/item/64a8e5e81ddac507cc4d61a6.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a8e5e81ddac507cc4d61a6.jpg">
+    </a></figure></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a8e5911ddac507cc4c9a24.jpg" title="https://pic.imgdb.cn/item/64a8e5911ddac507cc4c9a24.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a8e5911ddac507cc4c9a24.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a8e5911ddac507cc4c9a24.jpg"
+            srcset="https://pic.imgdb.cn/item/64a8e5911ddac507cc4c9a24.jpg, https://pic.imgdb.cn/item/64a8e5911ddac507cc4c9a24.jpg 1.5x, https://pic.imgdb.cn/item/64a8e5911ddac507cc4c9a24.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a8e5911ddac507cc4c9a24.jpg">
+    </a></figure></p>
+<p><code>chmod</code>命令用于修改文件或目录的权限</p>
+<p>全拼：change mode</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chmod [options] mode file(s)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>options</code>：表示可选的选项，可以用于更改chmod命令的行为。常见选项包括-R（递归修改所有子目录和文件）和-v（显示详细操作信息）等。</li>
+<li><code>mode</code>：表示要设置的新权限模式。可以使用数字形式（如777、644）或符号形式（如u+rwx、g-w）来指定权限。后续会详细解释权限模式的表示方法。</li>
+<li><code>file(s)</code>：表示要修改权限的文件或目录列表。</li>
+</ul>
+<p>示例：</p>
+<ul>
+<li>
+<p>添加组用户的写权限。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chmod g+w test.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>删除其他用户的所有权限。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chmod o= test.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>使得所有用户都没有写权限。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chmod a-w test.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>当前用户具有所有权限，组用户有读写权限，其他用户只有读权限。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chmod u=rwx, g=rw, o=r test.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>等价的八进制数表示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chmod 764 test.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>将目录以及目录下的文件都设置为所有用户拥有读写权限。
+注意，使用&rsquo;-R&rsquo;选项一定要保留当前用户的执行和读取权限，否则会报错！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chmod -R a=rw testdir/
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>根据其他文件的权限设置文件权限。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chmod --reference=1.log test.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/linux%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/linux%E7%B3%BB%E7%BB%9F%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/linux%E6%9F%A5%E7%9C%8B%E5%92%8C%E5%A4%84%E7%90%86%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

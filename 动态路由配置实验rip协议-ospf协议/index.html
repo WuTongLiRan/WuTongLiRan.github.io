@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="动态路由配置实验—RIP协议 &amp; OSPF协议​ 实验拓扑 ​ 实验步骤 配置每台PC的IP、子网掩码、网关。 配置路由器(以Router1的配置为例):" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8Crip%E5%8D%8F%E8%AE%AE-ospf%E5%8D%8F%E8%AE%AE/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="动态路由配置实验—RIP协议 &amp; OSPF协议​ 实验拓扑 ​ 实验步骤 配置每台PC的IP、子网掩码、网关。 配置路由器(以Router1的配置为例):"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8Crip%E5%8D%8F%E8%AE%AE-ospf%E5%8D%8F%E8%AE%AE/" /><link rel="prev" href="/%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C/" /><link rel="next" href="/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8Crip%E5%8D%8F%E8%AE%AE-ospf%E5%8D%8F%E8%AE%AE\/"
+        },"genre": "posts","wordcount":  791 ,
+        "url": "\/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8Crip%E5%8D%8F%E8%AE%AE-ospf%E5%8D%8F%E8%AE%AE\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 791 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#实验拓扑">实验拓扑</a></li>
+    <li><a href="#实验步骤">实验步骤</a></li>
+    <li><a href="#实验验证">实验验证</a></li>
+    <li><a href="#附件">附件</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="动态路由配置实验rip协议--ospf协议" class="headerLink">
+    <a href="#%e5%8a%a8%e6%80%81%e8%b7%af%e7%94%b1%e9%85%8d%e7%bd%ae%e5%ae%9e%e9%aa%8crip%e5%8d%8f%e8%ae%ae--ospf%e5%8d%8f%e8%ae%ae" class="header-mark"></a>动态路由配置实验—RIP协议 &amp; OSPF协议</h1><p>​</p>
+<h2 id="实验拓扑" class="headerLink">
+    <a href="#%e5%ae%9e%e9%aa%8c%e6%8b%93%e6%89%91" class="header-mark"></a>实验拓扑</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64b7d85d1ddac507cc570d6e.jpg" title="https://pic.imgdb.cn/item/64b7d85d1ddac507cc570d6e.jpg" data-thumbnail="https://pic.imgdb.cn/item/64b7d85d1ddac507cc570d6e.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64b7d85d1ddac507cc570d6e.jpg"
+            srcset="https://pic.imgdb.cn/item/64b7d85d1ddac507cc570d6e.jpg, https://pic.imgdb.cn/item/64b7d85d1ddac507cc570d6e.jpg 1.5x, https://pic.imgdb.cn/item/64b7d85d1ddac507cc570d6e.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64b7d85d1ddac507cc570d6e.jpg">
+    </a></figure></p>
+<p>​</p>
+<h2 id="实验步骤" class="headerLink">
+    <a href="#%e5%ae%9e%e9%aa%8c%e6%ad%a5%e9%aa%a4" class="header-mark"></a>实验步骤</h2><ol>
+<li>
+<p>配置每台PC的<strong>IP、子网掩码、网关。</strong></p>
+</li>
+<li>
+<p>配置路由器(以Router1的配置为例):
+<img src="https://pic.imgdb.cn/item/64b7ce361ddac507cc31a91c.jpg" style="zoom:67%;" />
+<img src="https://pic.imgdb.cn/item/64b7cefb1ddac507cc347287.jpg" style="zoom:67%;" /></p>
+</li>
+<li>
+<p>配置每个路由器的接口地址 &amp; 设置 DCE 的时钟为 64000：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">//以Router1的配置为例，其他的Router配置方法一样(接口和IP看拓扑图)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Router&gt;enable                            // 进入特权模式
+</span></span><span class="line"><span class="cl">Router#configure terminal                // 进入全局配置模式
+</span></span><span class="line"><span class="cl">Router(config)#interface FastEthernet 0/0   // 进入 FastEthernet 0/0 接口配置模式
+</span></span><span class="line"><span class="cl">Router(config-if)#ip address 192.168.5.1 255.255.255.0   // 配置接口 IP 地址
+</span></span><span class="line"><span class="cl">Router(config-if)#no shutdown             // 打开接口
+</span></span><span class="line"><span class="cl">Router(config-if)#exit                    // 退出接口配置模式
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Router(config)#interface serial 0/1/0     // 进入序列接口 0/1/0 配置模式
+</span></span><span class="line"><span class="cl">Router(config-if)#ip address 192.168.1.1 255.255.255.0   // 配置接口 IP 地址
+</span></span><span class="line"><span class="cl">Router(config-if)#clock rate 64000        // 设置时钟速率(该命令在DCE设备上使用)
+</span></span><span class="line"><span class="cl">Router(config-if)#no shutdown             // 打开接口
+</span></span><span class="line"><span class="cl">Router(config-if)#end                     // 退出到特权模式
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Router#write                     // 保存配置
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>路由器配置(RIP协议)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">//以Router1的配置为例，其他的Router配置方法一样(直连网段看拓扑图)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Router&gt;enable                                          // 进入特权模式
+</span></span><span class="line"><span class="cl">Router#configure terminal                              // 进入全局配置模式
+</span></span><span class="line"><span class="cl">Router(config)#router rip                              // 进入 RIP 路由器配置模式
+</span></span><span class="line"><span class="cl">Router(config-router)#version 2                        // 配置 RIP 版本为 2
+</span></span><span class="line"><span class="cl">Router(config-router)#no auto-summary                  // 禁用自动汇总
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//写入直连网段,会自己补全掩码(不同Router的直连网段不同，配置时做对应修改)
+</span></span><span class="line"><span class="cl">Router(config-router)#network 192.168.5.0             // 配置 RIP 路由器接口 192.168.5.0/24
+</span></span><span class="line"><span class="cl">Router(config-router)#network 192.168.1.0             // 配置 RIP 路由器接口 192.168.1.0/24
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Router(config-router)#end                              // 退出 RIP 路由器配置模式
+</span></span><span class="line"><span class="cl">Router#write                                          // 保存配置到启动配置
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>路由器配置(OSPF协议)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">//以Router1的配置为例，其他的Router配置方法一样(直连网段看拓扑图)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Router&gt;enable                  // 进入特权模式
+</span></span><span class="line"><span class="cl">Router#configure terminal      // 进入全局配置模式
+</span></span><span class="line"><span class="cl">Router(config)#router ospf 1   // 开始配置 OSPF 进程 1(每个局域网的进程数要一样)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//写入直连网段、掩码、区域(不同Router的直连网段不同，配置时做对应修改)
+</span></span><span class="line"><span class="cl">Router(config-router)#network 192.168.1.0 255.255.255.0 area 0   // 将 192.168.1.0/24 网络加入到 OSPF 进程 1 的区域 0(一般是选择骨干区域:0)
+</span></span><span class="line"><span class="cl">Router(config-router)#network 192.168.5.0 255.255.255.0 area 0   // 将 192.168.5.0/24 网络加入到 OSPF 进程 1 的区域 0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Router(config-router)#end                       // 退出 OSPF 配置模式
+</span></span><span class="line"><span class="cl">Router#write                                    // 保存配置
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<p>​</p>
+<h2 id="实验验证" class="headerLink">
+    <a href="#%e5%ae%9e%e9%aa%8c%e9%aa%8c%e8%af%81" class="header-mark"></a>实验验证</h2><p>测试PC0能不能联通PC5：</p>
+<img src="https://pic.imgdb.cn/item/64b9096d1ddac507cce14779.jpg" style="zoom:67%;" />
+<p>​</p>
+<h2 id="附件" class="headerLink">
+    <a href="#%e9%99%84%e4%bb%b6" class="header-mark"></a>附件</h2><ul>
+<li>
+<p><a href="https://wutongliran.lanzoum.com/iHCkc1315p0b" target="_blank" rel="noopener noreferrer">动态路由—RIP.pkt (记得重命名为.pkt)</a></p>
+</li>
+<li>
+<p><a href="https://wutongliran.lanzoum.com/i9Jxo1317ygd" target="_blank" rel="noopener noreferrer">动态路由—OSPF.pkt (记得重命名为.pkt)</a></p>
+</li>
+</ul>
+</div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8Crip%E5%8D%8F%E8%AE%AE-ospf%E5%8D%8F%E8%AE%AE/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

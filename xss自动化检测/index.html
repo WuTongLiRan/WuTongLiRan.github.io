@@ -1,0 +1,502 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="XSS自动化检测 XSSer Kali安装XSSer 1 2 3 git clone https://github.com/epsylon/xsser.git --- 下载XSSer安装包 cd xsser python3 setup.py install --- 安装 ​ 命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/xss%E8%87%AA%E5%8A%A8%E5%8C%96%E6%A3%80%E6%B5%8B/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="XSS自动化检测 XSSer Kali安装XSSer 1 2 3 git clone https://github.com/epsylon/xsser.git --- 下载XSSer安装包 cd xsser python3 setup.py install --- 安装 ​ 命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/xss%E8%87%AA%E5%8A%A8%E5%8C%96%E6%A3%80%E6%B5%8B/" /><link rel="prev" href="/xxe%E6%BC%8F%E6%B4%9E/" /><link rel="next" href="/xss-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/xss%E8%87%AA%E5%8A%A8%E5%8C%96%E6%A3%80%E6%B5%8B\/"
+        },"genre": "posts","wordcount":  2439 ,
+        "url": "\/xss%E8%87%AA%E5%8A%A8%E5%8C%96%E6%A3%80%E6%B5%8B\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2439 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#xsser">XSSer</a>
+      <ul>
+        <li><a href="#kali安装xsser">Kali安装XSSer</a></li>
+        <li><a href="#命令">命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#检测xss漏洞">检测XSS漏洞</a></li>
+    <li><a href="#xsstrike">XSStrike</a>
+      <ul>
+        <li><a href="#kali安装xsser-1">Kali安装XSSer</a></li>
+      </ul>
+    </li>
+    <li><a href="#检测xss漏洞-1">检测XSS漏洞</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="xss自动化检测" class="headerLink">
+    <a href="#xss%e8%87%aa%e5%8a%a8%e5%8c%96%e6%a3%80%e6%b5%8b" class="header-mark"></a>XSS自动化检测</h1><h2 id="xsser" class="headerLink">
+    <a href="#xsser" class="header-mark"></a>XSSer</h2><h3 id="kali安装xsser" class="headerLink">
+    <a href="#kali%e5%ae%89%e8%a3%85xsser" class="header-mark"></a>Kali安装XSSer</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/epsylon/xsser.git --- 下载XSSer安装包
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> xsser
+</span></span><span class="line"><span class="cl">python3 setup.py install --- 安装
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h3 id="命令" class="headerLink">
+    <a href="#%e5%91%bd%e4%bb%a4" class="header-mark"></a>命令</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">（一）、Options:
+</span></span><span class="line"><span class="cl">–version          	   显示程序的版本号
+</span></span><span class="line"><span class="cl">  -h, --help             显示帮助信息
+</span></span><span class="line"><span class="cl">  -s, --statistics 	   显示高级显示输出结果
+</span></span><span class="line"><span class="cl">  -v, --verbose      激活冗余模式输出结果
+</span></span><span class="line"><span class="cl">  --gtk                加载 XSSer GTK 接口
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">（二）、特别的用法:
+</span></span><span class="line"><span class="cl">你可以选择 Vector(s) 和 Bypasser(s) 结合特殊的用法来注入代码：  
+</span></span><span class="line"><span class="cl">–imx=IMX       	   利用XSS代码植入来创建一个假的图象
+</span></span><span class="line"><span class="cl">–fla=FLASH     	  利用XSS代码植入来创建一个假的swf 
+</span></span><span class="line"><span class="cl">–xst=XST XST - Cross Site Tracing (–xst http(s)://host.com)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">（三）、选择目标:
+</span></span><span class="line"><span class="cl">至少有一个选择必须被指定来设置来源以获得目标(s)的url。
+</span></span><span class="line"><span class="cl">-u URL, --url=URL   	 键入目标URL进行分析
+</span></span><span class="line"><span class="cl">-i READFILE         	  从一个文件中读取URL
+</span></span><span class="line"><span class="cl">-d DORK                   利用搜索引擎傻瓜式的搜索URL
+</span></span><span class="line"><span class="cl">–De=DORK_ENGINE    		傻瓜式的利用搜索引擎 (bing, altavista,yahoo, baidu, yandex, youdao, webcrawler, ask, etc.查看 dork.py 文件来核对有效的搜索引擎)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">（四）、 现测HTTP/HTTPS的连接类型:
+</span></span><span class="line"><span class="cl">These options can be used to specify which parameter(s) we want to use
+</span></span><span class="line"><span class="cl">like payload to inject code.   
+</span></span><span class="line"><span class="cl">-g GETDATA            输入一个负荷来进行审计，使用 GET参数 (例如: ‘/menu.php?q=’)
+</span></span><span class="line"><span class="cl">-p POSTDATA         输入一个负荷来进行审计，使用 POST 参数(例如: ‘foo=1&amp;bar=’)
+</span></span><span class="line"><span class="cl">-c CRAWLING         目标URL的爬行数目(s): 1-99999
+</span></span><span class="line"><span class="cl">–Cw=CRAWLER_WIDTH  爬行深度: 1-5
+</span></span><span class="line"><span class="cl">–Cl                            本地目标URL爬行 (默认 TRUE)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">（五）、 配置请求:
+</span></span><span class="line"><span class="cl">这些选项被用来制定如何攻击目标和使用负荷. 你有多重选择:   
+</span></span><span class="line"><span class="cl">–head Send a HEAD request before start a test
+</span></span><span class="line"><span class="cl">–cookie=COOKIE     改变你的HTTP Cookie header
+</span></span><span class="line"><span class="cl">–user-agent=AGENT  改变你的 HTTP User-Agent header (默认 SPOOFED)
+</span></span><span class="line"><span class="cl">–referer=REFERER   使用别的HTTP Referer header (默认 NONE)
+</span></span><span class="line"><span class="cl">–headers=HEADERS   额外的 HTTP headers 换行隔开
+</span></span><span class="line"><span class="cl">–auth-type=ATYPE   HTTP 认证类型 (基本值类型或者摘要)
+</span></span><span class="line"><span class="cl">–auth-cred=ACRED   HTTP 认证证书 (值 name:password)
+</span></span><span class="line"><span class="cl">–proxy=PROXY       使用代理服务器 (tor:http://localhost:8118)
+</span></span><span class="line"><span class="cl">–timeout=TIMEOUT   设定时间延迟 (默认 30)
+</span></span><span class="line"><span class="cl">–delay=DELAY       设定每一个 HTTP request值 (默认 8)
+</span></span><span class="line"><span class="cl">–threads=THREADS   最大数目的 HTTP requests并发 (默认 5)
+</span></span><span class="line"><span class="cl">–retries=RETRIES   连接超时重试 (默认 3)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">（六）、 系统验校器:
+</span></span><span class="line"><span class="cl">这些选项对于有过滤器的XSS攻击很有效和或者重复所利用的代码:   
+</span></span><span class="line"><span class="cl">–hash                如果目标重复内容，则每次检测hash(对预知可能错误的结果非常有用)
+</span></span><span class="line"><span class="cl">–heuristic         启发式的设置才检测那些脚本会被过滤: ;/&lt;&gt;&#34;’=
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">（七）、 选择攻击向量(s):
+</span></span><span class="line"><span class="cl">这些选项被用在特殊的 XSS向量源代码来注入到每一个负荷中。非常重要的, 如果你不想尝试通用的XSS注入代码,请使用默认参数. 只有一个选项:   
+</span></span><span class="line"><span class="cl">–payload=SCRIPT    OWN  - 插入你手动构造的XSS 语句-
+</span></span><span class="line"><span class="cl">–auto              AUTO - 从文件中插入 XSSer ‘报告’ 向量
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">（八）、选择Bypasser(s):
+</span></span><span class="line"><span class="cl">这些选项用来编码所选择的攻击向量，如果目标使用反XSS过滤器代码和IPS规则，则尝试绕过所有的目标上的反XSS 过滤器代码和入侵防御系统规则，总之, 能结合其他的技巧 来提供编码:   
+</span></span><span class="line"><span class="cl">–Str                 使用 String.FromCharCode()方法
+</span></span><span class="line"><span class="cl">–Une               使用 Unescape() 函数
+</span></span><span class="line"><span class="cl">–Mix                最小的 String.FromCharCode() 函数 和 Unescape()函数
+</span></span><span class="line"><span class="cl">–Dec               使用小数编码
+</span></span><span class="line"><span class="cl">–Hex               使用16进制编码
+</span></span><span class="line"><span class="cl">–Hes               使用带分号的16进制编码
+</span></span><span class="line"><span class="cl">–Dwo              编码IP地址向量为双字节
+</span></span><span class="line"><span class="cl">–Doo               编码IP地址向量为八进制
+</span></span><span class="line"><span class="cl">–Cem=CEM       手动尝试不同的字符编码(反向混淆效果更好) -&gt; (例如: ‘Mix,Une,Str,Hex’)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">（九）、 特殊的技巧:
+</span></span><span class="line"><span class="cl">这些选项被用来尝试不同的XSS 技巧. 你可以进行多重选择:   
+</span></span><span class="line"><span class="cl">–Coo               COO - 跨站脚本Cookies注入
+</span></span><span class="line"><span class="cl">–Xsa                XSA -   跨站Agent 脚本
+</span></span><span class="line"><span class="cl">–Xsr                 XSR -    跨站 Referer 脚本
+</span></span><span class="line"><span class="cl">–Dcp               DCP - DCP注入
+</span></span><span class="line"><span class="cl">–Dom              DOM - DOM注入
+</span></span><span class="line"><span class="cl">–Ind                 IND - HTTP 包含代码的快速响应
+</span></span><span class="line"><span class="cl">–Anchor           ANC - 使用影子攻击负荷 (DOM 影子!)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">（十）、 Select Final injection(s):
+</span></span><span class="line"><span class="cl">这些选项在攻击目标中用于特殊代码注入 Important, if you want to exploit on-the-wild your discovered vulnerabilities. Choose only one option:   
+</span></span><span class="line"><span class="cl">–Fp=FINALPAYLOAD   OWN    - 手动插入注入代码-
+</span></span><span class="line"><span class="cl">–Fr=FINALREMOTE    REMOTE - 远程插入注入代码
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">（十一）、 Special Final injection(s):
+</span></span><span class="line"><span class="cl">These options can be used to execute some ‘special’ injection(s) in vulnerable target(s). You can select multiple and combine with your final code (except with DCP code):
+</span></span><span class="line"><span class="cl">–Anchor ANC - Use ‘Anchor Stealth’ payloader (DOM shadows!)
+</span></span><span class="line"><span class="cl">–B64 B64 - Base64 code encoding in META tag (rfc2397)
+</span></span><span class="line"><span class="cl">–Onm             ONM - 使用 MouseMove() 事件注入代码
+</span></span><span class="line"><span class="cl">–Ifr                   IFR - 使用 资源标签注入代码 
+</span></span><span class="line"><span class="cl">–Doss              DOSs   - XSS 对服务端的拒绝服务攻击注入
+</span></span><span class="line"><span class="cl">–Dos               DOS    - XSS 对客户端的拒绝服务攻击注入
+</span></span><span class="line"><span class="cl">–B64               B64    - META标签 Base64编码(rfc2397)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">（十二）、 混杂模式:
+</span></span><span class="line"><span class="cl">–silent              禁止控制台输出结果
+</span></span><span class="line"><span class="cl">–update            检查XSSer 最新稳定版本
+</span></span><span class="line"><span class="cl">–save                直接输入结果到模版文件 (XSSlist.dat)
+</span></span><span class="line"><span class="cl">–xml=FILEXML 输出 &#39;positives’到一个XML文件 (–xml filename.xml)
+</span></span><span class="line"><span class="cl">–publish             输出 &#39;positives’本地网络 (identi.ca)
+</span></span><span class="line"><span class="cl">–short=SHORTURLS   显示最后的短代码 (tinyurl, is.gd)
+</span></span><span class="line"><span class="cl">–launch              发现的每个XSS都在浏览器进行测试
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">（十三）、 Reporting:
+</span></span><span class="line"><span class="cl">–save Export to file (XSSreport.raw)
+</span></span><span class="line"><span class="cl">–xml=FILEXML Export to XML (–xml file.xml)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">（十四）、Miscellaneous:
+</span></span><span class="line"><span class="cl">–silent Inhibit console output results
+</span></span><span class="line"><span class="cl">–alive=ISALIVE Set limit of errors before check if target is alive
+</span></span><span class="line"><span class="cl">–update Check for latest stable version
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h2 id="检测xss漏洞" class="headerLink">
+    <a href="#%e6%a3%80%e6%b5%8bxss%e6%bc%8f%e6%b4%9e" class="header-mark"></a>检测XSS漏洞</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">xsser -u<span class="s2">&#34;http://192.168.172.63/DVWA/vulnerabilities/&#34;</span> -g<span class="s2">&#34;xss_r/?name=XSS&#34;</span> --cookie<span class="o">=</span><span class="s2">&#34;security=low; PHPSESSID=4ljpm33nju2du0nitcmg2a3d0s&#34;</span> -s -v --reverse-check
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>-u：URL地址</li>
+<li>-g/-p：GET/POST方法</li>
+<li>&ndash;cookie：若当前需要身份认证才能访问的需要用到该参数</li>
+<li>-s：提交请求的数量的统计</li>
+<li>-v：显示详细信息&ndash;reverse-check：基于反向连接是否被建立来检测是否存在漏洞</li>
+</ul>
+<p>​</p>
+<p>​</p>
+<h2 id="xsstrike" class="headerLink">
+    <a href="#xsstrike" class="header-mark"></a>XSStrike</h2><h3 id="kali安装xsser-1" class="headerLink">
+    <a href="#kali%e5%ae%89%e8%a3%85xsser-1" class="header-mark"></a>Kali安装XSSer</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/s0md3v/XSStrike.git --- 下载XSStrike
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> XSStrike
+</span></span><span class="line"><span class="cl">pip3 install -r requirements.txt --- 更新依赖模块
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h2 id="检测xss漏洞-1" class="headerLink">
+    <a href="#%e6%a3%80%e6%b5%8bxss%e6%bc%8f%e6%b4%9e-1" class="header-mark"></a>检测XSS漏洞</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 xsstrike.py -u <span class="s2">&#34;http://192.168.172.63/pikachu-master/vul/xss/xss_reflected_get.php?message=xss&amp;submit=submit&#34;</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/xss%E8%87%AA%E5%8A%A8%E5%8C%96%E6%A3%80%E6%B5%8B/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/xxe%E6%BC%8F%E6%B4%9E/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/xss-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

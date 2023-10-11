@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="CentOS设置静态IP 前言：在安装好CentOS虚拟机以后，一般我们会通过Xshell连接到虚拟机，而不是直接使用虚拟机里面的终端（Ter" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/centos%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81ip/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="CentOS设置静态IP 前言：在安装好CentOS虚拟机以后，一般我们会通过Xshell连接到虚拟机，而不是直接使用虚拟机里面的终端（Ter"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/centos%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81ip/" /><link rel="prev" href="/kali%E5%85%B3%E9%97%AD%E9%94%81%E5%B1%8F/" /><link rel="next" href="/centos%E6%9B%BF%E6%8D%A2yum%E6%BA%90/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/centos%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81ip\/"
+        },"genre": "posts","wordcount":  1846 ,
+        "url": "\/centos%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81ip\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1846 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言：</a></li>
+    <li><a href="#一查看物理机ip">一、查看物理机IP</a></li>
+    <li><a href="#二虚拟机网络设置">二、虚拟机网络设置</a></li>
+    <li><a href="#三centos网络配置文件">三、CentOS网络配置文件</a>
+      <ul>
+        <li><a href="#1打开终端">1、打开终端</a></li>
+        <li><a href="#2编辑配置文件">2、编辑配置文件</a></li>
+        <li><a href="#3修改配置文件内容">3、修改配置文件内容</a></li>
+        <li><a href="#4退出和保存">4、退出和保存</a></li>
+        <li><a href="#5重启网络">5、重启网络</a></li>
+        <li><a href="#6测试网络">6、测试网络</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="centos设置静态ip" class="headerLink">
+    <a href="#centos%e8%ae%be%e7%bd%ae%e9%9d%99%e6%80%81ip" class="header-mark"></a>CentOS设置静态IP</h1><h2 id="前言" class="headerLink">
+    <a href="#%e5%89%8d%e8%a8%80" class="header-mark"></a>前言：</h2><p>在安装好CentOS虚拟机以后，一般我们会通过Xshell连接到虚拟机，而不是直接使用虚拟机里面的终端（Terminal）输入命令。</p>
+<p>如果使用默认的动态分配IP，虚拟机<strong>每次开机以后IP都会改变</strong>，Xshell连接需要修改IP。所以这里我们需要将IP设置成静态IP，只要虚拟机开机即可连接。</p>
+<p><strong>静态IP配置并不是必须的</strong></p>
+<p>问题：如果网络环境发生变化，比如从有线变成无线，或者电脑从办公室移动到家里，主机IP（网段）发生了变化，需要重新设置虚拟机的静态IP吗？</p>
+<p>答案是不需要，不影响物理机与虚拟机的连接。</p>
+<h2 id="一查看物理机ip" class="headerLink">
+    <a href="#%e4%b8%80%e6%9f%a5%e7%9c%8b%e7%89%a9%e7%90%86%e6%9c%baip" class="header-mark"></a>一、查看物理机IP</h2><ul>
+<li>
+<p><code>win+R</code>打开cmd，输入<code>ipconfig</code></p>
+</li>
+<li>
+<p>首先要确定你的上网方式是<strong>有线</strong>还是<strong>无线</strong></p>
+</li>
+<li>
+<p>如果你的电脑用的是<strong>有线网络（插了网线）</strong>，就找到**“以太网适配器 以太网”**的IPv4地址：</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3e4181ddac507cc247eb5.jpg" title="https://pic.imgdb.cn/item/64a3e4181ddac507cc247eb5.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3e4181ddac507cc247eb5.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3e4181ddac507cc247eb5.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3e4181ddac507cc247eb5.jpg, https://pic.imgdb.cn/item/64a3e4181ddac507cc247eb5.jpg 1.5x, https://pic.imgdb.cn/item/64a3e4181ddac507cc247eb5.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3e4181ddac507cc247eb5.jpg">
+    </a></figure></p>
+<blockquote>
+<p>192.168.3.10</p>
+</blockquote>
+</li>
+<li>
+<p>如果是<strong>无线网络（WiFi上网）</strong>，则找到**“无线局域网适配器WLAN”**的IPv4地址：</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3e4da1ddac507cc271c26.jpg" title="https://pic.imgdb.cn/item/64a3e4da1ddac507cc271c26.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3e4da1ddac507cc271c26.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3e4da1ddac507cc271c26.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3e4da1ddac507cc271c26.jpg, https://pic.imgdb.cn/item/64a3e4da1ddac507cc271c26.jpg 1.5x, https://pic.imgdb.cn/item/64a3e4da1ddac507cc271c26.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3e4da1ddac507cc271c26.jpg">
+    </a></figure></p>
+<blockquote>
+<p>192.168.1.5</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="二虚拟机网络设置" class="headerLink">
+    <a href="#%e4%ba%8c%e8%99%9a%e6%8b%9f%e6%9c%ba%e7%bd%91%e7%bb%9c%e8%ae%be%e7%bd%ae" class="header-mark"></a>二、虚拟机网络设置</h2><ul>
+<li>
+<p>首先是网络模式，点击虚拟机，编辑虚拟机设置：
+<figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3e55a1ddac507cc288311.jpg" title="https://pic.imgdb.cn/item/64a3e55a1ddac507cc288311.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3e55a1ddac507cc288311.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3e55a1ddac507cc288311.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3e55a1ddac507cc288311.jpg, https://pic.imgdb.cn/item/64a3e55a1ddac507cc288311.jpg 1.5x, https://pic.imgdb.cn/item/64a3e55a1ddac507cc288311.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3e55a1ddac507cc288311.jpg">
+    </a></figure></p>
+</li>
+<li>
+<p>网络适配器，网络连接需要选择：自定义——VMnet8（NAT模式），保存。
+<figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3e58d1ddac507cc290f5f.jpg" title="https://pic.imgdb.cn/item/64a3e58d1ddac507cc290f5f.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3e58d1ddac507cc290f5f.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3e58d1ddac507cc290f5f.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3e58d1ddac507cc290f5f.jpg, https://pic.imgdb.cn/item/64a3e58d1ddac507cc290f5f.jpg 1.5x, https://pic.imgdb.cn/item/64a3e58d1ddac507cc290f5f.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3e58d1ddac507cc290f5f.jpg">
+    </a></figure></p>
+</li>
+<li>
+<p>打开“编辑”——“虚拟网络编辑器”
+<figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3e5bc1ddac507cc29b058.jpg" title="https://pic.imgdb.cn/item/64a3e5bc1ddac507cc29b058.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3e5bc1ddac507cc29b058.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3e5bc1ddac507cc29b058.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3e5bc1ddac507cc29b058.jpg, https://pic.imgdb.cn/item/64a3e5bc1ddac507cc29b058.jpg 1.5x, https://pic.imgdb.cn/item/64a3e5bc1ddac507cc29b058.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3e5bc1ddac507cc29b058.jpg">
+    </a></figure>
+<strong>注意：NAT网络模式对应的虚拟网卡是VMnet8。</strong>
+<figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3e5e21ddac507cc2a171a.jpg" title="https://pic.imgdb.cn/item/64a3e5e21ddac507cc2a171a.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3e5e21ddac507cc2a171a.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3e5e21ddac507cc2a171a.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3e5e21ddac507cc2a171a.jpg, https://pic.imgdb.cn/item/64a3e5e21ddac507cc2a171a.jpg 1.5x, https://pic.imgdb.cn/item/64a3e5e21ddac507cc2a171a.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3e5e21ddac507cc2a171a.jpg">
+    </a></figure></p>
+</li>
+<li>
+<p>这里是灰色的，不能编辑怎么办？点右下角的“更改设置”，窗口会重新打开。</p>
+<p>有三次地方要修改：</p>
+<p>子网IP（虚拟机网段）、NAT网段、DHCP网段
+<figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3e6201ddac507cc2acdf5.jpg" title="https://pic.imgdb.cn/item/64a3e6201ddac507cc2acdf5.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3e6201ddac507cc2acdf5.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3e6201ddac507cc2acdf5.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3e6201ddac507cc2acdf5.jpg, https://pic.imgdb.cn/item/64a3e6201ddac507cc2acdf5.jpg 1.5x, https://pic.imgdb.cn/item/64a3e6201ddac507cc2acdf5.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3e6201ddac507cc2acdf5.jpg">
+    </a></figure>
+这三个地方，都只需要修改第三位就行了。比如你的真机ip为192.168.1.5，第三位是1就都设置成1。
+<figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3e7e61ddac507cc2efae3.jpg" title="https://pic.imgdb.cn/item/64a3e7e61ddac507cc2efae3.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3e7e61ddac507cc2efae3.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3e7e61ddac507cc2efae3.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3e7e61ddac507cc2efae3.jpg, https://pic.imgdb.cn/item/64a3e7e61ddac507cc2efae3.jpg 1.5x, https://pic.imgdb.cn/item/64a3e7e61ddac507cc2efae3.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3e7e61ddac507cc2efae3.jpg">
+    </a></figure>
+子网IP的最后一位必须是0。
+NAT设置，IP第三位和子网保持一致，网关最后一位必须是2</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3e85c1ddac507cc2ff65f.jpg" title="https://pic.imgdb.cn/item/64a3e85c1ddac507cc2ff65f.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3e85c1ddac507cc2ff65f.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3e85c1ddac507cc2ff65f.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3e85c1ddac507cc2ff65f.jpg, https://pic.imgdb.cn/item/64a3e85c1ddac507cc2ff65f.jpg 1.5x, https://pic.imgdb.cn/item/64a3e85c1ddac507cc2ff65f.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3e85c1ddac507cc2ff65f.jpg">
+    </a></figure>
+如果改了以后网络不通，可以点左下角的“还原默认设置”，再修改。
+<figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3e8c11ddac507cc30dbb7.jpg" title="https://pic.imgdb.cn/item/64a3e8c11ddac507cc30dbb7.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3e8c11ddac507cc30dbb7.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3e8c11ddac507cc30dbb7.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3e8c11ddac507cc30dbb7.jpg, https://pic.imgdb.cn/item/64a3e8c11ddac507cc30dbb7.jpg 1.5x, https://pic.imgdb.cn/item/64a3e8c11ddac507cc30dbb7.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3e8c11ddac507cc30dbb7.jpg">
+    </a></figure></p>
+</li>
+</ul>
+<p>虚拟机的网络设置好以后，下面是网络配置文件。</p>
+<p>注意：网络配置文件的网段，必须要和虚拟机网络配置里面的网段一致。</p>
+<p>比如设置了192.168.1.x，后面就必须填写192.168.1.x。</p>
+<h2 id="三centos网络配置文件" class="headerLink">
+    <a href="#%e4%b8%89centos%e7%bd%91%e7%bb%9c%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>三、CentOS网络配置文件</h2><h3 id="1打开终端" class="headerLink">
+    <a href="#1%e6%89%93%e5%bc%80%e7%bb%88%e7%ab%af" class="header-mark"></a>1、打开终端</h3><p>启动虚拟机，以<strong>root用户登录</strong>（必须是root用户，否则没权限修改配置文件）。</p>
+<p>Applications——System Tools找到Terminal（终端）</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3ea361ddac507cc34235a.jpg" title="https://pic.imgdb.cn/item/64a3ea361ddac507cc34235a.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3ea361ddac507cc34235a.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3ea361ddac507cc34235a.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3ea361ddac507cc34235a.jpg, https://pic.imgdb.cn/item/64a3ea361ddac507cc34235a.jpg 1.5x, https://pic.imgdb.cn/item/64a3ea361ddac507cc34235a.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3ea361ddac507cc34235a.jpg">
+    </a></figure></p>
+<p>如果不是root用户也可以输入指令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">su root
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后输入密码（不可见）：123456即可进入root模式</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3e9c81ddac507cc332d92.jpg" title="https://pic.imgdb.cn/item/64a3e9c81ddac507cc332d92.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3e9c81ddac507cc332d92.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3e9c81ddac507cc332d92.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3e9c81ddac507cc332d92.jpg, https://pic.imgdb.cn/item/64a3e9c81ddac507cc332d92.jpg 1.5x, https://pic.imgdb.cn/item/64a3e9c81ddac507cc332d92.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3e9c81ddac507cc332d92.jpg">
+    </a></figure></p>
+<h3 id="2编辑配置文件" class="headerLink">
+    <a href="#2%e7%bc%96%e8%be%91%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-mark"></a>2、编辑配置文件</h3><p>输入命令（复制以后在终端里面<code>Shift+Insert</code>粘贴）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vi /etc/sysconfig/network-scripts/ifcfg-ens33
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>按回车打开配置文件。</p>
+<p>如果弹出下面这个窗口，说明你之前没有保存就退出了，或者有多个窗口在同时操作ens33文件。</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3ea941ddac507cc34f739.jpg" title="https://pic.imgdb.cn/item/64a3ea941ddac507cc34f739.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3ea941ddac507cc34f739.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3ea941ddac507cc34f739.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3ea941ddac507cc34f739.jpg, https://pic.imgdb.cn/item/64a3ea941ddac507cc34f739.jpg 1.5x, https://pic.imgdb.cn/item/64a3ea941ddac507cc34f739.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3ea941ddac507cc34f739.jpg">
+    </a></figure></p>
+<p>解决办法:</p>
+<ol>
+<li>
+<p>按E或Enter继续编辑。</p>
+</li>
+<li>
+<p>删掉这个临时文件，下次就没有提示了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cd /etc/sysconfig/network-scripts/
+</span></span><span class="line"><span class="cl">rm -rf .ifcfg-ens33.sw*
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<p>对于第一次使用vi编辑器的同学来说，需要注意，VI有两种模式，一种是“命令模式”，可以执行命令，一种是“编辑模式”，可以修改文本。</p>
+<p>当我们用vi打开文本的时候，是命令模式，不能修改文本。</p>
+<p>这个时候需要按“i”进入编辑模式。</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3eb091ddac507cc35ec3c.jpg" title="https://pic.imgdb.cn/item/64a3eb091ddac507cc35ec3c.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3eb091ddac507cc35ec3c.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3eb091ddac507cc35ec3c.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3eb091ddac507cc35ec3c.jpg, https://pic.imgdb.cn/item/64a3eb091ddac507cc35ec3c.jpg 1.5x, https://pic.imgdb.cn/item/64a3eb091ddac507cc35ec3c.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3eb091ddac507cc35ec3c.jpg">
+    </a></figure></p>
+<p>此时左下角出现&ndash; INSERT &ndash;提示。</p>
+<p>我们用键盘上下左右键，移动光标，到需要修改的位置。</p>
+<h3 id="3修改配置文件内容" class="headerLink">
+    <a href="#3%e4%bf%ae%e6%94%b9%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e5%86%85%e5%ae%b9" class="header-mark"></a>3、修改配置文件内容</h3><p>对于初次安装的CentOS操作系统来说，有几个需要修改的地方：</p>
+<ol>
+<li>BOOTPROTO需要改成static</li>
+<li>ONBOOT改成yes</li>
+<li>添加IPADDR/NETMASK/DNS1/GATEWAY
+<figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3ec591ddac507cc38d7bb.jpg" title="https://pic.imgdb.cn/item/64a3ec591ddac507cc38d7bb.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3ec591ddac507cc38d7bb.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3ec591ddac507cc38d7bb.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3ec591ddac507cc38d7bb.jpg, https://pic.imgdb.cn/item/64a3ec591ddac507cc38d7bb.jpg 1.5x, https://pic.imgdb.cn/item/64a3ec591ddac507cc38d7bb.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3ec591ddac507cc38d7bb.jpg">
+    </a></figure>
+<ul>
+<li>IPADDR就是静态IP地址,网段跟物理机不同即可。比如物理机的IP是192.168.1.5，修改后两位，比如.131 （最后一位随便写，建议从130以后开始）</li>
+<li>网关固定255.255.255.0</li>
+<li>DNS1固定 114.114.114.114</li>
+<li>网关最后一位必须是2，前面三位跟物理机一致</li>
+</ul>
+</li>
+</ol>
+<h3 id="4退出和保存" class="headerLink">
+    <a href="#4%e9%80%80%e5%87%ba%e5%92%8c%e4%bf%9d%e5%ad%98" class="header-mark"></a>4、退出和保存</h3><p>上面的操作都是在编辑模式中进行的。</p>
+<p>如果不小心改错了，想要放弃修改怎么办？</p>
+<p>这个时候需要按Esc回到命令模式。</p>
+<p>在命令模式下，左下角的<code>-- INSERT --</code>消失了。</p>
+<p>如果放弃修改重来，输入（注意全部是英文符号），回车</p>
+<p><code>:q!</code></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3ecbe1ddac507cc39d757.jpg" title="https://pic.imgdb.cn/item/64a3ecbe1ddac507cc39d757.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3ecbe1ddac507cc39d757.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3ecbe1ddac507cc39d757.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3ecbe1ddac507cc39d757.jpg, https://pic.imgdb.cn/item/64a3ecbe1ddac507cc39d757.jpg 1.5x, https://pic.imgdb.cn/item/64a3ecbe1ddac507cc39d757.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3ecbe1ddac507cc39d757.jpg">
+    </a></figure></p>
+<p>如果要保存修改的结果，输入（英文符号），回车</p>
+<p><code>:wq</code></p>
+<h3 id="5重启网络" class="headerLink">
+    <a href="#5%e9%87%8d%e5%90%af%e7%bd%91%e7%bb%9c" class="header-mark"></a>5、重启网络</h3><p>网络配置文件修改以后需要重启网络才能生效，命令：（重要！每次修改了ens33文件都要重启网络）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">service network restart
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="6测试网络" class="headerLink">
+    <a href="#6%e6%b5%8b%e8%af%95%e7%bd%91%e7%bb%9c" class="header-mark"></a>6、测试网络</h3><p>测试网络：</p>
+<ol>
+<li>
+<p>物理机与虚拟机连通性
+打开cmd，ping虚拟机的IP，比如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ping 192.168.1.131
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>（Ctrl+C退出）
+这是正常情况：
+<figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3ed6a1ddac507cc3b9792.jpg" title="https://pic.imgdb.cn/item/64a3ed6a1ddac507cc3b9792.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3ed6a1ddac507cc3b9792.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3ed6a1ddac507cc3b9792.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3ed6a1ddac507cc3b9792.jpg, https://pic.imgdb.cn/item/64a3ed6a1ddac507cc3b9792.jpg 1.5x, https://pic.imgdb.cn/item/64a3ed6a1ddac507cc3b9792.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3ed6a1ddac507cc3b9792.jpg">
+    </a></figure>
+如果卡住了，或者请求超时，说明物理机和虚拟机网络不通</p>
+</li>
+<li>
+<p>虚拟机是否能访问互联网
+终端输入 ping baidu.com （Ctrl+C退出）
+这是正常情况：
+<figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a3edb81ddac507cc3c697b.jpg" title="https://pic.imgdb.cn/item/64a3edb81ddac507cc3c697b.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a3edb81ddac507cc3c697b.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a3edb81ddac507cc3c697b.jpg"
+            srcset="https://pic.imgdb.cn/item/64a3edb81ddac507cc3c697b.jpg, https://pic.imgdb.cn/item/64a3edb81ddac507cc3c697b.jpg 1.5x, https://pic.imgdb.cn/item/64a3edb81ddac507cc3c697b.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a3edb81ddac507cc3c697b.jpg">
+    </a></figure>
+如果卡住了，或者提示Name or service not known，是网络不通或者DNS配置错误</p>
+</li>
+<li>
+<p>虚拟机与物理机连通性
+比如前面看到的物理机IP是192.168.1.5
+在终端输入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ping 192.168.1.5
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/centos%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81ip/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/kali%E5%85%B3%E9%97%AD%E9%94%81%E5%B1%8F/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/centos%E6%9B%BF%E6%8D%A2yum%E6%BA%90/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

@@ -1,0 +1,550 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="Linux文件和目录管理 命令格式 Command Options Arguments 命令 选项 参数 Options选项：命令的行为方式 Arguments参数：命令的对象 Linux命令文档： 文" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/linux%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Linux文件和目录管理 命令格式 Command Options Arguments 命令 选项 参数 Options选项：命令的行为方式 Arguments参数：命令的对象 Linux命令文档： 文"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/linux%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86/" /><link rel="prev" href="/linux%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/" /><link rel="next" href="/linux%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E5%8F%8A%E8%A7%A3%E5%8E%8B%E7%BC%A9/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/linux%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86\/"
+        },"genre": "posts","wordcount":  1256 ,
+        "url": "\/linux%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1256 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#命令格式">命令格式</a></li>
+    <li><a href="#文件与目录管理">文件与目录管理</a>
+      <ul>
+        <li><a href="#列出目录内容和属性">列出目录内容和属性</a></li>
+        <li><a href="#打印工作路径">打印工作路径</a></li>
+        <li><a href="#切换工作目录">切换工作目录</a></li>
+        <li><a href="#查看文件类型">查看文件类型</a></li>
+        <li><a href="#复制文件或目录">复制文件或目录</a></li>
+        <li><a href="#查找文件或者目录">查找文件或者目录</a></li>
+        <li><a href="#其他查找命令">其他查找命令</a></li>
+        <li><a href="#创建目录">创建目录</a></li>
+        <li><a href="#移动或者重命名">移动或者重命名</a></li>
+        <li><a href="#删除文件">删除文件</a></li>
+        <li><a href="#创建空文件">创建空文件</a></li>
+      </ul>
+    </li>
+    <li><a href="#挂载和链接">挂载和链接</a>
+      <ul>
+        <li><a href="#挂载mount">挂载mount</a></li>
+        <li><a href="#链接">链接</a></li>
+        <li><a href="#软链接">软链接</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="linux文件和目录管理" class="headerLink">
+    <a href="#linux%e6%96%87%e4%bb%b6%e5%92%8c%e7%9b%ae%e5%bd%95%e7%ae%a1%e7%90%86" class="header-mark"></a>Linux文件和目录管理</h1><h2 id="命令格式" class="headerLink">
+    <a href="#%e5%91%bd%e4%bb%a4%e6%a0%bc%e5%bc%8f" class="header-mark"></a>命令格式</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a53b771ddac507cc822644.jpg" title="https://pic.imgdb.cn/item/64a53b771ddac507cc822644.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a53b771ddac507cc822644.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a53b771ddac507cc822644.jpg"
+            srcset="https://pic.imgdb.cn/item/64a53b771ddac507cc822644.jpg, https://pic.imgdb.cn/item/64a53b771ddac507cc822644.jpg 1.5x, https://pic.imgdb.cn/item/64a53b771ddac507cc822644.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a53b771ddac507cc822644.jpg">
+    </a></figure></p>
+<p><code>Command Options Arguments</code></p>
+<p>命令            选项        参数</p>
+<ul>
+<li><code>Options</code>选项：命令的行为方式</li>
+<li><code>Arguments</code>参数：命令的对象</li>
+</ul>
+<p><strong>Linux命令文档：</strong></p>
+<p><a href="https://wangchujiang.com/linux-command" target="_blank" rel="noopener noreferrer"></a></p>
+<p><a href="https://www.linuxcool.com" target="_blank" rel="noopener noreferrer"></a></p>
+<h2 id="文件与目录管理" class="headerLink">
+    <a href="#%e6%96%87%e4%bb%b6%e4%b8%8e%e7%9b%ae%e5%bd%95%e7%ae%a1%e7%90%86" class="header-mark"></a>文件与目录管理</h2><h3 id="列出目录内容和属性" class="headerLink">
+    <a href="#%e5%88%97%e5%87%ba%e7%9b%ae%e5%bd%95%e5%86%85%e5%ae%b9%e5%92%8c%e5%b1%9e%e6%80%a7" class="header-mark"></a>列出目录内容和属性</h3><p>命令：<code>ls</code></p>
+<p>全拼：<code>list</code></p>
+<p>格式：<code>ls 选项 文件名</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> ls -a 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ll --block-size=M
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="打印工作路径" class="headerLink">
+    <a href="#%e6%89%93%e5%8d%b0%e5%b7%a5%e4%bd%9c%e8%b7%af%e5%be%84" class="header-mark"></a>打印工作路径</h3><p>命令：<code>pwd</code></p>
+<p>全拼：<code>print working directory</code></p>
+<p>格式：<code>pwd</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">pwd
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="切换工作目录" class="headerLink">
+    <a href="#%e5%88%87%e6%8d%a2%e5%b7%a5%e4%bd%9c%e7%9b%ae%e5%bd%95" class="header-mark"></a>切换工作目录</h3><p>命令：<code>cd</code></p>
+<p>全拼：<code>change directory</code></p>
+<p>格式：<code>cd 相对路径或者绝对路径</code></p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>指代</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>绝对路径</td>
+<td>由根目录 <code>/</code> 开始写起</td>
+</tr>
+<tr>
+<td>相对路径</td>
+<td>从当前所在的工作目录开始写起</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>根目录</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>代表当前目录</td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>代表用户工作目录，例如 <code>vim ~/.bashrc</code></td>
+</tr>
+<tr>
+<td><code>../</code></td>
+<td>代表上一级目录</td>
+</tr>
+<tr>
+<td><code>../../</code></td>
+<td>上上一级目录，以此类推，超出范围的时候代表根</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cd ../../
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="查看文件类型" class="headerLink">
+    <a href="#%e6%9f%a5%e7%9c%8b%e6%96%87%e4%bb%b6%e7%b1%bb%e5%9e%8b" class="header-mark"></a>查看文件类型</h3><p>命令：<code>file</code></p>
+<p>格式：<code>file 选项 文件或目录</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">file -i 文件名
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="复制文件或目录" class="headerLink">
+    <a href="#%e5%a4%8d%e5%88%b6%e6%96%87%e4%bb%b6%e6%88%96%e7%9b%ae%e5%bd%95" class="header-mark"></a>复制文件或目录</h3><p>命令：<code>cp</code></p>
+<p>全拼：<code>copy</code></p>
+<p>格式：<code>cp 选项 源文件 目标文件</code></p>
+<p><code>-R/r</code>：递归处理，将指定目录下的所有文件与子目录一并处理；</p>
+<p><code>-f</code>：强行复制文件或目录，不论目标文件或目录是否已存在；</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cp -r Pictures/ pic
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="查找文件或者目录" class="headerLink">
+    <a href="#%e6%9f%a5%e6%89%be%e6%96%87%e4%bb%b6%e6%88%96%e8%80%85%e7%9b%ae%e5%bd%95" class="header-mark"></a>查找文件或者目录</h3><p>find格式：<code>find 目录 选项 名字或模式</code></p>
+<p><code>-name</code> 名字</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find /etc -name a*
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">find / -name &#34;aaa&#34; 2&gt;/dev/null
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>-type</code> 类型参数</p>
+<p><code>f </code>普通文件，<code>d</code> 目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find /root -type f
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>-size</code>大小</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find /root -type f -size 10M+
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>-exec command</code>把find找到的内容作为命令的参数去执行</p>
+<p><code>{}</code>就是找到的内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find . -name &#34;*.txt&#34; -exec rm -rf {} \; --（包括子目录） 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">find . -name aaa -exec mv {} bbb \;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="其他查找命令" class="headerLink">
+    <a href="#%e5%85%b6%e4%bb%96%e6%9f%a5%e6%89%be%e5%91%bd%e4%bb%a4" class="header-mark"></a>其他查找命令</h3><p><code>whereis</code> ：查找二进制程序、代码等相关文件路径</p>
+<p><code>which</code>：查找并显示给定命令的绝对路径</p>
+<p><code>locate</code>：updatedb程序每天会跑一次，建立文件索引</p>
+<h3 id="创建目录" class="headerLink">
+    <a href="#%e5%88%9b%e5%bb%ba%e7%9b%ae%e5%bd%95" class="header-mark"></a>创建目录</h3><p>命令：<code>mkdir</code></p>
+<p>全拼：<code>make direcotry</code></p>
+<p>格式：<code>mkdir 选项 目录名</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mkdir test
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mkdir -p /usr/local/soft/redis
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="移动或者重命名" class="headerLink">
+    <a href="#%e7%a7%bb%e5%8a%a8%e6%88%96%e8%80%85%e9%87%8d%e5%91%bd%e5%90%8d" class="header-mark"></a>移动或者重命名</h3><p>命令：<code>mv</code></p>
+<p>全拼：<code>move</code></p>
+<p>格式：<code>mv 选项 原文件 新文件</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mv 1.txt 2.txt 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mv /a/1.txt /b/1.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="删除文件" class="headerLink">
+    <a href="#%e5%88%a0%e9%99%a4%e6%96%87%e4%bb%b6" class="header-mark"></a>删除文件</h3><p>命令：<code>rm</code></p>
+<p>全拼：<code>remove</code></p>
+<p>格式：<code>rm 选项 (多个)文件名</code></p>
+<p>删除空目录：<code>rmdir</code></p>
+<p><code>-r</code> 递归（连同子文件夹一起删除） -f 强制删除</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find . -name &#34;a.json&#34; -exec rm -rf {}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<ul>
+<li><code>find .</code>：这个部分表示从当前目录开始进行查找。</li>
+<li><code>-name &quot;a.json&quot;</code>：这个部分指定了要查找的文件名为 &ldquo;a.json&rdquo;。可以根据实际需求修改文件名。</li>
+<li><code>-exec rm -rf {}</code>：这个部分表示对于找到的每一个文件，执行<code> rm -rf {}</code>命令进行删除操作。
+<ul>
+<li><code>rm</code> 是一个用于删除文件或目录的命令。</li>
+<li><code>-rf</code> 是 <code>rm</code> 命令的选项，其中 <code>-r</code> 表示递归删除，即删除目录及其内容，<code>-f</code> 表示强制执行删除操作，无需确认。</li>
+<li><code>{}</code> 是一个占位符，表示 <code>find</code> 命令找到的文件。</li>
+</ul>
+</li>
+</ul>
+<p><code>find . -name &quot;a.json&quot; -exec rm -rf {}</code> 命令的作用是从当前目录开始递归查找名为 &ldquo;a.json&rdquo; 的文件，并将找到的每一个文件都删除，包括目录及其内容。</p>
+</blockquote>
+<h3 id="创建空文件" class="headerLink">
+    <a href="#%e5%88%9b%e5%bb%ba%e7%a9%ba%e6%96%87%e4%bb%b6" class="header-mark"></a>创建空文件</h3><p>命令：<code>touch</code></p>
+<p>格式：<code>touch 选项 文件名</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">touch a.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="挂载和链接" class="headerLink">
+    <a href="#%e6%8c%82%e8%bd%bd%e5%92%8c%e9%93%be%e6%8e%a5" class="header-mark"></a>挂载和链接</h2><h3 id="挂载mount" class="headerLink">
+    <a href="#%e6%8c%82%e8%bd%bdmount" class="header-mark"></a>挂载mount</h3><p>一个目录树怎么使用多个磁盘？</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a5411f1ddac507cc8f3c82.jpg" title="https://pic.imgdb.cn/item/64a5411f1ddac507cc8f3c82.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a5411f1ddac507cc8f3c82.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a5411f1ddac507cc8f3c82.jpg"
+            srcset="https://pic.imgdb.cn/item/64a5411f1ddac507cc8f3c82.jpg, https://pic.imgdb.cn/item/64a5411f1ddac507cc8f3c82.jpg 1.5x, https://pic.imgdb.cn/item/64a5411f1ddac507cc8f3c82.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a5411f1ddac507cc8f3c82.jpg">
+    </a></figure></p>
+<p>原路径：<code>/dev/sdb1 </code>  挂载到： <code>/sdb-u</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mkdir /sdb-u
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mount /dev/sdb1 /sdb-u
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>挂载后：<figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a5413f1ddac507cc8f8375.jpg" title="https://pic.imgdb.cn/item/64a5413f1ddac507cc8f8375.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a5413f1ddac507cc8f8375.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a5413f1ddac507cc8f8375.jpg"
+            srcset="https://pic.imgdb.cn/item/64a5413f1ddac507cc8f8375.jpg, https://pic.imgdb.cn/item/64a5413f1ddac507cc8f8375.jpg 1.5x, https://pic.imgdb.cn/item/64a5413f1ddac507cc8f8375.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a5413f1ddac507cc8f8375.jpg">
+    </a></figure></p>
+<h3 id="链接" class="headerLink">
+    <a href="#%e9%93%be%e6%8e%a5" class="header-mark"></a>链接</h3><p>命令：<code>ln</code></p>
+<p>全拼：<code>link</code></p>
+<p>格式：<code>ln 源文件 链接文件</code></p>
+<p>创建硬链接：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln 1.php hard.php
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>注意：</strong></p>
+<ul>
+<li>用户不能给目录创建硬链接</li>
+<li>只有相同的文件系统才可以创建硬链接（tmpfs NTFS FAT32）</li>
+</ul>
+<h3 id="软链接" class="headerLink">
+    <a href="#%e8%bd%af%e9%93%be%e6%8e%a5" class="header-mark"></a>软链接</h3><p>查看软链接：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> ll /usr/bin/nc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>创建软链接：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /usr/local/phpstudy/system/phpstudyctl /usr/bin/study
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用：<code>study</code></p>
+<p><strong>源文件删除，软连接失效</strong></p>
+</div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/linux%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/linux%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/linux%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E5%8F%8A%E8%A7%A3%E5%8E%8B%E7%BC%A9/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

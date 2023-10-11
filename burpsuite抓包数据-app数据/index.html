@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="BurpSuite抓包数据 &amp; APP数据 一、电脑端抓包 1. 安装证书 1.1 导出证书 ​ 1.2 导入证书 ​ 2. 设置代理 3. 开始抓包​ ​ ​ 二、手机端/手机模拟器 抓包 1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/burpsuite%E6%8A%93%E5%8C%85%E6%95%B0%E6%8D%AE-app%E6%95%B0%E6%8D%AE/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="BurpSuite抓包数据 &amp; APP数据 一、电脑端抓包 1. 安装证书 1.1 导出证书 ​ 1.2 导入证书 ​ 2. 设置代理 3. 开始抓包​ ​ ​ 二、手机端/手机模拟器 抓包 1."/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/burpsuite%E6%8A%93%E5%8C%85%E6%95%B0%E6%8D%AE-app%E6%95%B0%E6%8D%AE/" /><link rel="prev" href="/cookiesessiontoken/" /><link rel="next" href="/beef-xss%E6%B8%97%E9%80%8F%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/burpsuite%E6%8A%93%E5%8C%85%E6%95%B0%E6%8D%AE-app%E6%95%B0%E6%8D%AE\/"
+        },"genre": "posts","wordcount":  259 ,
+        "url": "\/burpsuite%E6%8A%93%E5%8C%85%E6%95%B0%E6%8D%AE-app%E6%95%B0%E6%8D%AE\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 259 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一电脑端抓包">一、电脑端抓包</a>
+      <ul>
+        <li><a href="#1-安装证书">1. 安装证书</a>
+          <ul>
+            <li><a href="#11-导出证书">1.1 导出证书</a></li>
+            <li><a href="#12-导入证书">1.2 导入证书</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-设置代理">2. 设置代理</a></li>
+        <li><a href="#3-开始抓包">3. 开始抓包</a></li>
+      </ul>
+    </li>
+    <li><a href="#二手机端手机模拟器-抓包">二、手机端/手机模拟器 抓包</a>
+      <ul>
+        <li><a href="#1-安装证书-1">1. 安装证书</a></li>
+        <li><a href="#2-开启电脑-burp-监听">2. 开启电脑 Burp 监听</a></li>
+        <li><a href="#3-配置手机-wifi-代理">3. 配置手机 WiFi 代理</a></li>
+        <li><a href="#4-开始抓包">4. 开始抓包</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="burpsuite抓包数据--app数据" class="headerLink">
+    <a href="#burpsuite%e6%8a%93%e5%8c%85%e6%95%b0%e6%8d%ae--app%e6%95%b0%e6%8d%ae" class="header-mark"></a>BurpSuite抓包数据 &amp; APP数据</h1><h2 id="一电脑端抓包" class="headerLink">
+    <a href="#%e4%b8%80%e7%94%b5%e8%84%91%e7%ab%af%e6%8a%93%e5%8c%85" class="header-mark"></a>一、电脑端抓包</h2><h3 id="1-安装证书" class="headerLink">
+    <a href="#1-%e5%ae%89%e8%a3%85%e8%af%81%e4%b9%a6" class="header-mark"></a>1. 安装证书</h3><h4 id="11-导出证书" class="headerLink">
+    <a href="#11-%e5%af%bc%e5%87%ba%e8%af%81%e4%b9%a6" class="header-mark"></a>1.1 导出证书</h4><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c0db3d1ddac507ccf2a907.jpg" title="https://pic.imgdb.cn/item/64c0db3d1ddac507ccf2a907.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c0db3d1ddac507ccf2a907.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c0db3d1ddac507ccf2a907.jpg"
+            srcset="https://pic.imgdb.cn/item/64c0db3d1ddac507ccf2a907.jpg, https://pic.imgdb.cn/item/64c0db3d1ddac507ccf2a907.jpg 1.5x, https://pic.imgdb.cn/item/64c0db3d1ddac507ccf2a907.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c0db3d1ddac507ccf2a907.jpg">
+    </a></figure></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c0dc051ddac507ccf4d19f.jpg" title="https://pic.imgdb.cn/item/64c0dc051ddac507ccf4d19f.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c0dc051ddac507ccf4d19f.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c0dc051ddac507ccf4d19f.jpg"
+            srcset="https://pic.imgdb.cn/item/64c0dc051ddac507ccf4d19f.jpg, https://pic.imgdb.cn/item/64c0dc051ddac507ccf4d19f.jpg 1.5x, https://pic.imgdb.cn/item/64c0dc051ddac507ccf4d19f.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c0dc051ddac507ccf4d19f.jpg">
+    </a></figure></p>
+<p>​</p>
+<h4 id="12-导入证书" class="headerLink">
+    <a href="#12-%e5%af%bc%e5%85%a5%e8%af%81%e4%b9%a6" class="header-mark"></a>1.2 导入证书</h4><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c0dcbc1ddac507ccf6cbee.jpg" title="https://pic.imgdb.cn/item/64c0dcbc1ddac507ccf6cbee.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c0dcbc1ddac507ccf6cbee.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c0dcbc1ddac507ccf6cbee.jpg"
+            srcset="https://pic.imgdb.cn/item/64c0dcbc1ddac507ccf6cbee.jpg, https://pic.imgdb.cn/item/64c0dcbc1ddac507ccf6cbee.jpg 1.5x, https://pic.imgdb.cn/item/64c0dcbc1ddac507ccf6cbee.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c0dcbc1ddac507ccf6cbee.jpg">
+    </a></figure></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c0dcf31ddac507ccf72f31.jpg" title="https://pic.imgdb.cn/item/64c0dcf31ddac507ccf72f31.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c0dcf31ddac507ccf72f31.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c0dcf31ddac507ccf72f31.jpg"
+            srcset="https://pic.imgdb.cn/item/64c0dcf31ddac507ccf72f31.jpg, https://pic.imgdb.cn/item/64c0dcf31ddac507ccf72f31.jpg 1.5x, https://pic.imgdb.cn/item/64c0dcf31ddac507ccf72f31.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c0dcf31ddac507ccf72f31.jpg">
+    </a></figure></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c0dd9a1ddac507ccf8742e.jpg" title="https://pic.imgdb.cn/item/64c0dd9a1ddac507ccf8742e.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c0dd9a1ddac507ccf8742e.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c0dd9a1ddac507ccf8742e.jpg"
+            srcset="https://pic.imgdb.cn/item/64c0dd9a1ddac507ccf8742e.jpg, https://pic.imgdb.cn/item/64c0dd9a1ddac507ccf8742e.jpg 1.5x, https://pic.imgdb.cn/item/64c0dd9a1ddac507ccf8742e.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c0dd9a1ddac507ccf8742e.jpg">
+    </a></figure></p>
+<p>​</p>
+<h3 id="2-设置代理" class="headerLink">
+    <a href="#2-%e8%ae%be%e7%bd%ae%e4%bb%a3%e7%90%86" class="header-mark"></a>2. 设置代理</h3><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c104e41ddac507cc439fab.jpg" title="https://pic.imgdb.cn/item/64c104e41ddac507cc439fab.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c104e41ddac507cc439fab.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c104e41ddac507cc439fab.jpg"
+            srcset="https://pic.imgdb.cn/item/64c104e41ddac507cc439fab.jpg, https://pic.imgdb.cn/item/64c104e41ddac507cc439fab.jpg 1.5x, https://pic.imgdb.cn/item/64c104e41ddac507cc439fab.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c104e41ddac507cc439fab.jpg">
+    </a></figure></p>
+<h3 id="3-开始抓包" class="headerLink">
+    <a href="#3-%e5%bc%80%e5%a7%8b%e6%8a%93%e5%8c%85" class="header-mark"></a>3. 开始抓包</h3><p>​</p>
+<p>​</p>
+<p>​</p>
+<h2 id="二手机端手机模拟器-抓包" class="headerLink">
+    <a href="#%e4%ba%8c%e6%89%8b%e6%9c%ba%e7%ab%af%e6%89%8b%e6%9c%ba%e6%a8%a1%e6%8b%9f%e5%99%a8-%e6%8a%93%e5%8c%85" class="header-mark"></a>二、手机端/手机模拟器 抓包</h2><h3 id="1-安装证书-1" class="headerLink">
+    <a href="#1-%e5%ae%89%e8%a3%85%e8%af%81%e4%b9%a6-1" class="header-mark"></a>1. 安装证书</h3><ol>
+<li>把导出的<code>.der</code>证书文件的后缀改成cer</li>
+<li>将证书文件传到手机或手机模拟器里</li>
+<li>点击证书文件，<code>凭据用途</code>选择：<code>WLAN</code>
+<img src="https://pic.imgdb.cn/item/64c106841ddac507cc467671.jpg" style="zoom:67%;" /></li>
+</ol>
+<p>​</p>
+<h3 id="2-开启电脑-burp-监听" class="headerLink">
+    <a href="#2-%e5%bc%80%e5%90%af%e7%94%b5%e8%84%91-burp-%e7%9b%91%e5%90%ac" class="header-mark"></a>2. 开启电脑 Burp 监听</h3><ol>
+<li>查看电脑IP地址
+<figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c109bd1ddac507cc4bde34.jpg" title="https://pic.imgdb.cn/item/64c109bd1ddac507cc4bde34.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c109bd1ddac507cc4bde34.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c109bd1ddac507cc4bde34.jpg"
+            srcset="https://pic.imgdb.cn/item/64c109bd1ddac507cc4bde34.jpg, https://pic.imgdb.cn/item/64c109bd1ddac507cc4bde34.jpg 1.5x, https://pic.imgdb.cn/item/64c109bd1ddac507cc4bde34.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c109bd1ddac507cc4bde34.jpg">
+    </a></figure></li>
+<li>启动BurpSuite，打开 Proxy——Options——Add，端口随意填写，绑定地址选择电脑 IP 地址
+<figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c10c4a1ddac507cc50d2b6.jpg" title="https://pic.imgdb.cn/item/64c10c4a1ddac507cc50d2b6.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c10c4a1ddac507cc50d2b6.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c10c4a1ddac507cc50d2b6.jpg"
+            srcset="https://pic.imgdb.cn/item/64c10c4a1ddac507cc50d2b6.jpg, https://pic.imgdb.cn/item/64c10c4a1ddac507cc50d2b6.jpg 1.5x, https://pic.imgdb.cn/item/64c10c4a1ddac507cc50d2b6.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c10c4a1ddac507cc50d2b6.jpg">
+    </a></figure></li>
+</ol>
+<p>​</p>
+<h3 id="3-配置手机-wifi-代理" class="headerLink">
+    <a href="#3-%e9%85%8d%e7%bd%ae%e6%89%8b%e6%9c%ba-wifi-%e4%bb%a3%e7%90%86" class="header-mark"></a>3. 配置手机 WiFi 代理</h3><ol>
+<li><strong>手机与电脑相同WIFI</strong></li>
+<li>设置手机的WIFI代理
+<figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c10e0a1ddac507cc543ccc.jpg" title="https://pic.imgdb.cn/item/64c10e0a1ddac507cc543ccc.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c10e0a1ddac507cc543ccc.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c10e0a1ddac507cc543ccc.jpg"
+            srcset="https://pic.imgdb.cn/item/64c10e0a1ddac507cc543ccc.jpg, https://pic.imgdb.cn/item/64c10e0a1ddac507cc543ccc.jpg 1.5x, https://pic.imgdb.cn/item/64c10e0a1ddac507cc543ccc.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c10e0a1ddac507cc543ccc.jpg">
+    </a></figure>
+填写BurpSuite监控的IP(电脑IP)和端口
+<figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64c10e651ddac507cc5521e0.jpg" title="https://pic.imgdb.cn/item/64c10e651ddac507cc5521e0.jpg" data-thumbnail="https://pic.imgdb.cn/item/64c10e651ddac507cc5521e0.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64c10e651ddac507cc5521e0.jpg"
+            srcset="https://pic.imgdb.cn/item/64c10e651ddac507cc5521e0.jpg, https://pic.imgdb.cn/item/64c10e651ddac507cc5521e0.jpg 1.5x, https://pic.imgdb.cn/item/64c10e651ddac507cc5521e0.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64c10e651ddac507cc5521e0.jpg">
+    </a></figure></li>
+</ol>
+<p>​</p>
+<h3 id="4-开始抓包" class="headerLink">
+    <a href="#4-%e5%bc%80%e5%a7%8b%e6%8a%93%e5%8c%85" class="header-mark"></a>4. 开始抓包</h3></div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/burpsuite%E6%8A%93%E5%8C%85%E6%95%B0%E6%8D%AE-app%E6%95%B0%E6%8D%AE/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/cookiesessiontoken/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/beef-xss%E6%B8%97%E9%80%8F%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

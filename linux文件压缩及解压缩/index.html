@@ -1,0 +1,388 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="文件压缩及解压缩 打包和压缩的区别**打包：**多个文件变成一个文件——减少文件个数 **压缩：**缩小一个文件的体积——减少文件体积 常见压缩格" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/linux%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E5%8F%8A%E8%A7%A3%E5%8E%8B%E7%BC%A9/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="文件压缩及解压缩 打包和压缩的区别**打包：**多个文件变成一个文件——减少文件个数 **压缩：**缩小一个文件的体积——减少文件体积 常见压缩格"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/linux%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E5%8F%8A%E8%A7%A3%E5%8E%8B%E7%BC%A9/" /><link rel="prev" href="/linux%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86/" /><link rel="next" href="/linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/linux%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E5%8F%8A%E8%A7%A3%E5%8E%8B%E7%BC%A9\/"
+        },"genre": "posts","wordcount":  514 ,
+        "url": "\/linux%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E5%8F%8A%E8%A7%A3%E5%8E%8B%E7%BC%A9\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 514 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#打包和压缩的区别">打包和压缩的区别</a></li>
+    <li><a href="#常见压缩格式">常见压缩格式</a></li>
+    <li><a href="#tar命令tape-archive">tar命令(Tape Archive)</a>
+      <ul>
+        <li><a href="#tar常用选项">tar常用选项</a></li>
+        <li><a href="#tar用法">tar用法</a></li>
+        <li><a href="#tar其他操作">tar其他操作</a></li>
+      </ul>
+    </li>
+    <li><a href="#zip命令">zip命令</a>
+      <ul>
+        <li><a href="#zip用法">zip用法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="文件压缩及解压缩" class="headerLink">
+    <a href="#%e6%96%87%e4%bb%b6%e5%8e%8b%e7%bc%a9%e5%8f%8a%e8%a7%a3%e5%8e%8b%e7%bc%a9" class="header-mark"></a>文件压缩及解压缩</h1><h2 id="打包和压缩的区别" class="headerLink">
+    <a href="#%e6%89%93%e5%8c%85%e5%92%8c%e5%8e%8b%e7%bc%a9%e7%9a%84%e5%8c%ba%e5%88%ab" class="header-mark"></a>打包和压缩的区别</h2><p>**打包：**多个文件变成一个文件——减少文件个数</p>
+<p>**压缩：**缩小一个文件的体积——减少文件体积</p>
+<h2 id="常见压缩格式" class="headerLink">
+    <a href="#%e5%b8%b8%e8%a7%81%e5%8e%8b%e7%bc%a9%e6%a0%bc%e5%bc%8f" class="header-mark"></a>常见压缩格式</h2><p>**HTTP：**gzip</p>
+<p>gzip、 deflate(zlib的格式)、 br(Brotli)、identity(不压缩）</p>
+<p>**Windows：**zip、rar、7z</p>
+<p>**Linux：**gzip（tar.gz=.tgz）、bzip2（.bz2）、zip</p>
+<blockquote>
+<p>压缩后体积: tar.bz2 &lt; tgz &lt; tar</p>
+<p>压缩解压时间: tar.bz2 &lt; tar &lt; tgz</p>
+</blockquote>
+<h2 id="tar命令tape-archive" class="headerLink">
+    <a href="#tar%e5%91%bd%e4%bb%a4tape-archive" class="header-mark"></a>tar命令(Tape Archive)</h2><h3 id="tar常用选项" class="headerLink">
+    <a href="#tar%e5%b8%b8%e7%94%a8%e9%80%89%e9%a1%b9" class="header-mark"></a>tar常用选项</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>作用</th>
+<th>单词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-c</code></td>
+<td>创建打包文件</td>
+<td>create</td>
+</tr>
+<tr>
+<td><code>-v</code></td>
+<td>显示打包或解包的详细信息</td>
+<td>verbose</td>
+</tr>
+<tr>
+<td><code>-f</code></td>
+<td>指定文件名称，必须放到所有选项后面</td>
+<td>file</td>
+</tr>
+<tr>
+<td><code>-z</code></td>
+<td>压缩或解压缩（.gz）</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>-j</code></td>
+<td>压缩或解压缩（.bz2）</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>-x</code></td>
+<td>解包</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>-C</code></td>
+<td>解压缩到指定目录</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tar用法" class="headerLink">
+    <a href="#tar%e7%94%a8%e6%b3%95" class="header-mark"></a>tar用法</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>打包（不压缩）</td>
+<td><code>tar -cvf test.tar test/</code></td>
+</tr>
+<tr>
+<td>解包</td>
+<td><code>tar -xvf test.tar</code></td>
+</tr>
+<tr>
+<td>打包并gz压缩</td>
+<td><code>tar -zcvf test.tar.gz test/</code></td>
+</tr>
+<tr>
+<td>解压</td>
+<td><code>tar -zxvf test.tar.gz</code></td>
+</tr>
+<tr>
+<td>解压到指定目录</td>
+<td><code>tar -zxvf test.tar.gz -C aaa</code></td>
+</tr>
+<tr>
+<td>打包并bz2压缩</td>
+<td><code>tar -jcvf test.tar.bz2 test/</code></td>
+</tr>
+<tr>
+<td>解压</td>
+<td><code>tar -jxvf test.tar.bz2 test/</code></td>
+</tr>
+<tr>
+<td>解压到指定目录</td>
+<td><code>tar -jxvf test.tar.bz2 -C aaa</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tar其他操作" class="headerLink">
+    <a href="#tar%e5%85%b6%e4%bb%96%e6%93%8d%e4%bd%9c" class="header-mark"></a>tar其他操作</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仅查看不解压</td>
+<td><code>tar -tf test.tar</code></td>
+</tr>
+<tr>
+<td>追加文件</td>
+<td><code>tar -rf test.tar *.gif</code></td>
+</tr>
+<tr>
+<td>替换文件</td>
+<td><code>tar -uf test.tar huaji.gif</code></td>
+</tr>
+<tr>
+<td>加密</td>
+<td>`tar -zcf - *.txt</td>
+</tr>
+<tr>
+<td>解密</td>
+<td>`dd if=test.des3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="zip命令" class="headerLink">
+    <a href="#zip%e5%91%bd%e4%bb%a4" class="header-mark"></a>zip命令</h2><h3 id="zip用法" class="headerLink">
+    <a href="#zip%e7%94%a8%e6%b3%95" class="header-mark"></a>zip用法</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>压缩</td>
+<td><code>zip test.zip *.txt</code></td>
+</tr>
+<tr>
+<td>解压缩</td>
+<td><code>unzip test.zip</code></td>
+</tr>
+<tr>
+<td>解压缩到指定目录</td>
+<td><code>unzip test.zip -d bbb</code></td>
+</tr>
+<tr>
+<td>添加密码</td>
+<td><code>zip -rP 123456 test.zip *.txt</code></td>
+</tr>
+<tr>
+<td>使用密码解压</td>
+<td><code>unzip -P 123456 test.zip</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/linux%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E5%8F%8A%E8%A7%A3%E5%8E%8B%E7%BC%A9/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/linux%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

@@ -1,0 +1,447 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="数构习题 第一章1.在数据结构中，从逻辑上可以把数据结构分成()。&mdash;查看 A.动态结构和静态结构 B.紧凑结构和非紧凑结构 C.线性结构" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/%E6%95%B0%E6%9E%84%E4%B9%A0%E9%A2%98/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="数构习题 第一章1.在数据结构中，从逻辑上可以把数据结构分成()。&mdash;查看 A.动态结构和静态结构 B.紧凑结构和非紧凑结构 C.线性结构"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/%E6%95%B0%E6%9E%84%E4%B9%A0%E9%A2%98/" /><link rel="prev" href="/%E6%B5%8B%E8%AF%95/" /><link rel="next" href="/%E5%A4%A7%E7%89%A9%E5%A4%8D%E4%B9%A0/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/%E6%95%B0%E6%9E%84%E4%B9%A0%E9%A2%98\/"
+        },"genre": "posts","wordcount":  1986 ,
+        "url": "\/%E6%95%B0%E6%9E%84%E4%B9%A0%E9%A2%98\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1986 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#第一章">第一章</a></li>
+    <li><a href="#第二章">第二章</a></li>
+    <li><a href="#第三章">第三章</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="数构习题" class="headerLink">
+    <a href="#%e6%95%b0%e6%9e%84%e4%b9%a0%e9%a2%98" class="header-mark"></a>数构习题</h1><h2 id="第一章" class="headerLink">
+    <a href="#%e7%ac%ac%e4%b8%80%e7%ab%a0" class="header-mark"></a>第一章</h2><p>1.在数据结构中，从逻辑上可以把数据结构分成()。<span title="C">&mdash;查看</span></p>
+<p>　　A.动态结构和静态结构</p>
+<p>　　B.紧凑结构和非紧凑结构</p>
+<p>　　C.线性结构和非线性结构</p>
+<p>　　D.内部结构和外部结构</p>
+<p>​</p>
+<p>2.与数据元素本身的形式、内容、相对位置、个数无关的是数据的()。<span title="C">&mdash;查看</span></p>
+<p>　　A.存储结构</p>
+<p>　　B.存储实现</p>
+<p>　　C.逻辑结构</p>
+<p>　　D.运算实现</p>
+<p>​</p>
+<p>3.通常要求同一逻辑结构中的所有数据元素具有相同的特性，这意味着()<span title="B">&mdash;查看</span></p>
+<p>​		A.数据具有同一特点</p>
+<p>​		B.不仅数据元素所包含的数据项的个数要相同，而且对应数据项的类型要一致</p>
+<p>​		C.每个数据元素都一样</p>
+<p>​		D.数据元素所包含的数据项的个数要相等</p>
+<p>​</p>
+<p>4.以下说法正确的是()。<span title="D">&mdash;查看</span></p>
+<p>　　A.数据元素是数据的最小单位<span title="数据项是数据的最小单位；数据元素是数据的基本单位">&mdash;查看</span></p>
+<p>　　B.数据项是数据的基本单位<span title="数据项是数据的最小单位；数据元素是数据的基本单位">&mdash;查看</span></p>
+<p>　　C.数据结构是带有结构的各数据项的集合<span title="数据结构是带有结构的各数据元素的集合">&mdash;查看</span></p>
+<p>　　D.一些表面上很不相同的数据可以有相同的逻辑结构</p>
+<p>​</p>
+<p>5.算法的时间复杂度取决于()<span title="D">&mdash;查看</span></p>
+<p>​		A.问题的规模</p>
+<p>​		B.待处理数据的初态</p>
+<p>​		C.计算机的配置</p>
+<p>　　 D.A和B
+　　</p>
+<p>6.以下数据结构中，()是非线性数据结构。<span title="A">&mdash;查看</span></p>
+<p>　　A.树</p>
+<p>　　B.字符串</p>
+<p>　　C.队列</p>
+<p>　　D.栈</p>
+<p>​</p>
+<p>5.试分析下列各算法的时间复杂度。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="mi">90</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span><span class="o">--</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>$O(1)$</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>$O(n×m)$</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">s</span> <span class="o">+=</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="n">sum</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>$O(n^2)$</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>$O(log_3n):3^{f(n)}\leq n$</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span><span class="o">++</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>$O(n^2):n-1+n-2+&hellip;+1=n(n-1)/2$</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="c1">// n &gt; 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>$\mathrm{O}(\sqrt{n}):x\geqslant(f(n)+1)^2,\text{又由于}x=n,\text{ 所以 }f(n)\leqslant\sqrt{n}-1$</p>
+</blockquote>
+<p>​</p>
+<p>​</p>
+<h2 id="第二章" class="headerLink">
+    <a href="#%e7%ac%ac%e4%ba%8c%e7%ab%a0" class="header-mark"></a>第二章</h2><p>1.顺序表中第一个元素的存储地址是100，每个元素的长度为2，则第5个元素的地址是()<span title="B">&mdash;查看</span></p>
+<p>　　A. 110</p>
+<p>　　B. 108</p>
+<p>　　C. 100</p>
+<p>　　D. 120</p>
+<p>　　2.在n个结点的顺序表中，算法的时间复杂度是O(1)的操作是()。<span title="A">&mdash;查看</span></p>
+<p>　　A.访问第i个结点(1≤i≤n)和求第i个结点的直接前驱(2≤i≤n)</p>
+<p>　　B.在第i个结点后插入一个新结点(1≤i≤n)</p>
+<p>　　C.删除第i个结点(1≤i≤n)</p>
+<p>　　D.将n个结点从小到大排序</p>
+<p>　　 :star2:3.向一个有127个元素的顺序表中插入一个新元素并保持原来顺序不变，平均要移动的元素个数为()。<span title="B">&mdash;查看</span></p>
+<p>　　A. 8</p>
+<p>　　B. 63.5</p>
+<p>　　C. 63</p>
+<p>　　D. 7</p>
+<p>　　4.链接存储的存储结构所占存储空间()。<span title="A">&mdash;查看</span></p>
+<p>　　A.分两部分，一部分存放结点值，另一部分存放表示结点间关系的指针</p>
+<p>　　B.只有一部分，存放结点值</p>
+<p>　　C.只有一部分，存储表示结点间关系的指针</p>
+<p>　　D.分两部分，一部分存放结点值，另一部分存放结点所占单元数</p>
+<p>　　5.线性表若采用链式存储结构时，要求内存中可用存储单元的地址()<span title="D">&mdash;查看</span></p>
+<p>　　A.必须是连续的</p>
+<p>　　B.部分地址必须是连续的</p>
+<p>　　C.一定是不连续的</p>
+<p>　　D.连续或不连续都可以</p>
+<p>　　6.线性表L在()情况下适用于使用链式结构实现。<span title="B">&mdash;查看</span></p>
+<p>　　A.需经常修改L中的结点值</p>
+<p>　　B.需不断对L进行删除插入</p>
+<p>　　C.L中含有大量的结点</p>
+<p>　　D.L中结点结构复杂</p>
+<p>　　7.单链表的存储密度()。<span title="C">&mdash;查看</span></p>
+<p>　　A.大于1</p>
+<p>　　B.等于1</p>
+<p>　　C.小于1</p>
+<p>　　D.不能确定</p>
+<p>　　8.将两个各有n个元素的有序表归并成一个有序表，其最少的比较次数是()<span title="A">&mdash;查看</span></p>
+<p>　　A.n</p>
+<p>　　B. 2n-1</p>
+<p>　　C. 2n</p>
+<p>　　D. n-1</p>
+<p>　　:star2:9.在一个长度为n的顺序表中，在第i个元素(1≤i≤n+1)之前插入一个新元素时须向后移动()个元素。<span title="B">&mdash;查看</span></p>
+<p>　　A.n-i</p>
+<p>　　B. n-i+1</p>
+<p>　　C. n-i-1</p>
+<p>　　D.i</p>
+<p>　　10.线性表L=(a1,a2,…,am),下列说法正确的是()。<span title="D">&mdash;查看</span></p>
+<p>　　A.每个元素都有一个直接前驱和一个直接后继</p>
+<p>　　B.线性表中至少有一个元素</p>
+<p>　　C.表中诸元素的排列必须是由小到大或由大到小</p>
+<p>　　D.除第一个和最后一个元素外，其余每个元素都有一个且仅有一个直接前驱和直接后继</p>
+<p>　　:star2:11.创建一个包括n个结点的<strong>有序</strong>单链表的时间复杂度是()。<span title="C">&mdash;查看</span></p>
+<p>　　A. $O(1)$</p>
+<p>　　B.$O(n)$</p>
+<p>　　C. $O(n^2)$</p>
+<p>　　D. $O(nlog_2n)$</p>
+<p>:star2:12.以下说法错误的是()。<span title="D">&mdash;查看</span></p>
+<p>　　A.求表长、定位这两种运算在采用顺序存储结构时实现的效率不比采用链式存储结构时实现的效率低</p>
+<p>　　B.顺序存储的线性表可以随机存取</p>
+<p>　　C.由于顺序存储要求连续的存储区域，所以在存储管理上不够灵活</p>
+<p>​      D.线性表的链式存储结构优于顺序存储结构</p>
+<p>​</p>
+<p>13.在单链表中，要将s所指结点插入到p所指结点之后，其语句应为()。<span title="D">&mdash;查看</span></p>
+<p>　　A. s-&gt;next=p+1; p-&gt;next=s;</p>
+<p>　　B.(*p).next=s;(*s).next=(*p).next;</p>
+<p>　　C. s-&gt;next=p-&gt;next; p-&gt;next=s-&gt;next;</p>
+<p>　　D. s-&gt;next=p-&gt;next; p-&gt;next=s;
+　　</p>
+<p>14.在双向链表存储结构中，删除p所指的结点时须修改指针()<span title="A">&mdash;查看</span></p>
+<p>　　A. p-&gt;prior-&gt;next=p-&gt;next; p-&gt;next-&gt;prior=p-&gt;prior;</p>
+<p>　　B. p-&gt;next=p-&gt;next-&gt;next; p-&gt;next-&gt;prior=p;</p>
+<p>　　C. p-&gt;prior-&gt;next=p; p-&gt;prior=p-&gt;prior-&gt;prior;</p>
+<p>　　D. p-&gt;prior=p-&gt;next-&gt;next; p-&gt;next=p-&gt;prior-&gt;prior;
+　</p>
+<p>　15.在双向循环链表中，在p指针所指的结点后插入q所指向的新结点，其修改指针的操作是()。<span title="C">&mdash;查看</span></p>
+<p>　　A. p-&gt;next=q; q-&gt;prior=p; p-&gt;next-&gt;prior=q; q-&gt;next=q;</p>
+<p>　　B. p-&gt;next=q; p-&gt;next-&gt;prior=q; q-&gt;prior-p; q-&gt;next=p-&gt;next;</p>
+<p>　　C. q-&gt;prior=p; q-&gt;next=p-&gt;next; p-&gt;next-&gt;prior=q; p-&gt;next=q;</p>
+<p>　　D. q-&gt;prior=p; q-&gt;next=p-&gt;next; p-&gt;next=q; p-&gt;next-&gt;prior=q;</p>
+<p>​</p>
+<p>​</p>
+<h2 id="第三章" class="headerLink">
+    <a href="#%e7%ac%ac%e4%b8%89%e7%ab%a0" class="header-mark"></a>第三章</h2></div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/%E6%95%B0%E6%9E%84%E4%B9%A0%E9%A2%98/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E6%B5%8B%E8%AF%95/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/%E5%A4%A7%E7%89%A9%E5%A4%8D%E4%B9%A0/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

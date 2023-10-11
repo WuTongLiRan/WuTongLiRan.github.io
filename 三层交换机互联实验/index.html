@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="三层交换机互联实验 实验目的本实验的目的是通过配置三层交换机实现两个不同 VLAN 中的设备互通。 ​ 实验拓扑 ​ 实验步骤 开启三层交换机的三层功能：进入全局" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BA%92%E8%81%94%E5%AE%9E%E9%AA%8C/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="三层交换机互联实验 实验目的本实验的目的是通过配置三层交换机实现两个不同 VLAN 中的设备互通。 ​ 实验拓扑 ​ 实验步骤 开启三层交换机的三层功能：进入全局"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BA%92%E8%81%94%E5%AE%9E%E9%AA%8C/" /><link rel="prev" href="/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E5%AE%9E%E9%AA%8C/" /><link rel="next" href="/enspospf%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BA%92%E8%81%94%E5%AE%9E%E9%AA%8C\/"
+        },"genre": "posts","wordcount":  631 ,
+        "url": "\/%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BA%92%E8%81%94%E5%AE%9E%E9%AA%8C\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 631 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#实验目的">实验目的</a></li>
+    <li><a href="#实验拓扑">实验拓扑</a></li>
+    <li><a href="#实验步骤">实验步骤</a></li>
+    <li><a href="#实验验证">实验验证</a></li>
+    <li><a href="#结论">结论</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="三层交换机互联实验" class="headerLink">
+    <a href="#%e4%b8%89%e5%b1%82%e4%ba%a4%e6%8d%a2%e6%9c%ba%e4%ba%92%e8%81%94%e5%ae%9e%e9%aa%8c" class="header-mark"></a>三层交换机互联实验</h1><h2 id="实验目的" class="headerLink">
+    <a href="#%e5%ae%9e%e9%aa%8c%e7%9b%ae%e7%9a%84" class="header-mark"></a>实验目的</h2><p>本实验的目的是通过配置三层交换机实现两个不同 VLAN 中的设备互通。</p>
+<p>​</p>
+<h2 id="实验拓扑" class="headerLink">
+    <a href="#%e5%ae%9e%e9%aa%8c%e6%8b%93%e6%89%91" class="header-mark"></a>实验拓扑</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64b652391ddac507cc8f932c.jpg" title="https://pic.imgdb.cn/item/64b652391ddac507cc8f932c.jpg" data-thumbnail="https://pic.imgdb.cn/item/64b652391ddac507cc8f932c.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64b652391ddac507cc8f932c.jpg"
+            srcset="https://pic.imgdb.cn/item/64b652391ddac507cc8f932c.jpg, https://pic.imgdb.cn/item/64b652391ddac507cc8f932c.jpg 1.5x, https://pic.imgdb.cn/item/64b652391ddac507cc8f932c.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64b652391ddac507cc8f932c.jpg">
+    </a></figure></p>
+<p>​</p>
+<h2 id="实验步骤" class="headerLink">
+    <a href="#%e5%ae%9e%e9%aa%8c%e6%ad%a5%e9%aa%a4" class="header-mark"></a>实验步骤</h2><ol>
+<li>
+<p>开启三层交换机的三层功能：进入全局配置模式，开启三层交换机的三层功能。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)# ip routing
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>创建VLAN：在交换机上创建两个 VLAN ，分别为 VLAN 10 和 VLAN 20。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)# vlan 10                          // 创建 VLAN 10
+</span></span><span class="line"><span class="cl">Switch(config)# vlan 20                          // 创建 VLAN 20
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>配置接口和VLAN关联：将每个PC所连接的接口与相应的VLAN关联起来。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)# interface fastEthernet 0/1        // 进入接口 FastEthernet 0/1
+</span></span><span class="line"><span class="cl">Switch(config-if)# switchport mode access         // 配置接口为 Access 模式
+</span></span><span class="line"><span class="cl">Switch(config-if)# switchport access vlan 10      // 将接口划分到 VLAN 10
+</span></span><span class="line"><span class="cl">Switch(config-if)# exit                           // 退出接口配置模式
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Switch(config)# interface fastEthernet 0/2        // 进入接口 FastEthernet 0/2
+</span></span><span class="line"><span class="cl">Switch(config-if)# switchport mode access         // 配置接口为 Access 模式
+</span></span><span class="line"><span class="cl">Switch(config-if)# switchport access vlan 20      // 将接口划分到 VLAN 20
+</span></span><span class="line"><span class="cl">Switch(config-if)# exit                           // 退出接口配置模式
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>配置三层接口：为交换机配置一个三层接口，并将其与两个VLAN进行关联。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)# interface vlan 10                 // 进入 VLAN 10 接口
+</span></span><span class="line"><span class="cl">Switch(config-if)# ip address 192.168.0.1 255.255.255.0    // 配置 VLAN 10 接口的 IP 地址
+</span></span><span class="line"><span class="cl">Switch(config-if)# no shutdown                    // 启用 VLAN 10 接口
+</span></span><span class="line"><span class="cl">Switch(config-if)# exit                           // 退出 VLAN 10 接口配置模式
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Switch(config)# interface vlan 20                 // 进入 VLAN 20 接口
+</span></span><span class="line"><span class="cl">Switch(config-if)# ip address 192.168.1.1 255.255.255.0    // 配置 VLAN 20 接口的 IP 地址
+</span></span><span class="line"><span class="cl">Switch(config-if)# no shutdown                    // 启用 VLAN 20 接口
+</span></span><span class="line"><span class="cl">Switch(config-if)# exit                           // 退出 VLAN 20 接口配置模式
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>​	保存配置。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch#write
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<p>​</p>
+<h2 id="实验验证" class="headerLink">
+    <a href="#%e5%ae%9e%e9%aa%8c%e9%aa%8c%e8%af%81" class="header-mark"></a>实验验证</h2><p>完成上述配置后，您可以使用以下方法验证实验的成功：</p>
+<ol>
+<li>确保 PC 的 IP地址、子网掩码和默认网关正确配置，并且 PC 之间没有防火墙或 ACL 等阻止通信的限制。</li>
+<li>尝试从一个 VLAN 中的 PC Ping 另一个 VLAN 中的PC，验证它们之间的互通性。</li>
+<li>在交换机上检查 VLAN 接口和端口的状态，确保它们正常工作。</li>
+</ol>
+<p>​</p>
+<h2 id="结论" class="headerLink">
+    <a href="#%e7%bb%93%e8%ae%ba" class="header-mark"></a>结论</h2><p>通过配置三层交换机实现两个不同 VLAN 中的设备互通，建立了 VLAN 间的互联。这种设置允许两个 VLAN 中的设备之间进行通信，扩展了网络的灵活性和功能。</p>
+</div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BA%92%E8%81%94%E5%AE%9E%E9%AA%8C/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E5%AE%9E%E9%AA%8C/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/enspospf%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="IP地址 &amp; 子网掩码 &amp; 网段 &amp; 子网号 &amp; 广播号 IP地址 由32位二进制(4个8位字节)组成，通常用点分十进制表示法表示。 11000000 10101000 00000001 00000001可表示" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/ip%E5%9C%B0%E5%9D%80-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81-%E7%BD%91%E6%AE%B5-%E5%AD%90%E7%BD%91%E5%8F%B7-%E5%B9%BF%E6%92%AD%E5%8F%B7/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="IP地址 &amp; 子网掩码 &amp; 网段 &amp; 子网号 &amp; 广播号 IP地址 由32位二进制(4个8位字节)组成，通常用点分十进制表示法表示。 11000000 10101000 00000001 00000001可表示"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/ip%E5%9C%B0%E5%9D%80-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81-%E7%BD%91%E6%AE%B5-%E5%AD%90%E7%BD%91%E5%8F%B7-%E5%B9%BF%E6%92%AD%E5%8F%B7/" /><link rel="prev" href="/ip%E5%9C%B0%E5%9D%80%E6%A0%BC%E5%BC%8F-%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/" /><link rel="next" href="/dhcp%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/ip%E5%9C%B0%E5%9D%80-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81-%E7%BD%91%E6%AE%B5-%E5%AD%90%E7%BD%91%E5%8F%B7-%E5%B9%BF%E6%92%AD%E5%8F%B7\/"
+        },"genre": "posts","wordcount":  593 ,
+        "url": "\/ip%E5%9C%B0%E5%9D%80-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81-%E7%BD%91%E6%AE%B5-%E5%AD%90%E7%BD%91%E5%8F%B7-%E5%B9%BF%E6%92%AD%E5%8F%B7\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 593 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#ip地址">IP地址</a></li>
+    <li><a href="#子网掩码">子网掩码</a></li>
+    <li><a href="#网段">网段</a></li>
+    <li><a href="#子网号">子网号</a></li>
+    <li><a href="#广播号">广播号</a>
+      <ul>
+        <li><a href="#示例求19216801232552552540的网段--子网号--广播号--终端可用ip数">示例：求192.168.0.1/23(255.255.254.0)的网段 &amp; 子网号 &amp; 广播号 &amp; 终端可用IP数。</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="ip地址--子网掩码--网段--子网号--广播号" class="headerLink">
+    <a href="#ip%e5%9c%b0%e5%9d%80--%e5%ad%90%e7%bd%91%e6%8e%a9%e7%a0%81--%e7%bd%91%e6%ae%b5--%e5%ad%90%e7%bd%91%e5%8f%b7--%e5%b9%bf%e6%92%ad%e5%8f%b7" class="header-mark"></a>IP地址 &amp; 子网掩码 &amp; 网段 &amp; 子网号 &amp; 广播号</h1><h2 id="ip地址" class="headerLink">
+    <a href="#ip%e5%9c%b0%e5%9d%80" class="header-mark"></a>IP地址</h2><ul>
+<li>
+<p>由32位二进制(4个8位字节)组成，通常用点分十进制表示法表示。</p>
+<blockquote>
+<p><code>11000000 10101000 00000001 00000001</code>可表示为<code>192.168.1.1</code></p>
+</blockquote>
+</li>
+</ul>
+<p>​</p>
+<ul>
+<li><strong>IP地址=网络号+主机号。</strong>
+<ul>
+<li>网络号：表示某一个IP子网。</li>
+<li>主机号：标识本IP子网内的某台主机。</li>
+</ul>
+</li>
+</ul>
+<p>​</p>
+<h2 id="子网掩码" class="headerLink">
+    <a href="#%e5%ad%90%e7%bd%91%e6%8e%a9%e7%a0%81" class="header-mark"></a>子网掩码</h2><ul>
+<li><strong>用来区分IP地址的网络号和主机号。</strong></li>
+</ul>
+<p>​</p>
+<h2 id="网段" class="headerLink">
+    <a href="#%e7%bd%91%e6%ae%b5" class="header-mark"></a>网段</h2><ul>
+<li>一组<strong>连续的IP地址范围</strong>，用于划分和管理网络。它定义了一组具有相同网络号的IP地址。</li>
+</ul>
+<p>​</p>
+<h2 id="子网号" class="headerLink">
+    <a href="#%e5%ad%90%e7%bd%91%e5%8f%b7" class="header-mark"></a>子网号</h2><ul>
+<li>用于将IP地址划分为网络部分和主机部分。</li>
+<li><strong>网段中的第一个IP。</strong></li>
+</ul>
+<p>​</p>
+<h2 id="广播号" class="headerLink">
+    <a href="#%e5%b9%bf%e6%92%ad%e5%8f%b7" class="header-mark"></a>广播号</h2><ul>
+<li>广播号是一个特殊的IP地址，用于向同一子网中的所有设备广播数据包。</li>
+<li><strong>网段中的最后一个IP。</strong></li>
+</ul>
+<p>​</p>
+<h3 id="示例求19216801232552552540的网段--子网号--广播号--终端可用ip数" class="headerLink">
+    <a href="#%e7%a4%ba%e4%be%8b%e6%b1%8219216801232552552540%e7%9a%84%e7%bd%91%e6%ae%b5--%e5%ad%90%e7%bd%91%e5%8f%b7--%e5%b9%bf%e6%92%ad%e5%8f%b7--%e7%bb%88%e7%ab%af%e5%8f%af%e7%94%a8ip%e6%95%b0" class="header-mark"></a>示例：求192.168.0.1/23(255.255.254.0)的网段 &amp; 子网号 &amp; 广播号 &amp; 终端可用IP数。</h3><blockquote>
+<p><code>/23</code>的意思是<code>11111111.11111111.11111110.00000000</code>，就相当于是掩码<code>255.255.254.0</code>，一般只会给其中一种。</p>
+</blockquote>
+<p>​</p>
+<ul>
+<li>把掩码转成32位二进制。
+<code>255.255.254.0</code>=&gt;<code>11111111.11111111.11111110.00000000</code></li>
+</ul>
+<p>​</p>
+<ul>
+<li>
+<p>全为<code>1</code>的部分是不可变部分，有<code>0</code>的部分是可变部分。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">11111111	不可变 						 192
+</span></span><span class="line"><span class="cl">11111111	不可变 						 168
+</span></span><span class="line"><span class="cl">11111110	 可变 	 11111110~11111111 =&gt; 0~1
+</span></span><span class="line"><span class="cl">00000000	 可变		 00000000~11111111 =&gt; 0~255
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<p>​</p>
+<ul>
+<li>所以<strong>网段</strong>是<code>192.168.0.0</code>~<code>192.168.1.255</code>。</li>
+</ul>
+<p>​</p>
+<ul>
+<li><strong>子网号</strong>是网段的<strong>第一个</strong>：<code>192.168.0.0</code>。</li>
+</ul>
+<p>​</p>
+<ul>
+<li><strong>广播号</strong>是网段的<strong>最后一个</strong>：<code>192.168.1.255</code>。</li>
+</ul>
+<p>​</p>
+<ul>
+<li><strong>终端可用IP数=网段的所有IP-子网号(网络号)-广播号</strong>：$512-2=510$</li>
+</ul>
+</div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/ip%E5%9C%B0%E5%9D%80-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81-%E7%BD%91%E6%AE%B5-%E5%AD%90%E7%BD%91%E5%8F%B7-%E5%B9%BF%E6%92%AD%E5%8F%B7/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/ip%E5%9C%B0%E5%9D%80%E6%A0%BC%E5%BC%8F-%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/dhcp%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

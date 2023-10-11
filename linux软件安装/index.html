@@ -1,0 +1,596 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="Linux软件安装 Windows软件安装流程 安装检查 释放文件 复制可执行文件 DLL动态链接库/安装服务 注册表 开始菜单和快捷方式 Linux可执行" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Linux软件安装 Windows软件安装流程 安装检查 释放文件 复制可执行文件 DLL动态链接库/安装服务 注册表 开始菜单和快捷方式 Linux可执行"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" /><link rel="prev" href="/vmware%E4%B8%89%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F/" /><link rel="next" href="/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85\/"
+        },"genre": "posts","wordcount":  1089 ,
+        "url": "\/linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1089 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#windows软件安装流程">Windows软件安装流程</a></li>
+    <li><a href="#linux可执行程序">Linux可执行程序</a></li>
+    <li><a href="#脚本和程序的区别">脚本和程序的区别</a></li>
+    <li><a href="#linux软件常见安装方式">Linux软件常见安装方式</a></li>
+    <li><a href="#源码安装">源码安装</a></li>
+    <li><a href="#redhat红帽派系">Redhat红帽派系</a>
+      <ul>
+        <li><a href="#rpm安装redhat-package-manager">rpm安装（RedHat Package Manager）</a></li>
+        <li><a href="#yum安装yellow-dog-updater-modified">yum安装（Yellow dog Updater, Modified）</a></li>
+        <li><a href="#dnf安装dandified-yum">DNF安装（Dandified YUM）</a></li>
+      </ul>
+    </li>
+    <li><a href="#debian派系">Debian派系</a>
+      <ul>
+        <li><a href="#apt安装">apt安装</a></li>
+      </ul>
+    </li>
+    <li><a href="#freebsd派系">FreeBSD派系</a>
+      <ul>
+        <li><a href="#pkg安装package">pkg安装（Package）</a></li>
+      </ul>
+    </li>
+    <li><a href="#软件版本管理">软件版本管理</a>
+      <ul>
+        <li><a href="#update-alternatives">update-alternatives</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="linux软件安装" class="headerLink">
+    <a href="#linux%e8%bd%af%e4%bb%b6%e5%ae%89%e8%a3%85" class="header-mark"></a>Linux软件安装</h1><h2 id="windows软件安装流程" class="headerLink">
+    <a href="#windows%e8%bd%af%e4%bb%b6%e5%ae%89%e8%a3%85%e6%b5%81%e7%a8%8b" class="header-mark"></a>Windows软件安装流程</h2><ul>
+<li>安装检查</li>
+<li>释放文件</li>
+<li>复制可执行文件</li>
+<li>DLL动态链接库/安装服务</li>
+<li>注册表</li>
+<li>开始菜单和快捷方式</li>
+</ul>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a6ae751ddac507cc5e0a51.jpg" title="https://pic.imgdb.cn/item/64a6ae751ddac507cc5e0a51.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a6ae751ddac507cc5e0a51.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a6ae751ddac507cc5e0a51.jpg"
+            srcset="https://pic.imgdb.cn/item/64a6ae751ddac507cc5e0a51.jpg, https://pic.imgdb.cn/item/64a6ae751ddac507cc5e0a51.jpg 1.5x, https://pic.imgdb.cn/item/64a6ae751ddac507cc5e0a51.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a6ae751ddac507cc5e0a51.jpg">
+    </a></figure><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a6ae891ddac507cc5e5943.jpg" title="https://pic.imgdb.cn/item/64a6ae891ddac507cc5e5943.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a6ae891ddac507cc5e5943.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a6ae891ddac507cc5e5943.jpg"
+            srcset="https://pic.imgdb.cn/item/64a6ae891ddac507cc5e5943.jpg, https://pic.imgdb.cn/item/64a6ae891ddac507cc5e5943.jpg 1.5x, https://pic.imgdb.cn/item/64a6ae891ddac507cc5e5943.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a6ae891ddac507cc5e5943.jpg">
+    </a></figure></p>
+<h2 id="linux可执行程序" class="headerLink">
+    <a href="#linux%e5%8f%af%e6%89%a7%e8%a1%8c%e7%a8%8b%e5%ba%8f" class="header-mark"></a>Linux可执行程序</h2><ul>
+<li>/bin /sbin</li>
+<li>/usr/bin</li>
+<li>/usr/sbin</li>
+</ul>
+<h2 id="脚本和程序的区别" class="headerLink">
+    <a href="#%e8%84%9a%e6%9c%ac%e5%92%8c%e7%a8%8b%e5%ba%8f%e7%9a%84%e5%8c%ba%e5%88%ab" class="header-mark"></a>脚本和程序的区别</h2><p><strong>脚本：</strong></p>
+<ul>
+<li>不需要编译的：Javascript、Python、Ruby……</li>
+<li>解释型：边解释边执行</li>
+</ul>
+<p><strong>程序：</strong></p>
+<ul>
+<li>需要编译的：C、C++、Swift、Kotlin、Go……</li>
+<li>编译型：计算机可以直接执行</li>
+</ul>
+<h2 id="linux软件常见安装方式" class="headerLink">
+    <a href="#linux%e8%bd%af%e4%bb%b6%e5%b8%b8%e8%a7%81%e5%ae%89%e8%a3%85%e6%96%b9%e5%bc%8f" class="header-mark"></a>Linux软件常见安装方式</h2><table>
+<thead>
+<tr>
+<th>主要派系</th>
+<th>Linux发行版</th>
+<th>主要安装方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Redhat红帽派系</td>
+<td>Redhat、CentOS、Fedora等</td>
+<td>make、rpm、yum、dnf</td>
+</tr>
+<tr>
+<td>Debian派系</td>
+<td>Kali、Ubuntu等</td>
+<td>deb、apt、dpkg</td>
+</tr>
+<tr>
+<td>FreeBSD派系</td>
+<td>FreeBSD</td>
+<td>make、pkg、ports</td>
+</tr>
+</tbody>
+</table>
+<h2 id="源码安装" class="headerLink">
+    <a href="#%e6%ba%90%e7%a0%81%e5%ae%89%e8%a3%85" class="header-mark"></a>源码安装</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a6b04f1ddac507cc64d65c.jpg" title="https://pic.imgdb.cn/item/64a6b04f1ddac507cc64d65c.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a6b04f1ddac507cc64d65c.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a6b04f1ddac507cc64d65c.jpg"
+            srcset="https://pic.imgdb.cn/item/64a6b04f1ddac507cc64d65c.jpg, https://pic.imgdb.cn/item/64a6b04f1ddac507cc64d65c.jpg 1.5x, https://pic.imgdb.cn/item/64a6b04f1ddac507cc64d65c.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a6b04f1ddac507cc64d65c.jpg">
+    </a></figure></p>
+<h2 id="redhat红帽派系" class="headerLink">
+    <a href="#redhat%e7%ba%a2%e5%b8%bd%e6%b4%be%e7%b3%bb" class="header-mark"></a>Redhat红帽派系</h2><h3 id="rpm安装redhat-package-manager" class="headerLink">
+    <a href="#rpm%e5%ae%89%e8%a3%85redhat-package-manager" class="header-mark"></a>rpm安装（RedHat Package Manager）</h3><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a6b0891ddac507cc655870.jpg" title="https://pic.imgdb.cn/item/64a6b0891ddac507cc655870.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a6b0891ddac507cc655870.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64a6b0891ddac507cc655870.jpg"
+            srcset="https://pic.imgdb.cn/item/64a6b0891ddac507cc655870.jpg, https://pic.imgdb.cn/item/64a6b0891ddac507cc655870.jpg 1.5x, https://pic.imgdb.cn/item/64a6b0891ddac507cc655870.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64a6b0891ddac507cc655870.jpg">
+    </a></figure></p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查询</td>
+<td><code>rpm -qa rpm -q 包名 </code></td>
+<td><code>q</code>：query</td>
+</tr>
+<tr>
+<td>安装</td>
+<td><code>rpm -ivh 包名</code></td>
+<td><code>i</code>：install <code>v</code>：verbose <code>h</code>：hash</td>
+</tr>
+<tr>
+<td>升级</td>
+<td><code>rpm -Uvh 包名 </code></td>
+<td><code>U</code>：安装或升级最新版</td>
+</tr>
+<tr>
+<td>卸载</td>
+<td><code>rpm -e 包名 </code></td>
+<td>需要先卸载依赖其的软件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="yum安装yellow-dog-updater-modified" class="headerLink">
+    <a href="#yum%e5%ae%89%e8%a3%85yellow-dog-updater-modified" class="header-mark"></a>yum安装（Yellow dog Updater, Modified）</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>列表</td>
+<td><code>yum list yum list 包名</code></td>
+</tr>
+<tr>
+<td>搜索</td>
+<td><code>yum search 包名</code></td>
+</tr>
+<tr>
+<td>安装</td>
+<td><code>yum install 包名</code></td>
+</tr>
+<tr>
+<td>升级</td>
+<td><code>yum update 包名</code></td>
+</tr>
+<tr>
+<td>卸载</td>
+<td><code>yum remove 包名</code></td>
+</tr>
+<tr>
+<td>更新所有软件</td>
+<td><code>yum update</code></td>
+</tr>
+<tr>
+<td>清除缓存</td>
+<td><code>yum clean all</code></td>
+</tr>
+<tr>
+<td>更新yum缓存</td>
+<td><code>yum make cache</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-h</code></td>
+<td>显示帮助信息</td>
+</tr>
+<tr>
+<td><code>-y</code></td>
+<td>对所有的提问都回答“yes&quot;</td>
+</tr>
+<tr>
+<td><code>-c </code></td>
+<td>指定配置文件</td>
+</tr>
+<tr>
+<td><code>-q </code></td>
+<td>安静模式</td>
+</tr>
+<tr>
+<td><code>-v </code></td>
+<td>详细模式</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dnf安装dandified-yum" class="headerLink">
+    <a href="#dnf%e5%ae%89%e8%a3%85dandified-yum" class="header-mark"></a>DNF安装（Dandified YUM）</h3><table>
+<thead>
+<tr>
+<th>区别</th>
+<th>DNF</th>
+<th>YUM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>解析依赖关系</td>
+<td>使用Libsolv</td>
+<td>使用公开的API</td>
+</tr>
+<tr>
+<td>API</td>
+<td>有完整的API文档，能很容易地创建新功能</td>
+<td>没有完整文档，创建新功能困难</td>
+</tr>
+<tr>
+<td>开发语言</td>
+<td>C、C++、Python编写</td>
+<td>只用Ptyhon编写</td>
+</tr>
+<tr>
+<td>使用范围</td>
+<td>Fedora、RHEL 8、CentOS 8、OEL 8、Mageia 6/7</td>
+<td>RHEL 6/7、CentOS 6/7、OEL 6/7</td>
+</tr>
+<tr>
+<td>扩展的支持</td>
+<td>支持各种扩展</td>
+<td>只支持基于Python的扩展</td>
+</tr>
+<tr>
+<td>同步元数据</td>
+<td>占用内存少</td>
+<td>占用较多内存</td>
+</tr>
+<tr>
+<td>更新</td>
+<td>包中包含不相关的依赖，则不会更新</td>
+<td>在没有验证的情况下更新软件包</td>
+</tr>
+<tr>
+<td>存储库不可用</td>
+<td>DNF将跳过它，并继续使用可用的存储库处理事务</td>
+<td>YUM会立即停止</td>
+</tr>
+<tr>
+<td>内核包的保护</td>
+<td>DNF不提供，可以删除内核包</td>
+<td>不允许你删除运行中的内核</td>
+</tr>
+</tbody>
+</table>
+<h2 id="debian派系" class="headerLink">
+    <a href="#debian%e6%b4%be%e7%b3%bb" class="header-mark"></a>Debian派系</h2><h3 id="apt安装" class="headerLink">
+    <a href="#apt%e5%ae%89%e8%a3%85" class="header-mark"></a>apt安装</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>搜索</td>
+<td>apt search 包名</td>
+</tr>
+<tr>
+<td>安装</td>
+<td>apt install 包名</td>
+</tr>
+<tr>
+<td>升级</td>
+<td>apt update 包名</td>
+</tr>
+<tr>
+<td>卸载</td>
+<td>apt remove 包名</td>
+</tr>
+</tbody>
+</table>
+<h2 id="freebsd派系" class="headerLink">
+    <a href="#freebsd%e6%b4%be%e7%b3%bb" class="header-mark"></a>FreeBSD派系</h2><h3 id="pkg安装package" class="headerLink">
+    <a href="#pkg%e5%ae%89%e8%a3%85package" class="header-mark"></a>pkg安装（Package）</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>搜索</td>
+<td>pkg search 包名</td>
+</tr>
+<tr>
+<td>安装</td>
+<td>pkg install 包名</td>
+</tr>
+<tr>
+<td>升级</td>
+<td>pkg upgrade 包名</td>
+</tr>
+<tr>
+<td>卸载</td>
+<td>pkg del 包名</td>
+</tr>
+</tbody>
+</table>
+<h2 id="软件版本管理" class="headerLink">
+    <a href="#%e8%bd%af%e4%bb%b6%e7%89%88%e6%9c%ac%e7%ae%a1%e7%90%86" class="header-mark"></a>软件版本管理</h2><h3 id="update-alternatives" class="headerLink">
+    <a href="#update-alternatives" class="header-mark"></a>update-alternatives</h3><p>查看：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">update-alternatives --display java
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>切换：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">update-alternatives --config java
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>添加：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">alternatives --install /usr/bin/java java 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/usr/local/jdk-11.0.2/bin/java
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/usr/bin/java：注册地址，软链
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">java：服务名
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/usr/local/jdk-11.0.2/bin/java：实际程序路径
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3：优先级
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/vmware%E4%B8%89%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

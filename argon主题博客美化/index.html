@@ -1,0 +1,1826 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="Argon主题博客美化 博客架构 我不是专门写 Web 的，造轮子 肯定是做不到了，只得拿 轮子 和 零件 来组装 **框架：**PHPStudy ( Apache &#43; MySQL &#43; PHP ) **" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/argon%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Argon主题博客美化 博客架构 我不是专门写 Web 的，造轮子 肯定是做不到了，只得拿 轮子 和 零件 来组装 **框架：**PHPStudy ( Apache &#43; MySQL &#43; PHP ) **"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/argon%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/" /><link rel="prev" href="/b%E7%AB%99%E5%A4%A7%E9%83%A8%E5%88%86api/" /><link rel="next" href="/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/argon%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96\/"
+        },"genre": "posts","wordcount":  5517 ,
+        "url": "\/argon%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5517 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#博客架构">博客架构</a></li>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#argon-主题选项">Argon 主题选项</a></li>
+    <li><a href="#设置网站字体">设置网站字体</a></li>
+    <li><a href="#网站横幅字体彩色霓虹效果--鼠标停放时放大">网站横幅字体彩色霓虹效果 &amp; 鼠标停放时放大</a></li>
+    <li><a href="#一些有关-字体--颜色--透明--排版--样式-的设置">一些有关 字体 &amp; 颜色 &amp; 透明 &amp; 排版 &amp; 样式 的设置</a></li>
+    <li><a href="#banner下方小箭头滚动效果">banner下方小箭头滚动效果</a></li>
+    <li><a href="#鼠标停放头像时旋转缩放--亮暗">鼠标停放头像时旋转缩放 &amp; 亮暗</a></li>
+    <li><a href="#点击头像--姓名跳转相关页面">点击头像 &amp; 姓名跳转相关页面</a></li>
+    <li><a href="#网站底部运行时间等信息">网站底部运行时间等信息</a></li>
+    <li><a href="#参考文章">参考文章</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="argon主题博客美化" class="headerLink">
+    <a href="#argon%e4%b8%bb%e9%a2%98%e5%8d%9a%e5%ae%a2%e7%be%8e%e5%8c%96" class="header-mark"></a>Argon主题博客美化</h1><h2 id="博客架构" class="headerLink">
+    <a href="#%e5%8d%9a%e5%ae%a2%e6%9e%b6%e6%9e%84" class="header-mark"></a>博客架构</h2><blockquote>
+<p>我不是专门写 Web 的，造轮子 肯定是做不到了，只得拿 轮子 和 零件 来组装</p>
+</blockquote>
+<p>**框架：**PHPStudy ( Apache + MySQL + PHP )</p>
+<p>**CMS：**WordPress</p>
+<p>**Theme：**Argon</p>
+<p>​</p>
+<h2 id="前言" class="headerLink">
+    <a href="#%e5%89%8d%e8%a8%80" class="header-mark"></a>前言</h2><blockquote>
+<p>我的博客是基于<strong>WordPress</strong>建站系统的<strong>Argon</strong>主题，为同样基础的网站可以直接照抄，不一样基础的可能得需要一些Web开发经验才能运用上本文代码</p>
+</blockquote>
+<p>​</p>
+<h2 id="argon-主题选项" class="headerLink">
+    <a href="#argon-%e4%b8%bb%e9%a2%98%e9%80%89%e9%a1%b9" class="header-mark"></a>Argon 主题选项</h2><p><strong>管理员后台 → Argon 主题选项</strong></p>
+<p>点击 <strong>导入设置</strong> ，粘贴JSON代码，记得<strong>做些必要的修改</strong>，如：网站目录、图片链接……</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_theme_color&#34;</span><span class="p">:</span> <span class="s2">&#34;#516069&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_theme_color_hex_preview&#34;</span><span class="p">:</span> <span class="s2">&#34;#516069&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_show_customize_theme_color_picker&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_immersion_color&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_darkmode_autoswitch&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_amoled_dark&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_card_radius&#34;</span><span class="p">:</span> <span class="s2">&#34;4&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_card_shadow&#34;</span><span class="p">:</span> <span class="s2">&#34;big&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_page_layout&#34;</span><span class="p">:</span> <span class="s2">&#34;double&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_article_list_waterflow&#34;</span><span class="p">:</span> <span class="s2">&#34;2and3&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_article_list_layout&#34;</span><span class="p">:</span> <span class="s2">&#34;1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_font&#34;</span><span class="p">:</span> <span class="s2">&#34;serif&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_assets_path&#34;</span><span class="p">:</span> <span class="s2">&#34;jsdelivr&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_custom_assets_path&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_wp_path&#34;</span><span class="p">:</span> <span class="s2">&#34;/blog/&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_dateformat&#34;</span><span class="p">:</span> <span class="s2">&#34;YMD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_headroom&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_toolbar_title&#34;</span><span class="p">:</span> <span class="s2">&#34; &#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_toolbar_icon&#34;</span><span class="p">:</span> <span class="s2">&#34;http://8.130.91.80/blog/wp-content/uploads/2023/05/retouch_2023052719093000.png&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_toolbar_icon_link&#34;</span><span class="p">:</span> <span class="s2">&#34;http://8.130.91.80/blog/wp-admin/&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_toolbar_blur&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_banner_title&#34;</span><span class="p">:</span> <span class="s2">&#34;桐漓の博客&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_banner_subtitle&#34;</span><span class="p">:</span> <span class="s2">&#34;TL&#39;s BLOG&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_banner_size&#34;</span><span class="p">:</span> <span class="s2">&#34;fullscreen&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_page_background_banner_style&#34;</span><span class="p">:</span> <span class="s2">&#34;transparent&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_show_toolbar_mask&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_banner_background_url&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_banner_background_color_type&#34;</span><span class="p">:</span> <span class="s2">&#34;shape-dark&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_banner_background_hide_shapes&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_banner_title_typing_effect&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_banner_typing_effect_interval&#34;</span><span class="p">:</span> <span class="s2">&#34;200&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_page_background_url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://pic.imgdb.cn/item/64b4bb101ddac507cc723295.png&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_page_background_dark_url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://pic.imgdb.cn/item/64b4bb101ddac507cc723295.png&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_page_background_opacity&#34;</span><span class="p">:</span> <span class="s2">&#34;1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_sidebar_banner_title&#34;</span><span class="p">:</span> <span class="s2">&#34;TL&#39;s BLOG&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_sidebar_banner_subtitle&#34;</span><span class="p">:</span> <span class="s2">&#34;山腰太挤，顶峰见&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_sidebar_auther_name&#34;</span><span class="p">:</span> <span class="s2">&#34;梧桐漓染 &amp; 七折&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_sidebar_auther_image&#34;</span><span class="p">:</span> <span class="s2">&#34;https://pic.imgdb.cn/item/64a29e5b1ddac507cc038d97.jpg&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_sidebar_author_description&#34;</span><span class="p">:</span> <span class="s2">&#34;Web渗透、Android逆向小白 &amp; 开发小白&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_sidebar_announcement&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;style&gt;\n  .special-text {\n    font-size: 13px;\n    line-height: 1;\n  }\n\n  .first-line {\nfont-size: 15px;\n    font-weight: bold;\n    color: black;\n  }\n&lt;/style&gt;\n&lt;p class=\&#34;special-text first-line\&#34;&gt;欢迎来到梧桐漓染的Blog&lt;/p&gt;\n&lt;p class=\&#34;special-text\&#34;&gt;希望这里的内容能帮到你&lt;/p&gt;\n&lt;hr&gt;\n&lt;p class=\&#34;special-text\&#34;&gt;最近域名用不了咯，处理中……&lt;/p&gt;\n&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_fab_show_settings_button&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_fab_show_darkmode_button&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_fab_show_gotocomment_button&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_seo_description&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_seo_keywords&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_article_meta&#34;</span><span class="p">:</span> <span class="s2">&#34;views|time|categories|author&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_show_readingtime&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_reading_speed&#34;</span><span class="p">:</span> <span class="s2">&#34;300&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_reading_speed_en&#34;</span><span class="p">:</span> <span class="s2">&#34;160&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_reading_speed_code&#34;</span><span class="p">:</span> <span class="s2">&#34;20&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_show_thumbnail_in_banner_in_content_page&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_first_image_as_thumbnail_by_default&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_reference_list_title&#34;</span><span class="p">:</span> <span class="s2">&#34;参考&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_show_sharebtn&#34;</span><span class="p">:</span> <span class="s2">&#34;domestic&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_show_headindex_number&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_donate_qrcode_url&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_additional_content_after_post&#34;</span><span class="p">:</span> <span class="s2">&#34;文章：%title%\n作者：%author%\n\n此文章如果能帮助到你就已经物超所值了\n&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_related_post&#34;</span><span class="p">:</span> <span class="s2">&#34;category,tag&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_related_post_sort_orderby&#34;</span><span class="p">:</span> <span class="s2">&#34;date&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_related_post_sort_order&#34;</span><span class="p">:</span> <span class="s2">&#34;DESC&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_related_post_limit&#34;</span><span class="p">:</span> <span class="s2">&#34;10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_article_header_style&#34;</span><span class="p">:</span> <span class="s2">&#34;article-header-style-2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_outdated_info_time_type&#34;</span><span class="p">:</span> <span class="s2">&#34;modifiedtime&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_outdated_info_days&#34;</span><span class="p">:</span> <span class="s2">&#34;-1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_outdated_info_tip_type&#34;</span><span class="p">:</span> <span class="s2">&#34;inpost&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_outdated_info_tip_content&#34;</span><span class="p">:</span> <span class="s2">&#34;本文最后更新于 %date_delta% 天前，其中的信息可能已经有所发展或是发生改变。&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_archives_timeline_show_month&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_archives_timeline_url&#34;</span><span class="p">:</span> <span class="s2">&#34;http://8.130.91.80/wordpress/%e5%bd%92%e6%a1%a3/&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_footer_html&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;style&gt;\n/* 核心样式 */\n.github-badge {\ndisplay: inline-block;\nborder-radius: 4px;\ntext-shadow: none;\nfont-size: 13.1px;\ncolor: #fff;\nline-height: 15px;\nmargin-bottom: 5px;\nfont-family: \&#34;Open Sans\&#34;, sans-serif;\n}\n.github-badge .badge-subject {\ndisplay: inline-block;\nbackground-color: #4d4d4d;\npadding: 4px 4px 4px 6px;\nborder-top-left-radius: 4px;\nborder-bottom-left-radius: 4px;\nfont-family: \&#34;Open Sans\&#34;, sans-serif;\n}\n.github-badge .badge-value {\ndisplay: inline-block;\npadding: 4px 6px 4px 4px;\nborder-top-right-radius: 4px;\nborder-bottom-right-radius: 4px;\nfont-family: \&#34;Open Sans\&#34;, sans-serif;\n}\n.github-badge-big {\ndisplay: inline-block;\nborder-radius: 6px;\ntext-shadow: none;\nfont-size: 14.1px;\ncolor: #fff;\nline-height: 18px;\nmargin-bottom: 7px;\n}\n.github-badge-big .badge-subject {\ndisplay: inline-block;\nbackground-color: #4d4d4d;\npadding: 4px 4px 4px 6px;\nborder-top-left-radius: 4px;\nborder-bottom-left-radius: 4px;\n}\n.github-badge-big .badge-value {\ndisplay: inline-block;\npadding: 4px 6px 4px 4px;\nborder-top-right-radius: 4px;\nborder-bottom-right-radius: 4px;\n}\n.bg-orange {\nbackground-color: #ec8a64 !important;\n}\n.bg-red {\nbackground-color: #cb7574 !important;\n}\n.bg-apricots {\nbackground-color: #64769e!important;\n}\n.bg-casein {\nbackground-color: #dfe291 !important;\n}\n.bg-shallots {\nbackground-color: #97c3c6 !important;\n}\n.bg-ogling {\nbackground-color: #95c7e0 !important;\n}\n.bg-haze {\nbackground-color: #9aaec7 !important;\n}\n.bg-mountain-terrier {\nbackground-color: #99a5cd !important;\n}\n&lt;/style&gt;\n\n\n\t&lt;!-- 运行时间 --&gt;\n    &lt;div class=\&#34;github-badge-big\&#34;&gt;\n        &lt;span class=\&#34;badge-subject\&#34;&gt;&lt;i class=\&#34;fa fa-clock-o\&#34;&gt;&lt;/i&gt; 运行时间&lt;/span&gt;&lt;span\n            class=\&#34;badge-value bg-apricots\&#34;&gt;&lt;span id=\&#34;blog_running_days\&#34; class=\&#34;odometer odometer-auto-theme\&#34;&gt;&lt;/span&gt;\n            days\n            &lt;span id=\&#34;blog_running_hours\&#34; class=\&#34;odometer odometer-auto-theme\&#34;&gt;&lt;/span&gt; H\n            &lt;span id=\&#34;blog_running_mins\&#34; class=\&#34;odometer odometer-auto-theme\&#34;&gt;&lt;/span&gt; M\n            &lt;span id=\&#34;blog_running_secs\&#34; class=\&#34;odometer odometer-auto-theme\&#34;&gt;&lt;/span&gt;S\n        &lt;/span&gt;\n\n&lt;script no-pjax=\&#34;\&#34;&gt;\nvar blog_running_days = document.getElementById(\&#34;blog_running_days\&#34;);\nvar blog_running_hours = document.getElementById(\&#34;blog_running_hours\&#34;);\nvar blog_running_mins = document.getElementById(\&#34;blog_running_mins\&#34;);\nvar blog_running_secs = document.getElementById(\&#34;blog_running_secs\&#34;);\nfunction refresh_blog_running_time() {\nvar time = new Date() - new Date(2023, 4, 23, 0, 0, 0); /*此处日期的月份改为自己真正月份的前一个月*/\nvar d = parseInt(time / 24 / 60 / 60 / 1000);\nvar h = parseInt((time % (24 * 60 * 60 * 1000)) / 60 / 60 / 1000);\nvar m = parseInt((time % (60 * 60 * 1000)) / 60 / 1000);\nvar s = parseInt((time % (60 * 1000)) / 1000);\nblog_running_days.innerHTML = d;\nblog_running_hours.innerHTML = h;\nblog_running_mins.innerHTML = m;\nblog_running_secs.innerHTML = s;\n}\nrefresh_blog_running_time();\nif (typeof bottomTimeIntervalHasSet == \&#34;undefined\&#34;) {\nvar bottomTimeIntervalHasSet = true;\nsetInterval(function () {\nrefresh_blog_running_time();\n}, 500);\n}\n&lt;/script&gt;\n&lt;/div&gt;\n&lt;div&gt;\n&lt;style&gt;\n@keyframes jump {\n    0% { transform: translateY(0) scale(1); }\n    50% { transform: translateY(-5px) scale(0.9); }\n    100% { transform: translateY(0) scale(1); }\n}\n\n.jumping-text span {\n    display: inline-block;\n    animation: jump 2s infinite;\n    animation-delay: 0s;\n    will-change: transform; /* 添加优化提示 */\n}\n\n\n.jumping-text span:nth-child(1) {\n    animation-delay: 0s;\n}\n\n.jumping-text span:nth-child(2) {\n    animation-delay: 0.2s;\n}\n\n.jumping-text span:nth-child(3) {\n    animation-delay: 0.4s;\n}\n\n/* Add more nth-child styles for each letter */\n\n&lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n&lt;i class=\&#34;fa fa-wordpress\&#34;&gt;&lt;/i&gt;\n&lt;scan class=\&#34;jumping-text\&#34;&gt;\n&lt;span&gt;博&lt;/span&gt;\n    &lt;span&gt;客&lt;/span&gt;\n    &lt;span&gt;基&lt;/span&gt;\n    &lt;span&gt;于&lt;/span&gt;\n    &lt;span&gt;Argon&lt;/span&gt;\n    &lt;span&gt;主&lt;/span&gt;\n    &lt;span&gt;题&lt;/span&gt;\n    &lt;span&gt;二&lt;/span&gt;\n    &lt;span&gt;次&lt;/span&gt;\n    &lt;span&gt;开&lt;/span&gt;\n    &lt;span&gt;发&lt;/span&gt;\n    &lt;span&gt;🛠️&lt;/span&gt;\n&lt;/scan&gt;\n\n&lt;script&gt;\n    const jumpingText = document.querySelector(&#39;.jumping-text&#39;);\n    const letters = jumpingText.querySelectorAll(&#39;span&#39;);\n\n    let delay = 0;\n    letters.forEach((letter) =&gt; {\n        letter.style.animationDelay = delay + &#39;s&#39;;\n        delay += 0.1;\n    });\n&lt;/script&gt;\n&lt;/div&gt;\n\n\n&lt;style&gt;\n    .badge-1 {\n        font-size: 9px; /* 调整为您想要的尺寸 */\n    }\n&lt;/style&gt;\n\n&lt;span class=\&#34;badge-1\&#34;&gt;点下方会跳到Argon项目地址(跳过去就不是我的网站哦不要搞错了•ࡇ•!)&lt;/span&gt;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_code_highlight&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_code_theme&#34;</span><span class="p">:</span> <span class="s2">&#34;androidstudio&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_code_highlight_hide_linenumber&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_code_highlight_break_line&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_code_highlight_transparent_linenumber&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_math_render&#34;</span><span class="p">:</span> <span class="s2">&#34;mathjax2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_mathjax_cdn_url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/a11y/assistive-mml.js&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_mathjax_v2_cdn_url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://cdn.bootcdn.net/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_HTML&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_katex_cdn_url&#34;</span><span class="p">:</span> <span class="s2">&#34;//cdn.jsdelivr.net/npm/katex@0.11.1/dist/&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_lazyload&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_lazyload_threshold&#34;</span><span class="p">:</span> <span class="s2">&#34;800&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_lazyload_effect&#34;</span><span class="p">:</span> <span class="s2">&#34;fadeIn&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_lazyload_loading_style&#34;</span><span class="p">:</span> <span class="s2">&#34;7&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_fancybox&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_zoomify&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_zoomify_duration&#34;</span><span class="p">:</span> <span class="s2">&#34;200&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_zoomify_easing&#34;</span><span class="p">:</span> <span class="s2">&#34;cubic-bezier(0.4,0,0,1)&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_zoomify_scale&#34;</span><span class="p">:</span> <span class="s2">&#34;0.9&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_pangu&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_custom_html_head&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_custom_html_foot&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_smoothscroll_type&#34;</span><span class="p">:</span> <span class="s2">&#34;1_pulse&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_into_article_animation&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_disable_pjax_animation&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_comment_pagination_type&#34;</span><span class="p">:</span> <span class="s2">&#34;page&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_comment_emotion_keyboard&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_hide_name_email_site_input&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_comment_need_captcha&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_get_captcha_by_ajax&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_comment_allow_markdown&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_comment_allow_editing&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_comment_allow_privatemode&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_comment_allow_mailnotice&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_comment_mailnotice_checkbox_checked&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_comment_enable_qq_avatar&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_comment_avatar_vcenter&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_who_can_visit_comment_edit_history&#34;</span><span class="p">:</span> <span class="s2">&#34;admin&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_comment_pinning&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_comment_upvote&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_comment_ua&#34;</span><span class="p">:</span> <span class="s2">&#34;platform,browser,version&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_show_comment_parent_info&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_fold_long_comments&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_gravatar_cdn&#34;</span><span class="p">:</span> <span class="s2">&#34;gravatar.pho.ink/avatar/&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_text_gravatar&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_search_filters&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_search_filters_type&#34;</span><span class="p">:</span> <span class="s2">&#34;*post,*page,shuoshuo&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_pjax_disabled&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_hide_categories&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_login_css&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_home_show_shuoshuo&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_fold_long_shuoshuo&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_timezone_fix&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_hide_shortcode_in_preview&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_trim_words_count&#34;</span><span class="p">:</span> <span class="s2">&#34;0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_enable_mobile_scale&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_disable_googlefont&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_disable_codeblock_style&#34;</span><span class="p">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_update_source&#34;</span><span class="p">:</span> <span class="s2">&#34;stop&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;argon_hide_footer_author&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h2 id="设置网站字体" class="headerLink">
+    <a href="#%e8%ae%be%e7%bd%ae%e7%bd%91%e7%ab%99%e5%ad%97%e4%bd%93" class="header-mark"></a>设置网站字体</h2><p><strong>管理员后台 → 外观 → 自定义 → 额外CSS</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* 设置网站字体*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">@</span><span class="k">font-face</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">font-family</span><span class="p">:</span><span class="nd">TL</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">src</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">url</span><span class="o">(</span><span class="nt">https</span><span class="o">://</span><span class="nt">fastly</span><span class="p">.</span><span class="nc">jsdelivr</span><span class="p">.</span><span class="nc">net</span><span class="o">/</span><span class="nt">gh</span><span class="o">/</span><span class="nt">huangwb8</span><span class="o">/</span><span class="nt">bloghelper</span><span class="p">@</span><span class="k">latest</span><span class="o">/</span><span class="nt">fonts</span><span class="o">/</span><span class="nt">13</span><span class="p">.</span><span class="nc">woff2</span><span class="o">)</span> <span class="nt">format</span><span class="o">(</span><span class="s1">&#39;woff2&#39;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">body</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">font-family</span><span class="o">:</span><span class="s2">&#34;TL&#34;</span> <span class="o">!</span><span class="nt">important</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h2 id="网站横幅字体彩色霓虹效果--鼠标停放时放大" class="headerLink">
+    <a href="#%e7%bd%91%e7%ab%99%e6%a8%aa%e5%b9%85%e5%ad%97%e4%bd%93%e5%bd%a9%e8%89%b2%e9%9c%93%e8%99%b9%e6%95%88%e6%9e%9c--%e9%bc%a0%e6%a0%87%e5%81%9c%e6%94%be%e6%97%b6%e6%94%be%e5%a4%a7" class="header-mark"></a>网站横幅字体彩色霓虹效果 &amp; 鼠标停放时放大</h2><p><strong>管理员后台 → 外观 → 自定义 → 额外CSS</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/*网站横幅字体彩色霓虹效果*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">@</span><span class="k">keyframes</span> <span class="nt">ColdLight</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">0</span><span class="o">%</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background-position</span><span class="p">:</span> <span class="mi">0</span><span class="kt">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">100</span><span class="o">%</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background-position</span><span class="p">:</span> <span class="mi">200</span><span class="kt">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">banner-title</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">position</span><span class="p">:</span> <span class="kc">absolute</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">background</span><span class="p">:</span> <span class="nb">linear-gradient</span><span class="p">(</span><span class="mi">90</span><span class="kt">deg</span><span class="p">,</span> <span class="mh">#03a9f4</span><span class="p">,</span> <span class="mh">#f441a5</span><span class="p">,</span> <span class="mh">#ffeb3b</span><span class="p">,</span> <span class="mh">#03a9f4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">background-size</span><span class="p">:</span> <span class="mi">200</span><span class="kt">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">animation</span><span class="p">:</span> <span class="n">ColdLight</span> <span class="mi">3</span><span class="kt">s</span> <span class="kc">linear</span> <span class="kc">infinite</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span> <span class="kc">transparent</span> <span class="cp">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kp">-webkit-</span><span class="k">background-clip</span><span class="p">:</span> <span class="kc">text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">font-weight</span><span class="p">:</span> <span class="mi">1000</span><span class="p">;</span> <span class="c">/* 新增加粗字体效果 */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">font-size</span><span class="p">:</span> <span class="mf">3.5</span><span class="kt">em</span><span class="p">;</span> <span class="c">/* 横幅字体大小 */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">transition</span><span class="p">:</span> <span class="k">font-size</span> <span class="mf">0.3</span><span class="kt">s</span> <span class="kc">ease</span><span class="p">;</span> <span class="c">/* 添加过渡效果，时间为0.3秒，缓动方式为ease */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/* 横幅字体大小 - 鼠标悬停时 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">banner-title</span><span class="p">:</span><span class="nd">hover</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">font-size</span><span class="p">:</span> <span class="mf">4.6</span><span class="kt">em</span><span class="p">;</span> <span class="c">/* 鼠标悬停时的字体大小 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">banner-title</span> <span class="p">.</span><span class="nc">banner-title-inner</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">position</span><span class="p">:</span> <span class="kc">relative</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">background</span><span class="p">:</span> <span class="kc">inherit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">banner-title</span> <span class="p">.</span><span class="nc">banner-subtitle</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">position</span><span class="p">:</span> <span class="kc">relative</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">background</span><span class="p">:</span> <span class="kc">inherit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">font-size</span><span class="p">:</span> <span class="mi">27</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* 横幅副标题字体大小 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h2 id="一些有关-字体--颜色--透明--排版--样式-的设置" class="headerLink">
+    <a href="#%e4%b8%80%e4%ba%9b%e6%9c%89%e5%85%b3-%e5%ad%97%e4%bd%93--%e9%a2%9c%e8%89%b2--%e9%80%8f%e6%98%8e--%e6%8e%92%e7%89%88--%e6%a0%b7%e5%bc%8f-%e7%9a%84%e8%ae%be%e7%bd%ae" class="header-mark"></a>一些有关 字体 &amp; 颜色 &amp; 透明 &amp; 排版 &amp; 样式 的设置</h2><p><strong>管理员后台 → 外观 → 自定义 → 额外CSS</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span><span class="lnt">214
+</span><span class="lnt">215
+</span><span class="lnt">216
+</span><span class="lnt">217
+</span><span class="lnt">218
+</span><span class="lnt">219
+</span><span class="lnt">220
+</span><span class="lnt">221
+</span><span class="lnt">222
+</span><span class="lnt">223
+</span><span class="lnt">224
+</span><span class="lnt">225
+</span><span class="lnt">226
+</span><span class="lnt">227
+</span><span class="lnt">228
+</span><span class="lnt">229
+</span><span class="lnt">230
+</span><span class="lnt">231
+</span><span class="lnt">232
+</span><span class="lnt">233
+</span><span class="lnt">234
+</span><span class="lnt">235
+</span><span class="lnt">236
+</span><span class="lnt">237
+</span><span class="lnt">238
+</span><span class="lnt">239
+</span><span class="lnt">240
+</span><span class="lnt">241
+</span><span class="lnt">242
+</span><span class="lnt">243
+</span><span class="lnt">244
+</span><span class="lnt">245
+</span><span class="lnt">246
+</span><span class="lnt">247
+</span><span class="lnt">248
+</span><span class="lnt">249
+</span><span class="lnt">250
+</span><span class="lnt">251
+</span><span class="lnt">252
+</span><span class="lnt">253
+</span><span class="lnt">254
+</span><span class="lnt">255
+</span><span class="lnt">256
+</span><span class="lnt">257
+</span><span class="lnt">258
+</span><span class="lnt">259
+</span><span class="lnt">260
+</span><span class="lnt">261
+</span><span class="lnt">262
+</span><span class="lnt">263
+</span><span class="lnt">264
+</span><span class="lnt">265
+</span><span class="lnt">266
+</span><span class="lnt">267
+</span><span class="lnt">268
+</span><span class="lnt">269
+</span><span class="lnt">270
+</span><span class="lnt">271
+</span><span class="lnt">272
+</span><span class="lnt">273
+</span><span class="lnt">274
+</span><span class="lnt">275
+</span><span class="lnt">276
+</span><span class="lnt">277
+</span><span class="lnt">278
+</span><span class="lnt">279
+</span><span class="lnt">280
+</span><span class="lnt">281
+</span><span class="lnt">282
+</span><span class="lnt">283
+</span><span class="lnt">284
+</span><span class="lnt">285
+</span><span class="lnt">286
+</span><span class="lnt">287
+</span><span class="lnt">288
+</span><span class="lnt">289
+</span><span class="lnt">290
+</span><span class="lnt">291
+</span><span class="lnt">292
+</span><span class="lnt">293
+</span><span class="lnt">294
+</span><span class="lnt">295
+</span><span class="lnt">296
+</span><span class="lnt">297
+</span><span class="lnt">298
+</span><span class="lnt">299
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/*尾注字体大小*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">additional-content-after-post</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mf">1.2</span><span class="kt">rem</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/* 公告居中 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">leftbar-announcement-title</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">leftbar-announcement-content</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">line-height</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding-top</span><span class="p">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">opacity</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/* 一言居中 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">leftbar-banner-title</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">display</span><span class="p">:</span> <span class="kc">block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c">/*文章标题字体大小*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">post-title</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mi">23</span><span class="kt">px</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c">/*正文字体大小（不包含代码）*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">post-content</span> <span class="nt">p</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mf">1.2</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mf">1.2</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c">/*评论区字体大小*/</span>
+</span></span><span class="line"><span class="cl"><span class="nt">p</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mf">1.2</span><span class="kt">rem</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c">/*评论发送区字体大小*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">form-control</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mf">1.2</span><span class="kt">rem</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c">/*评论勾选项目字体大小*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">custom-checkbox</span> <span class="p">.</span><span class="nc">custom-control-input</span><span class="o">~</span><span class="p">.</span><span class="nc">custom-control-label</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mi">1</span><span class="kt">rem</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*评论区代码的强调色*/</span>
+</span></span><span class="line"><span class="cl"><span class="nt">code</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">themecolor</span><span class="o">-</span><span class="n">rgbstr</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c">/*说说字体大小和颜色设置*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">shuoshuo-title</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mi">25</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c">/*  color: rgba(var(--themecolor-rgbstr)); */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/* 个性签名居中 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">leftbar-banner-subtitle</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">margin-top</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">margin-bottom</span><span class="p">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mi">13</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">opacity</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">display</span><span class="p">:</span> <span class="kc">block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*文章或页面的正文颜色*/</span>
+</span></span><span class="line"><span class="cl"><span class="nt">body</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">color</span><span class="p">:</span><span class="mh">#364863</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c">/*引文属性设置*/</span>
+</span></span><span class="line"><span class="cl"><span class="nt">blockquote</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c">/*添加弱主题色为背景色*/</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">themecolor</span><span class="o">-</span><span class="n">rgbstr</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">)</span> <span class="cp">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c">/*引文颜色 建议用主题色*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">:</span><span class="nd">root</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c">/*也可以用类似于--color-border-on-foreground-deeper: #009688;这样的命令*/</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">--color-border-on-foreground-deeper</span><span class="p">:</span><span class="mh">#009688</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">leftbar-menu-item</span> <span class="o">&gt;</span> <span class="nt">a</span><span class="p">:</span><span class="nd">hover</span><span class="o">,</span> <span class="p">.</span><span class="nc">leftbar-menu-item</span><span class="p">.</span><span class="nc">current</span> <span class="o">&gt;</span> <span class="nt">a</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background-color</span><span class="p">:</span> <span class="mh">#f9f9f9</span><span class="mi">80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*站点概览分隔线颜色修改*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">site-state-item</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">border-left</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#aaa</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">site-friend-links-title</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">border-top</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">dotted</span> <span class="mh">#aaa</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">#</span><span class="nn">leftbar_tab_tools</span> <span class="nt">ul</span> <span class="nt">li</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding-top</span><span class="p">:</span> <span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding-bottom</span><span class="p">:</span> <span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">border-bottom</span><span class="p">:</span><span class="kc">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">html</span><span class="p">.</span><span class="nc">darkmode</span> <span class="p">#</span><span class="nn">leftbar_tab_tools</span> <span class="nt">ul</span> <span class="nt">li</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">border-bottom</span><span class="p">:</span><span class="kc">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c">/*左侧栏搜索框的颜色*/</span>
+</span></span><span class="line"><span class="cl"><span class="nt">button</span><span class="p">#</span><span class="nn">leftbar_search_container</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background-color</span><span class="p">:</span> <span class="kc">transparent</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*白天模式下白色卡片透明度*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">card</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background-color</span><span class="p">:</span><span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">)</span> <span class="cp">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c">/*backdrop-filter:blur(6px);*//*毛玻璃效果主要属性*/</span>
+</span></span><span class="line"><span class="cl">    <span class="kp">-webkit-</span><span class="n">backdrop-filter</span><span class="p">:</span><span class="nb">blur</span><span class="p">(</span><span class="mi">6</span><span class="kt">px</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*小工具栏背景完全透明*/</span>
+</span></span><span class="line"><span class="cl"><span class="c">/*小工具栏是card的子元素，如果用同一个透明度会叠加变色，故改为完全透明*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">card</span> <span class="p">.</span><span class="nc">widget</span><span class="o">,</span><span class="p">.</span><span class="nc">darkmode</span> <span class="p">.</span><span class="nc">card</span> <span class="p">.</span><span class="nc">widget</span><span class="o">,</span><span class="p">#</span><span class="nn">post_content</span> <span class="o">&gt;</span> <span class="nt">div</span> <span class="o">&gt;</span> <span class="nt">div</span> <span class="o">&gt;</span> <span class="nt">div</span><span class="p">.</span><span class="nc">argon-timeline-card</span><span class="p">.</span><span class="nc">card</span><span class="p">.</span><span class="nc">bg-gradient-secondary</span><span class="p">.</span><span class="nc">archive-timeline-title</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background-color</span><span class="p">:</span><span class="mh">#ffffff</span><span class="mi">00</span> <span class="cp">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">backdrop-filter</span><span class="p">:</span><span class="kc">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kp">-webkit-</span><span class="n">backdrop-filter</span><span class="p">:</span><span class="kc">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">emotion-keyboard</span><span class="o">,</span><span class="p">#</span><span class="nn">fabtn_blog_settings_popup</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background-color</span><span class="p">:</span><span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span> <span class="cp">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*分类卡片透明*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">bg-gradient-secondary</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background</span><span class="p">:</span><span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span> <span class="cp">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">backdrop-filter</span><span class="p">:</span> <span class="nb">blur</span><span class="p">(</span><span class="mi">2</span><span class="kt">px</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kp">-webkit-</span><span class="n">backdrop-filter</span><span class="p">:</span><span class="nb">blur</span><span class="p">(</span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*夜间模式透明*/</span>
+</span></span><span class="line"><span class="cl"><span class="nt">html</span><span class="p">.</span><span class="nc">darkmode</span><span class="p">.</span><span class="nc">bg-white</span><span class="o">,</span><span class="nt">html</span><span class="p">.</span><span class="nc">darkmode</span> <span class="p">.</span><span class="nc">card</span><span class="o">,</span><span class="nt">html</span><span class="p">.</span><span class="nc">darkmode</span> <span class="p">#</span><span class="nn">footer</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background</span><span class="p">:</span><span class="nb">rgba</span><span class="p">(</span><span class="mi">66</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">)</span> <span class="cp">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">html</span><span class="p">.</span><span class="nc">darkmode</span> <span class="p">#</span><span class="nn">fabtn_blog_settings_popup</span><span class="p">{</span><span class="c">/*这个我也忘了是什么设置什么的透明度*/</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background</span><span class="p">:</span><span class="nb">rgba</span><span class="p">(</span><span class="mi">66</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">)</span> <span class="cp">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*========排版设置===========*/</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c">/*左侧栏层级置于上层*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">#</span><span class="nn">leftbar_part1</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">z-index</span><span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*分类卡片文本居中*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">#</span><span class="nn">content</span> <span class="o">&gt;</span> <span class="nt">div</span><span class="p">.</span><span class="nc">page-information-card-container</span> <span class="o">&gt;</span> <span class="nt">div</span> <span class="o">&gt;</span> <span class="nt">div</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">text-align</span><span class="p">:</span><span class="kc">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*子菜单对齐及样式调整*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">dropdown-menu</span> <span class="p">.</span><span class="nc">dropdown-item</span><span class="o">&gt;</span><span class="nt">i</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">width</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">dropdown-menu</span><span class="o">&gt;</span><span class="nt">a</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">color</span><span class="p">:</span><span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">themecolor</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">dropdown-menu</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">min-width</span><span class="p">:</span><span class="n">max-content</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">dropdown-menu</span> <span class="p">.</span><span class="nc">dropdown-item</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding</span><span class="p">:</span> <span class="mf">.5</span><span class="kt">rem</span> <span class="mf">1.5</span><span class="kt">rem</span> <span class="mf">0.5</span><span class="kt">rem</span> <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">leftbar-menu-subitem</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">min-width</span><span class="p">:</span><span class="n">max-content</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">leftbar-menu-subitem</span> <span class="p">.</span><span class="nc">leftbar-menu-item</span><span class="o">&gt;</span><span class="nt">a</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span><span class="kt">rem</span> <span class="mf">1.5</span><span class="kt">rem</span> <span class="mi">0</span><span class="kt">rem</span> <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*左侧栏边距修改*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">tab-content</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding</span><span class="p">:</span><span class="mi">10</span><span class="kt">px</span> <span class="mi">0</span><span class="kt">px</span> <span class="mi">0</span><span class="kt">px</span> <span class="mi">0</span><span class="kt">px</span> <span class="cp">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">site-author-links</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding</span><span class="p">:</span><span class="mi">0</span><span class="kt">px</span> <span class="mi">0</span><span class="kt">px</span> <span class="mi">0</span><span class="kt">px</span> <span class="mi">10</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*目录位置偏移修改*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">#</span><span class="nn">leftbar_catalog</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">margin-left</span><span class="p">:</span> <span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*目录条目边距修改*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">#</span><span class="nn">leftbar_catalog</span> <span class="p">.</span><span class="nc">index-link</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding</span><span class="p">:</span> <span class="mi">4</span><span class="kt">px</span> <span class="mi">4</span><span class="kt">px</span> <span class="mi">4</span><span class="kt">px</span> <span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*左侧栏小工具栏字体缩小*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">#</span><span class="nn">leftbar_tab_tools</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c">/*正文图片边距修改*/</span>
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="nt">figure</span> <span class="p">{</span><span class="k">margin</span><span class="p">:</span><span class="mi">0</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*正文图片居中显示*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">fancybox-wrapper</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">margin</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*正文表格样式修改*/</span>
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">tbody</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">td</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">tbody</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">th</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">tfoot</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">td</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">tfoot</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">th</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">thead</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">td</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">thead</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">th</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding</span><span class="p">:</span> <span class="mi">8</span><span class="kt">px</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*表格居中样式*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">wp-block-table</span><span class="p">.</span><span class="nc">aligncenter</span><span class="p">{</span><span class="k">margin</span><span class="p">:</span><span class="mi">10</span><span class="kt">px</span> <span class="kc">auto</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c">/*回顶图标放大*/</span>
+</span></span><span class="line"><span class="cl"><span class="nt">button</span><span class="p">#</span><span class="nn">fabtn_back_to_top</span><span class="o">,</span> <span class="nt">button</span><span class="p">#</span><span class="nn">fabtn_go_to_comment</span><span class="o">,</span> <span class="nt">button</span><span class="p">#</span><span class="nn">fabtn_toggle_blog_settings_popup</span><span class="o">,</span> <span class="nt">button</span><span class="p">#</span><span class="nn">fabtn_toggle_sides</span><span class="o">,</span> <span class="nt">button</span><span class="p">#</span><span class="nn">fabtn_open_sidebar</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mf">1.2</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="c">/*顶栏菜单放大*/</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">navbar-nav</span> <span class="p">.</span><span class="nc">nav-link</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-family</span><span class="p">:</span> <span class="s1">&#39;echo&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">navbar-brand</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">color</span><span class="p">:</span> <span class="kc">white</span><span class="cp">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">font-family</span><span class="p">:</span> <span class="s1">&#39;echo&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mf">1.4</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">margin-right</span><span class="p">:</span> <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding-bottom</span><span class="p">:</span> <span class="mf">.2</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*菜单大小*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">nav-link-inner--text</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mf">1.2</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">navbar-nav</span> <span class="p">.</span><span class="nc">nav-item</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">margin-right</span><span class="p">:</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">mr-lg-5</span><span class="o">,</span> <span class="p">.</span><span class="nc">mx-lg-5</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">margin-right</span><span class="p">:</span><span class="mi">1</span><span class="kt">rem</span> <span class="cp">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">navbar-toggler-icon</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">width</span><span class="p">:</span> <span class="mf">1.8</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">height</span><span class="p">:</span> <span class="mf">1.8</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*菜单间距*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">navbar-expand-lg</span> <span class="p">.</span><span class="nc">navbar-nav</span> <span class="p">.</span><span class="nc">nav-link</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding-right</span><span class="p">:</span> <span class="mf">2.1</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">padding-left</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="n">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/* Github卡片样式*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">github-info-card-header</span> <span class="nt">a</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c">/*Github卡片抬头颜色*/</span>
+</span></span><span class="line"><span class="cl">    <span class="k">color</span><span class="p">:</span> <span class="kc">black</span> <span class="cp">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">github-info-card</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c">/*Github卡片文字（非链接）*/</span>
+</span></span><span class="line"><span class="cl">    <span class="k">font-size</span><span class="p">:</span> <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">color</span><span class="p">:</span> <span class="kc">black</span> <span class="cp">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">github-info-card</span><span class="p">.</span><span class="nc">github-info-card-full</span><span class="p">.</span><span class="nc">card</span><span class="p">.</span><span class="nc">shadow-sm</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c">/*Github卡片背景色*/</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background-color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">themecolor</span><span class="o">-</span><span class="n">rgbstr</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">)</span> <span class="cp">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*导航栏图标大小*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">navbar-brand</span> <span class="nt">img</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">height</span><span class="p">:</span> <span class="mi">40</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">/*左上角图片和右侧文字的间距*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">mr-lg-5</span><span class="o">,</span> <span class="p">.</span><span class="nc">mx-lg-5</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">margin-right</span><span class="p">:</span> <span class="mi">3</span><span class="kt">rem</span> <span class="cp">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h2 id="banner下方小箭头滚动效果" class="headerLink">
+    <a href="#banner%e4%b8%8b%e6%96%b9%e5%b0%8f%e7%ae%ad%e5%a4%b4%e6%bb%9a%e5%8a%a8%e6%95%88%e6%9e%9c" class="header-mark"></a>banner下方小箭头滚动效果</h2><ol>
+<li><strong>管理员后台 → 外观 → 自定义 → 额外CSS</strong></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/*banner下方小箭头滚动效果*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">@</span><span class="k">keyframes</span> <span class="nt">up-down-move</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="nt">0</span><span class="o">%</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">opacity</span><span class="p">:</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">transform</span><span class="p">:</span><span class="nb">translate</span><span class="p">(</span><span class="mi">-50</span><span class="kt">%</span><span class="p">,</span><span class="mi">-150</span><span class="kt">px</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">50</span><span class="o">%</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">opacity</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">transform</span><span class="p">:</span><span class="nb">translate</span><span class="p">(</span><span class="mi">-50</span><span class="kt">%</span><span class="p">,</span><span class="mi">-130</span><span class="kt">px</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">100</span><span class="o">%</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">opacity</span><span class="p">:</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">transform</span><span class="p">:</span><span class="nb">translate</span><span class="p">(</span><span class="mi">-50</span><span class="kt">%</span><span class="p">,</span><span class="mi">-110</span><span class="kt">px</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">cover-scroll-down</span> <span class="p">.</span><span class="nc">fa-angle-down</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">font-size</span><span class="p">:</span> <span class="mi">3</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">text-shadow</span><span class="p">:</span> <span class="mi">0</span><span class="kt">px</span> <span class="mi">0</span><span class="kt">px</span> <span class="mi">8</span><span class="kt">px</span> <span class="mh">#dc1111</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">position</span><span class="p">:</span><span class="kc">absolute</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">transform</span><span class="p">:</span> <span class="nb">translate</span><span class="p">(</span><span class="mi">-50</span><span class="kt">%</span><span class="p">,</span><span class="mi">-80</span><span class="kt">px</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">opacity</span><span class="p">:</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">cover-scroll-down</span> <span class="p">#</span><span class="nn">pointer1</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">animation</span><span class="p">:</span> <span class="n">up-down-move</span> <span class="mi">3</span><span class="kt">s</span> <span class="kc">linear</span> <span class="kc">infinite</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">cover-scroll-down</span> <span class="p">#</span><span class="nn">pointer2</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">animation</span><span class="p">:</span> <span class="n">up-down-move</span> <span class="mi">3</span><span class="kt">s</span> <span class="mi">1</span><span class="kt">s</span> <span class="kc">linear</span> <span class="kc">infinite</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">cover-scroll-down</span> <span class="p">#</span><span class="nn">pointer3</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">animation</span><span class="p">:</span> <span class="n">up-down-move</span> <span class="mi">3</span><span class="kt">s</span> <span class="mi">2</span><span class="kt">s</span> <span class="kc">linear</span> <span class="kc">infinite</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>
+<p><strong>管理员后台 → 外观 → 主题文件编辑器 → 主题页眉(header.php文件)</strong></p>
+</li>
+<li>
+<p>439行<code>&lt;div class=&quot;cover-scroll-down&quot;&gt;</code>的下一行(<code>&lt;i&gt;</code>标签的那行)替换成以下三行代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;i class=&#34;fa fa-angle-down&#34; aria-hidden=&#34;true&#34; id=&#34;pointer1&#34;&gt;&lt;/i&gt;
+</span></span><span class="line"><span class="cl">&lt;i class=&#34;fa fa-angle-down&#34; aria-hidden=&#34;true&#34; id=&#34;pointer2&#34;&gt;&lt;/i&gt;
+</span></span><span class="line"><span class="cl">&lt;i class=&#34;fa fa-angle-down&#34; aria-hidden=&#34;true&#34; id=&#34;pointer3&#34;&gt;&lt;/i&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<p>​</p>
+<h2 id="鼠标停放头像时旋转缩放--亮暗" class="headerLink">
+    <a href="#%e9%bc%a0%e6%a0%87%e5%81%9c%e6%94%be%e5%a4%b4%e5%83%8f%e6%97%b6%e6%97%8b%e8%bd%ac%e7%bc%a9%e6%94%be--%e4%ba%ae%e6%9a%97" class="header-mark"></a>鼠标停放头像时旋转缩放 &amp; 亮暗</h2><p><strong>管理员后台 → 外观 → 自定义 → 额外CSS</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">#</span><span class="nn">leftbar_overview_author_image</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">margin</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background-position</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background-repeat</span><span class="p">:</span> <span class="kc">no-repeat</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background-size</span><span class="p">:</span> <span class="kc">cover</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background-color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">127</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">overflow</span><span class="p">:</span> <span class="kc">hidden</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">box-shadow</span><span class="p">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">5</span><span class="kt">px</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">116</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">204</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">transition</span><span class="p">:</span> <span class="k">transform</span> <span class="mf">0.3</span><span class="kt">s</span> <span class="kc">ease</span><span class="p">;</span> <span class="c">/*变化速度*/</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="p">#</span><span class="nn">leftbar_overview_author_image</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">transition</span><span class="p">:</span> <span class="k">transform</span> <span class="mf">0.3</span><span class="kt">s</span> <span class="kc">ease-in-out</span><span class="p">;</span> <span class="c">/* 添加过渡效果 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">#</span><span class="nn">leftbar_overview_author_image</span><span class="p">:</span><span class="nd">hover</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">transform</span><span class="p">:</span> <span class="nb">scale</span><span class="p">(</span><span class="mf">1.3</span><span class="p">)</span> <span class="nb">rotate</span><span class="p">(</span><span class="mi">360</span><span class="kt">deg</span><span class="p">);</span> <span class="c">/* 缩放并旋转 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h2 id="点击头像--姓名跳转相关页面" class="headerLink">
+    <a href="#%e7%82%b9%e5%87%bb%e5%a4%b4%e5%83%8f--%e5%a7%93%e5%90%8d%e8%b7%b3%e8%bd%ac%e7%9b%b8%e5%85%b3%e9%a1%b5%e9%9d%a2" class="header-mark"></a>点击头像 &amp; 姓名跳转相关页面</h2><p><strong>管理员后台 → 外观 → 主题文件编辑器 → 边栏文件(sidebar.php)</strong></p>
+<p>点击 头像 跳转大概在第 126 行左右</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;div class=&#34;tab-pane fade text-center&lt;?php if ($nowActiveTab == 1) { echo &#39; active show&#39;; }?&gt;&#34; id=&#34;leftbar_tab_overview&#34;
+</span></span><span class="line"><span class="cl">     role=&#34;tabpanel&#34; aria-labelledby=&#34;leftbar_tab_overview_btn&#34;&gt;
+</span></span><span class="line"><span class="cl">/*添加的代码，链接是要跳转的页面链接*/    &lt;a href=&#34;http://8.130.91.80/blog/?p=97&#34;&gt;
+</span></span><span class="line"><span class="cl">        &lt;div id=&#34;leftbar_overview_author_image&#34;
+</span></span><span class="line"><span class="cl">             style=&#34;background-image: url(&lt;?php echo get_option(&#39;argon_sidebar_auther_image&#39;) == &#39;&#39; ? &#39;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cmVjdCBmaWxsPSIjNUU3MkU0MjIiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIi8+PGc+PGcgb3BhY2l0eT0iMC4zIj48cGF0aCBmaWxsPSIjNUU3MkU0IiBkPSJNNzQuMzksMzIuODZjLTAuOTgtMS43LTMuMzktMy4wOS01LjM1LTMuMDlINDUuNjJjLTEuOTYsMC00LjM3LDEuMzktNS4zNSwzLjA5TDI4LjU3LDUzLjE1Yy0wLjk4LDEuNy0wLjk4LDQuNDgsMCw2LjE3bDExLjcxLDIwLjI5YzAuOTgsMS43LDMuMzksMy4wOSw1LjM1LDMuMDloMjMuNDNjMS45NiwwLDQuMzctMS4zOSw1LjM1LTMuMDlMODYuMSw1OS4zMmMwLjk4LTEuNywwLjk4LTQuNDgsMC02LjE3TDc0LjM5LDMyLjg2eiIvPjwvZz48ZyBvcGFjaXR5PSIwLjgiPjxwYXRoIGZpbGw9IiM1RTcyRTQiIGQ9Ik02Mi4wNCwyMC4zOWMtMC45OC0xLjctMy4zOS0zLjA5LTUuMzUtMy4wOUgzMS43M2MtMS45NiwwLTQuMzcsMS4zOS01LjM1LDMuMDlMMTMuOSw0Mi4wMWMtMC45OCwxLjctMC45OCw0LjQ4LDAsNi4xN2wxMi40OSwyMS42MmMwLjk4LDEuNywzLjM5LDMuMDksNS4zNSwzLjA5aDI0Ljk3YzEuOTYsMCw0LjM3LTEuMzksNS4zNS0zLjA5bDEyLjQ5LTIxLjYyYzAuOTgtMS43LDAuOTgtNC40OCwwLTYuMTdMNjIuMDQsMjAuMzl6Ii8+PC9nPjwvZz48L3N2Zz4=&#39; : get_option(&#39;argon_sidebar_auther_image&#39;); ?&gt;)&#34;
+</span></span><span class="line"><span class="cl">             class=&#34;rounded-circle shadow-sm&#34; alt=&#34;avatar&#34;&gt;&lt;/div&gt;
+</span></span><span class="line"><span class="cl">/*添加的代码*/    &lt;/a&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>点击 姓名 跳转则是 130 行(添加完上面代码的情况下)左右</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;a href=&#34;http://8.130.91.80/blog/?p=97&#34;&gt;/*添加的代码*/
+</span></span><span class="line"><span class="cl">    &lt;h6 id=&#34;leftbar_overview_author_name&#34;&gt;&lt;?php echo get_option(&#39;argon_sidebar_auther_name&#39;) == &#39;&#39; ? bloginfo(&#39;name&#39;) : get_option(&#39;argon_sidebar_auther_name&#39;); ?&gt;&lt;/h6&gt;
+</span></span><span class="line"><span class="cl">&lt;/a&gt;/*添加的代码*/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="网站底部运行时间等信息" class="headerLink">
+    <a href="#%e7%bd%91%e7%ab%99%e5%ba%95%e9%83%a8%e8%bf%90%e8%a1%8c%e6%97%b6%e9%97%b4%e7%ad%89%e4%bf%a1%e6%81%af" class="header-mark"></a>网站底部运行时间等信息</h2><p><strong>管理员后台 → Argon 主题选项 → 页脚内容</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;style&gt;
+</span></span><span class="line"><span class="cl">    /* 核心样式 */
+</span></span><span class="line"><span class="cl">    .github-badge {
+</span></span><span class="line"><span class="cl">        display: inline-block;
+</span></span><span class="line"><span class="cl">        border-radius: 4px;
+</span></span><span class="line"><span class="cl">        text-shadow: none;
+</span></span><span class="line"><span class="cl">        font-size: 13.1px;
+</span></span><span class="line"><span class="cl">        color: #fff;
+</span></span><span class="line"><span class="cl">        line-height: 15px;
+</span></span><span class="line"><span class="cl">        margin-bottom: 5px;
+</span></span><span class="line"><span class="cl">        font-family: &#34;Open Sans&#34;, sans-serif;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .github-badge .badge-subject {
+</span></span><span class="line"><span class="cl">        display: inline-block;
+</span></span><span class="line"><span class="cl">        background-color: #4d4d4d;
+</span></span><span class="line"><span class="cl">        padding: 4px 4px 4px 6px;
+</span></span><span class="line"><span class="cl">        border-top-left-radius: 4px;
+</span></span><span class="line"><span class="cl">        border-bottom-left-radius: 4px;
+</span></span><span class="line"><span class="cl">        font-family: &#34;Open Sans&#34;, sans-serif;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .github-badge .badge-value {
+</span></span><span class="line"><span class="cl">        display: inline-block;
+</span></span><span class="line"><span class="cl">        padding: 4px 6px 4px 4px;
+</span></span><span class="line"><span class="cl">        border-top-right-radius: 4px;
+</span></span><span class="line"><span class="cl">        border-bottom-right-radius: 4px;
+</span></span><span class="line"><span class="cl">        font-family: &#34;Open Sans&#34;, sans-serif;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .github-badge-big {
+</span></span><span class="line"><span class="cl">        display: inline-block;
+</span></span><span class="line"><span class="cl">        border-radius: 6px;
+</span></span><span class="line"><span class="cl">        text-shadow: none;
+</span></span><span class="line"><span class="cl">        font-size: 14.1px;
+</span></span><span class="line"><span class="cl">        color: #fff;
+</span></span><span class="line"><span class="cl">        line-height: 18px;
+</span></span><span class="line"><span class="cl">        margin-bottom: 7px;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .github-badge-big .badge-subject {
+</span></span><span class="line"><span class="cl">        display: inline-block;
+</span></span><span class="line"><span class="cl">        background-color: #4d4d4d;
+</span></span><span class="line"><span class="cl">        padding: 4px 4px 4px 6px;
+</span></span><span class="line"><span class="cl">        border-top-left-radius: 4px;
+</span></span><span class="line"><span class="cl">        border-bottom-left-radius: 4px;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .github-badge-big .badge-value {
+</span></span><span class="line"><span class="cl">        display: inline-block;
+</span></span><span class="line"><span class="cl">        padding: 4px 6px 4px 4px;
+</span></span><span class="line"><span class="cl">        border-top-right-radius: 4px;
+</span></span><span class="line"><span class="cl">        border-bottom-right-radius: 4px;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .bg-orange {
+</span></span><span class="line"><span class="cl">        background-color: #ec8a64 !important;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .bg-red {
+</span></span><span class="line"><span class="cl">        background-color: #cb7574 !important;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .bg-apricots {
+</span></span><span class="line"><span class="cl">        background-color: #64769e !important;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .bg-casein {
+</span></span><span class="line"><span class="cl">        background-color: #dfe291 !important;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .bg-shallots {
+</span></span><span class="line"><span class="cl">        background-color: #97c3c6 !important;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .bg-ogling {
+</span></span><span class="line"><span class="cl">        background-color: #95c7e0 !important;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .bg-haze {
+</span></span><span class="line"><span class="cl">        background-color: #9aaec7 !important;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .bg-mountain-terrier {
+</span></span><span class="line"><span class="cl">        background-color: #99a5cd !important;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">&lt;/style&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;!-- 运行时间 --&gt;
+</span></span><span class="line"><span class="cl">&lt;div class=&#34;github-badge-big&#34;&gt;
+</span></span><span class="line"><span class="cl">    &lt;span class=&#34;badge-subject&#34;&gt;&lt;i class=&#34;fa fa-clock-o&#34;&gt;&lt;/i&gt; 运行时间&lt;/span&gt;&lt;span
+</span></span><span class="line"><span class="cl">        class=&#34;badge-value bg-apricots&#34;&gt;&lt;span id=&#34;blog_running_days&#34; class=&#34;odometer odometer-auto-theme&#34;&gt;&lt;/span&gt;
+</span></span><span class="line"><span class="cl">            days
+</span></span><span class="line"><span class="cl">            &lt;span id=&#34;blog_running_hours&#34; class=&#34;odometer odometer-auto-theme&#34;&gt;&lt;/span&gt; H
+</span></span><span class="line"><span class="cl">            &lt;span id=&#34;blog_running_mins&#34; class=&#34;odometer odometer-auto-theme&#34;&gt;&lt;/span&gt; M
+</span></span><span class="line"><span class="cl">            &lt;span id=&#34;blog_running_secs&#34; class=&#34;odometer odometer-auto-theme&#34;&gt;&lt;/span&gt;S
+</span></span><span class="line"><span class="cl">        &lt;/span&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    &lt;script no-pjax=&#34;&#34;&gt;
+</span></span><span class="line"><span class="cl">        var blog_running_days = document.getElementById(&#34;blog_running_days&#34;);
+</span></span><span class="line"><span class="cl">        var blog_running_hours = document.getElementById(&#34;blog_running_hours&#34;);
+</span></span><span class="line"><span class="cl">        var blog_running_mins = document.getElementById(&#34;blog_running_mins&#34;);
+</span></span><span class="line"><span class="cl">        var blog_running_secs = document.getElementById(&#34;blog_running_secs&#34;);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        function refresh_blog_running_time() {
+</span></span><span class="line"><span class="cl">            var time = new Date() - new Date(2023, 4, 23, 0, 0, 0); /*此处日期的月份改为自己真正月份的前一个月*/
+</span></span><span class="line"><span class="cl">            var d = parseInt(time / 24 / 60 / 60 / 1000);
+</span></span><span class="line"><span class="cl">            var h = parseInt((time % (24 * 60 * 60 * 1000)) / 60 / 60 / 1000);
+</span></span><span class="line"><span class="cl">            var m = parseInt((time % (60 * 60 * 1000)) / 60 / 1000);
+</span></span><span class="line"><span class="cl">            var s = parseInt((time % (60 * 1000)) / 1000);
+</span></span><span class="line"><span class="cl">            blog_running_days.innerHTML = d;
+</span></span><span class="line"><span class="cl">            blog_running_hours.innerHTML = h;
+</span></span><span class="line"><span class="cl">            blog_running_mins.innerHTML = m;
+</span></span><span class="line"><span class="cl">            blog_running_secs.innerHTML = s;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        refresh_blog_running_time();
+</span></span><span class="line"><span class="cl">        if (typeof bottomTimeIntervalHasSet == &#34;undefined&#34;) {
+</span></span><span class="line"><span class="cl">            var bottomTimeIntervalHasSet = true;
+</span></span><span class="line"><span class="cl">            setInterval(function () {
+</span></span><span class="line"><span class="cl">                refresh_blog_running_time();
+</span></span><span class="line"><span class="cl">            }, 500);
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    &lt;/script&gt;
+</span></span><span class="line"><span class="cl">&lt;/div&gt;
+</span></span><span class="line"><span class="cl">&lt;div&gt;
+</span></span><span class="line"><span class="cl">    &lt;style&gt;
+</span></span><span class="line"><span class="cl">        @keyframes jump {
+</span></span><span class="line"><span class="cl">            0% {
+</span></span><span class="line"><span class="cl">                transform: translateY(0) scale(1);
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">            50% {
+</span></span><span class="line"><span class="cl">                transform: translateY(-5px) scale(0.9);
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">            100% {
+</span></span><span class="line"><span class="cl">                transform: translateY(0) scale(1);
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        .jumping-text span {
+</span></span><span class="line"><span class="cl">            display: inline-block;
+</span></span><span class="line"><span class="cl">            animation: jump 2s infinite;
+</span></span><span class="line"><span class="cl">            animation-delay: 0s;
+</span></span><span class="line"><span class="cl">            will-change: transform; /* 添加优化提示 */
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        .jumping-text span:nth-child(1) {
+</span></span><span class="line"><span class="cl">            animation-delay: 0s;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        .jumping-text span:nth-child(2) {
+</span></span><span class="line"><span class="cl">            animation-delay: 0.2s;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        .jumping-text span:nth-child(3) {
+</span></span><span class="line"><span class="cl">            animation-delay: 0.4s;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        /* Add more nth-child styles for each letter */
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    &lt;/style&gt;
+</span></span><span class="line"><span class="cl">    &lt;/head&gt;
+</span></span><span class="line"><span class="cl">    &lt;body&gt;
+</span></span><span class="line"><span class="cl">    &lt;i class=&#34;fa fa-wordpress&#34;&gt;&lt;/i&gt;
+</span></span><span class="line"><span class="cl">    &lt;scan class=&#34;jumping-text&#34;&gt;
+</span></span><span class="line"><span class="cl">        &lt;span&gt;博&lt;/span&gt;
+</span></span><span class="line"><span class="cl">        &lt;span&gt;客&lt;/span&gt;
+</span></span><span class="line"><span class="cl">        &lt;span&gt;基&lt;/span&gt;
+</span></span><span class="line"><span class="cl">        &lt;span&gt;于&lt;/span&gt;
+</span></span><span class="line"><span class="cl">        &lt;span&gt;Argon&lt;/span&gt;
+</span></span><span class="line"><span class="cl">        &lt;span&gt;主&lt;/span&gt;
+</span></span><span class="line"><span class="cl">        &lt;span&gt;题&lt;/span&gt;
+</span></span><span class="line"><span class="cl">        &lt;span&gt;二&lt;/span&gt;
+</span></span><span class="line"><span class="cl">        &lt;span&gt;次&lt;/span&gt;
+</span></span><span class="line"><span class="cl">        &lt;span&gt;开&lt;/span&gt;
+</span></span><span class="line"><span class="cl">        &lt;span&gt;发&lt;/span&gt;
+</span></span><span class="line"><span class="cl">        &lt;span&gt;🛠️&lt;/span&gt;
+</span></span><span class="line"><span class="cl">    &lt;/scan&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    &lt;script&gt;
+</span></span><span class="line"><span class="cl">        const jumpingText = document.querySelector(&#39;.jumping-text&#39;);
+</span></span><span class="line"><span class="cl">        const letters = jumpingText.querySelectorAll(&#39;span&#39;);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        let delay = 0;
+</span></span><span class="line"><span class="cl">        letters.forEach((letter) =&gt; {
+</span></span><span class="line"><span class="cl">            letter.style.animationDelay = delay + &#39;s&#39;;
+</span></span><span class="line"><span class="cl">            delay += 0.1;
+</span></span><span class="line"><span class="cl">        });
+</span></span><span class="line"><span class="cl">    &lt;/script&gt;
+</span></span><span class="line"><span class="cl">&lt;/div&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;style&gt;
+</span></span><span class="line"><span class="cl">    .badge-1 {
+</span></span><span class="line"><span class="cl">        font-size: 9px; /* 调整为您想要的尺寸 */
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">&lt;/style&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;span class=&#34;badge-1&#34;&gt;点下方会跳到Argon项目地址(跳过去就不是我的网站哦不要搞错了•ࡇ•!)&lt;/span&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h2 id="参考文章" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%ab%a0" class="header-mark"></a>参考文章</h2><p>想获得更多美化教程建议去看看这些文章 ⬇</p>
+<p><a href="https://www.liveout.cn/25/" target="_blank" rel="noopener noreferrer">Argon主题博客美化 – Echo (liveout.cn)</a></p>
+<p><a href="https://blog.hongshaoyv.com/argon-beautification/" target="_blank" rel="noopener noreferrer">Argon主题美化 - 北冥红烧鱼的芥子空间 (hongshaoyv.com)</a></p>
+<p><a href="https://blognas.hwb0307.com/linux/docker/744#comment-918" target="_blank" rel="noopener noreferrer">Docker系列 WordPress系列 特效 - Bensz (hwb0307.com)</a></p>
+<p><a href="https://crowya.com/681" target="_blank" rel="noopener noreferrer">Argon 主题修改记录 - 鸦鸦的巢穴 (crowya.com)</a></p>
+</div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/argon%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/b%E7%AB%99%E5%A4%A7%E9%83%A8%E5%88%86api/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

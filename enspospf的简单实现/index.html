@@ -1,0 +1,538 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="【eNSP】OSPF的简单实现1、 实验目的 掌握 OSPF 的基本配置 熟悉 OSPF 三张表的内容和作用 掌握 OSPF 的 DR 和 BDR 的作用及选举 理解 RID 的概念 理解 OSPF 中两个组播地址" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/enspospf%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="【eNSP】OSPF的简单实现1、 实验目的 掌握 OSPF 的基本配置 熟悉 OSPF 三张表的内容和作用 掌握 OSPF 的 DR 和 BDR 的作用及选举 理解 RID 的概念 理解 OSPF 中两个组播地址"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/enspospf%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/" /><link rel="prev" href="/%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BA%92%E8%81%94%E5%AE%9E%E9%AA%8C/" /><link rel="next" href="/ciscoensp%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/enspospf%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0\/"
+        },"genre": "posts","wordcount":  1523 ,
+        "url": "\/enspospf%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1523 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1参照逻辑拓扑使用合适的线缆完成物理拓扑的搭建">1.参照逻辑拓扑，使用合适的线缆完成物理拓扑的搭建</a></li>
+        <li><a href="#2完成各路由器的基本配置实现各直连设备之间可以互-ping-对方要求c-类地址作为-r1r2-和-r3-的互联网段地址b-类地址作为-r3-和-r4-的互连网段地址具体网段及路由器各接口地址可以自己规划">2.完成各路由器的基本配置，实现各直连设备之间可以互 ping 对方，要求C 类地址作为 R1、R2 和 R3 的互联网段地址，B 类地址作为 R3 和 R4 的互连网段地址，具体网段及路由器各接口地址可以自己规划</a></li>
+        <li><a href="#3设置-pc1-的地址为-1921681124网关为-1921681254设置-pc2-的地址为-172162124网关为-172162254">3.设置 PC1 的地址为 192.168.1.1/24，网关为 192.168.1.254，设置 PC2 的地址为 172.16.2.1/24，网关为 172.16.2.254</a></li>
+        <li><a href="#4在各路由器上各启用一个-loopback-接口地址为各设备的编号如-r1-的loopback-地址为-111124r2-的-loopback-地址为-222224其他以此类推">4.在各路由器上各启用一个 loopback 接口，地址为各设备的编号，如 R1 的loopback 地址为 1.1.1.1/24，R2 的 loopback 地址为 2.2.2.2/24，其他以此类推</a></li>
+        <li><a href="#5全网启用-ospf进程设置为-110并将整个环境划分入区域-0要求在r4-上使用接口级命令的方式启用-ospf其他设备上使用常规的-routerospf-方式启用-ospf">5.全网启用 OSPF，进程设置为 110，并将整个环境划分入区域 0，要求在R4 上使用接口级命令的方式启用 OSPF，其他设备上使用常规的 routerospf 方式启用 OSPF</a></li>
+        <li><a href="#6使用合适的命令查看-ospf-的邻居表拓扑表以及路由表并测试-pc1-与pc2-之间的连通性">6.使用合适的命令查看 OSPF 的邻居表、拓扑表以及路由表，并测试 PC1 与PC2 之间的连通性</a></li>
+        <li><a href="#7观察以太网环境与串行链路环境的-ospf-邻居表的区别">7.观察以太网环境与串行链路环境的 OSPF 邻居表的区别</a></li>
+        <li><a href="#8使用合适的命令找出并记录各个路由器的-rid">8.使用合适的命令找出并记录各个路由器的 RID</a></li>
+        <li><a href="#9观察-r1r2r3-之间-drbdrdrother-的相应角色然后采取合适的方式将-r2-设置为该以太网环境的-dr">9.观察 R1/R2/R3 之间 DR/BDR/DROTHER 的相应角色，然后采取合适的方式将 R2 设置为该以太网环境的 DR</a></li>
+        <li><a href="#10任意选取两个路由器的-ospf-拓扑表观察这两个路由器之间的-ospf-拓扑表是否一致">10.任意选取两个路由器的 OSPF 拓扑表，观察这两个路由器之间的 OSPF 拓扑表是否一致</a></li>
+        <li><a href="#11指定-r2-的-rid-为-1234r3-的-rid-为-5678使用相关命令观察和验证各路由器-rid-的变化">11.指定 R2 的 RID 为 1.2.3.4，R3 的 RID 为 5.6.7.8，使用相关命令观察和验证各路由器 RID 的变化</a></li>
+        <li><a href="#12在-r1-上添加-192168100024-的网段在-r4-上添加-17216100024-的网段完成必要配置实现这两个网络之间的连通性">12.在 R1 上添加 192.168.100.0/24 的网段，在 R4 上添加 172.16.100.0/24 的网段，完成必要配置实现这两个网络之间的连通性</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="enspospf的简单实现" class="headerLink">
+    <a href="#enspospf%e7%9a%84%e7%ae%80%e5%8d%95%e5%ae%9e%e7%8e%b0" class="header-mark"></a>【eNSP】OSPF的简单实现</h1><p><strong>1、 实验目的</strong></p>
+<ol>
+<li>掌握 OSPF 的基本配置</li>
+<li>熟悉 OSPF 三张表的内容和作用</li>
+<li>掌握 OSPF 的 DR 和 BDR 的作用及选举</li>
+<li>理解 RID 的概念</li>
+<li>理解 OSPF 中两个组播地址的作用</li>
+</ol>
+<p><strong>2、 拓扑结构</strong></p>
+<img src="https://pic.imgdb.cn/item/64e3296d661c6c8e54d06ca6.jpg" style="zoom:67%;" /> 
+<p><strong>3、 实验需求</strong></p>
+<ol>
+<li>
+<p>参照逻辑拓扑，使用合适的线缆完成物理拓扑的搭建</p>
+</li>
+<li>
+<p>完成各路由器的基本配置，实现各直连设备之间可以互 ping 对方，要求C 类地址作为 R1、R2 和 R3 的互联网段地址，B 类地址作为 R3 和 R4 的互连网段地址，具体网段及路由器各接口地址可以自己规划</p>
+</li>
+<li>
+<p>设置 PC1 的地址为 192.168.1.1/24，网关为 192.168.1.254，设置 PC2 的地址为 172.16.2.1/24，网关为 172.16.2.254</p>
+</li>
+<li>
+<p>在各路由器上各启用一个 loopback 接口，地址为各设备的编号，如 R1 的loopback 地址为 1.1.1.1/24，R2 的 loopback 地址为 2.2.2.2/24，其他以此类推</p>
+</li>
+<li>
+<p>全网启用 OSPF，进程设置为 110，并将整个环境划分入区域 0，要求在R4 上使用接口级命令的方式启用 OSPF，其他设备上使用常规的 router ospf 方式启用 OSPF</p>
+</li>
+<li>
+<p>使用合适的命令查看 OSPF 的邻居表、拓扑表以及路由表，并测试 PC1 与PC2 之间的连通性</p>
+</li>
+<li>
+<p>观察以太网环境与串行链路环境的 OSPF 邻居表的区别</p>
+</li>
+<li>
+<p>使用合适的命令找出并记录各个路由器的 RID</p>
+</li>
+<li>
+<p>观察 R1/R2/R3 之间 DR/BDR/DROTHER 的相应角色，然后采取合适的方式将 R2 设置为该以太网环境的 DR</p>
+</li>
+<li>
+<p>任意选取两个路由器的 OSPF 拓扑表，观察这两个路由器之间的 OSPF 拓扑表是否一致</p>
+</li>
+<li>
+<p>指定 R2 的 RID 为 1.2.3.4，R3 的 RID 为 5.6.7.8，使用相关命令观察和验证各路由器 RID 的变化</p>
+</li>
+<li>
+<p>在 R1 上添加 192.168.100.0/24 的网段，在 R4 上添加 172.16.100.0/24 的网段，完成必要配置实现这两个网络之间的连通性</p>
+</li>
+</ol>
+<p>​</p>
+<p>​</p>
+<h3 id="1参照逻辑拓扑使用合适的线缆完成物理拓扑的搭建" class="headerLink">
+    <a href="#1%e5%8f%82%e7%85%a7%e9%80%bb%e8%be%91%e6%8b%93%e6%89%91%e4%bd%bf%e7%94%a8%e5%90%88%e9%80%82%e7%9a%84%e7%ba%bf%e7%bc%86%e5%ae%8c%e6%88%90%e7%89%a9%e7%90%86%e6%8b%93%e6%89%91%e7%9a%84%e6%90%ad%e5%bb%ba" class="header-mark"></a>1.参照逻辑拓扑，使用合适的线缆完成物理拓扑的搭建</h3><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64e4290c661c6c8e549fcfae.jpg" title="https://pic.imgdb.cn/item/64e4290c661c6c8e549fcfae.jpg" data-thumbnail="https://pic.imgdb.cn/item/64e4290c661c6c8e549fcfae.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/64e4290c661c6c8e549fcfae.jpg"
+            srcset="https://pic.imgdb.cn/item/64e4290c661c6c8e549fcfae.jpg, https://pic.imgdb.cn/item/64e4290c661c6c8e549fcfae.jpg 1.5x, https://pic.imgdb.cn/item/64e4290c661c6c8e549fcfae.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/64e4290c661c6c8e549fcfae.jpg">
+    </a></figure></p>
+<p>​</p>
+<h3 id="2完成各路由器的基本配置实现各直连设备之间可以互-ping-对方要求c-类地址作为-r1r2-和-r3-的互联网段地址b-类地址作为-r3-和-r4-的互连网段地址具体网段及路由器各接口地址可以自己规划" class="headerLink">
+    <a href="#2%e5%ae%8c%e6%88%90%e5%90%84%e8%b7%af%e7%94%b1%e5%99%a8%e7%9a%84%e5%9f%ba%e6%9c%ac%e9%85%8d%e7%bd%ae%e5%ae%9e%e7%8e%b0%e5%90%84%e7%9b%b4%e8%bf%9e%e8%ae%be%e5%a4%87%e4%b9%8b%e9%97%b4%e5%8f%af%e4%bb%a5%e4%ba%92-ping-%e5%af%b9%e6%96%b9%e8%a6%81%e6%b1%82c-%e7%b1%bb%e5%9c%b0%e5%9d%80%e4%bd%9c%e4%b8%ba-r1r2-%e5%92%8c-r3-%e7%9a%84%e4%ba%92%e8%81%94%e7%bd%91%e6%ae%b5%e5%9c%b0%e5%9d%80b-%e7%b1%bb%e5%9c%b0%e5%9d%80%e4%bd%9c%e4%b8%ba-r3-%e5%92%8c-r4-%e7%9a%84%e4%ba%92%e8%bf%9e%e7%bd%91%e6%ae%b5%e5%9c%b0%e5%9d%80%e5%85%b7%e4%bd%93%e7%bd%91%e6%ae%b5%e5%8f%8a%e8%b7%af%e7%94%b1%e5%99%a8%e5%90%84%e6%8e%a5%e5%8f%a3%e5%9c%b0%e5%9d%80%e5%8f%af%e4%bb%a5%e8%87%aa%e5%b7%b1%e8%a7%84%e5%88%92" class="header-mark"></a>2.完成各路由器的基本配置，实现各直连设备之间可以互 ping 对方，要求C 类地址作为 R1、R2 和 R3 的互联网段地址，B 类地址作为 R3 和 R4 的互连网段地址，具体网段及路由器各接口地址可以自己规划</h3><img src="https://pic.imgdb.cn/item/64e42d7d661c6c8e54a1b1ed.jpg" style="zoom:80%;" />
+<img src="https://pic.imgdb.cn/item/64e42dc0661c6c8e54a1cc27.jpg" style="zoom:80%;" />
+<img src="https://pic.imgdb.cn/item/64e42dee661c6c8e54a1da0e.jpg" style="zoom:80%;" />
+<img src="https://pic.imgdb.cn/item/64e46a1a661c6c8e54b82ad4.jpg" style="zoom:80%;" />
+<p>​</p>
+<h3 id="3设置-pc1-的地址为-1921681124网关为-1921681254设置-pc2-的地址为-172162124网关为-172162254" class="headerLink">
+    <a href="#3%e8%ae%be%e7%bd%ae-pc1-%e7%9a%84%e5%9c%b0%e5%9d%80%e4%b8%ba-1921681124%e7%bd%91%e5%85%b3%e4%b8%ba-1921681254%e8%ae%be%e7%bd%ae-pc2-%e7%9a%84%e5%9c%b0%e5%9d%80%e4%b8%ba-172162124%e7%bd%91%e5%85%b3%e4%b8%ba-172162254" class="header-mark"></a>3.设置 PC1 的地址为 192.168.1.1/24，网关为 192.168.1.254，设置 PC2 的地址为 172.16.2.1/24，网关为 172.16.2.254</h3><img src="https://pic.imgdb.cn/item/64e46a4c661c6c8e54b838ab.jpg" style="zoom: 50%;" />
+<img src="https://pic.imgdb.cn/item/64e46a69661c6c8e54b8443f.jpg" style="zoom:50%;" />
+<p>​</p>
+<h3 id="4在各路由器上各启用一个-loopback-接口地址为各设备的编号如-r1-的loopback-地址为-111124r2-的-loopback-地址为-222224其他以此类推" class="headerLink">
+    <a href="#4%e5%9c%a8%e5%90%84%e8%b7%af%e7%94%b1%e5%99%a8%e4%b8%8a%e5%90%84%e5%90%af%e7%94%a8%e4%b8%80%e4%b8%aa-loopback-%e6%8e%a5%e5%8f%a3%e5%9c%b0%e5%9d%80%e4%b8%ba%e5%90%84%e8%ae%be%e5%a4%87%e7%9a%84%e7%bc%96%e5%8f%b7%e5%a6%82-r1-%e7%9a%84loopback-%e5%9c%b0%e5%9d%80%e4%b8%ba-111124r2-%e7%9a%84-loopback-%e5%9c%b0%e5%9d%80%e4%b8%ba-222224%e5%85%b6%e4%bb%96%e4%bb%a5%e6%ad%a4%e7%b1%bb%e6%8e%a8" class="header-mark"></a>4.在各路由器上各启用一个 loopback 接口，地址为各设备的编号，如 R1 的loopback 地址为 1.1.1.1/24，R2 的 loopback 地址为 2.2.2.2/24，其他以此类推</h3><p>R1的配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;R1&gt;sys
+</span></span><span class="line"><span class="cl">[R1]int LoopBack 0
+</span></span><span class="line"><span class="cl">[R1-LoopBack0]ip address 1.1.1.1 24
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>其他路由器的配置以此类推，只是配置的IP不同</p>
+</blockquote>
+<p>​</p>
+<h3 id="5全网启用-ospf进程设置为-110并将整个环境划分入区域-0要求在r4-上使用接口级命令的方式启用-ospf其他设备上使用常规的-routerospf-方式启用-ospf" class="headerLink">
+    <a href="#5%e5%85%a8%e7%bd%91%e5%90%af%e7%94%a8-ospf%e8%bf%9b%e7%a8%8b%e8%ae%be%e7%bd%ae%e4%b8%ba-110%e5%b9%b6%e5%b0%86%e6%95%b4%e4%b8%aa%e7%8e%af%e5%a2%83%e5%88%92%e5%88%86%e5%85%a5%e5%8c%ba%e5%9f%9f-0%e8%a6%81%e6%b1%82%e5%9c%a8r4-%e4%b8%8a%e4%bd%bf%e7%94%a8%e6%8e%a5%e5%8f%a3%e7%ba%a7%e5%91%bd%e4%bb%a4%e7%9a%84%e6%96%b9%e5%bc%8f%e5%90%af%e7%94%a8-ospf%e5%85%b6%e4%bb%96%e8%ae%be%e5%a4%87%e4%b8%8a%e4%bd%bf%e7%94%a8%e5%b8%b8%e8%a7%84%e7%9a%84-routerospf-%e6%96%b9%e5%bc%8f%e5%90%af%e7%94%a8-ospf" class="header-mark"></a>5.全网启用 OSPF，进程设置为 110，并将整个环境划分入区域 0，要求在R4 上使用接口级命令的方式启用 OSPF，其他设备上使用常规的 routerospf 方式启用 OSPF</h3><p>R1的配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R1]ospf 110
+</span></span><span class="line"><span class="cl">[R1-ospf-110]area 0
+</span></span><span class="line"><span class="cl">[R1-ospf-110-area-0.0.0.0]network 192.168.123.0 0.0.0.255
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>R2的配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R2]ospf 110	
+</span></span><span class="line"><span class="cl">[R2-ospf-110]area 0
+</span></span><span class="line"><span class="cl">[R2-ospf-110-area-0.0.0.0]network 192.168.123.0 0.0.0.255
+</span></span><span class="line"><span class="cl">[R2-ospf-110-area-0.0.0.0]network 172.16.24.0 0.0.0.255
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>R3的配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R3]ospf 110
+</span></span><span class="line"><span class="cl">[R3-ospf-110]area 0
+</span></span><span class="line"><span class="cl">[R3-ospf-110-area-0.0.0.0]network 192.168.123.0 0.0.0.255
+</span></span><span class="line"><span class="cl">[R3-ospf-110-area-0.0.0.0]network 192.168.1.0 0.0.0.255
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>R4的配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R4]ospf 110 router-id 4.4.4.4
+</span></span><span class="line"><span class="cl">[R4-ospf-110]qui
+</span></span><span class="line"><span class="cl">[R4]qui
+</span></span><span class="line"><span class="cl">&lt;R4&gt;reset ospf process 
+</span></span><span class="line"><span class="cl">[R4]int s2/0/0
+</span></span><span class="line"><span class="cl">[R4-Serial2/0/0]ospf enable 110 area 0
+</span></span><span class="line"><span class="cl">[R4-ospf-110-area-0.0.0.0]qui
+</span></span><span class="line"><span class="cl">[R4-ospf-110]qui
+</span></span><span class="line"><span class="cl">[R4]int g0/0/0
+</span></span><span class="line"><span class="cl">[R4-GigabitEthernet0/0/0]ospf enable 110 area 0
+</span></span><span class="line"><span class="cl">[R4-GigabitEthernet0/0/0]ospf 110
+</span></span><span class="line"><span class="cl">[R4-ospf-110]area 0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h3 id="6使用合适的命令查看-ospf-的邻居表拓扑表以及路由表并测试-pc1-与pc2-之间的连通性" class="headerLink">
+    <a href="#6%e4%bd%bf%e7%94%a8%e5%90%88%e9%80%82%e7%9a%84%e5%91%bd%e4%bb%a4%e6%9f%a5%e7%9c%8b-ospf-%e7%9a%84%e9%82%bb%e5%b1%85%e8%a1%a8%e6%8b%93%e6%89%91%e8%a1%a8%e4%bb%a5%e5%8f%8a%e8%b7%af%e7%94%b1%e8%a1%a8%e5%b9%b6%e6%b5%8b%e8%af%95-pc1-%e4%b8%8epc2-%e4%b9%8b%e9%97%b4%e7%9a%84%e8%bf%9e%e9%80%9a%e6%80%a7" class="header-mark"></a>6.使用合适的命令查看 OSPF 的邻居表、拓扑表以及路由表，并测试 PC1 与PC2 之间的连通性</h3><p>查看邻居表的命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[]display ospf peer brief 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="https://pic.imgdb.cn/item/64e47c2a661c6c8e54bfa996.jpg" style="zoom:80%;" />
+<img src="https://pic.imgdb.cn/item/64e47c86661c6c8e54bfd996.jpg" style="zoom:80%;" />
+<img src="https://pic.imgdb.cn/item/64e47ccd661c6c8e54c005dd.jpg" style="zoom:80%;" />
+<img src="https://pic.imgdb.cn/item/64e47cf9661c6c8e54c01683.jpg" style="zoom:80%;" />
+<p>查看拓扑表的命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[]display ospf lsdb 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看路由表的命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[]display ip routing-table
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="https://pic.imgdb.cn/item/64e47b73661c6c8e54bf2778.jpg" style="zoom:50%;" />
+<p>​</p>
+<h3 id="7观察以太网环境与串行链路环境的-ospf-邻居表的区别" class="headerLink">
+    <a href="#7%e8%a7%82%e5%af%9f%e4%bb%a5%e5%a4%aa%e7%bd%91%e7%8e%af%e5%a2%83%e4%b8%8e%e4%b8%b2%e8%a1%8c%e9%93%be%e8%b7%af%e7%8e%af%e5%a2%83%e7%9a%84-ospf-%e9%82%bb%e5%b1%85%e8%a1%a8%e7%9a%84%e5%8c%ba%e5%88%ab" class="header-mark"></a>7.观察以太网环境与串行链路环境的 OSPF 邻居表的区别</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[]display ospf peer 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h3 id="8使用合适的命令找出并记录各个路由器的-rid" class="headerLink">
+    <a href="#8%e4%bd%bf%e7%94%a8%e5%90%88%e9%80%82%e7%9a%84%e5%91%bd%e4%bb%a4%e6%89%be%e5%87%ba%e5%b9%b6%e8%ae%b0%e5%bd%95%e5%90%84%e4%b8%aa%e8%b7%af%e7%94%b1%e5%99%a8%e7%9a%84-rid" class="header-mark"></a>8.使用合适的命令找出并记录各个路由器的 RID</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[]display ospf peer brief 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="https://pic.imgdb.cn/item/64e47c2a661c6c8e54bfa996.jpg" style="zoom:80%;" />
+<img src="https://pic.imgdb.cn/item/64e47c86661c6c8e54bfd996.jpg" style="zoom:80%;" />
+<img src="https://pic.imgdb.cn/item/64e47ccd661c6c8e54c005dd.jpg" style="zoom:80%;" />
+<img src="https://pic.imgdb.cn/item/64e47cf9661c6c8e54c01683.jpg" style="zoom:80%;" />
+<p>​</p>
+<h3 id="9观察-r1r2r3-之间-drbdrdrother-的相应角色然后采取合适的方式将-r2-设置为该以太网环境的-dr" class="headerLink">
+    <a href="#9%e8%a7%82%e5%af%9f-r1r2r3-%e4%b9%8b%e9%97%b4-drbdrdrother-%e7%9a%84%e7%9b%b8%e5%ba%94%e8%a7%92%e8%89%b2%e7%84%b6%e5%90%8e%e9%87%87%e5%8f%96%e5%90%88%e9%80%82%e7%9a%84%e6%96%b9%e5%bc%8f%e5%b0%86-r2-%e8%ae%be%e7%bd%ae%e4%b8%ba%e8%af%a5%e4%bb%a5%e5%a4%aa%e7%bd%91%e7%8e%af%e5%a2%83%e7%9a%84-dr" class="header-mark"></a>9.观察 R1/R2/R3 之间 DR/BDR/DROTHER 的相应角色，然后采取合适的方式将 R2 设置为该以太网环境的 DR</h3><p>观察路由器当前状态：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[]display ospf peer
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将 R2 设置为该以太网环境的 DR：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R2]int g0/0/0
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0]ospf dr-priority 100
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0]quit
+</span></span><span class="line"><span class="cl">[R2]quit
+</span></span><span class="line"><span class="cl">&lt;R2&gt;reset ospf process
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h3 id="10任意选取两个路由器的-ospf-拓扑表观察这两个路由器之间的-ospf-拓扑表是否一致" class="headerLink">
+    <a href="#10%e4%bb%bb%e6%84%8f%e9%80%89%e5%8f%96%e4%b8%a4%e4%b8%aa%e8%b7%af%e7%94%b1%e5%99%a8%e7%9a%84-ospf-%e6%8b%93%e6%89%91%e8%a1%a8%e8%a7%82%e5%af%9f%e8%bf%99%e4%b8%a4%e4%b8%aa%e8%b7%af%e7%94%b1%e5%99%a8%e4%b9%8b%e9%97%b4%e7%9a%84-ospf-%e6%8b%93%e6%89%91%e8%a1%a8%e6%98%af%e5%90%a6%e4%b8%80%e8%87%b4" class="header-mark"></a>10.任意选取两个路由器的 OSPF 拓扑表，观察这两个路由器之间的 OSPF 拓扑表是否一致</h3><p>查看拓扑表的命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[]display ospf lsdb 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="https://pic.imgdb.cn/item/64e4886f661c6c8e54c42fc0.jpg" style="zoom:67%;" />
+<img src="https://pic.imgdb.cn/item/64e486d6661c6c8e54c35178.jpg" style="zoom:67%;" />
+<p>​</p>
+<h3 id="11指定-r2-的-rid-为-1234r3-的-rid-为-5678使用相关命令观察和验证各路由器-rid-的变化" class="headerLink">
+    <a href="#11%e6%8c%87%e5%ae%9a-r2-%e7%9a%84-rid-%e4%b8%ba-1234r3-%e7%9a%84-rid-%e4%b8%ba-5678%e4%bd%bf%e7%94%a8%e7%9b%b8%e5%85%b3%e5%91%bd%e4%bb%a4%e8%a7%82%e5%af%9f%e5%92%8c%e9%aa%8c%e8%af%81%e5%90%84%e8%b7%af%e7%94%b1%e5%99%a8-rid-%e7%9a%84%e5%8f%98%e5%8c%96" class="header-mark"></a>11.指定 R2 的 RID 为 1.2.3.4，R3 的 RID 为 5.6.7.8，使用相关命令观察和验证各路由器 RID 的变化</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R2]ospf 110 router-id 1.2.3.4
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R3]ospf 110 router-id 5.6.7.8
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img src="https://pic.imgdb.cn/item/64e4881f661c6c8e54c41914.jpg" style="zoom:67%;" />
+<img src="https://pic.imgdb.cn/item/64e48891661c6c8e54c43860.jpg" style="zoom:67%;" />
+<p>​</p>
+<h3 id="12在-r1-上添加-192168100024-的网段在-r4-上添加-17216100024-的网段完成必要配置实现这两个网络之间的连通性" class="headerLink">
+    <a href="#12%e5%9c%a8-r1-%e4%b8%8a%e6%b7%bb%e5%8a%a0-192168100024-%e7%9a%84%e7%bd%91%e6%ae%b5%e5%9c%a8-r4-%e4%b8%8a%e6%b7%bb%e5%8a%a0-17216100024-%e7%9a%84%e7%bd%91%e6%ae%b5%e5%ae%8c%e6%88%90%e5%bf%85%e8%a6%81%e9%85%8d%e7%bd%ae%e5%ae%9e%e7%8e%b0%e8%bf%99%e4%b8%a4%e4%b8%aa%e7%bd%91%e7%bb%9c%e4%b9%8b%e9%97%b4%e7%9a%84%e8%bf%9e%e9%80%9a%e6%80%a7" class="header-mark"></a>12.在 R1 上添加 192.168.100.0/24 的网段，在 R4 上添加 172.16.100.0/24 的网段，完成必要配置实现这两个网络之间的连通性</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R1]int LoopBack 1
+</span></span><span class="line"><span class="cl">[R1-LoopBack1]ip address 192.168.100.1 24
+</span></span><span class="line"><span class="cl">[R1-LoopBack1]192.168.100.1 0.0.0.255
+</span></span><span class="line"><span class="cl">[R1-LoopBack1]ospf enable area 0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R4]int LoopBack 1
+</span></span><span class="line"><span class="cl">[R4-LoopBack1]ip address 172.16.100.4 24
+</span></span><span class="line"><span class="cl">[R4-LoopBack1]172.16.100.4 0.0.0.255
+</span></span><span class="line"><span class="cl">[R4-LoopBack1]ospf enable 110 area 0
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/enspospf%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BA%92%E8%81%94%E5%AE%9E%E9%AA%8C/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/ciscoensp%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>
