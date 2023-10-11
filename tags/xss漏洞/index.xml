@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>XSS漏洞 - 标签 - 梧桐漓染的博客</title>
+        <link>/tags/xss%E6%BC%8F%E6%B4%9E/</link>
+        <description>XSS漏洞 - 标签 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/xss%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+    <title>XSS-labs靶场实战</title>
+    <link>/xss-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/</link>
+    <pubDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/xss-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/</guid>
+    <description><![CDATA[XSS-labs靶场实战 每关的答案会用加粗斜体显示，方便后续快速查看。 如果写的不好请见谅！ ​ 第一关 源码 1 2 3 4 5 6 7 8 9 10 11 12 &lt;body&gt; &lt;h1 align]]></description>
+</item><item>
+    <title>XSS自动化检测</title>
+    <link>/xss%E8%87%AA%E5%8A%A8%E5%8C%96%E6%A3%80%E6%B5%8B/</link>
+    <pubDate>Mon, 31 Jul 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/xss%E8%87%AA%E5%8A%A8%E5%8C%96%E6%A3%80%E6%B5%8B/</guid>
+    <description><![CDATA[XSS自动化检测 XSSer Kali安装XSSer 1 2 3 git clone https://github.com/epsylon/xsser.git --- 下载XSSer安装包 cd xsser python3 setup.py install --- 安装 ​ 命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22]]></description>
+</item></channel>
+</rss>
