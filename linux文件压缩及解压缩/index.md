@@ -1,4 +1,4 @@
-# 
+# Linux文件压缩及解压缩
 
 # 文件压缩及解压缩
 
@@ -70,3 +70,4 @@ gzip、 deflate(zlib的格式)、 br(Brotli)、identity(不压缩）
 | 解压缩到指定目录 | `unzip test.zip -d bbb`         |
 | 添加密码         | `zip -rP 123456 test.zip *.txt` |
 | 使用密码解压     | `unzip -P 123456 test.zip`      |
+

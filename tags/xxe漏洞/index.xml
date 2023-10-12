@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>XXE漏洞 - 标签 - 梧桐漓染的博客</title>
-        <link>/tags/xxe%E6%BC%8F%E6%B4%9E/</link>
+        <link>blog.wutongliran.top/tags/xxe%E6%BC%8F%E6%B4%9E/</link>
         <description>XXE漏洞 - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 04 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/xxe%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 04 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="blog.wutongliran.top/tags/xxe%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
     <title>XXE漏洞</title>
-    <link>/xxe%E6%BC%8F%E6%B4%9E/</link>
+    <link>blog.wutongliran.top/xxe%E6%BC%8F%E6%B4%9E/</link>
     <pubDate>Fri, 04 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/xxe%E6%BC%8F%E6%B4%9E/</guid>
+    </author><guid>blog.wutongliran.top/xxe%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[XXE漏洞XXE漏洞——XML外部实体注入漏洞，通常允许攻击者查看应用程序服务器文件系统上的文件，并与应用程序本身可以访问的任何后端或外部系]]></description>
 </item></channel>
 </rss>

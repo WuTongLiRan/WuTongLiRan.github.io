@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>SSRF漏洞 - 标签 - 梧桐漓染的博客</title>
-        <link>/tags/ssrf%E6%BC%8F%E6%B4%9E/</link>
+        <link>blog.wutongliran.top/tags/ssrf%E6%BC%8F%E6%B4%9E/</link>
         <description>SSRF漏洞 - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/ssrf%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="blog.wutongliran.top/tags/ssrf%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
     <title>SSRF漏洞</title>
-    <link>/ssrf%E6%BC%8F%E6%B4%9E/</link>
+    <link>blog.wutongliran.top/ssrf%E6%BC%8F%E6%B4%9E/</link>
     <pubDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/ssrf%E6%BC%8F%E6%B4%9E/</guid>
+    </author><guid>blog.wutongliran.top/ssrf%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[SSRF漏洞SSRF (Server-Side Request Forgery)——服务器端请求伪造 ​ 原理SSRF的形成大多是由于服务端提供了从其他服务器应用获取数据的功能且没有对]]></description>
 </item></channel>
 </rss>

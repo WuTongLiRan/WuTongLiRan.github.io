@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>信息收集 - 标签 - 梧桐漓染的博客</title>
-        <link>/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</link>
+        <link>blog.wutongliran.top/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</link>
         <description>信息收集 - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 10 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 10 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="blog.wutongliran.top/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="self" type="application/rss+xml" /><item>
     <title>信息收集</title>
-    <link>/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</link>
+    <link>blog.wutongliran.top/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</link>
     <pubDate>Thu, 10 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</guid>
+    </author><guid>blog.wutongliran.top/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</guid>
     <description><![CDATA[信息收集以下是你提供的信息整理成的 Markdown 表格，其中相同标签的信息已经归类在一起： 企业信息 标签 名称 地址 企业信息 天眼查 https://www.tianyancha.com/ 企业信息 小蓝本 https://www.xiaolanben.com/ 企业信息 爱企]]></description>
 </item></channel>
 </rss>

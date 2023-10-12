@@ -1,4 +1,4 @@
-# 
+# CentOS替换yum源
 
 # CentOS替换yum源
 
@@ -57,3 +57,4 @@ sudo yum -y update
 ```
 
 如果要中断，就按`Ctrl+C`。
+

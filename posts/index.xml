@@ -1,77 +1,77 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>所有文章 - 梧桐漓染的博客</title>
-        <link>/posts/</link>
+        <link>blog.wutongliran.top/posts/</link>
         <description>所有文章 | 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 09 Oct 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 11 Oct 2023 21:34:12 &#43;0800</lastBuildDate><atom:link href="blog.wutongliran.top/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux基础命令</title>
+    <link>blog.wutongliran.top/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</link>
+    <pubDate>Wed, 11 Oct 2023 21:34:12 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>blog.wutongliran.top/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</guid>
+    <description><![CDATA[Linux基础命令常用服务器架构： LAMP：Linux+Apache+mysql+PHP LNMP：Linux+Nginx+mysql+PHP]]></description>
+</item><item>
     <title>NISP一级题库</title>
-    <link>/nisp1%E7%BA%A7%E9%A2%98%E5%BA%93/</link>
+    <link>blog.wutongliran.top/nisp1%E7%BA%A7%E9%A2%98%E5%BA%93/</link>
     <pubDate>Mon, 09 Oct 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/nisp1%E7%BA%A7%E9%A2%98%E5%BA%93/</guid>
+    </author><guid>blog.wutongliran.top/nisp1%E7%BA%A7%E9%A2%98%E5%BA%93/</guid>
     <description><![CDATA[1.与计算机硬件关系最密切的软件是（ ）。 A、编译程序 B、数据库管理程序 C、游戏程序 D、OS 2.系统的主要功能有（ ）。 A、进程管理、存储器管理]]></description>
 </item><item>
+    <title>Windows创建隐藏用户</title>
+    <link>blog.wutongliran.top/windows%E5%88%9B%E5%BB%BA%E9%9A%90%E8%97%8F%E7%94%A8%E6%88%B7/</link>
+    <pubDate>Sun, 08 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>blog.wutongliran.top/windows%E5%88%9B%E5%BB%BA%E9%9A%90%E8%97%8F%E7%94%A8%E6%88%B7/</guid>
+    <description><![CDATA[Windows创建隐藏用户 命令行输入net user查看用户 新建用户命令行输入net user test$ 123456 /add创建隐藏用户，输入net localgroup administrators test$ /add将新建]]></description>
+</item><item>
+    <title>Windows搭建HTTP站点</title>
+    <link>blog.wutongliran.top/windows%E6%90%AD%E5%BB%BAhttp%E7%AB%99%E7%82%B9/</link>
+    <pubDate>Fri, 15 Sep 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>blog.wutongliran.top/windows%E6%90%AD%E5%BB%BAhttp%E7%AB%99%E7%82%B9/</guid>
+    <description><![CDATA[Windows搭建HTTP站点 以我的服务器——Windows 2012 R2 为例 安装IIS打开 服务器管理器。 点击 &ldquo;添加角色和功能&quot;]]></description>
+</item><item>
     <title>BeEF-XSS渗透框架的使用</title>
-    <link>/beef-xss%E6%B8%97%E9%80%8F%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+    <link>blog.wutongliran.top/beef-xss%E6%B8%97%E9%80%8F%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
     <pubDate>Fri, 18 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/beef-xss%E6%B8%97%E9%80%8F%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+    </author><guid>blog.wutongliran.top/beef-xss%E6%B8%97%E9%80%8F%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
     <description><![CDATA[BeEF-XSS渗透框架的使用 搭建靶场 将DVWA靶场安装包解压到根目录 修改配置文件 ​ ​ BeEF-XSS渗透框架的使用【KALI】安装BeEF]]></description>
 </item><item>
+    <title>Windows克隆用户</title>
+    <link>blog.wutongliran.top/windows%E5%85%8B%E9%9A%86%E7%94%A8%E6%88%B7/</link>
+    <pubDate>Tue, 15 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>blog.wutongliran.top/windows%E5%85%8B%E9%9A%86%E7%94%A8%E6%88%B7/</guid>
+    <description><![CDATA[Windows克隆用户运行输入regedit打开注册表 获取SAM权限： ​ 将Administrator的UID路径：HKEY_LOCAL_MA]]></description>
+</item><item>
+    <title>VMware三种网络模式</title>
+    <link>blog.wutongliran.top/vmware%E4%B8%89%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Mon, 14 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>blog.wutongliran.top/vmware%E4%B8%89%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[VMware三种网络模式 基础知识 虚拟交换机**虚拟机交换机的作用：让相同模式的虚拟机相互连接 ** 虚拟交换机 用途 VMnet0 桥接模式 VMnet1 仅主机模式 VMnet8 NAT模]]></description>
+</item><item>
     <title>信息收集</title>
-    <link>/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</link>
+    <link>blog.wutongliran.top/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</link>
     <pubDate>Thu, 10 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</guid>
+    </author><guid>blog.wutongliran.top/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</guid>
     <description><![CDATA[信息收集以下是你提供的信息整理成的 Markdown 表格，其中相同标签的信息已经归类在一起： 企业信息 标签 名称 地址 企业信息 天眼查 https://www.tianyancha.com/ 企业信息 小蓝本 https://www.xiaolanben.com/ 企业信息 爱企]]></description>
 </item><item>
     <title>SQL注入—WAF绕过</title>
-    <link>/sql%E6%B3%A8%E5%85%A5waf%E7%BB%95%E8%BF%87/</link>
+    <link>blog.wutongliran.top/sql%E6%B3%A8%E5%85%A5waf%E7%BB%95%E8%BF%87/</link>
     <pubDate>Wed, 09 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/sql%E6%B3%A8%E5%85%A5waf%E7%BB%95%E8%BF%87/</guid>
+    </author><guid>blog.wutongliran.top/sql%E6%B3%A8%E5%85%A5waf%E7%BB%95%E8%BF%87/</guid>
     <description><![CDATA[SQL注入—WAF绕过 WAF拦截原理：WAF从规则库中匹配敏感字符进行拦截。 关键词大小写绕过有的WAF因为规则设计的问题，只匹配纯大写或纯小]]></description>
 </item><item>
     <title>SSRF漏洞</title>
-    <link>/ssrf%E6%BC%8F%E6%B4%9E/</link>
+    <link>blog.wutongliran.top/ssrf%E6%BC%8F%E6%B4%9E/</link>
     <pubDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/ssrf%E6%BC%8F%E6%B4%9E/</guid>
+    </author><guid>blog.wutongliran.top/ssrf%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[SSRF漏洞SSRF (Server-Side Request Forgery)——服务器端请求伪造 ​ 原理SSRF的形成大多是由于服务端提供了从其他服务器应用获取数据的功能且没有对]]></description>
-</item><item>
-    <title>Upload-labs靶场实战</title>
-    <link>/upload-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/</link>
-    <pubDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/upload-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/</guid>
-    <description><![CDATA[Upload-labs靶场实战 方法不唯一 第一关(前端验证) 相关源码 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 function checkFile() { var file = document.getElementsByName(&#39;upload_file&#39;)[0].value; if (file == null || file == &#34;&#34;) { aler]]></description>
-</item><item>
-    <title>文件包含漏洞</title>
-    <link>/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</link>
-    <pubDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</guid>
-    <description><![CDATA[文件包含漏洞 本地文件包含 1 http://localhost/fileinc/include.php?file=webshell.php 1 http://localhost/fileinc/include.php?file=C:\Windows\system.ini ​ 远程文件包含 1 http://localhost/fileinc/include.php?file=http]]></description>
-</item><item>
-    <title>Sqli-labs靶场实战</title>
-    <link>/sqli-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/</link>
-    <pubDate>Sun, 06 Aug 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/sqli-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/</guid>
-    <description><![CDATA[Sqli-labs靶场实战 源码做了修改，把每关的sql语句打印出来方便学习： echo $sql.&quot;&lt;/br&gt;&quot;;，做]]></description>
-</item><item>
-    <title>SQL注入快速入门—联合注入</title>
-    <link>/sql%E6%B3%A8%E5%85%A5%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5/</link>
-    <pubDate>Sun, 06 Aug 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/sql%E6%B3%A8%E5%85%A5%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5/</guid>
-    <description><![CDATA[SQL注入快速入门—联合注入 概述：所谓的SQL注入就是通过某种方式将恶意的SQL代码添加到输入参数中，然后传递到SQL服务器使其解析并执行的]]></description>
-</item><item>
-    <title>RCE漏洞</title>
-    <link>/rce%E6%BC%8F%E6%B4%9E/</link>
-    <pubDate>Sat, 05 Aug 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/rce%E6%BC%8F%E6%B4%9E/</guid>
-    <description><![CDATA[RCE漏洞 概述：由于程序中预留了执行代码或者命令的接口，并 且提供了给用户使用的界面，导致被黑客利用，控制服务器。 ​ RCE漏洞危害1、获取服务]]></description>
 </item></channel>
 </rss>

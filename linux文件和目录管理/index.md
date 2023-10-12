@@ -1,4 +1,4 @@
-# 
+# Linux文件和目录管理
 
 # Linux文件和目录管理  
 
@@ -258,3 +258,4 @@ ln -s /usr/local/phpstudy/system/phpstudyctl /usr/bin/study
 使用：`study`
 
 **源文件删除，软连接失效**
+

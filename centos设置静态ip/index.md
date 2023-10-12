@@ -1,4 +1,4 @@
-# 
+# CentOS设置静态IP
 
 # CentOS设置静态IP
 
@@ -196,3 +196,4 @@ service network restart
    ```
 
    
+

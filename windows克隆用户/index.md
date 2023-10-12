@@ -1,4 +1,4 @@
-# 
+# Windows克隆用户
 
 # Windows克隆用户
 
@@ -37,3 +37,4 @@
 切到Guest用户可以观察到已经获得管理员权限：
 
 ![](https://pic.imgdb.cn/item/64db47e81ddac507cc8dac91.jpg)
+

@@ -7,35 +7,35 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title> - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="" />
+    <title>Linux用户和权限管理 - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="Linux用户和权限管理" />
 <meta property="og:description" content="Linux用户和权限管理 用户组Group 组ID→Group ID→GID root用户组：GID=0 伪用户组：GID=1-999（CentOS 7" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/linux%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
-
-<meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta property="og:url" content="blog.wutongliran.top/linux%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-07-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-07-10T00:00:00+00:00" /><meta property="og:site_name" content="Lyrio&#39;s blog" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
-<meta name="twitter:title" content=""/>
+<meta name="twitter:title" content="Linux用户和权限管理"/>
 <meta name="twitter:description" content="Linux用户和权限管理 用户组Group 组ID→Group ID→GID root用户组：GID=0 伪用户组：GID=1-999（CentOS 7"/>
 <meta name="application-name" content="Lyrio&#39;s blog">
 <meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="/linux%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" /><link rel="prev" href="/linux%E7%B3%BB%E7%BB%9F%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" /><link rel="next" href="/linux%E6%9F%A5%E7%9C%8B%E5%92%8C%E5%A4%84%E7%90%86%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
-        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
-        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="blog.wutongliran.top/linux%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" /><link rel="prev" href="blog.wutongliran.top/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/" /><link rel="next" href="blog.wutongliran.top/kali%E5%85%B3%E9%97%AD%E9%94%81%E5%B1%8F/" /><link rel="stylesheet" href="/blog.wutongliran.top/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/blog.wutongliran.top/css/color.css"><link rel="stylesheet" href="/blog.wutongliran.top/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/blog.wutongliran.top/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/blog.wutongliran.top/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/blog.wutongliran.top/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/blog.wutongliran.top/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "",
+        "headline": "Linux用户和权限管理",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "\/linux%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86\/"
-        },"genre": "posts","wordcount":  3844 ,
-        "url": "\/linux%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86\/","publisher": {
+            "@id": "blog.wutongliran.top\/linux%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86\/"
+        },"genre": "posts","keywords": "Linux","wordcount":  3562 ,
+        "url": "blog.wutongliran.top\/linux%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86\/","datePublished": "2023-07-10T00:00:00+00:00","dateModified": "2023-07-10T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -57,7 +57,7 @@
     <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="梧桐漓染的博客"><img
+            <a href="blog.wutongliran.top/" title="梧桐漓染的博客"><img
         class="logo"
         loading="lazy"
         src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
@@ -67,7 +67,7 @@
         title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <div class="menu-inner"><a class="menu-item" href="/blog.wutongliran.top/posts/"> 文章 </a><a class="menu-item" href="/blog.wutongliran.top/categories/"> 分类 </a><a class="menu-item" href="/blog.wutongliran.top/tags/"> 标签 </a><a class="menu-item" href="/blog.wutongliran.top/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/blog.wutongliran.top/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
                         <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
@@ -93,7 +93,7 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="梧桐漓染的博客"><img
+                <a href="blog.wutongliran.top/" title="梧桐漓染的博客"><img
         class="logo"
         loading="lazy"
         src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
@@ -122,7 +122,7 @@
                     <a href="#" class="search-cancel" id="search-cancel-mobile">
                         取消
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                </div><a class="menu-item" href="/blog.wutongliran.top/posts/" title="">文章</a><a class="menu-item" href="/blog.wutongliran.top/categories/" title="">分类</a><a class="menu-item" href="/blog.wutongliran.top/tags/" title="">标签</a><a class="menu-item" href="/blog.wutongliran.top/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/blog.wutongliran.top/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
                 <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
                     <option value="light">浅色</option>
@@ -140,11 +140,11 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "false")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux用户和权限管理</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
-                </span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3844 字&nbsp;
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="blog.wutongliran.top/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="blog.wutongliran.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><i class="far fa-folder fa-fw"></i>操作系统</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-07-10">2023-07-10</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-07-10">2023-07-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3562 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="true">
                 <div class="details-summary toc-title">
@@ -182,6 +182,8 @@
     <li><a href="#用户管理基本命令">用户管理基本命令</a></li>
     <li><a href="#文件和目录归属">文件和目录归属</a></li>
     <li><a href="#文件和目录权限">文件和目录权限</a></li>
+    <li><a href="#改变文件属性-chattr">改变文件属性-chattr</a></li>
+    <li><a href="#查找文件-find">查找文件-find</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="linux用户和权限管理" class="headerLink">
@@ -502,73 +504,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="文件和目录归属" class="headerLink">
-    <a href="#%e6%96%87%e4%bb%b6%e5%92%8c%e7%9b%ae%e5%bd%95%e5%bd%92%e5%b1%9e" class="header-mark"></a>文件和目录归属</h2><p><code>chown</code>命令用于修改文件或目录的所有者（Owner）和所属组（Group）信息</p>
-<p>chown——change owner</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chown [options] owner[:group] file(s)
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li><code>options</code>：表示可选的选项，可以用于更改chown命令的行为。常见选项包括-R（递归修改所有子目录和文件）和-v（显示详细操作信息）等。</li>
-<li><code>owner</code>：表示要设置的新所有者的用户名或用户ID（UID）。</li>
-<li><code>group</code>：表示要设置的新所属组的组名或组ID（GID）。如果省略该部分，将保持当前的所属组不变。</li>
-<li><code>file(s)</code>：表示要修改所有者和所属组的文件或目录列表。</li>
-</ul>
-<p>示例：</p>
-<ol>
-<li>
-<p>修改文件所有者：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chown user1 file.txt
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>将文件&quot;file.txt&quot;的所有者修改为&quot;user1&quot;。</p>
-</li>
-<li>
-<p>修改目录所有者和所属组：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chown user2:group2 dir/
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>将目录&quot;dir/&ldquo;的所有者修改为&quot;user2&rdquo;，所属组修改为&quot;group2&quot;。</p>
-</li>
-<li>
-<p>递归修改目录及其所有子目录和文件：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chown -R user3:group3 dir/
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>使用&quot;-R&quot;选项，将目录&quot;dir/&ldquo;及其所有子目录和文件的所有者修改为&quot;user3&rdquo;，所属组修改为&quot;group3&quot;。</p>
-</li>
-<li>
-<p>修改多个文件的所有者：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chown user4 file1.txt file2.txt
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>将多个文件&quot;file1.txt&quot;和&quot;file2.txt&quot;的所有者修改为&quot;user4&quot;。</p>
-</li>
-</ol>
+    <a href="#%e6%96%87%e4%bb%b6%e5%92%8c%e7%9b%ae%e5%bd%95%e5%bd%92%e5%b1%9e" class="header-mark"></a>文件和目录归属</h2><p>修改文件的所属用户 <code>chown [用户] [文件]</code></p>
+<p>修改文件的所属组 <code>chgrp [组] [文件]</code></p>
 <h2 id="文件和目录权限" class="headerLink">
     <a href="#%e6%96%87%e4%bb%b6%e5%92%8c%e7%9b%ae%e5%bd%95%e6%9d%83%e9%99%90" class="header-mark"></a>文件和目录权限</h2><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/64a8e5e81ddac507cc4d61a6.jpg" title="https://pic.imgdb.cn/item/64a8e5e81ddac507cc4d61a6.jpg" data-thumbnail="https://pic.imgdb.cn/item/64a8e5e81ddac507cc4d61a6.jpg">
         <img
@@ -682,20 +619,91 @@
 </div>
 </div></li>
 </ul>
+<h2 id="改变文件属性-chattr" class="headerLink">
+    <a href="#%e6%94%b9%e5%8f%98%e6%96%87%e4%bb%b6%e5%b1%9e%e6%80%a7-chattr" class="header-mark"></a>改变文件属性-chattr</h2><p>属性&ndash;&gt;特征</p>
+<p>权限&ndash;&gt;有权利做什么</p>
+<p><code>lsattr</code> //查看文件属性</p>
+<p><code>chattr [选项] [文件]</code></p>
+<p>选项</p>
+<ul>
+<li>
+<p><code>a</code>：让文件或目录仅供附加用途。（适用于各种日志文件）</p>
+</li>
+<li>
+<p><code>b</code>：不更新文件或目录的最后存取时间。</p>
+</li>
+<li>
+<p><code>c</code>：将文件或目录压缩后存放。</p>
+</li>
+<li>
+<p><code>d</code>：将文件或目录排除在倾倒操作之外。</p>
+</li>
+<li>
+<p><code>i</code>：不得任意更动文件或目录。（防止系统中某个关键文 件被篡改）</p>
+</li>
+<li>
+<p><code>s</code>：保密性删除文件或目录。</p>
+</li>
+<li>
+<p><code>S</code>：即时更新文件或目录。</p>
+</li>
+<li>
+<p><code>u</code>：预防意外删除。</p>
+</li>
+</ul>
+<p><code>chattr +a 1.txt </code></p>
+<p><code>chattr -a 1.txt</code></p>
+<p>​</p>
+<h2 id="查找文件-find" class="headerLink">
+    <a href="#%e6%9f%a5%e6%89%be%e6%96%87%e4%bb%b6-find" class="header-mark"></a>查找文件-find</h2><p>find [目录] [选项]</p>
+<p><code>-name name</code>, <code>-iname name</code> : 文件名称符合 name 的文件。iname 会忽略大小写</p>
+<p><code>-name</code>:严格查找 <code>-iname</code>:模糊查找</p>
 </div>
 
         
+
+
+<h2>相关内容</h2>
+<div class="related-container">
+    <div class="related-item-container">
+            <h2 class="related-title">
+                <a href="blog.wutongliran.top/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">Linux基础命令</a>
+            </h2>
+        </div>
+    <div class="related-item-container">
+            <h2 class="related-title">
+                <a href="blog.wutongliran.top/linux%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E5%8F%8A%E8%A7%A3%E5%8E%8B%E7%BC%A9/">Linux文件压缩及解压缩</a>
+            </h2>
+        </div>
+    <div class="related-item-container">
+            <h2 class="related-title">
+                <a href="blog.wutongliran.top/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/">Linux网络管理</a>
+            </h2>
+        </div>
+    <div class="related-item-container">
+            <h2 class="related-title">
+                <a href="blog.wutongliran.top/linux%E7%B3%BB%E7%BB%9F%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/">Linux系统状态管理</a>
+            </h2>
+        </div>
+    <div class="related-item-container">
+            <h2 class="related-title">
+                <a href="blog.wutongliran.top/linux%E6%9F%A5%E7%9C%8B%E5%92%8C%E5%A4%84%E7%90%86%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9/">Linux查看和处理文件内容</a>
+            </h2>
+        </div>
+    
+
+</div>
 
 <div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 0001-01-01</span>
+                <span>更新于 2023-07-10</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
-            <div class="post-info-md"><span><a class="link-to-mardown" href=/linux%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+            <div class="post-info-md"><span><a class="link-to-mardown" href=blog.wutongliran.top/linux%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
                     </span></div>
             <div class="post-info-share">
                 <span></span>
@@ -704,18 +712,18 @@
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="blog.wutongliran.top/tags/linux/">Linux</a></section>
         <section>
-            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="blog.wutongliran.top/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/linux%E7%B3%BB%E7%BB%9F%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
-            <a href="/linux%E6%9F%A5%E7%9C%8B%E5%92%8C%E5%A4%84%E7%90%86%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="blog.wutongliran.top/linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/" class="prev" rel="prev" title="Linux网络管理"><i class="fas fa-angle-left fa-fw"></i>Linux网络管理</a>
+            <a href="blog.wutongliran.top/kali%E5%85%B3%E9%97%AD%E9%94%81%E5%B1%8F/" class="next" rel="next" title="Kali关闭锁屏">Kali关闭锁屏<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"></div></article></div>
         </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="blog.wutongliran.top/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
                     <span class="icp">闽ICP备2023013172号</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
@@ -727,8 +735,8 @@
         </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+    </div><div class="assets"><link rel="stylesheet" href="/blog.wutongliran.top/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/blog.wutongliran.top/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/blog.wutongliran.top/lib/katex/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"blog.wutongliran.top/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true}};</script><script type="text/javascript" src="/blog.wutongliran.top/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/blog.wutongliran.top/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/blog.wutongliran.top/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/blog.wutongliran.top/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/blog.wutongliran.top/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/blog.wutongliran.top/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/blog.wutongliran.top/js/katex.min.js" defer></script><script type="text/javascript" src="/blog.wutongliran.top/js/theme.min.js" defer></script></div>
 </body>
 
 </html>
