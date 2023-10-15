@@ -1,21 +1,21 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>CentOS - 标签 - 梧桐漓染的博客</title>
-        <link>blog.wutongliran.top/tags/centos/</link>
+        <link>/tags/centos/</link>
         <description>CentOS - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 04 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="blog.wutongliran.top/tags/centos/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 04 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/centos/" rel="self" type="application/rss+xml" /><item>
     <title>CentOS设置静态IP</title>
-    <link>blog.wutongliran.top/centos%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81ip/</link>
+    <link>/centos%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81ip/</link>
     <pubDate>Tue, 04 Jul 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/centos%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81ip/</guid>
+    </author><guid>/centos%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81ip/</guid>
     <description><![CDATA[CentOS设置静态IP 前言：在安装好CentOS虚拟机以后，一般我们会通过Xshell连接到虚拟机，而不是直接使用虚拟机里面的终端（Ter]]></description>
 </item><item>
     <title>CentOS替换yum源</title>
-    <link>blog.wutongliran.top/centos%E6%9B%BF%E6%8D%A2yum%E6%BA%90/</link>
+    <link>/centos%E6%9B%BF%E6%8D%A2yum%E6%BA%90/</link>
     <pubDate>Tue, 04 Jul 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/centos%E6%9B%BF%E6%8D%A2yum%E6%BA%90/</guid>
+    </author><guid>/centos%E6%9B%BF%E6%8D%A2yum%E6%BA%90/</guid>
     <description><![CDATA[CentOS替换yum源注：从物理机粘贴文字内容到虚拟机终端的快捷键是Shift+Insert 备份官方yum源配置文件官方yum源配置文件在]]></description>
 </item></channel>
 </rss>

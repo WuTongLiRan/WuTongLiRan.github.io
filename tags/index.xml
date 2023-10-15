@@ -1,77 +1,77 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Tags - 标签 - 梧桐漓染的博客</title>
-        <link>blog.wutongliran.top/tags/</link>
+        <link>/tags/</link>
         <description>Tags - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 11 Oct 2023 21:34:12 &#43;0800</lastBuildDate><atom:link href="blog.wutongliran.top/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 14 Oct 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/" rel="self" type="application/rss+xml" /><item>
     <title>Linux</title>
-    <link>blog.wutongliran.top/tags/linux/</link>
-    <pubDate>Wed, 11 Oct 2023 21:34:12 &#43;0800</pubDate><author>
+    <link>/tags/linux/</link>
+    <pubDate>Sat, 14 Oct 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/tags/linux/</guid>
+    </author><guid>/tags/linux/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>NISP</title>
-    <link>blog.wutongliran.top/tags/nisp/</link>
-    <pubDate>Mon, 09 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+    <title>Shell</title>
+    <link>/tags/shell/</link>
+    <pubDate>Sat, 14 Oct 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/tags/nisp/</guid>
+    </author><guid>/tags/shell/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Windows</title>
-    <link>blog.wutongliran.top/tags/windows/</link>
-    <pubDate>Sun, 08 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+    <link>/tags/windows/</link>
+    <pubDate>Sat, 14 Oct 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/tags/windows/</guid>
+    </author><guid>/tags/windows/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>NISP</title>
+    <link>/tags/nisp/</link>
+    <pubDate>Mon, 09 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/tags/nisp/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>XSS漏洞</title>
-    <link>blog.wutongliran.top/tags/xss%E6%BC%8F%E6%B4%9E/</link>
+    <link>/tags/xss%E6%BC%8F%E6%B4%9E/</link>
     <pubDate>Fri, 18 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/tags/xss%E6%BC%8F%E6%B4%9E/</guid>
+    </author><guid>/tags/xss%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>VMware</title>
-    <link>blog.wutongliran.top/tags/vmware/</link>
+    <link>/tags/vmware/</link>
     <pubDate>Mon, 14 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/tags/vmware/</guid>
+    </author><guid>/tags/vmware/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>信息收集</title>
-    <link>blog.wutongliran.top/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</link>
+    <link>/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</link>
     <pubDate>Thu, 10 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</guid>
+    </author><guid>/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>SQL注入漏洞</title>
-    <link>blog.wutongliran.top/tags/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</link>
+    <link>/tags/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</link>
     <pubDate>Wed, 09 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/tags/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</guid>
+    </author><guid>/tags/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>SSRF漏洞</title>
-    <link>blog.wutongliran.top/tags/ssrf%E6%BC%8F%E6%B4%9E/</link>
+    <link>/tags/ssrf%E6%BC%8F%E6%B4%9E/</link>
     <pubDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/tags/ssrf%E6%BC%8F%E6%B4%9E/</guid>
+    </author><guid>/tags/ssrf%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>文件包含漏洞</title>
-    <link>blog.wutongliran.top/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</link>
+    <link>/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</link>
     <pubDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>文件上传漏洞</title>
-    <link>blog.wutongliran.top/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/</link>
-    <pubDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/</guid>
+    </author><guid>/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

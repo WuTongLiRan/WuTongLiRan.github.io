@@ -1,21 +1,21 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>BurpSuite - 标签 - 梧桐漓染的博客</title>
-        <link>blog.wutongliran.top/tags/burpsuite/</link>
+        <link>/tags/burpsuite/</link>
         <description>BurpSuite - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 27 Jul 2023 12:00:00 &#43;0800</lastBuildDate><atom:link href="blog.wutongliran.top/tags/burpsuite/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 27 Jul 2023 12:00:00 &#43;0800</lastBuildDate><atom:link href="/tags/burpsuite/" rel="self" type="application/rss+xml" /><item>
     <title>SQL注入—高权限注入</title>
-    <link>blog.wutongliran.top/sql%E6%B3%A8%E5%85%A5%E9%AB%98%E6%9D%83%E9%99%90%E6%B3%A8%E5%85%A5/</link>
+    <link>/sql%E6%B3%A8%E5%85%A5%E9%AB%98%E6%9D%83%E9%99%90%E6%B3%A8%E5%85%A5/</link>
     <pubDate>Thu, 27 Jul 2023 12:00:00 &#43;0800</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/sql%E6%B3%A8%E5%85%A5%E9%AB%98%E6%9D%83%E9%99%90%E6%B3%A8%E5%85%A5/</guid>
+    </author><guid>/sql%E6%B3%A8%E5%85%A5%E9%AB%98%E6%9D%83%E9%99%90%E6%B3%A8%E5%85%A5/</guid>
     <description><![CDATA[SQL注入—高权限注入 MySQL 权限介绍MySQL服务器通过权限表来控制用户对数据库的访问，权限表存放在 mysql 数据库中，mysql 库中存在4个控制权限的]]></description>
 </item><item>
     <title>BurpSuite抓包数据 &amp; APP数据</title>
-    <link>blog.wutongliran.top/burpsuite%E6%8A%93%E5%8C%85%E6%95%B0%E6%8D%AE-app%E6%95%B0%E6%8D%AE/</link>
+    <link>/burpsuite%E6%8A%93%E5%8C%85%E6%95%B0%E6%8D%AE-app%E6%95%B0%E6%8D%AE/</link>
     <pubDate>Wed, 26 Jul 2023 17:46:00 &#43;0800</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/burpsuite%E6%8A%93%E5%8C%85%E6%95%B0%E6%8D%AE-app%E6%95%B0%E6%8D%AE/</guid>
+    </author><guid>/burpsuite%E6%8A%93%E5%8C%85%E6%95%B0%E6%8D%AE-app%E6%95%B0%E6%8D%AE/</guid>
     <description><![CDATA[BurpSuite抓包数据 &amp; APP数据 一、电脑端抓包 1. 安装证书 1.1 导出证书 ​ 1.2 导入证书 ​ 2. 设置代理 3. 开始抓包​ ​ ​ 二、手机端/手机模拟器 抓包 1.]]></description>
 </item></channel>
 </rss>

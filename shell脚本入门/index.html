@@ -1,0 +1,635 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="preconnect" href="http://font.wutongliran.top/" crossorigin />
+    <link href="http://font.wutongliran.top/result.css" rel="stylesheet" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>Shell脚本入门 - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="Shell脚本入门" />
+<meta property="og:description" content="shell脚本入门 hello world! 1 2 3 #!/bin/sh a=&#34;hello world!&#34; echo &#34;a is : $a&#34; 运行结果： 1 a is : hello world! #！指定要使用的shell /bin/sh执行过程中，若出现命令执行失败，则" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/shell%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-10-14T00:00:00+00:00" /><meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="Shell脚本入门"/>
+<meta name="twitter:description" content="shell脚本入门 hello world! 1 2 3 #!/bin/sh a=&#34;hello world!&#34; echo &#34;a is : $a&#34; 运行结果： 1 a is : hello world! #！指定要使用的shell /bin/sh执行过程中，若出现命令执行失败，则"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/shell%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8/" /><link rel="prev" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Shell脚本入门",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/shell%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8\/"
+        },"genre": "posts","keywords": "Shell","wordcount":  1447 ,
+        "url": "\/shell%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8\/","datePublished": "2023-10-14T00:00:00+00:00","dateModified": "2023-10-14T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"><i class='fa fa-book'></i> 文章 </a><a class="menu-item" href="/categories/"><i class='fa fa-tasks'></i> 分类 </a><a class="menu-item" href="/tags/"><i class='fa fa-bookmark'></i> 标签 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"><i class='fas fa-spinner fa-pulse'></i> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><i class='fa fa-book'></i>文章</a><a class="menu-item" href="/categories/" title=""><i class='fa fa-tasks'></i>分类</a><a class="menu-item" href="/tags/" title=""><i class='fa fa-bookmark'></i>标签</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title=""><i class='fas fa-spinner fa-pulse'></i>关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#hello-world">hello world!</a></li>
+    <li><a href="#脚本修改静态ip">脚本修改静态IP</a></li>
+    <li><a href="#shell变量">shell变量</a></li>
+    <li><a href="#read">read</a></li>
+    <li><a href="#交互式修改静态ip">交互式修改静态IP</a></li>
+    <li><a href="#if">if</a></li>
+    <li><a href="#linux下两个特殊文件">Linux下两个特殊文件</a></li>
+    <li><a href="#存活主机探测-ping">存活主机探测-ping</a></li>
+    <li><a href="#循环语句">循环语句</a>
+      <ul>
+        <li><a href="#for">for</a></li>
+        <li><a href="#while">while</a></li>
+      </ul>
+    </li>
+    <li><a href="#case-选择语句">case-选择语句</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Shell脚本入门</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><i class="far fa-folder fa-fw"></i>操作系统</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-10-14">2023-10-14</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-10-14">2023-10-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1447 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#hello-world">hello world!</a></li>
+    <li><a href="#脚本修改静态ip">脚本修改静态IP</a></li>
+    <li><a href="#shell变量">shell变量</a></li>
+    <li><a href="#read">read</a></li>
+    <li><a href="#交互式修改静态ip">交互式修改静态IP</a></li>
+    <li><a href="#if">if</a></li>
+    <li><a href="#linux下两个特殊文件">Linux下两个特殊文件</a></li>
+    <li><a href="#存活主机探测-ping">存活主机探测-ping</a></li>
+    <li><a href="#循环语句">循环语句</a>
+      <ul>
+        <li><a href="#for">for</a></li>
+        <li><a href="#while">while</a></li>
+      </ul>
+    </li>
+    <li><a href="#case-选择语句">case-选择语句</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="shell脚本入门" class="headerLink">
+    <a href="#shell%e8%84%9a%e6%9c%ac%e5%85%a5%e9%97%a8" class="header-mark"></a>shell脚本入门</h1><h2 id="hello-world" class="headerLink">
+    <a href="#hello-world" class="header-mark"></a>hello world!</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/sh
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="nv">a</span><span class="o">=</span><span class="s2">&#34;hello world!&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;a is : </span><span class="nv">$a</span><span class="s2">&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>运行结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">a is : hello world!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>#！</code>指定要使用的shell</p>
+<ul>
+<li><code>/bin/sh</code>执行过程中，若出现命令执行失败，则立即停止执行</li>
+<li><code>/bin/bash</code>执行过程中，若出现命令执行失败，仍会继续执行</li>
+<li>若不指定命令解释器，系统会默认使用<code>/bin/bash</code></li>
+</ul>
+<p>​</p>
+<h2 id="脚本修改静态ip" class="headerLink">
+    <a href="#%e8%84%9a%e6%9c%ac%e4%bf%ae%e6%94%b9%e9%9d%99%e6%80%81ip" class="header-mark"></a>脚本修改静态IP</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="nb">cd</span> /etc/sysconfig/network-scripts/
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;TYPE=Ethernet&#34;</span> &gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;BOOTPROTO=static&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;IPADDR=192.168.1.100&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;NETMASK=255.255.255.0&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;GATEWAY=192.168.1.254&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;DNS1=218.85.157.99&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;DNS2=8.8.8.8&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;DEFROUTE=yes&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;NAME=ens33&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;DEVICE=ens33&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;ONBOOT=yes&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl">systemctl restart network <span class="c1">#重新启动网络服务</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>ps:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ifdown ens33 //关闭ens33网卡 
+</span></span><span class="line"><span class="cl">ifup ens33   //开启ens33网卡
+</span></span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<p>​</p>
+<h2 id="shell变量" class="headerLink">
+    <a href="#shell%e5%8f%98%e9%87%8f" class="header-mark"></a>shell变量</h2><ul>
+<li>命名只能使用英文字母，数字和下划线，首个字符不能以数字开头。</li>
+<li>中间不能有空格，可以使用下划线<code>_</code>。</li>
+<li>不能使用标点符号。不能使用bash里的关键字（可用help命令查看保留关键字）。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">A</span><span class="o">=</span><span class="m">123</span> 
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="nv">$A</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h2 id="read" class="headerLink">
+    <a href="#read" class="header-mark"></a>read</h2><p>与Linux交互，可以通过脚本获取键盘输入的结果</p>
+<ul>
+<li><code>-n</code>：限制读取N个字符就自动结束读取，如果没有读满N个字符就按下回车或遇到换行符，则也会结束读取。</li>
+<li><code>-N</code>：严格要求读满N个字符才自动结束读取，即使中途按下了回车或遇到了换行符也不结束。换行符或回车算一个字符。</li>
+<li><strong><code>-p</code>：给出提示符。默认不支持<code>\n</code>换行，要换行需要特殊处理，见下文示例。</strong>
+<strong>例如，<code>-p &quot;请输入密码：&quot;</code></strong></li>
+<li><code>-r</code>：禁止反斜线的转义功能。这意味着&quot;&quot;会变成文本的一部分。</li>
+<li><code>-s</code>：静默模式。输入的内容不会回显在屏幕上。</li>
+</ul>
+<p>​</p>
+<h2 id="交互式修改静态ip" class="headerLink">
+    <a href="#%e4%ba%a4%e4%ba%92%e5%bc%8f%e4%bf%ae%e6%94%b9%e9%9d%99%e6%80%81ip" class="header-mark"></a>交互式修改静态IP</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="nb">cd</span> /etc/sysconfig/network-scripts/
+</span></span><span class="line"><span class="cl"><span class="nb">read</span> -p <span class="s2">&#34;IPADDR:&#34;</span> ip
+</span></span><span class="line"><span class="cl"><span class="nb">read</span> -p <span class="s2">&#34;GATEWAY:&#34;</span> gate
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;TYPE=Ethernet&#34;</span> &gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;BOOTPROTO=static&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;IPADDR=</span><span class="nv">$ip</span><span class="s2">&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;NETMASK=255.255.255.0&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;GATEWAY=</span><span class="nv">$gate</span><span class="s2">&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;DNS1=218.85.157.99&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;DNS2=8.8.8.8&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;DEFROUTE=yes&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;NAME=ens33&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;DEVICE=ens33&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;ONBOOT=yes&#34;</span> &gt;&gt; ifcfg-ens33
+</span></span><span class="line"><span class="cl">systemctl restart network
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h2 id="if" class="headerLink">
+    <a href="#if" class="header-mark"></a>if</h2><p>判断语句</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 请用户输入一个数字</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;请输入一个整数:&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">read</span> number
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用if语句判断输入的数字是否为正数、负数或零</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> <span class="nv">$number</span> -gt <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>	<span class="c1"># $ 前和 0 后的空格是必须的！！！</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;这是一个正数&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="o">[</span> <span class="nv">$number</span> -lt <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;这是一个负数&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;这是零&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span> <span class="c1">#if结束</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>-gt</code>（greater than）    大于</li>
+<li><code>-lt</code>（less than）    小于</li>
+<li><code>-eq</code>（equal）    等于</li>
+<li><code>-ne</code>（not equal）    不等于</li>
+<li><code>-le</code>（less than or equal）    小于等于</li>
+<li><code>-ge</code>（greater than or equal）大于等于</li>
+</ul>
+<p>​</p>
+<h2 id="linux下两个特殊文件" class="headerLink">
+    <a href="#linux%e4%b8%8b%e4%b8%a4%e4%b8%aa%e7%89%b9%e6%ae%8a%e6%96%87%e4%bb%b6" class="header-mark"></a>Linux下两个特殊文件</h2><ul>
+<li>/dev/zero:空字符填充设备</li>
+<li>/dev/null：黑洞文件（“位桶”）
+<ul>
+<li>通常用于<strong>丢弃数据</strong>或将数据重定向到一个虚拟的黑洞，也就是什么都不做。这个设备文件不会存储数据，而是会立即丢弃所有写入它的内容。这在很多情况下非常有用，特别是当你<strong>不想保留输出或不关心输出时</strong>。</li>
+</ul>
+</li>
+</ul>
+<p>​</p>
+<h2 id="存活主机探测-ping" class="headerLink">
+    <a href="#%e5%ad%98%e6%b4%bb%e4%b8%bb%e6%9c%ba%e6%8e%a2%e6%b5%8b-ping" class="header-mark"></a>存活主机探测-ping</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> ping -c2 -i0.5 -W2 192.168.10.2 &gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;yes&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;no&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h2 id="循环语句" class="headerLink">
+    <a href="#%e5%be%aa%e7%8e%af%e8%af%ad%e5%8f%a5" class="header-mark"></a>循环语句</h2><h3 id="for" class="headerLink">
+    <a href="#for" class="header-mark"></a>for</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用for循环遍历数字范围 1 到 5</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> number in <span class="o">{</span>1..5<span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;当前数字是: </span><span class="nv">$number</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>运行结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">当前数字是: <span class="m">1</span>
+</span></span><span class="line"><span class="cl">当前数字是: <span class="m">2</span>
+</span></span><span class="line"><span class="cl">当前数字是: <span class="m">3</span>
+</span></span><span class="line"><span class="cl">当前数字是: <span class="m">4</span>
+</span></span><span class="line"><span class="cl">当前数字是: <span class="m">5</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">for</span> ip in <span class="o">{</span>1..254<span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> ping -c2 -i0.5 -W2 192.168.10.<span class="nv">$ip</span> &gt; /dev/null <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;192.168.10.</span><span class="nv">$ip</span><span class="s2"> is alive&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h3 id="while" class="headerLink">
+    <a href="#while" class="header-mark"></a>while</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="nv">ip</span><span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="o">[</span> <span class="nv">$ip</span> -lt <span class="m">254</span> <span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">let</span> ip++	<span class="c1">#递增 ip 变量的值</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> ping -c2 -i0.5 -W2 192.168.10.<span class="nv">$ip</span> &gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">echo</span> <span class="s2">&#34;192.168.10.</span><span class="nv">$ip</span><span class="s2"> is alive&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h2 id="case-选择语句" class="headerLink">
+    <a href="#case-%e9%80%89%e6%8b%a9%e8%af%ad%e5%8f%a5" class="header-mark"></a>case-选择语句</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">case</span> <span class="nv">$1</span> in
+</span></span><span class="line"><span class="cl">    1<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">echo</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">        <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">    2<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">echo</span> <span class="m">2</span>
+</span></span><span class="line"><span class="cl">        <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">    3<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">echo</span> <span class="m">3</span>
+</span></span><span class="line"><span class="cl">        <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">    *<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">echo</span> none
+</span></span><span class="line"><span class="cl">        <span class="p">;;</span>
+</span></span><span class="line"><span class="cl"><span class="k">esac</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>运行结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@os43 Desktop<span class="o">]</span><span class="c1"># ./case.sh 2	# case.sh为$0  2为$1</span>
+</span></span><span class="line"><span class="cl"><span class="m">2</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@os43 Desktop<span class="o">]</span><span class="c1"># ./case.sh 7 </span>
+</span></span><span class="line"><span class="cl">none
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<p><strong>Linux的内置变量</strong></p>
+<ul>
+<li><strong>$0</strong>：表示当前脚本的名称或命令。</li>
+<li><strong>$1,$2, &hellip; $n</strong>：表示脚本或命令的参数。例如，$1表示第一个参数，$2表示第二个参数，以此类推。</li>
+</ul>
+</div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-10-14</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/shell%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/shell/">Shell</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/" class="prev" rel="prev" title="操作系统入门"><i class="fas fa-angle-left fa-fw"></i>操作系统入门</a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":20},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true},"twemoji":true};</script><script type="text/javascript" src="/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js" defer></script><script type="text/javascript" src="/js/twemoji.min.js" defer></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

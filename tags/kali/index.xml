@@ -1,21 +1,21 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Kali - 标签 - 梧桐漓染的博客</title>
-        <link>blog.wutongliran.top/tags/kali/</link>
+        <link>/tags/kali/</link>
         <description>Kali - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 05 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="blog.wutongliran.top/tags/kali/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 05 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/kali/" rel="self" type="application/rss+xml" /><item>
     <title>Xshell远程连接Kali</title>
-    <link>blog.wutongliran.top/xshell%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5kali/</link>
+    <link>/xshell%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5kali/</link>
     <pubDate>Sat, 05 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/xshell%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5kali/</guid>
+    </author><guid>/xshell%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5kali/</guid>
     <description><![CDATA[Xshell远程连接Kali 虚拟机的复制/粘贴的快捷键是：Ctrl+shift+C / Ctrl+shift+V ​ 设置root用户密码没设置过root用户密码的先设置]]></description>
 </item><item>
     <title>Kali关闭锁屏</title>
-    <link>blog.wutongliran.top/kali%E5%85%B3%E9%97%AD%E9%94%81%E5%B1%8F/</link>
+    <link>/kali%E5%85%B3%E9%97%AD%E9%94%81%E5%B1%8F/</link>
     <pubDate>Tue, 25 Jul 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/kali%E5%85%B3%E9%97%AD%E9%94%81%E5%B1%8F/</guid>
+    </author><guid>/kali%E5%85%B3%E9%97%AD%E9%94%81%E5%B1%8F/</guid>
     <description><![CDATA[Kali关闭锁屏]]></description>
 </item></channel>
 </rss>

@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Shell - 标签 - 梧桐漓染的博客</title>
+        <link>/tags/shell/</link>
+        <description>Shell - 标签 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 14 Oct 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/shell/" rel="self" type="application/rss+xml" /><item>
+    <title>Shell脚本入门</title>
+    <link>/shell%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8/</link>
+    <pubDate>Sat, 14 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/shell%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8/</guid>
+    <description><![CDATA[shell脚本入门 hello world! 1 2 3 #!/bin/sh a=&#34;hello world!&#34; echo &#34;a is : $a&#34; 运行结果： 1 a is : hello world! #！指定要使用的shell /bin/sh执行过程中，若出现命令执行失败，则]]></description>
+</item></channel>
+</rss>

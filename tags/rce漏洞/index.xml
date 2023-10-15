@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>RCE漏洞 - 标签 - 梧桐漓染的博客</title>
-        <link>blog.wutongliran.top/tags/rce%E6%BC%8F%E6%B4%9E/</link>
+        <link>/tags/rce%E6%BC%8F%E6%B4%9E/</link>
         <description>RCE漏洞 - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 05 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="blog.wutongliran.top/tags/rce%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 05 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/rce%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
     <title>RCE漏洞</title>
-    <link>blog.wutongliran.top/rce%E6%BC%8F%E6%B4%9E/</link>
+    <link>/rce%E6%BC%8F%E6%B4%9E/</link>
     <pubDate>Sat, 05 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>blog.wutongliran.top/rce%E6%BC%8F%E6%B4%9E/</guid>
+    </author><guid>/rce%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[RCE漏洞 概述：由于程序中预留了执行代码或者命令的接口，并 且提供了给用户使用的界面，导致被黑客利用，控制服务器。 ​ RCE漏洞危害1、获取服务]]></description>
 </item></channel>
 </rss>
