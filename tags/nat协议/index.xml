@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>NAT协议 - 标签 - 梧桐漓染的博客</title>
+        <link>/tags/nat%E5%8D%8F%E8%AE%AE/</link>
+        <description>NAT协议 - 标签 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 22 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/nat%E5%8D%8F%E8%AE%AE/" rel="self" type="application/rss+xml" /><item>
+    <title>网络地址转换配置实验—NAT协议</title>
+    <link>/%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8Cnat%E5%8D%8F%E8%AE%AE/</link>
+    <pubDate>Sat, 22 Jul 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8Cnat%E5%8D%8F%E8%AE%AE/</guid>
+    <description><![CDATA[网络地址转换配置实验—NAT协议 NAT的类型 **SNAT（源地址转换）：**用于将源IP地址从内部私有网络转换为外部公共网络的IP地址。它允]]></description>
+</item></channel>
+</rss>

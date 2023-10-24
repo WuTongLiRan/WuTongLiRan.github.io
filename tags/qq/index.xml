@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>QQ - 标签 - 梧桐漓染的博客</title>
+        <link>/tags/qq/</link>
+        <description>QQ - 标签 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 07 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/qq/" rel="self" type="application/rss+xml" /><item>
+    <title>音频转QQ语音</title>
+    <link>/%E9%9F%B3%E9%A2%91%E8%BD%ACqq%E8%AF%AD%E9%9F%B3/</link>
+    <pubDate>Fri, 07 Jul 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/%E9%9F%B3%E9%A2%91%E8%BD%ACqq%E8%AF%AD%E9%9F%B3/</guid>
+    <description><![CDATA[音频转QQ语音 效果：（把音频通过QQ语音发出去） 教程 原理QQ录音的时候会在路径： /storage/emulated/0/Android/da]]></description>
+</item></channel>
+</rss>

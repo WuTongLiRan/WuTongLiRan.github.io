@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>弱比较 - 标签 - 梧桐漓染的博客</title>
+        <link>/tags/%E5%BC%B1%E6%AF%94%E8%BE%83/</link>
+        <description>弱比较 - 标签 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 23 Oct 2023 21:16:00 &#43;0800</lastBuildDate><atom:link href="/tags/%E5%BC%B1%E6%AF%94%E8%BE%83/" rel="self" type="application/rss+xml" /><item>
+    <title>[SWPUCTF 2021 新生赛]easy_md5</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasy_md5/</link>
+    <pubDate>Mon, 23 Oct 2023 21:16:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasy_md5/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]easy_md5 完整的代码注释放在文末 来看关键代码块 1 2 3 if ($name != $password &amp;&amp; md5($name) == md5($password)){ echo $flag; } 要满足两个字符串不相等、但经过md5加密后的结果]]></description>
+</item></channel>
+</rss>

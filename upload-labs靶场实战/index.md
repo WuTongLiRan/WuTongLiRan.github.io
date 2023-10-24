@@ -1145,10 +1145,10 @@ if(!empty($_FILES['upload_file'])){
 验证过程：
 
 1. 验证上传路径是否存在
-2. 验证['upload_file']的content-type是否合法（可以抓包修改）
-3. 判断POST参数是否为空定义\$file变量（关键：构造数组绕过下一步的判断）
-4. 判断file不是数组则使用explode('.', strtolower(\$file))对file进行切割，将file变为一个数组
-5. 数组第一位和\$file[count($file) - 1]进行拼接，产生保存文件名file_name
+2. 验证`['upload_file']`的content-type是否合法（可以抓包修改）
+3. 判断POST参数是否为空定义`$file`变量（关键：构造数组绕过下一步的判断）
+4. 判断file不是数组则使用`explode('.', strtolower($file))`对file进行切割，将file变为一个数组
+5. 数组第一位和`$file[count($file) - 1]`进行拼接，产生保存文件名file_name
 6. 上传文件
 
 绕过：

@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>二层冗余 - 标签 - 梧桐漓染的博客</title>
+        <link>/tags/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99/</link>
+        <description>二层冗余 - 标签 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 30 Sep 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99/" rel="self" type="application/rss+xml" /><item>
+    <title>二层冗余综合实验</title>
+    <link>/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/</link>
+    <pubDate>Sat, 30 Sep 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/</guid>
+    <description><![CDATA[二层冗余综合实验1、 实验目的 通过本实验可以： 理解二层交换的基本原理 掌握交换机的基本配置 掌握交换机VLAN划分 掌握实现不同局域网的通信 掌握VR]]></description>
+</item></channel>
+</rss>

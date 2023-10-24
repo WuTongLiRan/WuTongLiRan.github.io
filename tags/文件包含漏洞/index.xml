@@ -3,7 +3,21 @@
         <title>文件包含漏洞 - 标签 - 梧桐漓染的博客</title>
         <link>/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</link>
         <description>文件包含漏洞 - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 21 Oct 2023 20:25:25 &#43;0800</lastBuildDate><atom:link href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+    <title>[HCTF 2018]WarmUp</title>
+    <link>/hctf-2018warmup/</link>
+    <pubDate>Sat, 21 Oct 2023 20:25:25 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/hctf-2018warmup/</guid>
+    <description><![CDATA[[HCTF 2018]WarmUp初次访问，这个滑稽应该是代表了作者幸灾乐祸的表情 一开始以为flag隐写在图片里，下载图片后查看里面的内容没有找到fl]]></description>
+</item><item>
+    <title>[ACTF2020 新生赛]Include</title>
+    <link>/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Binclude/</link>
+    <pubDate>Sat, 21 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Binclude/</guid>
+    <description><![CDATA[[ACTF2020 新生赛]Include初次访问： 页面上就一个链接，点进去 点进链接后页面上就一句毫无鸟用的话，查看页面源码也没有其他的东西 也就是说前端确确实]]></description>
+</item><item>
     <title>文件包含漏洞</title>
     <link>/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</link>
     <pubDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</pubDate><author>

@@ -1,0 +1,680 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="preconnect" href="http://cdn.wutongliran.top/" crossorigin />
+    <link href="http://cdn.wutongliran.top/fonts/result.css" rel="stylesheet" />
+    <link rel="preload" as="font" type="font/woff2" href="http://cdn.wutongliran.top/fonts/Lyrio.woff2" crossorigin>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>[HCTF 2018]WarmUp - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="[HCTF 2018]WarmUp" />
+<meta property="og:description" content="[HCTF 2018]WarmUp初次访问，这个滑稽应该是代表了作者幸灾乐祸的表情 一开始以为flag隐写在图片里，下载图片后查看里面的内容没有找到fl" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/hctf-2018warmup/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-21T20:25:25+08:00" />
+<meta property="article:modified_time" content="2023-10-21T20:25:25+08:00" /><meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="[HCTF 2018]WarmUp"/>
+<meta name="twitter:description" content="[HCTF 2018]WarmUp初次访问，这个滑稽应该是代表了作者幸灾乐祸的表情 一开始以为flag隐写在图片里，下载图片后查看里面的内容没有找到fl"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/hctf-2018warmup/" /><link rel="prev" href="/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Binclude/" /><link rel="next" href="/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Bexec/" /><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="http://cdn.wutongliran.top/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="http://cdn.wutongliran.top/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[HCTF 2018]WarmUp",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/hctf-2018warmup\/"
+        },"genre": "posts","keywords": "CTF, 文件包含漏洞, 代码审计","wordcount":  4062 ,
+        "url": "\/hctf-2018warmup\/","datePublished": "2023-10-21T20:25:25+08:00","dateModified": "2023-10-21T20:25:25+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"><i class='fa fa-book'></i> 文章 </a><a class="menu-item" href="/categories/"><i class='fa fa-tasks'></i> 分类 </a><a class="menu-item" href="/tags/"><i class='fa fa-bookmark'></i> 标签 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"><i class='fas fa-spinner fa-pulse'></i> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><i class='fa fa-book'></i>文章</a><a class="menu-item" href="/categories/" title=""><i class='fa fa-tasks'></i>分类</a><a class="menu-item" href="/tags/" title=""><i class='fa fa-bookmark'></i>标签</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title=""><i class='fas fa-spinner fa-pulse'></i>关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content always-active" id="toc-content-auto"><nav id="TableOfContents"></nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">[HCTF 2018]WarmUp</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/ctf-writeup/"><i class="far fa-folder fa-fw"></i>CTF-WriteUp</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-10-21">2023-10-21</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-10-21">2023-10-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4062 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/hctf-2018warmup/" class="leancloud_visitors" data-flag-title="[HCTF 2018]WarmUp">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class="leancloud-visitors-count waline-pageview-count" data-path="/hctf-2018warmup/"></span>&nbsp;次阅读
+                    </span>&nbsp;<span id="/hctf-2018warmup/" class="comment_count" data-flag-title="[HCTF 2018]WarmUp">
+                        <i class="far fa-comments fa-fw"></i>&nbsp;<span class="waline-comment-count" id="waline-comment-count" data-path="/hctf-2018warmup/"></span>&nbsp;条评论
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><h1 id="hctf-2018warmup" class="headerLink">
+    <a href="#hctf-2018warmup" class="header-mark"></a>[HCTF 2018]WarmUp</h1><p>初次访问，这个滑稽应该是代表了作者幸灾乐祸的表情</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/6533c62ec458853aef75af20.jpg" title="[HCTF 2018]WarmUp-1" data-thumbnail="https://pic.imgdb.cn/item/6533c62ec458853aef75af20.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/6533c62ec458853aef75af20.jpg"
+            srcset="https://pic.imgdb.cn/item/6533c62ec458853aef75af20.jpg, https://pic.imgdb.cn/item/6533c62ec458853aef75af20.jpg 1.5x, https://pic.imgdb.cn/item/6533c62ec458853aef75af20.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/6533c62ec458853aef75af20.jpg">
+    </a></figure></p>
+<p>一开始以为flag隐写在图片里，下载图片后查看里面的内容没有找到flag</p>
+<p>查看网页源代码</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/6533c6b6c458853aef77d68e.jpg" title="[HCTF 2018]WarmUp-2" data-thumbnail="https://pic.imgdb.cn/item/6533c6b6c458853aef77d68e.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/6533c6b6c458853aef77d68e.jpg"
+            srcset="https://pic.imgdb.cn/item/6533c6b6c458853aef77d68e.jpg, https://pic.imgdb.cn/item/6533c6b6c458853aef77d68e.jpg 1.5x, https://pic.imgdb.cn/item/6533c6b6c458853aef77d68e.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/6533c6b6c458853aef77d68e.jpg">
+    </a></figure></p>
+<p>得到提示：<code>&lt;!--source.php--&gt;</code>，访问<code>source.php</code></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/6533c6fcc458853aef78ed46.jpg" title="[HCTF 2018]WarmUp-3" data-thumbnail="https://pic.imgdb.cn/item/6533c6fcc458853aef78ed46.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/6533c6fcc458853aef78ed46.jpg"
+            srcset="https://pic.imgdb.cn/item/6533c6fcc458853aef78ed46.jpg, https://pic.imgdb.cn/item/6533c6fcc458853aef78ed46.jpg 1.5x, https://pic.imgdb.cn/item/6533c6fcc458853aef78ed46.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/6533c6fcc458853aef78ed46.jpg">
+    </a></figure></p>
+<p>代码审计</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"> <span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>  <span class="c1">// 高亮显示当前文件的源代码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">class</span> <span class="nc">emmm</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">checkFile</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$page</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$whitelist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;source&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;source.php&#34;</span><span class="p">,</span><span class="s2">&#34;hint&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;hint.php&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">isset</span><span class="p">(</span><span class="nv">$page</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="nx">is_string</span><span class="p">(</span><span class="nv">$page</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">echo</span> <span class="s2">&#34;you can&#39;t see it&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="nx">in_array</span><span class="p">(</span><span class="nv">$page</span><span class="p">,</span> <span class="nv">$whitelist</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nv">$_page</span> <span class="o">=</span> <span class="nx">mb_substr</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="nv">$page</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">mb_strpos</span><span class="p">(</span><span class="nv">$page</span> <span class="o">.</span> <span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="s1">&#39;?&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="nx">in_array</span><span class="p">(</span><span class="nv">$_page</span><span class="p">,</span> <span class="nv">$whitelist</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nv">$_page</span> <span class="o">=</span> <span class="nx">urldecode</span><span class="p">(</span><span class="nv">$page</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$_page</span> <span class="o">=</span> <span class="nx">mb_substr</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="nv">$_page</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">mb_strpos</span><span class="p">(</span><span class="nv">$_page</span> <span class="o">.</span> <span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="s1">&#39;?&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="nx">in_array</span><span class="p">(</span><span class="nv">$_page</span><span class="p">,</span> <span class="nv">$whitelist</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">echo</span> <span class="s2">&#34;you can&#39;t see it&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="k">empty</span><span class="p">(</span><span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&amp;&amp;</span> <span class="nx">is_string</span><span class="p">(</span><span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&amp;&amp;</span> <span class="nx">emmm</span><span class="o">::</span><span class="na">checkFile</span><span class="p">(</span><span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">include</span> <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="k">exit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">echo</span> <span class="s2">&#34;&lt;br&gt;&lt;img src=</span><span class="se">\&#34;</span><span class="s2">https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg</span><span class="se">\&#34;</span><span class="s2"> /&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>  
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>初步审计，看到代码里出现了个<code>hint.php</code>，先访问看看</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/6533ca51c458853aef86d437.jpg" title="[HCTF 2018]WarmUp-4" data-thumbnail="https://pic.imgdb.cn/item/6533ca51c458853aef86d437.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/6533ca51c458853aef86d437.jpg"
+            srcset="https://pic.imgdb.cn/item/6533ca51c458853aef86d437.jpg, https://pic.imgdb.cn/item/6533ca51c458853aef86d437.jpg 1.5x, https://pic.imgdb.cn/item/6533ca51c458853aef86d437.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/6533ca51c458853aef86d437.jpg">
+    </a></figure></p>
+<p>告知flag在<code>ffffllllaaaagggg</code>，也就是要想办法看到<code>ffffllllaaaagggg</code>里的内容</p>
+<p>先看看<code>emmm类</code>外的代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="k">empty</span><span class="p">(</span><span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">])</span>	<span class="c1">//&#39;file&#39;参数的值不为空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="o">&amp;&amp;</span> <span class="nx">is_string</span><span class="p">(</span><span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">])</span>	<span class="c1">//&#39;file&#39;参数的值为字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="o">&amp;&amp;</span> <span class="nx">emmm</span><span class="o">::</span><span class="na">checkFile</span><span class="p">(</span><span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">])</span>	<span class="c1">//将&#39;file&#39;参数的值传入emmm类的checkFile方法后返回真
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 如果上述条件都满足，则执行以下代码块
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">include</span> <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">];</span>	<span class="c1">// 包含&#39;file&#39;参数的值所指向的文件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">exit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 如果上述条件不满足，执行以下代码块
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">echo</span> <span class="s2">&#34;&lt;br&gt;&lt;img src=</span><span class="se">\&#34;</span><span class="s2">https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg</span><span class="se">\&#34;</span><span class="s2"> /&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>  
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>这题应该是想让我们用文件包含代码<code>include $_REQUEST['file']</code>去查看<code>ffffllllaaaagggg</code>里的内容</strong></p>
+<p>假设<code>ffffllllaaaagggg</code>文件和<code>source.php</code>在相同目录下，构造payload：<code>?file=ffffllllaaaagggg</code>就可以包含到<code>ffffllllaaaagggg</code>文件</p>
+<p>假设<code>ffffllllaaaagggg</code>文件在<code>source.php</code>所在的目录的父级目录(当前目录的上一级目录)下，则构造payload：<code>?file=../ffffllllaaaagggg</code>就可以包含到<code>ffffllllaaaagggg</code>文件</p>
+<p>但是想要让代码执行到<code>include $_REQUEST['file']</code>，得满足<code>if</code>条件判断：</p>
+<ul>
+<li><code>'file'</code>参数的值不为空 (满足√)</li>
+<li><code>'file'</code>参数的值为字符串 (满足√)</li>
+<li>将<code>'file'</code>参数的值传入<code>emmm类</code>的<code>checkFile</code>函数后返回真 (暂且未知？)</li>
+</ul>
+<p>所以接下来的重点是审计<code>emmm类</code>的<code>checkFile</code>函数:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">checkFile</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$page</span><span class="p">)</span>  <span class="c1">//将$_REQUEST[&#39;file&#39;]接收到的值传给$page
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$whitelist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;source&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;source.php&#34;</span><span class="p">,</span><span class="s2">&#34;hint&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;hint.php&#34;</span><span class="p">];</span>	<span class="c1">//创建$whitelist（白名单）数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">isset</span><span class="p">(</span><span class="nv">$page</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="nx">is_string</span><span class="p">(</span><span class="nv">$page</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">echo</span> <span class="s2">&#34;you can&#39;t see it&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>	<span class="c1">//如果$page变量不存在或$page变量的值不是字符串则返回false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">in_array</span><span class="p">(</span><span class="nv">$page</span><span class="p">,</span> <span class="nv">$whitelist</span><span class="p">))</span> <span class="p">{</span>	
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>	<span class="c1">//如果$page变量的值在$whitelist（白名单）数组中则返回true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nv">$_page</span> <span class="o">=</span> <span class="nx">mb_substr</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$page</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">mb_strpos</span><span class="p">(</span><span class="nv">$page</span> <span class="o">.</span> <span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="s1">&#39;?&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>	
+</span></span><span class="line"><span class="cl">    <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">    $page . &#39;?&#39;&#39;：给$page变量的值后面加个&#39;?&#39;
+</span></span></span><span class="line"><span class="cl"><span class="cm">    
+</span></span></span><span class="line"><span class="cl"><span class="cm">    mb_strpos($page . &#39;?&#39;, &#39;?&#39;)：输出$page . &#39;?&#39;这个字符串首次出现&#39;?&#39;的位置(输出一个数字)
+</span></span></span><span class="line"><span class="cl"><span class="cm">    之所以在$page变量的值后面加个&#39;?&#39;，是因为mb_strpos()方法若是找不到首次出现&#39;?&#39;的位置会输出false
+</span></span></span><span class="line"><span class="cl"><span class="cm">    
+</span></span></span><span class="line"><span class="cl"><span class="cm">    mb_substr($page,0,mb_strpos($page . &#39;?&#39;, &#39;?&#39;))：
+</span></span></span><span class="line"><span class="cl"><span class="cm">    将$page变量的值(字符串)从首字符(第0)开始截取mb_strpos($page . &#39;?&#39;, &#39;?&#39;)个字符
+</span></span></span><span class="line"><span class="cl"><span class="cm">    换言之就是把$page中第一个&#39;?&#39;后面的字符串都去掉，只留下第一个&#39;?&#39;前的字符串
+</span></span></span><span class="line"><span class="cl"><span class="cm">    
+</span></span></span><span class="line"><span class="cl"><span class="cm">    将截取后的值赋给$_page变量
+</span></span></span><span class="line"><span class="cl"><span class="cm">    */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">in_array</span><span class="p">(</span><span class="nv">$_page</span><span class="p">,</span> <span class="nv">$whitelist</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>	<span class="c1">//如果$_page变量的值在$whitelist（白名单）数组中则返回true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$_page</span> <span class="o">=</span> <span class="nx">urldecode</span><span class="p">(</span><span class="nv">$page</span><span class="p">);</span>	<span class="c1">//将$page变量的值通过URL解码后赋给$_page变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$_page</span> <span class="o">=</span> <span class="nx">mb_substr</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$_page</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">mb_strpos</span><span class="p">(</span><span class="nv">$_page</span> <span class="o">.</span> <span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="s1">&#39;?&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span><span class="c1">//与上一个类似，就是截取URL解码后的$page变量的值的第一个&#39;?&#39;前的字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">in_array</span><span class="p">(</span><span class="nv">$_page</span><span class="p">,</span> <span class="nv">$whitelist</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>	<span class="c1">//如果$_page变量的值在$whitelist（白名单）数组中则返回true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="s2">&#34;you can&#39;t see it&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>以上代码中出现的函数名：</p>
+<ul>
+<li><a href="https://www.runoob.com/php/php-isset-function.html" target="_blank" rel="noopener noreferrer">isset() 函数</a></li>
+<li><a href="https://www.runoob.com/php/php-is_string-function.html" target="_blank" rel="noopener noreferrer">is_string函数</a></li>
+<li><a href="https://www.runoob.com/php/func-array-in-array.html" target="_blank" rel="noopener noreferrer">in_array函数</a></li>
+<li><a href="https://www.runoob.com/php/func-string-mb_substr.html" target="_blank" rel="noopener noreferrer">mb_substr() 函数</a></li>
+<li><a href="https://www.php.net/manual/zh/function.mb-strpos.php" target="_blank" rel="noopener noreferrer">mb_strpos()函数</a></li>
+</ul>
+</blockquote>
+<p>通过审计可以得知，<code>checkFile</code>函数里有三个地方可以返回true</p>
+<p>若是要通过第一个地方来返回true，通过URL传进来的<code>file</code>参数的值只能为<code>source.php</code>或者<code>hint.php</code></p>
+<p>即：<code>source.php?file=hint.php</code>或<code>source.php?file=hint.php</code>，后面是不能跟其他的东西的，很显然是不可以通过第一个地方来返回true，毕竟我们是要去访问<code>ffffllllaaaagggg</code>文件</p>
+<p>若是要通过第二个地方来返回true，通过URL传进来的<code>file</code>参数的值的格式必须为：<code>source.php?xxxx</code>或者<code>hint.php?xxxx</code></p>
+<p>当<code>$page</code>变量的值为<code>source.php?xxxx</code>或者<code>hint.php?xxxx</code>，代码会执行到：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">    <span class="nv">$_page</span> <span class="o">=</span> <span class="nx">mb_substr</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$page</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">mb_strpos</span><span class="p">(</span><span class="nv">$page</span> <span class="o">.</span> <span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="s1">&#39;?&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">in_array</span><span class="p">(</span><span class="nv">$_page</span><span class="p">,</span> <span class="nv">$whitelist</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>截取<code>$page</code>变量的值的第一个<code>?</code>前的字符串给<code>$_page</code>变量，<code>$_page</code>变量的值为<code>source.php</code>或者<code>hint.php</code>，在白名单内，返回true</p>
+<p>所以payload为：</p>
+<ul>
+<li><code>?file=source.php?/../ffffllllaaaagggg</code></li>
+<li><code>?file=source.php?/../../ffffllllaaaagggg</code></li>
+<li><code>?file=source.php?/../../../ffffllllaaaagggg</code></li>
+<li>……</li>
+</ul>
+<p>(把<code>source.php</code>替换成<code>hint.php</code>也可以)</p>
+<p>在绕过白名单的情况下不断尝试往上级目录包含<code>ffffllllaaaagggg</code>文件</p>
+<p><strong>最终确定payload为：<code>http://09b122ae-c857-4cde-b0c1-0619a97418a6.node4.buuoj.cn:81/source.php?file=source.php?/../../../../ffffllllaaaagggg</code></strong></p>
+<blockquote>
+<p>可能会有疑惑：在路径前加个<code>source.php?</code>难道不会出错吗？</p>
+<p>服务器会把<code>source.php?</code>看作是与<strong>当前页面处于同级目录下的一个叫做&quot;source.php?&ldquo;的目录</strong>，如果路径就单单是这个目录，因为目录不存在，就会无法确定而出错。</p>
+<p>如果路径是<code>source.php?/..</code>：相当于是当前目录下的一个&quot;source.php?&ldquo;目录下的上级目录，尽管&quot;source.php?&ldquo;目录不存在，但<code>source.php?/..</code>一定就是当前目录了嘛(有点绕)</p>
+<p>所以<code>source.php?/../../../../ffffllllaaaagggg</code>和<code>../../../ffffllllaaaagggg</code>的效果是一样的</p>
+<p><strong>对此我特意做了个实验来验证，放在本文的最下方</strong></p>
+</blockquote>
+<p>当然，也可以从第三处入手来返回true，总的思路差不多</p>
+<p>与第二处相比，第三处就多了条代码：<code>$_page = urldecode($page)</code>，也就是会先把<code>$page</code>的值通过URL解码后再截取第一个<code>?</code>前的字符串到白名单里比较</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$_page</span> <span class="o">=</span> <span class="nx">urldecode</span><span class="p">(</span><span class="nv">$page</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$_page</span> <span class="o">=</span> <span class="nx">mb_substr</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$_page</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">mb_strpos</span><span class="p">(</span><span class="nv">$_page</span> <span class="o">.</span> <span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="s1">&#39;?&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">in_array</span><span class="p">(</span><span class="nv">$_page</span><span class="p">,</span> <span class="nv">$whitelist</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>因为使用超全局变量<code>$_REQUEST</code>已经被解码了</strong>，所以要先把payload通过URL编码两次</p>
+<p><strong>最终确定payload为：<code>http://09b122ae-c857-4cde-b0c1-0619a97418a6.node4.buuoj.cn:81/source.php?file=source.php%253F/../../../../ffffllllaaaagggg</code></strong></p>
+<p>(也可以把<code>/</code>编码一次，但不可以编码两次)</p>
+<blockquote>
+<p><a href="https://www.php.net/manual/zh/function.urldecode.php" target="_blank" rel="noopener noreferrer">urldecode()函数</a></p>
+<p>有的人可能有疑惑：为什么不把后面的<code>/</code>也编码编码两次？</p>
+<p>全都编码两次的结果是：<code>source.php%253F%252F..%252F..%252F..%252F..%252Fffffllllaaaagggg</code></p>
+<p>执行<code>emmm::checkFile($_REQUEST['file'])</code>的<code>$_REQUEST['file']</code>接收参数时自动解码一次：<code>source.php%3F%2F..%2F..%2F..%2F..%2Fffffllllaaaagggg</code></p>
+<p>执行<code>$_page = urldecode($page)</code>时再解码一次：<code>source.php?/../../../../ffffllllaaaagggg</code></p>
+<p>这时返回true，开始执行<code>include $_REQUEST['file']</code>，但是执行<code>include $_REQUEST['file']</code>的<code>$_REQUEST['file']</code>接收到的参数是只解码过一次的：<code>source.php%3F%2F..%2F..%2F..%2F..%2Fffffllllaaaagggg</code>，服务器会把它直接当作一个文件名</p>
+</blockquote>
+<p>​</p>
+<p><strong>验证实验：</strong></p>
+<ul>
+<li>服务器：CentOS 7</li>
+</ul>
+<p>首先在网站的根目录<code>/www/admin/localhost_80/wwwroot</code>下有创建一个<code>index.php</code>作为网站首页，<code>wwwroot</code>目录下只有以下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@wzh wwwroot<span class="o">]</span><span class="c1"># ls</span>
+</span></span><span class="line"><span class="cl">error  index.php
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>index.php</code>里的内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"> <span class="k">include</span> <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">];</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接着在<code>/www/admin</code>下创建一个<code>flag.php</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;flag&#34;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>以上可知<code>flag.php</code>在<code>index.php</code>的上上级目录下，正常用<code>?file=../../flag.php</code>可以包含到<code>flag.php</code></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/65348581c458853aef96880c.jpg" title="[HCTF 2018]WarmUp-5" data-thumbnail="https://pic.imgdb.cn/item/65348581c458853aef96880c.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/65348581c458853aef96880c.jpg"
+            srcset="https://pic.imgdb.cn/item/65348581c458853aef96880c.jpg, https://pic.imgdb.cn/item/65348581c458853aef96880c.jpg 1.5x, https://pic.imgdb.cn/item/65348581c458853aef96880c.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/65348581c458853aef96880c.jpg">
+    </a></figure></p>
+<p>用<code>?file=xxx/../../../flag.php</code>同样也可以包含到<code>flag.php</code></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/65348625c458853aef9876db.jpg" title="[HCTF 2018]WarmUp-6" data-thumbnail="https://pic.imgdb.cn/item/65348625c458853aef9876db.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/65348625c458853aef9876db.jpg"
+            srcset="https://pic.imgdb.cn/item/65348625c458853aef9876db.jpg, https://pic.imgdb.cn/item/65348625c458853aef9876db.jpg 1.5x, https://pic.imgdb.cn/item/65348625c458853aef9876db.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/65348625c458853aef9876db.jpg">
+    </a></figure></p>
+<p>由此可知，尽管&quot;xxx&quot;是不存在的，但服务器仍会把&quot;xxx&quot;当作是一个目录，<code>xxx/..</code>的意思是&quot;xxx&quot;目录的上级目录，相当于就是当前目录，所以<code>xxx/../../../flag.php</code>和<code>../../flag.php</code>是相同路径</p>
+<p>​</p>
+<p>​</p>
+<p><strong>参考文章</strong></p>
+<ul>
+<li><a href="https://www.runoob.com/php/php-isset-function.html" target="_blank" rel="noopener noreferrer">isset() 函数</a></li>
+<li><a href="https://www.runoob.com/php/php-is_string-function.html" target="_blank" rel="noopener noreferrer">is_string函数</a></li>
+<li><a href="https://www.runoob.com/php/func-array-in-array.html" target="_blank" rel="noopener noreferrer">in_array函数</a></li>
+<li><a href="https://www.runoob.com/php/func-string-mb_substr.html" target="_blank" rel="noopener noreferrer">mb_substr() 函数</a></li>
+<li><a href="https://www.php.net/manual/zh/function.mb-strpos.php" target="_blank" rel="noopener noreferrer">mb_strpos()函数</a></li>
+<li><a href="https://www.php.net/manual/zh/function.urldecode.php" target="_blank" rel="noopener noreferrer">urldecode()函数</a></li>
+</ul>
+</div>
+
+        <div class="sponsor">
+        <div class="sponsor-avatar"></div><div class="sponsor-custom"><hr><p><em>写博客的初衷在于深入掌握技术而非展示</em></p><p><em>当我站在传授他人的角度思考问题时</em></p><p><em>才能真正领悟并融会贯通</em></p><p><em>博客受益者也是未来那个遗忘某个技术的自己</em></p><hr></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-10-21</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/hctf-2018warmup/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/ctf/">CTF</a>,&nbsp;<a href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/">文件包含漏洞</a>,&nbsp;<a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Binclude/" class="prev" rel="prev" title="[ACTF2020 新生赛]Include"><i class="fas fa-angle-left fa-fw"></i>[ACTF2020 新生赛]Include</a>
+            <a href="/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Bexec/" class="next" rel="next" title="[ACTF2020 新生赛]Exec">[ACTF2020 新生赛]Exec<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="waline" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://waline.js.org/">Waline</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container">
+            <div class="footer-line">
+                <span id="run-time"></span>
+            </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/@waline/waline.css"><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="http://cdn.wutongliran.top/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/katex/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":200},"comment":{"waline":{"comment":true,"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","lang":"zh-cn","pageview":true,"serverURL":"https://t0o3gjxg.api.lncldglobal.com"}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true},"twemoji":true};</script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/@waline/waline.js" defer></script><script type="text/javascript" src="/js/waline.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/twemoji/twemoji.min.js" defer></script><script type="text/javascript" src="/js/twemoji.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/custom/custom.js"></script></div>
+</body>
+
+</html>

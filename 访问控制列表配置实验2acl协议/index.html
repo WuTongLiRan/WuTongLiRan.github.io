@@ -1,0 +1,506 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="preconnect" href="http://cdn.wutongliran.top/" crossorigin />
+    <link href="http://cdn.wutongliran.top/fonts/result.css" rel="stylesheet" />
+    <link rel="preload" as="font" type="font/woff2" href="http://cdn.wutongliran.top/fonts/Lyrio.woff2" crossorigin>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>访问控制列表配置实验2—ACL协议(更新中) - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="访问控制列表配置实验2—ACL协议(更新中)" />
+<meta property="og:description" content="ACL实验ACL 的运用 1、实验目的通过本实验可以: 掌握 ACL的作用 理解基本和高级 ACL的区别 熟悉基本和高级 ACL的配置 掌握 ACL 的验证和查看命令" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C2acl%E5%8D%8F%E8%AE%AE/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-10-06T00:00:00+00:00" /><meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="访问控制列表配置实验2—ACL协议(更新中)"/>
+<meta name="twitter:description" content="ACL实验ACL 的运用 1、实验目的通过本实验可以: 掌握 ACL的作用 理解基本和高级 ACL的区别 熟悉基本和高级 ACL的配置 掌握 ACL 的验证和查看命令"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C2acl%E5%8D%8F%E8%AE%AE/" /><link rel="prev" href="/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/" /><link rel="next" href="/windows%E5%88%9B%E5%BB%BA%E9%9A%90%E8%97%8F%E7%94%A8%E6%88%B7/" /><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="http://cdn.wutongliran.top/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="http://cdn.wutongliran.top/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "访问控制列表配置实验2—ACL协议(更新中)",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C2acl%E5%8D%8F%E8%AE%AE\/"
+        },"genre": "posts","keywords": "ACL协议","wordcount":  905 ,
+        "url": "\/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C2acl%E5%8D%8F%E8%AE%AE\/","datePublished": "2023-10-06T00:00:00+00:00","dateModified": "2023-10-06T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"><i class='fa fa-book'></i> 文章 </a><a class="menu-item" href="/categories/"><i class='fa fa-tasks'></i> 分类 </a><a class="menu-item" href="/tags/"><i class='fa fa-bookmark'></i> 标签 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"><i class='fas fa-spinner fa-pulse'></i> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><i class='fa fa-book'></i>文章</a><a class="menu-item" href="/categories/" title=""><i class='fa fa-tasks'></i>分类</a><a class="menu-item" href="/tags/" title=""><i class='fa fa-bookmark'></i>标签</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title=""><i class='fas fa-spinner fa-pulse'></i>关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content always-active" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1">1.</a></li>
+    <li><a href="#2">2.</a></li>
+    <li><a href="#3">3.</a></li>
+    <li><a href="#4">4.</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">访问控制列表配置实验2—ACL协议(更新中)</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"><i class="far fa-folder fa-fw"></i>计算机网络</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-10-06">2023-10-06</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-10-06">2023-10-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 905 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C2acl%E5%8D%8F%E8%AE%AE/" class="leancloud_visitors" data-flag-title="访问控制列表配置实验2—ACL协议(更新中)">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class="leancloud-visitors-count waline-pageview-count" data-path="/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C2acl%E5%8D%8F%E8%AE%AE/"></span>&nbsp;次阅读
+                    </span>&nbsp;<span id="/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C2acl%E5%8D%8F%E8%AE%AE/" class="comment_count" data-flag-title="访问控制列表配置实验2—ACL协议(更新中)">
+                        <i class="far fa-comments fa-fw"></i>&nbsp;<span class="waline-comment-count" id="waline-comment-count" data-path="/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C2acl%E5%8D%8F%E8%AE%AE/"></span>&nbsp;条评论
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1">1.</a></li>
+    <li><a href="#2">2.</a></li>
+    <li><a href="#3">3.</a></li>
+    <li><a href="#4">4.</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="acl实验" class="headerLink">
+    <a href="#acl%e5%ae%9e%e9%aa%8c" class="header-mark"></a>ACL实验</h1><p>ACL 的运用
+1、实验目的通过本实验可以:</p>
+<ol>
+<li>掌握 ACL的作用</li>
+<li>理解基本和高级 ACL的区别</li>
+<li>熟悉基本和高级 ACL的配置</li>
+<li>掌握 ACL 的验证和查看命令</li>
+<li>理解命名 ACL 的作用与配置</li>
+</ol>
+<p>2、拓扑结构</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/65178f5cc458853aef376fdc.jpg" title="https://pic.imgdb.cn/item/65178f5cc458853aef376fdc.jpg" data-thumbnail="https://pic.imgdb.cn/item/65178f5cc458853aef376fdc.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/65178f5cc458853aef376fdc.jpg"
+            srcset="https://pic.imgdb.cn/item/65178f5cc458853aef376fdc.jpg, https://pic.imgdb.cn/item/65178f5cc458853aef376fdc.jpg 1.5x, https://pic.imgdb.cn/item/65178f5cc458853aef376fdc.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/65178f5cc458853aef376fdc.jpg">
+    </a></figure></p>
+<p>3、 实验需求</p>
+<ol>
+<li>参照逻辑拓扑，使用合适的线缆完成物理拓扑的搭建</li>
+<li>在 SW1 和 SW2 上各创建三个 VLAN，VLAN10，VLAN20 和 VLAN30，分别将 PC1 和 PC4 加入 VLAN10，PC2 和 PC5 加入 VLAN20，PC3和PC6加入VLAN30，各 VLAN 的网段以及网关自己规划。</li>
+<li>完成各路由器的基本配置，实现各路由器之间可以互 ping 对方，路由器接口的地址自己规划。</li>
+<li>全网启用任意路由协议，完成必要的配置实现全网可达，即实现PC 之间可以互相访问。</li>
+<li>开启 R1 Telnet服务和 R3 上的 SSH 服务，用户名为r1和r3，并设置登录密码都为 huawei123</li>
+<li>使用基本 ACL 实现 PC1 不能访问 PC2，并使用 ping 命令验证结果
+7）移除上述 ACL，使用基本ACL 实现只允许 R1连接R2的接口可以 远程登录到路由器 R3， 并验证结果(注意调用位置)</li>
+<li>移除上述 ACL，使用高级(扩展)ACL 实现 PC4 和 PC5 不能 ping 路由器 R1，但是可以访问到路由器 R1上的三个网关地址，其他主机对 R1 的访问不受限制，使用 ping 验证结果</li>
+<li>移除上述 ACL，使用高级 ACL 实现 PC1 可以 ping PC6，但禁止 PC6 ping PC1，其他的访问不受限制，使用 ping 验证结果
+10 ) 移除上述 ACL，使用高级ACL实现禁止R3连接R2的接口使用Telnet登录R1，但不影响其他方式的通信。</li>
+</ol>
+<h2 id="1" class="headerLink">
+    <a href="#1" class="header-mark"></a>1.</h2><h2 id="2" class="headerLink">
+    <a href="#2" class="header-mark"></a>2.</h2><ul>
+<li>SW1</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[SW1]vlan batch 10 20 30
+</span></span><span class="line"><span class="cl">[SW1]int e0/0/1
+</span></span><span class="line"><span class="cl">[SW1-Ethernet0/0/1]port link-type access 
+</span></span><span class="line"><span class="cl">[SW1-Ethernet0/0/1]port default vlan 10
+</span></span><span class="line"><span class="cl">[SW1-Ethernet0/0/1]int e0/0/2
+</span></span><span class="line"><span class="cl">[SW1-Ethernet0/0/2]port link-type access
+</span></span><span class="line"><span class="cl">[SW1-Ethernet0/0/2]port default vlan 20
+</span></span><span class="line"><span class="cl">[SW1-Ethernet0/0/2]int e0/0/3
+</span></span><span class="line"><span class="cl">[SW1-Ethernet0/0/3]port link-type access
+</span></span><span class="line"><span class="cl">[SW1-Ethernet0/0/3]port default vlan 30
+</span></span><span class="line"><span class="cl">[SW1-Ethernet0/0/3]int e0/0/4
+</span></span><span class="line"><span class="cl">[SW1-Ethernet0/0/4]port link-type trunk 
+</span></span><span class="line"><span class="cl">[SW1-Ethernet0/0/4]port trunk allow-pass vlan all 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>SW2</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[SW2]vlan batch 10 20 30
+</span></span><span class="line"><span class="cl">[SW2]int e0/0/1
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/1]port link-type access 
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/1]port default vlan 10
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/1]int e0/0/2
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/2]port link-type access
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/2]port default vlan 20
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/2]int e0/0/3
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/3]port link-type access
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/3]port default vlan 30
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/3]int e0/0/4
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/4]port link-type trunk 
+</span></span><span class="line"><span class="cl">[SW2-Ethernet0/0/4]port trunk allow-pass vlan all 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3" class="headerLink">
+    <a href="#3" class="header-mark"></a>3.</h2><ul>
+<li>R1</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R1]int g0/0/0.10
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.10]dot1q termination vid 10
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.10]ip add 192.168.10.254 24
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.10]arp broadcast enable 
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.10]int g0/0/0.20
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.20]dot1q termination vid 20
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.20]ip add 192.168.20.254 24
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.20]arp broadcast enable
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.20]int g0/0/0.30
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.30]dot1q termination vid 30
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.30]ip add 192.168.30.254 24
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.30]arp broadcast enable
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/0.30]int g0/0/1
+</span></span><span class="line"><span class="cl">[R1-GigabitEthernet0/0/1]ip add 172.16.12.1 24
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>R2</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R2]int g0/0/0
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0]ip add 172.16.12.2 24
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/0]int g0/0/1
+</span></span><span class="line"><span class="cl">[R2-GigabitEthernet0/0/1]ip add 172.16.23.2 24
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>R3</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R3]int g0/0/0.10
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/0.10]dot1q termination vid 10
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/0.10]ip add 192.168.10.254 24
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/0.10]arp broadcast enable 
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/0.10]int g0/0/0.20
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/0.20]dot1q termination vid 20
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/0.20]ip add 192.168.20.254 24
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/0.20]arp broadcast enable
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/0.20]int g0/0/0.30
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/0.30]dot1q termination vid 30
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/0.30]ip add 192.168.30.254 24
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/0.30]arp broadcast enable
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/0.30]int g0/0/1
+</span></span><span class="line"><span class="cl">[R3-GigabitEthernet0/0/1]ip add 172.16.23.1 24
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="4" class="headerLink">
+    <a href="#4" class="header-mark"></a>4.</h2><ul>
+<li>R1</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R1]ospf 110
+</span></span><span class="line"><span class="cl">[R1-ospf-110]area 0
+</span></span><span class="line"><span class="cl">[R1-ospf-110-area-0.0.0.0]network 192.168.10.0 0.0.0.255
+</span></span><span class="line"><span class="cl">[R1-ospf-110-area-0.0.0.0]network 192.168.20.0 0.0.0.255
+</span></span><span class="line"><span class="cl">[R1-ospf-110-area-0.0.0.0]network 192.168.30.0 0.0.0.255
+</span></span><span class="line"><span class="cl">[R1-ospf-110-area-0.0.0.0]network 172.16.12.0 0.0.0.255
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>R2</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R2]ospf 110
+</span></span><span class="line"><span class="cl">[R2-ospf-110]area 0
+</span></span><span class="line"><span class="cl">[R2-ospf-110-area-0.0.0.0]network 172.16.12.0 0.0.0.255
+</span></span><span class="line"><span class="cl">[R2-ospf-110-area-0.0.0.0]network 172.16.23.0 0.0.0.255
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>R3</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[R3]ospf 110
+</span></span><span class="line"><span class="cl">[R3-ospf-110]area 0
+</span></span><span class="line"><span class="cl">[R3-ospf-110-area-0.0.0.0]network 192.168.10.0 0.0.0.255
+</span></span><span class="line"><span class="cl">[R3-ospf-110-area-0.0.0.0]network 192.168.20.0 0.0.0.255
+</span></span><span class="line"><span class="cl">[R3-ospf-110-area-0.0.0.0]network 192.168.30.0 0.0.0.255
+</span></span><span class="line"><span class="cl">[R3-ospf-110-area-0.0.0.0]network 172.16.23.0 0.0.0.255
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+
+        <div class="sponsor">
+        <div class="sponsor-avatar"></div><div class="sponsor-custom"><hr><p><em>写博客的初衷在于深入掌握技术而非展示</em></p><p><em>当我站在传授他人的角度思考问题时</em></p><p><em>才能真正领悟并融会贯通</em></p><p><em>博客受益者也是未来那个遗忘某个技术的自己</em></p><hr></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-10-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C2acl%E5%8D%8F%E8%AE%AE/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/acl%E5%8D%8F%E8%AE%AE/">ACL协议</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/" class="prev" rel="prev" title="二层冗余综合实验"><i class="fas fa-angle-left fa-fw"></i>二层冗余综合实验</a>
+            <a href="/windows%E5%88%9B%E5%BB%BA%E9%9A%90%E8%97%8F%E7%94%A8%E6%88%B7/" class="next" rel="next" title="Windows创建隐藏用户">Windows创建隐藏用户<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="waline" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://waline.js.org/">Waline</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container">
+            <div class="footer-line">
+                <span id="run-time"></span>
+            </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/@waline/waline.css"><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="http://cdn.wutongliran.top/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/katex/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":200},"comment":{"waline":{"comment":true,"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","lang":"zh-cn","pageview":true,"serverURL":"https://t0o3gjxg.api.lncldglobal.com"}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true},"twemoji":true};</script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/@waline/waline.js" defer></script><script type="text/javascript" src="/js/waline.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/twemoji/twemoji.min.js" defer></script><script type="text/javascript" src="/js/twemoji.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/custom/custom.js"></script></div>
+</body>
+
+</html>

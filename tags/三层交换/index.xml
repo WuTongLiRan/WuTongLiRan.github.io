@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>三层交换 - 标签 - 梧桐漓染的博客</title>
+        <link>/tags/%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2/</link>
+        <description>三层交换 - 标签 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 18 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2/" rel="self" type="application/rss+xml" /><item>
+    <title>三层交换机互联实验</title>
+    <link>/%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BA%92%E8%81%94%E5%AE%9E%E9%AA%8C/</link>
+    <pubDate>Tue, 18 Jul 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BA%92%E8%81%94%E5%AE%9E%E9%AA%8C/</guid>
+    <description><![CDATA[三层交换机互联实验 实验目的本实验的目的是通过配置三层交换机实现两个不同 VLAN 中的设备互通。 ​ 实验拓扑 ​ 实验步骤 开启三层交换机的三层功能：进入全局]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>应急响应 - 标签 - 梧桐漓染的博客</title>
+        <link>/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/</link>
+        <description>应急响应 - 标签 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 15 Oct 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" rel="self" type="application/rss+xml" /><item>
+    <title>应急响应手册(更新中)</title>
+    <link>/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/</link>
+    <pubDate>Sun, 15 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/</guid>
+    <description><![CDATA[Linux应急响应应急响应指遇到重大或突发事件后所采取的措施和行动。应急响应所处置的突发事件不仅仅包括硬件、产品、网络、配置等方面的故障，也]]></description>
+</item></channel>
+</rss>

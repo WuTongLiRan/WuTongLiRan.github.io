@@ -1,0 +1,28 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>代码审计 - 标签 - 梧桐漓染的博客</title>
+        <link>/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/</link>
+        <description>代码审计 - 标签 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 23 Oct 2023 21:16:00 &#43;0800</lastBuildDate><atom:link href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" rel="self" type="application/rss+xml" /><item>
+    <title>[SWPUCTF 2021 新生赛]easy_md5</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasy_md5/</link>
+    <pubDate>Mon, 23 Oct 2023 21:16:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasy_md5/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]easy_md5 完整的代码注释放在文末 来看关键代码块 1 2 3 if ($name != $password &amp;&amp; md5($name) == md5($password)){ echo $flag; } 要满足两个字符串不相等、但经过md5加密后的结果]]></description>
+</item><item>
+    <title>[SWPUCTF 2021 新生赛]jicao</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bjicao/</link>
+    <pubDate>Mon, 23 Oct 2023 20:30:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bjicao/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]jicao 1 2 3 4 5 6 7 8 &lt;?php highlight_file(&#39;index.php&#39;); include(&#34;flag.php&#34;); $id=$_POST[&#39;id&#39;];//通过POST给id传参 $json=json]]></description>
+</item><item>
+    <title>[HCTF 2018]WarmUp</title>
+    <link>/hctf-2018warmup/</link>
+    <pubDate>Sat, 21 Oct 2023 20:25:25 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/hctf-2018warmup/</guid>
+    <description><![CDATA[[HCTF 2018]WarmUp初次访问，这个滑稽应该是代表了作者幸灾乐祸的表情 一开始以为flag隐写在图片里，下载图片后查看里面的内容没有找到fl]]></description>
+</item></channel>
+</rss>

@@ -3,75 +3,75 @@
         <title>Tags - 标签 - 梧桐漓染的博客</title>
         <link>/tags/</link>
         <description>Tags - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 14 Oct 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/" rel="self" type="application/rss+xml" /><item>
-    <title>Linux</title>
-    <link>/tags/linux/</link>
-    <pubDate>Sat, 14 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 24 Oct 2023 21:30:00 &#43;0800</lastBuildDate><atom:link href="/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>CTF</title>
+    <link>/tags/ctf/</link>
+    <pubDate>Tue, 24 Oct 2023 21:30:00 &#43;0800</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/tags/linux/</guid>
+    </author><guid>/tags/ctf/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>Shell</title>
-    <link>/tags/shell/</link>
-    <pubDate>Sat, 14 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+    <title>HTTP协议</title>
+    <link>/tags/http%E5%8D%8F%E8%AE%AE/</link>
+    <pubDate>Tue, 24 Oct 2023 19:13:00 &#43;0800</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/tags/shell/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Windows</title>
-    <link>/tags/windows/</link>
-    <pubDate>Sat, 14 Oct 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/tags/windows/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>NISP</title>
-    <link>/tags/nisp/</link>
-    <pubDate>Mon, 09 Oct 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/tags/nisp/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>XSS漏洞</title>
-    <link>/tags/xss%E6%BC%8F%E6%B4%9E/</link>
-    <pubDate>Fri, 18 Aug 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/tags/xss%E6%BC%8F%E6%B4%9E/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>VMware</title>
-    <link>/tags/vmware/</link>
-    <pubDate>Mon, 14 Aug 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/tags/vmware/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>信息收集</title>
-    <link>/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</link>
-    <pubDate>Thu, 10 Aug 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</guid>
+    </author><guid>/tags/http%E5%8D%8F%E8%AE%AE/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>SQL注入漏洞</title>
     <link>/tags/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</link>
-    <pubDate>Wed, 09 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+    <pubDate>Mon, 23 Oct 2023 21:46:00 &#43;0800</pubDate><author>
         <name>Lyrio</name>
     </author><guid>/tags/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>SSRF漏洞</title>
-    <link>/tags/ssrf%E6%BC%8F%E6%B4%9E/</link>
-    <pubDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+    <title>代码审计</title>
+    <link>/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/</link>
+    <pubDate>Mon, 23 Oct 2023 21:16:00 &#43;0800</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/tags/ssrf%E6%BC%8F%E6%B4%9E/</guid>
+    </author><guid>/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>弱比较</title>
+    <link>/tags/%E5%BC%B1%E6%AF%94%E8%BE%83/</link>
+    <pubDate>Mon, 23 Oct 2023 21:16:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/tags/%E5%BC%B1%E6%AF%94%E8%BE%83/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>RCE漏洞</title>
+    <link>/tags/rce%E6%BC%8F%E6%B4%9E/</link>
+    <pubDate>Sun, 22 Oct 2023 21:53:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/tags/rce%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>文件包含漏洞</title>
     <link>/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</link>
-    <pubDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+    <pubDate>Sat, 21 Oct 2023 20:25:25 &#43;0800</pubDate><author>
         <name>Lyrio</name>
     </author><guid>/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Linux</title>
+    <link>/tags/linux/</link>
+    <pubDate>Sun, 15 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/tags/linux/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Windows</title>
+    <link>/tags/windows/</link>
+    <pubDate>Sun, 15 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/tags/windows/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>应急响应</title>
+    <link>/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/</link>
+    <pubDate>Sun, 15 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

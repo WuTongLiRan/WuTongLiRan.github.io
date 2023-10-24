@@ -3,77 +3,77 @@
         <title>梧桐漓染的博客</title>
         <link>/</link>
         <description>桐漓的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 14 Oct 2023 00:00:00 &#43;0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 24 Oct 2023 21:30:00 &#43;0800</lastBuildDate>
             <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>Shell脚本入门</title>
-    <link>/shell%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8/</link>
-    <pubDate>Sat, 14 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+    <title>[第五空间 2021]WebFTP</title>
+    <link>/%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B4-2021webftp/</link>
+    <pubDate>Tue, 24 Oct 2023 21:30:00 &#43;0800</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/shell%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8/</guid>
-    <description><![CDATA[shell脚本入门 hello world! 1 2 3 #!/bin/sh a=&#34;hello world!&#34; echo &#34;a is : $a&#34; 运行结果： 1 a is : hello world! #！指定要使用的shell /bin/sh执行过程中，若出现命令执行失败，则]]></description>
+    </author><guid>/%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B4-2021webftp/</guid>
+    <description><![CDATA[[第五空间 2021]WebFTP 用Dirsearch目录扫描python dirsearch.py -u &quot;http://node4.anna.nssctf.cn:28680/&quot; -e * 访问phpinfo.php，CTRL+F查询&quot;flag&quot; 这]]></description>
 </item><item>
-    <title>操作系统入门</title>
-    <link>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/</link>
-    <pubDate>Sat, 14 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+    <title>[SWPUCTF 2021 新生赛]Do_you_know_http</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bdo_you_know_http/</link>
+    <pubDate>Tue, 24 Oct 2023 19:13:00 &#43;0800</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8/</guid>
-    <description><![CDATA[操作系统入门VMware的三种联网方式：NAT模式、桥接模式、仅主机模式 ​ 物理机ping不通虚拟机，检查： 是否同卡 是否同网段 网关是否一致 避免]]></description>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bdo_you_know_http/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]Do_you_know_http提示&quot;请使用 WLLM 浏览器&quot; 利用BurpSuite抓包伪造User-Agent:W]]></description>
 </item><item>
-    <title>Linux站点搭建(更新中)</title>
-    <link>/linux%E7%AB%99%E7%82%B9%E6%90%AD%E5%BB%BA/</link>
-    <pubDate>Thu, 12 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+    <title>[SWPUCTF 2021 新生赛]easy_sql</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasy_sql/</link>
+    <pubDate>Mon, 23 Oct 2023 21:46:00 &#43;0800</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/linux%E7%AB%99%E7%82%B9%E6%90%AD%E5%BB%BA/</guid>
-    <description><![CDATA[Linux站点搭建 准备工作 确定两台主机为同一种联网方式（例如都为 NAT 模式） 关闭虚拟机本身的DHCP功能 搭建本地源 ③关闭防火墙 systemctl stop firewalld.service //关闭防火]]></description>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasy_sql/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]easy_sql 一道简单不过的联合注入题，水一下文章数 查看页面源码，得到参数名 尝试用GET给wllm参数传个1 ?wllm=1'页]]></description>
 </item><item>
-    <title>Linux基础命令</title>
-    <link>/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</link>
-    <pubDate>Wed, 11 Oct 2023 21:34:12 &#43;0800</pubDate><author>
+    <title>[SWPUCTF 2021 新生赛]easy_md5</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasy_md5/</link>
+    <pubDate>Mon, 23 Oct 2023 21:16:00 &#43;0800</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</guid>
-    <description><![CDATA[Linux基础命令常用服务器架构： LAMP：Linux+Apache+mysql+PHP LNMP：Linux+Nginx+mysql+PHP]]></description>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasy_md5/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]easy_md5 完整的代码注释放在文末 来看关键代码块 1 2 3 if ($name != $password &amp;&amp; md5($name) == md5($password)){ echo $flag; } 要满足两个字符串不相等、但经过md5加密后的结果]]></description>
 </item><item>
-    <title>NISP一级题库</title>
-    <link>/nisp1%E7%BA%A7%E9%A2%98%E5%BA%93/</link>
-    <pubDate>Mon, 09 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+    <title>[SWPUCTF 2021 新生赛]jicao</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bjicao/</link>
+    <pubDate>Mon, 23 Oct 2023 20:30:00 &#43;0800</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/nisp1%E7%BA%A7%E9%A2%98%E5%BA%93/</guid>
-    <description><![CDATA[1.与计算机硬件关系最密切的软件是（ ）。 A、编译程序 B、数据库管理程序 C、游戏程序 D、OS 2.系统的主要功能有（ ）。 A、进程管理、存储器管理]]></description>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bjicao/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]jicao 1 2 3 4 5 6 7 8 &lt;?php highlight_file(&#39;index.php&#39;); include(&#34;flag.php&#34;); $id=$_POST[&#39;id&#39;];//通过POST给id传参 $json=json]]></description>
 </item><item>
-    <title>Windows创建隐藏用户</title>
-    <link>/windows%E5%88%9B%E5%BB%BA%E9%9A%90%E8%97%8F%E7%94%A8%E6%88%B7/</link>
-    <pubDate>Sun, 08 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+    <title>[强网杯 2019]随便注</title>
+    <link>/%E5%BC%BA%E7%BD%91%E6%9D%AF-2019%E9%9A%8F%E4%BE%BF%E6%B3%A8/</link>
+    <pubDate>Mon, 23 Oct 2023 16:54:00 &#43;0800</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/windows%E5%88%9B%E5%BB%BA%E9%9A%90%E8%97%8F%E7%94%A8%E6%88%B7/</guid>
-    <description><![CDATA[Windows创建隐藏用户 命令行输入net user查看用户 新建用户命令行输入net user test$ 123456 /add创建隐藏用户，输入net localgroup administrators test$ /add将新建]]></description>
+    </author><guid>/%E5%BC%BA%E7%BD%91%E6%9D%AF-2019%E9%9A%8F%E4%BE%BF%E6%B3%A8/</guid>
+    <description><![CDATA[[强网杯 2019]随便注输入1'，页面报错 输入1'#，页面恢复正常，说明存在sql注入点 输入1'order by 2#页面正常，输入1'order]]></description>
 </item><item>
-    <title>Windows搭建HTTP站点</title>
-    <link>/windows%E6%90%AD%E5%BB%BAhttp%E7%AB%99%E7%82%B9/</link>
-    <pubDate>Fri, 15 Sep 2023 00:00:00 &#43;0000</pubDate><author>
+    <title>[GXYCTF2019]Ping Ping Ping</title>
+    <link>/gxyctf2019ping-ping-ping/</link>
+    <pubDate>Sun, 22 Oct 2023 21:53:00 &#43;0800</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/windows%E6%90%AD%E5%BB%BAhttp%E7%AB%99%E7%82%B9/</guid>
-    <description><![CDATA[Windows搭建HTTP站点 以我的服务器——Windows 2012 R2 为例 安装IIS打开 服务器管理器。 点击 &ldquo;添加角色和功能&quot;]]></description>
+    </author><guid>/gxyctf2019ping-ping-ping/</guid>
+    <description><![CDATA[[GXYCTF2019]Ping Ping Ping初次访问： 根据页面的提示/?ip=以及题目Ping Ping Ping可以猜测PING的IP可以通过GET型给参数ip传参 尝试输入?ip=]]></description>
 </item><item>
-    <title>BeEF-XSS渗透框架的使用</title>
-    <link>/beef-xss%E6%B8%97%E9%80%8F%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
-    <pubDate>Fri, 18 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+    <title>[ACTF2020 新生赛]Exec</title>
+    <link>/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Bexec/</link>
+    <pubDate>Sun, 22 Oct 2023 12:57:00 &#43;0800</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/beef-xss%E6%B8%97%E9%80%8F%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
-    <description><![CDATA[BeEF-XSS渗透框架的使用 搭建靶场 将DVWA靶场安装包解压到根目录 修改配置文件 ​ ​ BeEF-XSS渗透框架的使用【KALI】安装BeEF]]></description>
+    </author><guid>/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Bexec/</guid>
+    <description><![CDATA[[ACTF2020 新生赛]Exec访问靶机： 输入8.8.8.8，点击PING 输入8.8.8.8 &amp; ipconfig，从结果来看没有执行ipconfig 输入8.]]></description>
 </item><item>
-    <title>Windows克隆用户</title>
-    <link>/windows%E5%85%8B%E9%9A%86%E7%94%A8%E6%88%B7/</link>
-    <pubDate>Tue, 15 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+    <title>[HCTF 2018]WarmUp</title>
+    <link>/hctf-2018warmup/</link>
+    <pubDate>Sat, 21 Oct 2023 20:25:25 &#43;0800</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/windows%E5%85%8B%E9%9A%86%E7%94%A8%E6%88%B7/</guid>
-    <description><![CDATA[Windows克隆用户运行输入regedit打开注册表 获取SAM权限： ​ 将Administrator的UID路径：HKEY_LOCAL_MA]]></description>
+    </author><guid>/hctf-2018warmup/</guid>
+    <description><![CDATA[[HCTF 2018]WarmUp初次访问，这个滑稽应该是代表了作者幸灾乐祸的表情 一开始以为flag隐写在图片里，下载图片后查看里面的内容没有找到fl]]></description>
 </item><item>
-    <title>VMware三种网络模式</title>
-    <link>/vmware%E4%B8%89%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F/</link>
-    <pubDate>Mon, 14 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+    <title>[ACTF2020 新生赛]Include</title>
+    <link>/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Binclude/</link>
+    <pubDate>Sat, 21 Oct 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/vmware%E4%B8%89%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F/</guid>
-    <description><![CDATA[VMware三种网络模式 基础知识 虚拟交换机**虚拟机交换机的作用：让相同模式的虚拟机相互连接 ** 虚拟交换机 用途 VMnet0 桥接模式 VMnet1 仅主机模式 VMnet8 NAT模]]></description>
+    </author><guid>/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Binclude/</guid>
+    <description><![CDATA[[ACTF2020 新生赛]Include初次访问： 页面上就一个链接，点进去 点进链接后页面上就一句毫无鸟用的话，查看页面源码也没有其他的东西 也就是说前端确确实]]></description>
 </item></channel>
 </rss>

@@ -1,4 +1,4 @@
-# XSS-labs靶场实战
+# XSS-labs靶场实战(更新中)
 
 # XSS-labs靶场实战
 

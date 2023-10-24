@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>建站教程 - 分类 - 梧桐漓染的博客</title>
+        <link>/categories/%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/</link>
+        <description>建站教程 - 分类 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 23 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>Argon主题博客美化</title>
+    <link>/argon%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</link>
+    <pubDate>Sun, 23 Jul 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/argon%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</guid>
+    <description><![CDATA[Argon主题博客美化 博客架构 我不是专门写 Web 的，造轮子 肯定是做不到了，只得拿 轮子 和 零件 来组装 **框架：**PHPStudy ( Apache + MySQL + PHP ) **]]></description>
+</item></channel>
+</rss>

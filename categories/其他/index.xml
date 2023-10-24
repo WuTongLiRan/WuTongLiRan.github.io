@@ -1,0 +1,28 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>其他 - 分类 - 梧桐漓染的博客</title>
+        <link>/categories/%E5%85%B6%E4%BB%96/</link>
+        <description>其他 - 分类 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 04 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/%E5%85%B6%E4%BB%96/" rel="self" type="application/rss+xml" /><item>
+    <title>数构复习</title>
+    <link>/%E6%95%B0%E6%9E%84%E4%B9%A0%E9%A2%98/</link>
+    <pubDate>Fri, 04 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/%E6%95%B0%E6%9E%84%E4%B9%A0%E9%A2%98/</guid>
+    <description><![CDATA[数构习题 第一章1.在数据结构中，从逻辑上可以把数据结构分成()。&mdash;查看 A.动态结构和静态结构 B.紧凑结构和非紧凑结构 C.线性结构]]></description>
+</item><item>
+    <title>大物复习</title>
+    <link>/%E5%A4%A7%E7%89%A9%E5%A4%8D%E4%B9%A0/</link>
+    <pubDate>Thu, 22 Jun 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/%E5%A4%A7%E7%89%A9%E5%A4%8D%E4%B9%A0/</guid>
+    <description><![CDATA[第一章 质点运动学 选择题 一质点在某时刻位于位矢 $\vec{r}\left(x,y\right)$ 的端点处，其速度大小为( D. ) A.$\frac{d r}{d t}$ B.$\frac{d \vec{r}}{d t}$ C.$\frac{d\left|\vec{r}\right|}{d t}$ D.$\sqrt{\left(\frac{dx}{dt}\right)^{2}+\left(\frac{dy}{dt}\right)^{2}}$ 判断题 质点在匀速直线运动中的瞬时速率等于瞬时速度]]></description>
+</item><item>
+    <title>高数一下期末复习</title>
+    <link>/%E9%AB%98%E6%95%B0%E5%A4%A7%E4%B8%80%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/</link>
+    <pubDate>Sun, 04 Jun 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/%E9%AB%98%E6%95%B0%E5%A4%A7%E4%B8%80%E4%B8%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/</guid>
+    <description><![CDATA[一、微分方程 求微分方程的阶数 二阶常系数齐次线性微分方程 二阶常系数非齐次线性微分方程的第一种（特解） 二、向量代数与空间解析几何 求平面方程（点法]]></description>
+</item></channel>
+</rss>

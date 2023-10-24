@@ -3,7 +3,21 @@
         <title>RCE漏洞 - 标签 - 梧桐漓染的博客</title>
         <link>/tags/rce%E6%BC%8F%E6%B4%9E/</link>
         <description>RCE漏洞 - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 05 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/rce%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 22 Oct 2023 21:53:00 &#43;0800</lastBuildDate><atom:link href="/tags/rce%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+    <title>[GXYCTF2019]Ping Ping Ping</title>
+    <link>/gxyctf2019ping-ping-ping/</link>
+    <pubDate>Sun, 22 Oct 2023 21:53:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/gxyctf2019ping-ping-ping/</guid>
+    <description><![CDATA[[GXYCTF2019]Ping Ping Ping初次访问： 根据页面的提示/?ip=以及题目Ping Ping Ping可以猜测PING的IP可以通过GET型给参数ip传参 尝试输入?ip=]]></description>
+</item><item>
+    <title>[ACTF2020 新生赛]Exec</title>
+    <link>/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Bexec/</link>
+    <pubDate>Sun, 22 Oct 2023 12:57:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Bexec/</guid>
+    <description><![CDATA[[ACTF2020 新生赛]Exec访问靶机： 输入8.8.8.8，点击PING 输入8.8.8.8 &amp; ipconfig，从结果来看没有执行ipconfig 输入8.]]></description>
+</item><item>
     <title>RCE漏洞</title>
     <link>/rce%E6%BC%8F%E6%B4%9E/</link>
     <pubDate>Sat, 05 Aug 2023 00:00:00 &#43;0000</pubDate><author>

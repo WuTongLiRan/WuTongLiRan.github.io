@@ -4,18 +4,11 @@
         <link>/tags/csrf%E6%BC%8F%E6%B4%9E/</link>
         <description>CSRF漏洞 - 标签 - 梧桐漓染的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 04 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/csrf%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
-    <title>CSRF漏洞检测</title>
-    <link>/csrf%E6%BC%8F%E6%B4%9E%E6%A3%80%E6%B5%8B/</link>
+    <title>CSRF漏洞</title>
+    <link>/csrf%E6%BC%8F%E6%B4%9E/</link>
     <pubDate>Fri, 04 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/csrf%E6%BC%8F%E6%B4%9E%E6%A3%80%E6%B5%8B/</guid>
+    </author><guid>/csrf%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[CSRF漏洞检测 用 pikachu靶场做演示 半自动检测 用BurpSuite检测登录账号 点击**“修改个人信息”**，开启抓包，将性别boy改成]]></description>
-</item><item>
-    <title>CSRF漏洞防御</title>
-    <link>/csrf%E6%BC%8F%E6%B4%9E%E9%98%B2%E5%BE%A1/</link>
-    <pubDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/csrf%E6%BC%8F%E6%B4%9E%E9%98%B2%E5%BE%A1/</guid>
-    <description><![CDATA[CSRF漏洞防御 通过请求头Referer判断请求是否从当前网站发起。 通过Token比对判断。 二次验证： 输入旧密码 人机验证 短信验证码 扫码 人脸识]]></description>
 </item></channel>
 </rss>

@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>AF - 标签 - 梧桐漓染的博客</title>
+        <link>/tags/af/</link>
+        <description>AF - 标签 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 18 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/af/" rel="self" type="application/rss+xml" /><item>
+    <title>网络设备 &amp; 核心安全产品</title>
+    <link>/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87-%E6%A0%B8%E5%BF%83%E5%AE%89%E5%85%A8%E4%BA%A7%E5%93%81/</link>
+    <pubDate>Tue, 18 Jul 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87-%E6%A0%B8%E5%BF%83%E5%AE%89%E5%85%A8%E4%BA%A7%E5%93%81/</guid>
+    <description><![CDATA[网络设备 SW-二层交换机交换机在网络中的作用： 交换机在网络中最大的作用就是扩大网络的一种设备，能为子网中提供更多的连接端口，以便于更多的电脑]]></description>
+</item></channel>
+</rss>

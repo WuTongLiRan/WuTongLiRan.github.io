@@ -1,10 +1,8 @@
-# 
+# Navicat 16 Windows 破解版
 
 # Navicat 16 Windows 破解版
 
-哈喽,各位小伙伴大家好!
-
-今天给大家带来**Navicat 16 最新版Windows**安装激活教程.
+**Navicat 16 最新版Windows**安装激活教程.
 
 mac版本看看这个:[点我进入](https://mp.weixin.qq.com/s?__biz=Mzg3ODA5ODY3MQ==&mid=2247497076&idx=1&sn=52851bd9990b83da233259234b4eb30e&chksm=cf1a54f4f86ddde2de2efb7fc744493f367991bdf50a053fa512d81bb3e54d75d3de47f36148&token=269355834&lang=zh_CN#rd)
 

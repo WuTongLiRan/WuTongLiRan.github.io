@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>DHCP协议 - 标签 - 梧桐漓染的博客</title>
+        <link>/tags/dhcp%E5%8D%8F%E8%AE%AE/</link>
+        <description>DHCP协议 - 标签 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 30 Sep 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/dhcp%E5%8D%8F%E8%AE%AE/" rel="self" type="application/rss+xml" /><item>
+    <title>二层冗余综合实验</title>
+    <link>/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/</link>
+    <pubDate>Sat, 30 Sep 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/%E4%BA%8C%E5%B1%82%E5%86%97%E4%BD%99%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/</guid>
+    <description><![CDATA[二层冗余综合实验1、 实验目的 通过本实验可以： 理解二层交换的基本原理 掌握交换机的基本配置 掌握交换机VLAN划分 掌握实现不同局域网的通信 掌握VR]]></description>
+</item><item>
+    <title>DHCP配置实验</title>
+    <link>/dhcp%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C/</link>
+    <pubDate>Tue, 18 Jul 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/dhcp%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C/</guid>
+    <description><![CDATA[DHCP配置实验笔记 实验目的本实验的目的是在三层交换机上配置DHCP服务，为连接到相应VLAN的客户端提供自动IP地址分配功能。 ​ 实验拓扑 ​]]></description>
+</item></channel>
+</rss>

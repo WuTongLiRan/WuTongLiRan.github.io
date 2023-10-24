@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>动态路由 - 标签 - 梧桐漓染的博客</title>
+        <link>/tags/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1/</link>
+        <description>动态路由 - 标签 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 24 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1/" rel="self" type="application/rss+xml" /><item>
+    <title>动态路由配置实验—OSPF</title>
+    <link>/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8Cospf/</link>
+    <pubDate>Thu, 24 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8Cospf/</guid>
+    <description><![CDATA[动态路由配置实验—OSPF1、 实验目的 掌握 OSPF 的基本配置 熟悉 OSPF 三张表的内容和作用 掌握 OSPF 的 DR 和 BDR 的作用及选举 理解 RID 的概念 理解 OSPF 中两个组播地址的作]]></description>
+</item></channel>
+</rss>

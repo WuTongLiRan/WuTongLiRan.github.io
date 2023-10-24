@@ -3,7 +3,14 @@
         <title>操作系统 - 分类 - 梧桐漓染的博客</title>
         <link>/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
         <description>操作系统 - 分类 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 14 Oct 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 15 Oct 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="self" type="application/rss+xml" /><item>
+    <title>应急响应手册(更新中)</title>
+    <link>/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/</link>
+    <pubDate>Sun, 15 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/</guid>
+    <description><![CDATA[Linux应急响应应急响应指遇到重大或突发事件后所采取的措施和行动。应急响应所处置的突发事件不仅仅包括硬件、产品、网络、配置等方面的故障，也]]></description>
+</item><item>
     <title>Shell脚本入门</title>
     <link>/shell%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8/</link>
     <pubDate>Sat, 14 Oct 2023 00:00:00 &#43;0000</pubDate><author>
@@ -60,18 +67,11 @@
     </author><guid>/vmware%E4%B8%89%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F/</guid>
     <description><![CDATA[VMware三种网络模式 基础知识 虚拟交换机**虚拟机交换机的作用：让相同模式的虚拟机相互连接 ** 虚拟交换机 用途 VMnet0 桥接模式 VMnet1 仅主机模式 VMnet8 NAT模]]></description>
 </item><item>
-    <title>Linux文件压缩及解压缩</title>
-    <link>/linux%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E5%8F%8A%E8%A7%A3%E5%8E%8B%E7%BC%A9/</link>
-    <pubDate>Wed, 26 Jul 2023 00:00:00 &#43;0000</pubDate><author>
+    <title>Xshell远程连接Kali</title>
+    <link>/xshell%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5kali/</link>
+    <pubDate>Sat, 05 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/linux%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E5%8F%8A%E8%A7%A3%E5%8E%8B%E7%BC%A9/</guid>
-    <description><![CDATA[文件压缩及解压缩 打包和压缩的区别**打包：**多个文件变成一个文件——减少文件个数 **压缩：**缩小一个文件的体积——减少文件体积 常见压缩格]]></description>
-</item><item>
-    <title>Kali关闭锁屏</title>
-    <link>/kali%E5%85%B3%E9%97%AD%E9%94%81%E5%B1%8F/</link>
-    <pubDate>Tue, 25 Jul 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/kali%E5%85%B3%E9%97%AD%E9%94%81%E5%B1%8F/</guid>
-    <description><![CDATA[Kali关闭锁屏]]></description>
+    </author><guid>/xshell%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5kali/</guid>
+    <description><![CDATA[Xshell远程连接Kali 虚拟机的复制/粘贴的快捷键是：Ctrl+shift+C / Ctrl+shift+V ​ 设置root用户密码没设置过root用户密码的先设置]]></description>
 </item></channel>
 </rss>

@@ -9,7 +9,7 @@
     <pubDate>Mon, 09 Oct 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
     </author><guid>/nisp1%E7%BA%A7%E9%A2%98%E5%BA%93/</guid>
-    <description><![CDATA[1.与计算机硬件关系最密切的软件是（ ）。 A、编译程序 B、数据库管理程序 C、游戏程序 D、OS 2.系统的主要功能有（ ）。 A、进程管理、存储器管理]]></description>
+    <description><![CDATA[1.与计算机硬件关系最密切的软件是（ ）。 A、编译程序 B、数据库管理程序 C、游戏程序 D、OS ​ 2.系统的主要功能有（ ）。 A、进程管理、存储器管]]></description>
 </item><item>
     <title>BeEF-XSS渗透框架的使用</title>
     <link>/beef-xss%E6%B8%97%E9%80%8F%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
@@ -18,19 +18,19 @@
     </author><guid>/beef-xss%E6%B8%97%E9%80%8F%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
     <description><![CDATA[BeEF-XSS渗透框架的使用 搭建靶场 将DVWA靶场安装包解压到根目录 修改配置文件 ​ ​ BeEF-XSS渗透框架的使用【KALI】安装BeEF]]></description>
 </item><item>
+    <title>计算机体系结构</title>
+    <link>/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/</link>
+    <pubDate>Tue, 15 Aug 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/</guid>
+    <description><![CDATA[计算机体系结构 计算机发展历史 冯·诺依曼体系结构 计算机发展 代数 计算机类型 年份 特点 第一代 电子管计算机 1946年 并行计算，功能优先，速度很慢 第二代]]></description>
+</item><item>
     <title>信息收集</title>
     <link>/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</link>
     <pubDate>Thu, 10 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
     </author><guid>/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</guid>
     <description><![CDATA[信息收集以下是你提供的信息整理成的 Markdown 表格，其中相同标签的信息已经归类在一起： 企业信息 标签 名称 地址 企业信息 天眼查 https://www.tianyancha.com/ 企业信息 小蓝本 https://www.xiaolanben.com/ 企业信息 爱企]]></description>
-</item><item>
-    <title>SQL注入—WAF绕过</title>
-    <link>/sql%E6%B3%A8%E5%85%A5waf%E7%BB%95%E8%BF%87/</link>
-    <pubDate>Wed, 09 Aug 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/sql%E6%B3%A8%E5%85%A5waf%E7%BB%95%E8%BF%87/</guid>
-    <description><![CDATA[SQL注入—WAF绕过 WAF拦截原理：WAF从规则库中匹配敏感字符进行拦截。 关键词大小写绕过有的WAF因为规则设计的问题，只匹配纯大写或纯小]]></description>
 </item><item>
     <title>SSRF漏洞</title>
     <link>/ssrf%E6%BC%8F%E6%B4%9E/</link>
@@ -53,19 +53,19 @@
     </author><guid>/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</guid>
     <description><![CDATA[文件包含漏洞 本地文件包含 1 http://localhost/fileinc/include.php?file=webshell.php 1 http://localhost/fileinc/include.php?file=C:\Windows\system.ini ​ 远程文件包含 1 http://localhost/fileinc/include.php?file=http]]></description>
 </item><item>
-    <title>Sqli-labs靶场实战</title>
+    <title>Sqli-labs靶场实战(更新中)</title>
     <link>/sqli-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/</link>
     <pubDate>Sun, 06 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
     </author><guid>/sqli-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/</guid>
-    <description><![CDATA[Sqli-labs靶场实战 源码做了修改，把每关的sql语句打印出来方便学习： echo $sql.&quot;&lt;/br&gt;&quot;;，做]]></description>
+    <description><![CDATA[Sqli-labs靶场实战 源码做了修改，有的关卡把sql语句打印出来方便学习： echo $sql.&quot;&lt;/br&gt;&quot;;，]]></description>
 </item><item>
-    <title>SQL注入快速入门—联合注入</title>
-    <link>/sql%E6%B3%A8%E5%85%A5%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5/</link>
+    <title>SQL注入漏洞入门</title>
+    <link>/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%85%A5%E9%97%A8/</link>
     <pubDate>Sun, 06 Aug 2023 00:00:00 &#43;0000</pubDate><author>
         <name>Lyrio</name>
-    </author><guid>/sql%E6%B3%A8%E5%85%A5%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5/</guid>
-    <description><![CDATA[SQL注入快速入门—联合注入 概述：所谓的SQL注入就是通过某种方式将恶意的SQL代码添加到输入参数中，然后传递到SQL服务器使其解析并执行的]]></description>
+    </author><guid>/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%85%A5%E9%97%A8/</guid>
+    <description><![CDATA[SQL注入—联合注入 概述：所谓的SQL注入就是通过某种方式将恶意的SQL代码添加到输入参数中，然后传递到SQL服务器使其解析并执行的一种攻击]]></description>
 </item><item>
     <title>RCE漏洞</title>
     <link>/rce%E6%BC%8F%E6%B4%9E/</link>

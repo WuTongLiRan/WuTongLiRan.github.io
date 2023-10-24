@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>ACL协议 - 标签 - 梧桐漓染的博客</title>
+        <link>/tags/acl%E5%8D%8F%E8%AE%AE/</link>
+        <description>ACL协议 - 标签 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 06 Oct 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/acl%E5%8D%8F%E8%AE%AE/" rel="self" type="application/rss+xml" /><item>
+    <title>访问控制列表配置实验2—ACL协议(更新中)</title>
+    <link>/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C2acl%E5%8D%8F%E8%AE%AE/</link>
+    <pubDate>Fri, 06 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C2acl%E5%8D%8F%E8%AE%AE/</guid>
+    <description><![CDATA[ACL实验ACL 的运用 1、实验目的通过本实验可以: 掌握 ACL的作用 理解基本和高级 ACL的区别 熟悉基本和高级 ACL的配置 掌握 ACL 的验证和查看命令]]></description>
+</item><item>
+    <title>访问控制列表配置实验1—ACL协议</title>
+    <link>/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C1acl%E5%8D%8F%E8%AE%AE/</link>
+    <pubDate>Fri, 21 Jul 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8%E9%85%8D%E7%BD%AE%E5%AE%9E%E9%AA%8C1acl%E5%8D%8F%E8%AE%AE/</guid>
+    <description><![CDATA[访问控制列表配置实验—ACL协议 实验目的本实验的目的是给原本能互通的两台设备配置ACL，使其不能互通。 ​ 实验拓扑 ​ 实验步骤 配置两台PC的基本]]></description>
+</item></channel>
+</rss>
