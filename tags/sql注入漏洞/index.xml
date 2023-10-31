@@ -3,7 +3,14 @@
         <title>SQL注入漏洞 - 标签 - 梧桐漓染的博客</title>
         <link>/tags/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</link>
         <description>SQL注入漏洞 - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 23 Oct 2023 21:46:00 &#43;0800</lastBuildDate><atom:link href="/tags/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 27 Oct 2023 11:30:00 &#43;0800</lastBuildDate><atom:link href="/tags/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+    <title>[suctf 2019]EasySQL</title>
+    <link>/suctf-2019easysql/</link>
+    <pubDate>Fri, 27 Oct 2023 11:30:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/suctf-2019easysql/</guid>
+    <description><![CDATA[[suctf 2019]EasySQL 根据题目，应该要 sql 注入，先判断过滤了哪些东西 随便输个 1 ，Burpsuite 抓请求包发到 Intruder 模块，在要爆破的地方做记号 跑字典，速度放慢点防止]]></description>
+</item><item>
     <title>[SWPUCTF 2021 新生赛]easy_sql</title>
     <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasy_sql/</link>
     <pubDate>Mon, 23 Oct 2023 21:46:00 &#43;0800</pubDate><author>

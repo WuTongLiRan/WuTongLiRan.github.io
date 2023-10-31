@@ -3,7 +3,63 @@
         <title>CTF - 标签 - 梧桐漓染的博客</title>
         <link>/tags/ctf/</link>
         <description>CTF - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 24 Oct 2023 21:30:00 &#43;0800</lastBuildDate><atom:link href="/tags/ctf/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 28 Oct 2023 22:51:00 &#43;0800</lastBuildDate><atom:link href="/tags/ctf/" rel="self" type="application/rss+xml" /><item>
+    <title>[BJDCTF 2020]easy_md5</title>
+    <link>/bjdctf-2020easy_md5/</link>
+    <pubDate>Sat, 28 Oct 2023 22:51:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/bjdctf-2020easy_md5/</guid>
+    <description><![CDATA[[BJDCTF 2020]easy_md5 抓响应包，看到一个 hint ：select * from 'admin' where password=md5($pass,true) 这里的提示不够准确，最准确的应该是 select * from &lsquo;admin&rsquo; where password=&lsquo;md5($pass,true)&rsquo; (应该是这样) 不管输入什么都会经过 MD5 加密，所以]]></description>
+</item><item>
+    <title>[NISACTF 2022]easyssrf</title>
+    <link>/nisactf-2022easyssrf/</link>
+    <pubDate>Fri, 27 Oct 2023 23:27:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/nisactf-2022easyssrf/</guid>
+    <description><![CDATA[[NISACTF 2022]easyssrf 题目已经告知利用 SSRF 漏洞，输入 file:///etc/passwd ，失败，提示换个路径 输入 file:///flag ，得到提示 fl4g 输入 file:///fl4g ，得到提示 ha1x1ux1u.php 访问 ha1x1ux1u.php 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 &lt;?php highlight_file(__FILE__); error_reporting(0); // 从GE]]></description>
+</item><item>
+    <title>[SWPUCTF 2021 新生赛]PseudoProtocols</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bpseudoprotocols/</link>
+    <pubDate>Fri, 27 Oct 2023 22:32:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bpseudoprotocols/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]PseudoProtocols 根据提示包含一下 hint.php ，执行了 hint.php 但没有显示 利用 php://filter 将 hint.php 的内容以 base64 的编码显示 payload：?wllm=p]]></description>
+</item><item>
+    <title>[suctf 2019]EasySQL</title>
+    <link>/suctf-2019easysql/</link>
+    <pubDate>Fri, 27 Oct 2023 11:30:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/suctf-2019easysql/</guid>
+    <description><![CDATA[[suctf 2019]EasySQL 根据题目，应该要 sql 注入，先判断过滤了哪些东西 随便输个 1 ，Burpsuite 抓请求包发到 Intruder 模块，在要爆破的地方做记号 跑字典，速度放慢点防止]]></description>
+</item><item>
+    <title>[SWPUCTF 2021 新生赛]no_wakeup</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bno_wakeup/</link>
+    <pubDate>Thu, 26 Oct 2023 19:28:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bno_wakeup/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]no_wakeup 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 &lt;?php header(&#34;Content-type:text/html;charset=utf-8&#34;); error_reporting(0); show_source(&#34;class.php&#34;); class HaHaHa { public $admin; public $passwd; public function __construct() { $this-&gt;admin = &#34;user&#34;; $this-&gt;passwd = &#34;123456&#34;; } public function]]></description>
+</item><item>
+    <title>[SWPUCTF 2021 新生赛]easyupload2.0</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasyupload2.0/</link>
+    <pubDate>Thu, 26 Oct 2023 19:10:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasyupload2.0/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]easyupload2.0 上传木马： 1 &lt;?php @eval($_POST[&#39;Lyrio&#39;]);phpinfo();?&gt; // phpinfo() 在这里充当标记的作用 提示过滤了 php 文件 过滤代码在后端，只能黑盒测试 最后发现使用 php 的等]]></description>
+</item><item>
+    <title>[SWPUCTF 2021 新生赛]easyupload1.0</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasyupload1.0/</link>
+    <pubDate>Thu, 26 Oct 2023 16:29:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasyupload1.0/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]easyupload1.0 丢个木马上去 1 &lt;?php @eval($_POST[&#39;Lyrio&#39;]);phpinfo();?&gt; // phpinfo() 在这里充当标记的作用 看样子是被过滤了，查看页面源码，过滤代码不在前端而在后端 后端]]></description>
+</item><item>
+    <title>[SWPUCTF 2021 新生赛]ez_unserialize</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bez_unserialize/</link>
+    <pubDate>Thu, 26 Oct 2023 13:24:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bez_unserialize/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]ez_unserialize 扫描目录 python dirsearch.py -u &quot;http://node5.anna.nssctf.cn:28789/&quot; -e * 访问 robots.txt 访问 cl45s.php 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34]]></description>
+</item><item>
     <title>[第五空间 2021]WebFTP</title>
     <link>/%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B4-2021webftp/</link>
     <pubDate>Tue, 24 Oct 2023 21:30:00 &#43;0800</pubDate><author>
@@ -17,61 +73,5 @@
         <name>Lyrio</name>
     </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bdo_you_know_http/</guid>
     <description><![CDATA[[SWPUCTF 2021 新生赛]Do_you_know_http提示&quot;请使用 WLLM 浏览器&quot; 利用BurpSuite抓包伪造User-Agent:W]]></description>
-</item><item>
-    <title>[SWPUCTF 2021 新生赛]easy_sql</title>
-    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasy_sql/</link>
-    <pubDate>Mon, 23 Oct 2023 21:46:00 &#43;0800</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasy_sql/</guid>
-    <description><![CDATA[[SWPUCTF 2021 新生赛]easy_sql 一道简单不过的联合注入题，水一下文章数 查看页面源码，得到参数名 尝试用GET给wllm参数传个1 ?wllm=1'页]]></description>
-</item><item>
-    <title>[SWPUCTF 2021 新生赛]easy_md5</title>
-    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasy_md5/</link>
-    <pubDate>Mon, 23 Oct 2023 21:16:00 &#43;0800</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasy_md5/</guid>
-    <description><![CDATA[[SWPUCTF 2021 新生赛]easy_md5 完整的代码注释放在文末 来看关键代码块 1 2 3 if ($name != $password &amp;&amp; md5($name) == md5($password)){ echo $flag; } 要满足两个字符串不相等、但经过md5加密后的结果]]></description>
-</item><item>
-    <title>[SWPUCTF 2021 新生赛]jicao</title>
-    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bjicao/</link>
-    <pubDate>Mon, 23 Oct 2023 20:30:00 &#43;0800</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bjicao/</guid>
-    <description><![CDATA[[SWPUCTF 2021 新生赛]jicao 1 2 3 4 5 6 7 8 &lt;?php highlight_file(&#39;index.php&#39;); include(&#34;flag.php&#34;); $id=$_POST[&#39;id&#39;];//通过POST给id传参 $json=json]]></description>
-</item><item>
-    <title>[强网杯 2019]随便注</title>
-    <link>/%E5%BC%BA%E7%BD%91%E6%9D%AF-2019%E9%9A%8F%E4%BE%BF%E6%B3%A8/</link>
-    <pubDate>Mon, 23 Oct 2023 16:54:00 &#43;0800</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/%E5%BC%BA%E7%BD%91%E6%9D%AF-2019%E9%9A%8F%E4%BE%BF%E6%B3%A8/</guid>
-    <description><![CDATA[[强网杯 2019]随便注输入1'，页面报错 输入1'#，页面恢复正常，说明存在sql注入点 输入1'order by 2#页面正常，输入1'order]]></description>
-</item><item>
-    <title>[GXYCTF2019]Ping Ping Ping</title>
-    <link>/gxyctf2019ping-ping-ping/</link>
-    <pubDate>Sun, 22 Oct 2023 21:53:00 &#43;0800</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/gxyctf2019ping-ping-ping/</guid>
-    <description><![CDATA[[GXYCTF2019]Ping Ping Ping初次访问： 根据页面的提示/?ip=以及题目Ping Ping Ping可以猜测PING的IP可以通过GET型给参数ip传参 尝试输入?ip=]]></description>
-</item><item>
-    <title>[ACTF2020 新生赛]Exec</title>
-    <link>/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Bexec/</link>
-    <pubDate>Sun, 22 Oct 2023 12:57:00 &#43;0800</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Bexec/</guid>
-    <description><![CDATA[[ACTF2020 新生赛]Exec访问靶机： 输入8.8.8.8，点击PING 输入8.8.8.8 &amp; ipconfig，从结果来看没有执行ipconfig 输入8.]]></description>
-</item><item>
-    <title>[HCTF 2018]WarmUp</title>
-    <link>/hctf-2018warmup/</link>
-    <pubDate>Sat, 21 Oct 2023 20:25:25 &#43;0800</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/hctf-2018warmup/</guid>
-    <description><![CDATA[[HCTF 2018]WarmUp初次访问，这个滑稽应该是代表了作者幸灾乐祸的表情 一开始以为flag隐写在图片里，下载图片后查看里面的内容没有找到fl]]></description>
-</item><item>
-    <title>[ACTF2020 新生赛]Include</title>
-    <link>/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Binclude/</link>
-    <pubDate>Sat, 21 Oct 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>Lyrio</name>
-    </author><guid>/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Binclude/</guid>
-    <description><![CDATA[[ACTF2020 新生赛]Include初次访问： 页面上就一个链接，点进去 点进链接后页面上就一句毫无鸟用的话，查看页面源码也没有其他的东西 也就是说前端确确实]]></description>
 </item></channel>
 </rss>

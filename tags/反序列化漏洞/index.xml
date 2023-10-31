@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>反序列化漏洞 - 标签 - 梧桐漓染的博客</title>
+        <link>/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/</link>
+        <description>反序列化漏洞 - 标签 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 26 Oct 2023 19:28:00 &#43;0800</lastBuildDate><atom:link href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+    <title>[SWPUCTF 2021 新生赛]no_wakeup</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bno_wakeup/</link>
+    <pubDate>Thu, 26 Oct 2023 19:28:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bno_wakeup/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]no_wakeup 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 &lt;?php header(&#34;Content-type:text/html;charset=utf-8&#34;); error_reporting(0); show_source(&#34;class.php&#34;); class HaHaHa { public $admin; public $passwd; public function __construct() { $this-&gt;admin = &#34;user&#34;; $this-&gt;passwd = &#34;123456&#34;; } public function]]></description>
+</item><item>
+    <title>[SWPUCTF 2021 新生赛]ez_unserialize</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bez_unserialize/</link>
+    <pubDate>Thu, 26 Oct 2023 13:24:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bez_unserialize/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]ez_unserialize 扫描目录 python dirsearch.py -u &quot;http://node5.anna.nssctf.cn:28789/&quot; -e * 访问 robots.txt 访问 cl45s.php 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34]]></description>
+</item></channel>
+</rss>

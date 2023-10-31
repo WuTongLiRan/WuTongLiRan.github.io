@@ -3,7 +3,14 @@
         <title>SSRF漏洞 - 标签 - 梧桐漓染的博客</title>
         <link>/tags/ssrf%E6%BC%8F%E6%B4%9E/</link>
         <description>SSRF漏洞 - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/ssrf%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 27 Oct 2023 23:27:00 &#43;0800</lastBuildDate><atom:link href="/tags/ssrf%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+    <title>[NISACTF 2022]easyssrf</title>
+    <link>/nisactf-2022easyssrf/</link>
+    <pubDate>Fri, 27 Oct 2023 23:27:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/nisactf-2022easyssrf/</guid>
+    <description><![CDATA[[NISACTF 2022]easyssrf 题目已经告知利用 SSRF 漏洞，输入 file:///etc/passwd ，失败，提示换个路径 输入 file:///flag ，得到提示 fl4g 输入 file:///fl4g ，得到提示 ha1x1ux1u.php 访问 ha1x1ux1u.php 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 &lt;?php highlight_file(__FILE__); error_reporting(0); // 从GE]]></description>
+</item><item>
     <title>SSRF漏洞</title>
     <link>/ssrf%E6%BC%8F%E6%B4%9E/</link>
     <pubDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</pubDate><author>

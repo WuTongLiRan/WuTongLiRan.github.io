@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="preconnect" href="http://cdn.wutongliran.top/" crossorigin />
+    <link href="http://cdn.wutongliran.top/fonts/result.css" rel="stylesheet" />
+    <link rel="preload" as="font" type="font/woff2" href="http://cdn.wutongliran.top/fonts/Lyrio.woff2" crossorigin>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>[BJDCTF 2020]easy_md5 - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="[BJDCTF 2020]easy_md5" />
+<meta property="og:description" content="[BJDCTF 2020]easy_md5 抓响应包，看到一个 hint ：select * from &#39;admin&#39; where password=md5($pass,true) 这里的提示不够准确，最准确的应该是 select * from &lsquo;admin&rsquo; where password=&lsquo;md5($pass,true)&rsquo; (应该是这样) 不管输入什么都会经过 MD5 加密，所以" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/bjdctf-2020easy_md5/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-28T22:51:00+08:00" />
+<meta property="article:modified_time" content="2023-10-28T22:51:00+08:00" /><meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="[BJDCTF 2020]easy_md5"/>
+<meta name="twitter:description" content="[BJDCTF 2020]easy_md5 抓响应包，看到一个 hint ：select * from &#39;admin&#39; where password=md5($pass,true) 这里的提示不够准确，最准确的应该是 select * from &lsquo;admin&rsquo; where password=&lsquo;md5($pass,true)&rsquo; (应该是这样) 不管输入什么都会经过 MD5 加密，所以"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/bjdctf-2020easy_md5/" /><link rel="prev" href="/nisactf-2022easyssrf/" /><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="http://cdn.wutongliran.top/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="http://cdn.wutongliran.top/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[BJDCTF 2020]easy_md5",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/bjdctf-2020easy_md5\/"
+        },"genre": "posts","keywords": "CTF, 弱比较","wordcount":  811 ,
+        "url": "\/bjdctf-2020easy_md5\/","datePublished": "2023-10-28T22:51:00+08:00","dateModified": "2023-10-28T22:51:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"><i class='fa fa-book'></i> 文章 </a><a class="menu-item" href="/categories/"><i class='fa fa-tasks'></i> 分类 </a><a class="menu-item" href="/tags/"><i class='fa fa-bookmark'></i> 标签 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"><i class='fas fa-spinner fa-pulse'></i> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><i class='fa fa-book'></i>文章</a><a class="menu-item" href="/categories/" title=""><i class='fa fa-tasks'></i>分类</a><a class="menu-item" href="/tags/" title=""><i class='fa fa-bookmark'></i>标签</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title=""><i class='fas fa-spinner fa-pulse'></i>关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content always-active" id="toc-content-auto"><nav id="TableOfContents"></nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">[BJDCTF 2020]easy_md5</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/ctf-writeup/"><i class="far fa-folder fa-fw"></i>CTF-WriteUp</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-10-28">2023-10-28</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-10-28">2023-10-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 811 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><h1 id="bjdctf-2020easy_md5" class="headerLink">
+    <a href="#bjdctf-2020easy_md5" class="header-mark"></a>[BJDCTF 2020]easy_md5</h1><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653ce6d2c458853aef598f02.jpg" title="[BJDCTF 2020]easy_md5-1" data-thumbnail="https://pic.imgdb.cn/item/653ce6d2c458853aef598f02.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653ce6d2c458853aef598f02.jpg"
+            srcset="https://pic.imgdb.cn/item/653ce6d2c458853aef598f02.jpg, https://pic.imgdb.cn/item/653ce6d2c458853aef598f02.jpg 1.5x, https://pic.imgdb.cn/item/653ce6d2c458853aef598f02.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653ce6d2c458853aef598f02.jpg">
+    </a></figure></p>
+<p>抓响应包，看到一个 hint ：<code>select * from 'admin' where password=md5($pass,true)</code></p>
+<blockquote>
+<p>这里的提示不够准确，最准确的应该是 select * from &lsquo;admin&rsquo; where password=&lsquo;md5($pass,true)&rsquo;</p>
+<p>(应该是这样)</p>
+</blockquote>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653d2062c458853aefca9b6a.jpg" title="[BJDCTF 2020]easy_md5-2" data-thumbnail="https://pic.imgdb.cn/item/653d2062c458853aefca9b6a.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653d2062c458853aefca9b6a.jpg"
+            srcset="https://pic.imgdb.cn/item/653d2062c458853aefca9b6a.jpg, https://pic.imgdb.cn/item/653d2062c458853aefca9b6a.jpg 1.5x, https://pic.imgdb.cn/item/653d2062c458853aefca9b6a.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653d2062c458853aefca9b6a.jpg">
+    </a></figure></p>
+<p>不管输入什么都会经过 MD5 加密，所以要 sql 注入的话得保证输入的东西经 MD5 加密后是： <code>'or '真</code>，这样才能构成万能钥匙，即 <code>password=''or'真'</code></p>
+<p>可以写一段脚本去跑，看哪个字符串经过 MD5 加密后符合这个格式的，这里就借用其他大佬的payload：ffifdyop</p>
+<p>ffifdyop 经 MD5 加密后是 <code>'or'6ɝ驡r,魢</code>，刚好可以作为万能钥匙</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653d390cc458853aef8392de.jpg" title="[BJDCTF 2020]easy_md5-3" data-thumbnail="https://pic.imgdb.cn/item/653d390cc458853aef8392de.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653d390cc458853aef8392de.jpg"
+            srcset="https://pic.imgdb.cn/item/653d390cc458853aef8392de.jpg, https://pic.imgdb.cn/item/653d390cc458853aef8392de.jpg 1.5x, https://pic.imgdb.cn/item/653d390cc458853aef8392de.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653d390cc458853aef8392de.jpg">
+    </a></figure></p>
+<blockquote>
+<p>在 MySQL 中，字符串前面有数字会按数字的真假来算，例如 6xxxxxxx 为真</p>
+<p><strong>相关实验：</strong></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653d3985c458853aef86bdf9.jpg" title="[BJDCTF 2020]easy_md5-4" data-thumbnail="https://pic.imgdb.cn/item/653d3985c458853aef86bdf9.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653d3985c458853aef86bdf9.jpg"
+            srcset="https://pic.imgdb.cn/item/653d3985c458853aef86bdf9.jpg, https://pic.imgdb.cn/item/653d3985c458853aef86bdf9.jpg 1.5x, https://pic.imgdb.cn/item/653d3985c458853aef86bdf9.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653d3985c458853aef86bdf9.jpg">
+    </a></figure></p>
+</blockquote>
+<p>输入 ffifdyop 查询后来到这个界面</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653d39d5c458853aef88c803.jpg" title="[BJDCTF 2020]easy_md5-5" data-thumbnail="https://pic.imgdb.cn/item/653d39d5c458853aef88c803.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653d39d5c458853aef88c803.jpg"
+            srcset="https://pic.imgdb.cn/item/653d39d5c458853aef88c803.jpg, https://pic.imgdb.cn/item/653d39d5c458853aef88c803.jpg 1.5x, https://pic.imgdb.cn/item/653d39d5c458853aef88c803.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653d39d5c458853aef88c803.jpg">
+    </a></figure></p>
+<p>查看页面源码</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653d39fdc458853aef89d1e3.jpg" title="[BJDCTF 2020]easy_md5-6" data-thumbnail="https://pic.imgdb.cn/item/653d39fdc458853aef89d1e3.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653d39fdc458853aef89d1e3.jpg"
+            srcset="https://pic.imgdb.cn/item/653d39fdc458853aef89d1e3.jpg, https://pic.imgdb.cn/item/653d39fdc458853aef89d1e3.jpg 1.5x, https://pic.imgdb.cn/item/653d39fdc458853aef89d1e3.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653d39fdc458853aef89d1e3.jpg">
+    </a></figure></p>
+<p>得到提示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$a</span> <span class="o">=</span> <span class="nv">$GET</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$b</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nv">$a</span> <span class="o">!=</span> <span class="nv">$b</span> <span class="o">&amp;&amp;</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$a</span><span class="p">)</span> <span class="o">==</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$b</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Location: levell14.php&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>代码的意思是要符合：两不同的字符串经 MD5 加密后相同，才定向到 levell14.php</p>
+<p><strong>方法一：利用 php 的弱比较特性来绕过 ==</strong></p>
+<blockquote>
+<p>php 中 == 是判断值是否相等，若两个变量的类型不相等，则会转化为相同类型后再进行比较。 php 在处理哈希字符串的时候，会把<strong>以 0e 开头并且后面字符均为纯数字的哈希值</strong>都解析为 0</p>
+<p>MD5 加密后以 0e 开头的字符串：</p>
+<ul>
+<li>QNKCDZO</li>
+<li>240610708</li>
+<li>s878926199a</li>
+<li>s155964671a</li>
+</ul>
+</blockquote>
+<p>所以只要随便选以上两个字符串，通过 GET 传给 &lsquo;a&rsquo; 和 &lsquo;b&rsquo; 参数 ，即可定向到 levell14.php</p>
+<p><strong>方法二：利用 md5() 函数无法处理数组(会返回NULL)来实现绕过 ==</strong></p>
+<blockquote>
+<p>NULL==NULL 为真</p>
+<p><strong>相关实验：</strong></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653d41adc458853aefb63dca.jpg" title="[BJDCTF 2020]easy_md5-7" data-thumbnail="https://pic.imgdb.cn/item/653d41adc458853aefb63dca.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653d41adc458853aefb63dca.jpg"
+            srcset="https://pic.imgdb.cn/item/653d41adc458853aefb63dca.jpg, https://pic.imgdb.cn/item/653d41adc458853aefb63dca.jpg 1.5x, https://pic.imgdb.cn/item/653d41adc458853aefb63dca.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653d41adc458853aefb63dca.jpg">
+    </a></figure></p>
+</blockquote>
+<p>所以 payload :  <code>/?a[]=1&amp;&amp;b[]=2</code></p>
+<p><strong>方法三：MD5 碰撞</strong></p>
+<blockquote>
+<p>下面的任意两组字符串内容不同，但 MD5 结果相同：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">%af%13%76%70%82%a0%a6%58%cb%3e%23%38%c4%c6%db%8b%60%2c%bb%90%68%a0%2d%e9%47%aa%78%49%6e%0a%c0%c0%31%d3%fb%cb%82%25%92%0d%cf%61%67%64%e8%cd%7d%47%ba%0e%5d%1b%9c%1c%5c%cd%07%2d%f7%a8%2d%1d%bc%5e%2c%06%46%3a%0f%2d%4b%e9%20%1d%29%66%a4%e1%8b%7d%0c%f5%ef%97%b6%ee%48%dd%0e%09%aa%e5%4d%6a%5d%6d%75%77%72%cf%47%16%a2%06%72%71%c9%a1%8f%00%f6%9d%ee%54%27%71%be%c8%c3%8f%93%e3%52%73%73%53%a0%5f%69%ef%c3%3b%ea%ee%70%71%ae%2a%21%c8%44%d7%22%87%9f%be%79%6d%c4%61%a4%08%57%02%82%2a%ef%36%95%da%ee%13%bc%fb%7e%a3%59%45%ef%25%67%3c%e0%27%69%2b%95%77%b8%cd%dc%4f%de%73%24%e8%ab%66%74%d2%8c%68%06%80%0c%dd%74%ae%31%05%d1%15%7d%c4%5e%bc%0b%0f%21%23%a4%96%7c%17%12%d1%2b%b3%10%b7%37%60%68%d7%cb%35%5a%54%97%08%0d%54%78%49%d0%93%c3%b3%fd%1f%0b%35%11%9d%96%1d%ba%64%e0%86%ad%ef%52%98%2d%84%12%77%bb%ab%e8%64%da%a3%65%55%5d%d5%76%55%57%46%6c%89%c9%df%b2%3c%85%97%1e%f6%38%66%c9%17%22%e7%ea%c9%f5%d2%e0%14%d8%35%4f%0a%5c%34%d3%73%a5%98%f7%66%72%aa%43%e3%bd%a2%cd%62%fd%69%1d%34%30%57%52%ab%41%b1%91%65%f2%30%7f%cf%c6%a1%8c%fb%dc%c4%8f%61%a5%93%40%1a%13%d1%09%c5%e0%f7%87%5f%48%e7%d7%b3%62%04%a7%c4%cb%fd%f4%ff%cf%3b%74%28%1c%96%8e%09%73%3a%9b%a6%2f%ed%b7%99%d5%b9%05%39%95%ab
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">%af%13%76%70%82%a0%a6%58%cb%3e%23%38%c4%c6%db%8b%60%2c%bb%90%68%a0%2d%e9%47%aa%78%49%6e%0a%c0%c0%31%d3%fb%cb%82%25%92%0d%cf%61%67%64%e8%cd%7d%47%ba%0e%5d%1b%9c%1c%5c%cd%07%2d%f7%a8%2d%1d%bc%5e%2c%06%46%3a%0f%2d%4b%e9%20%1d%29%66%a4%e1%8b%7d%0c%f5%ef%97%b6%ee%48%dd%0e%09%aa%e5%4d%6a%5d%6d%75%77%72%cf%47%16%a2%06%72%71%c9%a1%8f%00%f6%9d%ee%54%27%71%be%c8%c3%8f%93%e3%52%73%73%53%a0%5f%69%ef%c3%3b%ea%ee%70%71%ae%2a%21%c8%44%d7%22%87%9f%be%79%6d%c4%61%a4%08%57%02%82%2a%ef%36%95%da%ee%13%bc%fb%7e%a3%59%45%ef%25%67%3c%e0%27%69%2b%95%77%b8%cd%dc%4f%de%73%24%e8%ab%66%74%d2%8c%68%06%80%0c%dd%74%ae%31%05%d1%15%7d%c4%5e%bc%0b%0f%21%23%a4%96%7c%17%12%d1%2b%b3%10%b7%37%60%68%d7%cb%35%5a%54%97%08%0d%54%78%49%d0%93%c3%b3%fd%1f%0b%35%11%9d%96%1d%ba%64%e0%86%ad%ef%52%98%2d%84%12%77%bb%ab%e8%64%da%a3%65%55%5d%d5%76%55%57%46%6c%89%c9%5f%b2%3c%85%97%1e%f6%38%66%c9%17%22%e7%ea%c9%f5%d2%e0%14%d8%35%4f%0a%5c%34%d3%f3%a5%98%f7%66%72%aa%43%e3%bd%a2%cd%62%fd%e9%1d%34%30%57%52%ab%41%b1%91%65%f2%30%7f%cf%c6%a1%8c%fb%dc%c4%8f%61%a5%13%40%1a%13%d1%09%c5%e0%f7%87%5f%48%e7%d7%b3%62%04%a7%c4%cb%fd%f4%ff%cf%3b%74%a8%1b%96%8e%09%73%3a%9b%a6%2f%ed%b7%99%d5%39%05%39%95%ab
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">%af%13%76%70%82%a0%a6%58%cb%3e%23%38%c4%c6%db%8b%60%2c%bb%90%68%a0%2d%e9%47%aa%78%49%6e%0a%c0%c0%31%d3%fb%cb%82%25%92%0d%cf%61%67%64%e8%cd%7d%47%ba%0e%5d%1b%9c%1c%5c%cd%07%2d%f7%a8%2d%1d%bc%5e%2c%06%46%3a%0f%2d%4b%e9%20%1d%29%66%a4%e1%8b%7d%0c%f5%ef%97%b6%ee%48%dd%0e%09%aa%e5%4d%6a%5d%6d%75%77%72%cf%47%16%a2%06%72%71%c9%a1%8f%00%f6%9d%ee%54%27%71%be%c8%c3%8f%93%e3%52%73%73%53%a0%5f%69%ef%c3%3b%ea%ee%70%71%ae%2a%21%c8%44%d7%22%87%9f%be%79%ed%c4%61%a4%08%57%02%82%2a%ef%36%95%da%ee%13%bc%fb%7e%a3%59%45%ef%25%67%3c%e0%a7%69%2b%95%77%b8%cd%dc%4f%de%73%24%e8%ab%e6%74%d2%8c%68%06%80%0c%dd%74%ae%31%05%d1%15%7d%c4%5e%bc%0b%0f%21%23%a4%16%7c%17%12%d1%2b%b3%10%b7%37%60%68%d7%cb%35%5a%54%97%08%0d%54%78%49%d0%93%c3%33%fd%1f%0b%35%11%9d%96%1d%ba%64%e0%86%ad%6f%52%98%2d%84%12%77%bb%ab%e8%64%da%a3%65%55%5d%d5%76%55%57%46%6c%89%c9%df%b2%3c%85%97%1e%f6%38%66%c9%17%22%e7%ea%c9%f5%d2%e0%14%d8%35%4f%0a%5c%34%d3%73%a5%98%f7%66%72%aa%43%e3%bd%a2%cd%62%fd%69%1d%34%30%57%52%ab%41%b1%91%65%f2%30%7f%cf%c6%a1%8c%fb%dc%c4%8f%61%a5%93%40%1a%13%d1%09%c5%e0%f7%87%5f%48%e7%d7%b3%62%04%a7%c4%cb%fd%f4%ff%cf%3b%74%28%1c%96%8e%09%73%3a%9b%a6%2f%ed%b7%99%d5%b9%05%39%95%ab
+</span></span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<p>任选两个传给 &lsquo;a&rsquo; 参数和 &lsquo;b&rsquo; 参数</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653d4596c458853aefc8e885.jpg" title="[BJDCTF 2020]easy_md5-8" data-thumbnail="https://pic.imgdb.cn/item/653d4596c458853aefc8e885.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653d4596c458853aefc8e885.jpg"
+            srcset="https://pic.imgdb.cn/item/653d4596c458853aefc8e885.jpg, https://pic.imgdb.cn/item/653d4596c458853aefc8e885.jpg 1.5x, https://pic.imgdb.cn/item/653d4596c458853aefc8e885.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653d4596c458853aefc8e885.jpg">
+    </a></figure></p>
+<hr>
+<blockquote>
+<p>**方法四：**无视这段代码，直接去 URL 访问 levell14.php ，也可以访问，但是作为练习就不投机取巧了</p>
+</blockquote>
+<hr>
+<p>来到 levell14.php
+<figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653d3ad0c458853aef8f3ca5.jpg" title="[BJDCTF 2020]easy_md5-9" data-thumbnail="https://pic.imgdb.cn/item/653d3ad0c458853aef8f3ca5.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653d3ad0c458853aef8f3ca5.jpg"
+            srcset="https://pic.imgdb.cn/item/653d3ad0c458853aef8f3ca5.jpg, https://pic.imgdb.cn/item/653d3ad0c458853aef8f3ca5.jpg 1.5x, https://pic.imgdb.cn/item/653d3ad0c458853aef8f3ca5.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653d3ad0c458853aef8f3ca5.jpg">
+    </a></figure></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="nx">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">include</span> <span class="s2">&#34;flag.php&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 检查是否通过POST请求发送了 &#39;param1&#39; 和 &#39;param2&#39; 参数，并且这两个参数的值不相等，
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 同时 &#39;param1&#39; 和 &#39;param2&#39; 经过MD5哈希后的结果相等
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;param1&#39;</span><span class="p">]</span> <span class="o">!==</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;param2&#39;</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;param1&#39;</span><span class="p">])</span> <span class="o">===</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;param2&#39;</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 如果条件满足，输出 $flag 变量的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">echo</span> <span class="nv">$flag</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里的代码和之前的不一样，== 是弱比较、=== 是强比较</p>
+<p><strong>方法一：利用 md5() 函数无法处理数组(会返回NULL)来实现绕过 === (和之前绕过 == 的方法一样)</strong></p>
+<blockquote>
+<p>NULL===NULL 为真</p>
+<p><strong>相关实验：</strong></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653d42e9c458853aefbcc3a2.jpg" title="[BJDCTF 2020]easy_md5-10" data-thumbnail="https://pic.imgdb.cn/item/653d42e9c458853aefbcc3a2.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653d42e9c458853aefbcc3a2.jpg"
+            srcset="https://pic.imgdb.cn/item/653d42e9c458853aefbcc3a2.jpg, https://pic.imgdb.cn/item/653d42e9c458853aefbcc3a2.jpg 1.5x, https://pic.imgdb.cn/item/653d42e9c458853aefbcc3a2.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653d42e9c458853aefbcc3a2.jpg">
+    </a></figure></p>
+</blockquote>
+<p>所以用 POST 给 &lsquo;param1&rsquo; 和 &lsquo;param2&rsquo; 参数分别传个数组类型就能得到 flag</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653d441bc458853aefc27e73.jpg" title="[BJDCTF 2020]easy_md5-11" data-thumbnail="https://pic.imgdb.cn/item/653d441bc458853aefc27e73.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653d441bc458853aefc27e73.jpg"
+            srcset="https://pic.imgdb.cn/item/653d441bc458853aefc27e73.jpg, https://pic.imgdb.cn/item/653d441bc458853aefc27e73.jpg 1.5x, https://pic.imgdb.cn/item/653d441bc458853aefc27e73.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653d441bc458853aefc27e73.jpg">
+    </a></figure></p>
+<p><strong>方法二：MD5 碰撞(同上)</strong></p>
+</div>
+
+        <div class="sponsor">
+        <div class="sponsor-avatar"></div><div class="sponsor-custom"><hr><p><em>当我站在传授他人的角度思考问题时</em></p><p><em>才能真正领悟并融会贯通</em></p><p><em>博客受益者是未来那个遗忘某个技术的自己</em></p><hr></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-10-28</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/bjdctf-2020easy_md5/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/ctf/">CTF</a>,&nbsp;<a href="/tags/%E5%BC%B1%E6%AF%94%E8%BE%83/">弱比较</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/nisactf-2022easyssrf/" class="prev" rel="prev" title="[NISACTF 2022]easyssrf"><i class="fas fa-angle-left fa-fw"></i>[NISACTF 2022]easyssrf</a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container">
+            <div class="footer-line">
+                <span id="run-time"></span>
+            </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="http://cdn.wutongliran.top/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/katex/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":200},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true},"twemoji":true};</script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/twemoji/twemoji.min.js" defer></script><script type="text/javascript" src="/js/twemoji.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/custom/custom.js"></script></div>
+</body>
+
+</html>

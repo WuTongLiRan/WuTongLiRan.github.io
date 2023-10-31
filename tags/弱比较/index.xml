@@ -3,12 +3,19 @@
         <title>弱比较 - 标签 - 梧桐漓染的博客</title>
         <link>/tags/%E5%BC%B1%E6%AF%94%E8%BE%83/</link>
         <description>弱比较 - 标签 - 梧桐漓染的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 23 Oct 2023 21:16:00 &#43;0800</lastBuildDate><atom:link href="/tags/%E5%BC%B1%E6%AF%94%E8%BE%83/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 28 Oct 2023 22:51:00 &#43;0800</lastBuildDate><atom:link href="/tags/%E5%BC%B1%E6%AF%94%E8%BE%83/" rel="self" type="application/rss+xml" /><item>
+    <title>[BJDCTF 2020]easy_md5</title>
+    <link>/bjdctf-2020easy_md5/</link>
+    <pubDate>Sat, 28 Oct 2023 22:51:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/bjdctf-2020easy_md5/</guid>
+    <description><![CDATA[[BJDCTF 2020]easy_md5 抓响应包，看到一个 hint ：select * from 'admin' where password=md5($pass,true) 这里的提示不够准确，最准确的应该是 select * from &lsquo;admin&rsquo; where password=&lsquo;md5($pass,true)&rsquo; (应该是这样) 不管输入什么都会经过 MD5 加密，所以]]></description>
+</item><item>
     <title>[SWPUCTF 2021 新生赛]easy_md5</title>
     <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasy_md5/</link>
     <pubDate>Mon, 23 Oct 2023 21:16:00 &#43;0800</pubDate><author>
         <name>Lyrio</name>
     </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasy_md5/</guid>
-    <description><![CDATA[[SWPUCTF 2021 新生赛]easy_md5 完整的代码注释放在文末 来看关键代码块 1 2 3 if ($name != $password &amp;&amp; md5($name) == md5($password)){ echo $flag; } 要满足两个字符串不相等、但经过md5加密后的结果]]></description>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]easy_md5 完整的代码注释放在文末 来看关键代码块 1 2 3 if ($name != $password &amp;&amp; md5($name) == md5($password)){ echo $flag; } 要满足两个字符串不相等、但经过 md5 加密后的结果是相]]></description>
 </item></channel>
 </rss>

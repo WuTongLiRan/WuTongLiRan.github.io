@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>PHP伪协议 - 标签 - 梧桐漓染的博客</title>
+        <link>/tags/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/</link>
+        <description>PHP伪协议 - 标签 - 梧桐漓染的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 27 Oct 2023 22:32:00 &#43;0800</lastBuildDate><atom:link href="/tags/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/" rel="self" type="application/rss+xml" /><item>
+    <title>[SWPUCTF 2021 新生赛]PseudoProtocols</title>
+    <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bpseudoprotocols/</link>
+    <pubDate>Fri, 27 Oct 2023 22:32:00 &#43;0800</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bpseudoprotocols/</guid>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]PseudoProtocols 根据提示包含一下 hint.php ，执行了 hint.php 但没有显示 利用 php://filter 将 hint.php 的内容以 base64 的编码显示 payload：?wllm=p]]></description>
+</item><item>
+    <title>[ACTF2020 新生赛]Include</title>
+    <link>/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Binclude/</link>
+    <pubDate>Sat, 21 Oct 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>Lyrio</name>
+    </author><guid>/actf2020-%E6%96%B0%E7%94%9F%E8%B5%9Binclude/</guid>
+    <description><![CDATA[[ACTF2020 新生赛]Include初次访问： 页面上就一个链接，点进去 点进链接后页面上就一句毫无鸟用的话，查看页面源码也没有其他的东西 也就是说前端确确实]]></description>
+</item></channel>
+</rss>

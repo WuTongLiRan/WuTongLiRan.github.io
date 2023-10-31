@@ -9,7 +9,7 @@
     <pubDate>Mon, 23 Oct 2023 21:16:00 &#43;0800</pubDate><author>
         <name>Lyrio</name>
     </author><guid>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Beasy_md5/</guid>
-    <description><![CDATA[[SWPUCTF 2021 新生赛]easy_md5 完整的代码注释放在文末 来看关键代码块 1 2 3 if ($name != $password &amp;&amp; md5($name) == md5($password)){ echo $flag; } 要满足两个字符串不相等、但经过md5加密后的结果]]></description>
+    <description><![CDATA[[SWPUCTF 2021 新生赛]easy_md5 完整的代码注释放在文末 来看关键代码块 1 2 3 if ($name != $password &amp;&amp; md5($name) == md5($password)){ echo $flag; } 要满足两个字符串不相等、但经过 md5 加密后的结果是相]]></description>
 </item><item>
     <title>[SWPUCTF 2021 新生赛]jicao</title>
     <link>/swpuctf-2021-%E6%96%B0%E7%94%9F%E8%B5%9Bjicao/</link>

